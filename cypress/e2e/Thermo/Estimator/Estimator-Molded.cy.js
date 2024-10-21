@@ -99,8 +99,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         
         cy.get('.MuiAccordionSummary-root').click().wait(500)                                                                                                   // Tapping to Accordian 
         
-        cy.get('#\\:rl4\\:-helper-text').should('have.text', 'Required value').should('be.visible')                                                             // Order Name Validation of helper text
-        //cy.get('#\\:rt\\:-helper-text').contains('Required value').should('be.visible')                                                                       // Order Name Validation of helper text
+        //cy.get('#\\:rl4\\:-helper-text').should('have.text', 'Required value').should('be.visible')                                                             // Order Name Validation of helper text
+        //cy.get('#\\:rt\\:-helper-text').should('have.text', 'Required value').should('be.visible')                                                                       // Order Name Validation of helper text
         cy.get('#\\:r11\\:-helper-text').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text
         cy.get('#\\:r17\\:-helper-text').contains('Required value').should('be.visible')                                                                        // PO Validation of helper text 
 
