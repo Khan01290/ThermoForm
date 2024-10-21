@@ -1,5 +1,4 @@
 const { defineConfig } = require("cypress");
-const { allureCypress } = require("allure-cypress/reporter");
 
 
 module.exports = defineConfig({
@@ -9,9 +8,7 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);   // For HTML Reporter
-      allureCypress(on, {
-        resultsDir: "./allure-results",
-      });
+      
       // implement node event listeners here
       
       // Register the task events in the setupNodeEvents method
