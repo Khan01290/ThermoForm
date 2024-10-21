@@ -43,7 +43,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         //.and('exist').and('contain','Estimator').click().wait(10000)        
         //cy.get('.css-budqf6').contains('Add color').should('be.visible')                                                                                      // Asserting Add color btn is visible
         cy.get('.css-budqf6', { timeout: 25000 }).contains('Add color').should('be.visible')
-        cy.get('.jss23 > .MuiButtonBase-root').click()                                                                                                          // Tapping to menu icon to close sidebar
+        cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)                                                                                                // Tapping to menu icon to close sidebar
         cy.get('[data-tour="order.action.new"]').click()                                                                                                        // Adding fresh order
         cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
         cy.get('.css-budqf6').contains('Add color').click({force: true}).wait(500)                                                                              // Tapping to Add color btn
@@ -218,7 +218,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('[title="Estimator"] > .MuiListItemText-root > .MuiTypography-root').contains("Estimator").should('be.visible')                                  // Asserting of Estimator li is present on side menu
         .and('exist').and('contain','Estimator').click()
         cy.get('.css-budqf6', { timeout: 25000 }).contains('Add color').should('be.visible')                                                                    // Asserting Add color btn is visible
-        cy.get('.jss23 > .MuiButtonBase-root').click()                                                                                                          // Tapping to menu icon to close sidebar
+        cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)                                                                                                // Tapping to menu icon to close sidebar
         cy.get('[data-tour="order.action.new"]').click()                                                                                                        // Adding fresh order
         
         cy.get('.MuiDialogActions-root > :nth-child(2)').click().wait(500)                                                                                      // Tapping to OK btn
