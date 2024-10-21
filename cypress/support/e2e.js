@@ -23,9 +23,6 @@ require('cypress-xpath')
 
 import 'cypress-mochawesome-reporter/register';
 import 'cypress-iframe';
-import "allure-cypress/commands";
-import "allure-cypress";
-import '@shelex/cypress-allure-plugin';
 
 
 

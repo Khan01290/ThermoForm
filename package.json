@@ -1,12 +1,10 @@
 {
   "name": "cypressauto",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test:Molded-Cat-Test": "npx cypress run --spec cypress/e2e/Thermo/Estimator/Estimator-Molded.cy.js --env allure=true",
-    "debug": "npx cypress open",
-    "report:allure": "allure generate allure-results --clean -o allure-report && allure open  allure-report"
+    "test:Molded-Cat-Test": "npx cypress run --spec cypress/e2e/Thermo/Estimator/Estimator-Molded.cy.js",
+    "debug": "npx cypress open"
   },
   "author": "Shahzad Khan",
   "license": "ISC",
@@ -15,13 +13,11 @@
   },
   "devDependencies": {
     "@shelex/cypress-allure-plugin": "^2.40.2",
-    "allure-commandline": "^2.30.0",
-    "allure-cypress": "^3.0.0-beta.3",
     "cypress": "^13.13.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-iframe": "^1.0.1",
     "cypress-mochawesome-reporter": "^3.8.0",
-    "cypress-xpath": "^2.0.1",
-    "mocha-allure-reporter": "^1.4.0"
-  }
+    "cypress-xpath": "^2.0.1"
+  },
+  "description": ""
 }
