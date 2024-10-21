@@ -1,0 +1,10 @@
+{
+  "suites": 5,
+  "tests": 5,
+  "passes": 0,
+  "pending": 11,
+  "failures": 0,
+  "start": "2024-03-12T11:54:37.737Z",
+  "duration": 767,
+  "file": "cypress\\e2e\\CBS\\CBS-TissueCypher-Tests.cy.js"
+}
