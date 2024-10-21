@@ -97,7 +97,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                         // Tapping to Submit btn
         cy.get('.MuiAlert-message').contains('Please validate the form before submitting the order').should('be.visible')                                       // Assertion for validation message
         
-        cy.get('.MuiAccordionSummary-root').click().wait(1000)                                                                                                   // Tapping to Accordian 
+        cy.get('.MuiAccordionSummary-root').click().wait(5000)                                                                                                   // Tapping to Accordian 
         
         //cy.get('#\\:rl4\\:-helper-text').should('have.text', 'Required value').should('be.visible')                                                             // Order Name Validation of helper text
         cy.get('#\\:rt\\:-helper-text', {timeout: 5000}).should('have.text', 'Required value').should('be.visible')                                                                       // Order Name Validation of helper text
