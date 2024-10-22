@@ -2,7 +2,7 @@ const { defineConfig } = require("cypress");
 
 
 module.exports = defineConfig({
-  projectId: "5tuxfq",
+  projectId: "6y7u6b",
   pageLoadTimeout: 120000, // Set the page load timeout to 120 seconds (2 minutes)
   reporter: 'cypress-mochawesome-reporter',   // For HTML Reporter
   e2e: {
