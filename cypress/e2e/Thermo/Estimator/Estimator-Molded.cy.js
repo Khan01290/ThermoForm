@@ -111,11 +111,11 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         //cy.get('[id=":rt:"]', { timeout: 10000 }).should('exist')
         //cy.get('[id=":rt:"]').type('Automate Doors Category')                                                                                                     // Name         
 
-        cy.get('[id=":rt:"]', { timeout: 10000 }).type('Automate Doors Category')
-        cy.get('[id=":r11:"]').type('AutomateDoors#gmail.com', { force: true })                                                                                   // Email
-        cy.get('[id=":r11:-helper-text"]').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text        
-        cy.get('[id=":r11:"]').type('AutomateDoors#gmail.com').clear()                                                                                            // Clear the invalid input
-        cy.get('[id=":r11:"]').type('AutomateDoors@gmail.com', { force: true })                                                                                   // Email with valid input   
+        cy.get('#\\:ru\\:', { timeout: 10000 }).type('Automate Doors Category')
+        cy.get('[id=":r12:"]').type('AutomateDoors#gmail.com', { force: true })                                                                                   // Email
+        cy.get('[id=":r12:-helper-text"]').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text        
+        cy.get('[id=":r12:"]').type('AutomateDoors#gmail.com').clear()                                                                                            // Clear the invalid input
+        cy.get('[id=":r12:"]').type('AutomateDoors@gmail.com', { force: true })                                                                                   // Email with valid input   
         cy.get('[id=":r17:"]').type('Doors 11', { force: true })                                                                                                  // Your PO
         cy.get('[id=":r19:"]').type('XYZ 1', { force: true })                                                                                                     // Their PO        
         cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click().wait(300)                                                                               // Tapping to Date icon        
