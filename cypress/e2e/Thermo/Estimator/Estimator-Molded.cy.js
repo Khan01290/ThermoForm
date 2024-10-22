@@ -100,7 +100,9 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('.MuiAlert-message').contains('Please validate the form before submitting the order').should('be.visible')                                       // Assertion for validation message
         
         cy.get('.MuiAccordionSummary-root').click().wait(500)                                                                                                   // Tapping to Accordian 
-        cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)
+        //cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)
+        cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true});
+
         //cy.get('[id=":rt:-helper-text"]').should('have.text', 'Required value').should('be.visible')                                                             // Order Name Validation of helper text
         //cy.get('[id=":r11:-helper-text"]').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text
         //cy.get('[id=":r17:-helper-text"]').contains('Required value').should('be.visible')                                                                        // PO Validation of helper text 
