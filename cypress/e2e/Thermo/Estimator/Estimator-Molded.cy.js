@@ -8,8 +8,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
     it("Verify Order Created/Submitted Successfully - For Doors Category -", function()  {
 
         // User Creation Steps:
-        cy.viewport(1720, 1080)    
-        //cy.viewport(1280, 720)
+        //cy.viewport(1720, 1080)    
+        cy.viewport(1440, 900)
 
         cy.visit("https://dev.thermoform.net/") 
         
