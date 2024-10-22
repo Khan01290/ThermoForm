@@ -105,7 +105,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         //cy.get('#\\:rt\\:-helper-text', {timeout: 5000}).should('have.text', 'Required value').should('be.visible')                                                                       // Order Name Validation of helper text
         //cy.get('#\\:r11\\:-helper-text', {timeout: 5000}).contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text
         //cy.get('#\\:r17\\:-helper-text', {timeout: 5000}).contains('Required value').should('be.visible')                                                                        // PO Validation of helper text 
-
+        cy..wait(1000)
         cy.get('#\\:rt\\:').type('Automate Doors Category')                                                                                                     // Name      
         cy.get('#\\:r11\\:').type('AutomateDoors#gmail.com', { force: true })                                                                                   // Email   
         cy.get('#\\:r11\\:-helper-text').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text
