@@ -8,8 +8,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
     it("Verify Order Created/Submitted Successfully - For Doors Category -", function()  {
 
         // User Creation Steps:
-        //cy.viewport(1720, 1080)    
-        cy.viewport(1280, 720)
+        cy.viewport(1720, 1080)    
+        //cy.viewport(1280, 720)
 
         cy.visit("https://dev.thermoform.net/") 
         
@@ -18,16 +18,16 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('.MuiTypography-body2').contains("Forgot Password?").should('be.visible').and('exist')                                                           // Asssertion of Forgot Password? link is present   
         cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and('not.be.enabled')                                                      // Asssertion of Next btn is disabled        
         cy.get('input[name="username"]').type("masterfortesting")                                                                                               // Input valid username                        
-        cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and('contain','Next').click()                                              // Click to Next button         
-        cy.get('.MuiTypography-h5').contains("Email Authentication").should('be.visible').and('exist').and('contain','Email').click()                           // Asssertion of "Email Authentication" heading is present
+        cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and('contain','Next').click().wait(1000)                                   // Click to Next button         
+        cy.get('.MuiTypography-h5').contains("Email Authentication").should('be.visible').and('exist').and('contain','Email').click().wait(1000)                // Asssertion of "Email Authentication" heading is present
         cy.get('input[name="email"]').should('be.visible').and('exist')                                                                                         // Asssertion of email box is present                       
         cy.get('[type="submit"]').contains("Send Authentication Link").should('be.visible').and('exist').and('contain','Authentication')                        // Asssertion of Send Authentication Link button is present
-        cy.get('[type="text"]').contains("Password Authentication").should('be.visible').and('exist').and('contain','Password').click()                         // Asssertion of "Password Authentication" link is present                       
+        cy.get('[type="text"]').contains("Password Authentication").should('be.visible').and('exist').and('contain','Password').click().wait(1000)              // Asssertion of "Password Authentication" link is present                       
         cy.get('.MuiTypography-h5').contains("Password Authentication").should('be.visible').and('exist').and('contain','Password')                             // Asssertion of Password Authentication heading is present
         cy.get('.MuiTypography-body2').contains("Forgot Password?").should('be.visible').and('exist')                                                           // Asssertion of Forgot Password? link is present   
         cy.get('[type="text"]').contains("Email Authentication").should('be.visible').and('exist').and('contain','Email')                                       // Asssertion of Email Authentication Link is present                
         cy.get('input[name="password"]').type("[HPnotebook1@")                                                                                                  // Input valid password        
-        cy.get('[type="submit"]').contains("Submit").should('be.visible').and('exist').and('contain','Submit').click()                                          // Click to Submit button for portal login  
+        cy.get('[type="submit"]').contains("Submit").should('be.visible').and('exist').and('contain','Submit').click().wait(1000)                               // Click to Submit button for portal login  
         //cy.get('.css-imv4ws > .MuiAvatar-root').click().wait(1000)                                                                                            // Asserting login button present with its avaialble options	 
         //cy.get('.css-1stpmc > :nth-child(1) > .MuiListItemText-root > .MuiTypography-root').contains("Français (Canada)").should('be.visible')                // Asserting Français (Canada) text is present and fr language is pre selected 
         //.and('exist').and('contain','Français').click().wait(1000)                                                         
@@ -36,17 +36,17 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('.MuiToolbar-root > .MuiTypography-root', { timeout: 25000 }).contains("Home").should('be.visible').and('exist').and('contain','Home')           // Asserting of Home text is present on home page
         // Cypress will wait up to 25 seconds for the element, but proceed immediately when the element appears
         cy.get('.MuiTypography-h4').contains("Shortcuts").should('be.visible').and('exist').and('contain','Shortcuts')                                          // Asserting of Shortcuts text is present on home page        
-        cy.get('.MuiIconButton-colorInherit').click({force: true})                                                                                              // Click to menu icon
+        cy.get('.MuiIconButton-colorInherit').click({force: true}).wait(1000)                                                                                   // Click to menu icon
         cy.get(':nth-child(7) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root').contains("Customer Center").should('be.visible')            // Asserting of Customer Center li is present on side menu
         .and('exist').and('contain','Customer').click().wait(1000)        
         cy.get('[title="Estimator"] > .MuiListItemText-root > .MuiTypography-root').contains("Estimator").should('be.visible')                                  // Asserting of Estimator li is present on side menu
-        .and('exist').and('contain','Estimator').click()
+        .and('exist').and('contain','Estimator').click().wait(1000)
         //cy.get('[title="Estimator"] > .MuiListItemText-root > .MuiTypography-root').contains("Estimator").should('be.visible')                                // Asserting of Estimator li is present on side menu
         //.and('exist').and('contain','Estimator').click().wait(10000)        
         //cy.get('.css-budqf6').contains('Add color').should('be.visible')                                                                                      // Asserting Add color btn is visible
         cy.get('.css-budqf6', { timeout: 25000 }).contains('Add color').should('be.visible') 
         //cy.get('.jss23 > .MuiButtonBase-root').click()                                                                                                        // Tapping to menu icon to close sidebar
-        cy.get('[data-tour="order.action.new"]').click()                                                                                                        // Adding fresh order
+        cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
         cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
         cy.get('.css-budqf6').contains('Add color').click({force: true}).wait(500)                                                                              // Tapping to Add color btn
         cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
