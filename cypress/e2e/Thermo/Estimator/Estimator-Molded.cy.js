@@ -105,13 +105,14 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         //cy.get('#\\:rt\\:-helper-text', {timeout: 5000}).should('have.text', 'Required value').should('be.visible')                                                                       // Order Name Validation of helper text
         //cy.get('#\\:r11\\:-helper-text', {timeout: 5000}).contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text
         //cy.get('#\\:r17\\:-helper-text', {timeout: 5000}).contains('Required value').should('be.visible')                                                                        // PO Validation of helper text 
-        cy.wait(1000)
-        cy.get('#\\:rt\\:').type('Automate Doors Category')                                                                                                     // Name      
-        cy.get('#\\:r11\\:').type('AutomateDoors#gmail.com', { force: true })                                                                                   // Email   
-        cy.get('#\\:r11\\:-helper-text').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text
-        cy.get('#\\:r11\\:').type('AutomateDoors#gmail.com').clear()                                                                                            // Clear the invalid input
-        cy.get('#\\:r11\\:').type('AutomateDoors@gmail.com', { force: true })                                                                                   // Email with valid input   
-        cy.get('#\\:r17\\:').type('Doors 11', { force: true })                                                                                                  // Your PO
+        //cy.wait(1000)
+        cy.get('[id=":r1ec:"]').type('Automate Doors Category')                                                                                                     // Name      
+        //cy.get('#\\:r11\\:').type('AutomateDoors#gmail.com', { force: true })                                                                                     // Email   
+        cy.get('[id=":r1eg:"]').type('AutomateDoors#gmail.com', { force: true })
+        cy.get('[id=":r1eg:-helper-text"]').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text        
+        cy.get('[id=":r1eg:"]').type('AutomateDoors#gmail.com').clear()                                                                                            // Clear the invalid input
+        cy.get('[id=":r1eg:"]').type('AutomateDoors@gmail.com', { force: true })                                                                                   // Email with valid input   
+        cy.get('[id=":r1em:"]').type('Doors 11', { force: true })                                                                                                  // Your PO
         cy.get('#\\:r19\\:').type('XYZ 1', { force: true })                                                                                                     // Their PO        
         cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click().wait(300)                                                                               // Tapping to Date icon        
         cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
