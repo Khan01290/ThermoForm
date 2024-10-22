@@ -109,7 +109,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         //cy.wait(10000)
         //cy.get('[id=":rt:"]', { timeout: 10000 }).should('exist')
         //cy.get('[id=":rt:"]').type('Automate Doors Category')                                                                                                     // Name         
-        cy.get('input[aria-invalid="true"][id=":rt:"][maxlength="60"]').type('Automate Doors Category')
+        cy.get('input[aria-invalid="true"][id=":rt:"][maxlength="60"]', { timeout: 10000 }).type('Automate Doors Category');
+
 
         cy.get('[id=":r11:"]').type('AutomateDoors#gmail.com', { force: true })                                                                                   // Email
         cy.get('[id=":r11:-helper-text"]').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text        
