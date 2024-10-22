@@ -8,8 +8,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
     it("Verify Order Created/Submitted Successfully - For Doors Category -", function()  {
 
         // User Creation Steps:
-        cy.viewport(1720, 1080)    
-        //cy.viewport(1280, 720)
+        //cy.viewport(1720, 1080)    
+        cy.viewport(1280, 720)
 
         cy.visit("https://dev.thermoform.net/") 
         
@@ -104,7 +104,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         //cy.get('[id=":rt:-helper-text"]').should('have.text', 'Required value').should('be.visible')                                                             // Order Name Validation of helper text
         //cy.get('[id=":r11:-helper-text"]').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text
         //cy.get('[id=":r17:-helper-text"]').contains('Required value').should('be.visible')                                                                        // PO Validation of helper text 
-        //cy.wait(1000)
+        cy.wait(5000)
         cy.get('[id=":rt:"]').type('Automate Doors Category')                                                                                                     // Name         
         cy.get('[id=":r11:"]').type('AutomateDoors#gmail.com', { force: true })                                                                                   // Email
         cy.get('[id=":r11:-helper-text"]').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text        
