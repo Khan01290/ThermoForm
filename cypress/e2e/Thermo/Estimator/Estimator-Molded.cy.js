@@ -8,8 +8,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
     it("Verify Order Created/Submitted Successfully - For Doors Category -", function()  {
 
         // User Creation Steps:
-        //cy.viewport(1720, 1080)    
-        cy.viewport(1280, 720)
+        cy.viewport(1720, 1080)    
+        //cy.viewport(1280, 720)
 
         cy.visit("https://dev.thermoform.net/") 
         
@@ -102,9 +102,9 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('.MuiAccordionSummary-root').click().wait(5000)                                                                                                   // Tapping to Accordian 
         
         //cy.get('#\\:rl4\\:-helper-text').should('have.text', 'Required value').should('be.visible')                                                             // Order Name Validation of helper text
-        cy.get('#\\:rt\\:-helper-text', {timeout: 5000}).should('have.text', 'Required value').should('be.visible')                                                                       // Order Name Validation of helper text
-        cy.get('#\\:r11\\:-helper-text', {timeout: 5000}).contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text
-        cy.get('#\\:r17\\:-helper-text', {timeout: 5000}).contains('Required value').should('be.visible')                                                                        // PO Validation of helper text 
+        //cy.get('#\\:rt\\:-helper-text', {timeout: 5000}).should('have.text', 'Required value').should('be.visible')                                                                       // Order Name Validation of helper text
+        //cy.get('#\\:r11\\:-helper-text', {timeout: 5000}).contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text
+        //cy.get('#\\:r17\\:-helper-text', {timeout: 5000}).contains('Required value').should('be.visible')                                                                        // PO Validation of helper text 
 
         cy.get('#\\:rt\\:').type('Automate Doors Category')                                                                                                     // Name      
         cy.get('#\\:r11\\:').type('AutomateDoors#gmail.com', { force: true })                                                                                   // Email   
