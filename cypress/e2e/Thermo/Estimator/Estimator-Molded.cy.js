@@ -371,7 +371,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('[title="Estimator"] > .MuiListItemText-root > .MuiTypography-root').contains("Estimator").should('be.visible')                                  // Asserting of Estimator li is present on side menu
         .and('exist').and('contain','Estimator').click()
         cy.get('.css-budqf6', { timeout: 25000 }).contains('Add color').should('be.visible')                                                                    // Asserting Add color btn is visible
-        cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)                                                                                                // Tapping to menu icon to close sidebar
+        //cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)                                                                                                // Tapping to menu icon to close sidebar
+        cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true})                                       // Getting side menu back buttton          
         cy.get('[data-tour="order.action.new"]').click()                                                                                                        // Adding fresh order
         
         cy.get('.MuiDialogActions-root > :nth-child(2)').click().wait(500)                                                                                      // Tapping to OK btn
