@@ -146,7 +146,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('#\\:r1n\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text        
         cy.get('#\\:r1n\\:').type('abcs')                                                                                                                       // invalid input height
         cy.get('#\\:r1n\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
-        cy.get('#\\:r1n\\:').clear()                                                                                                                       // Clear input height    
+        cy.get('#\\:r1n\\:').clear()                                                                                                                            // Clear input height    
         cy.get('#\\:r1n\\:').type('100')                                                                                                                        // Valid input height
         cy.get('#\\:r1p\\:').click()                                                                                                                            // thickness
         cy.get('[data-value="1.25"]').click()                                                                                                                   // thickness
@@ -167,20 +167,20 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('#\\:r2a\\:').type('61')                                                                                                                         // color    
 
         cy.get('[colspan="19"] > .MuiButtonBase-root').click()                                                                                                  // Adding second item
-        cy.get('#\\:r2s\\:').type('12')                                                                                                                         // Qty
-        cy.get('#\\:r2u\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
-        cy.get('#\\:r2u\\:').type('45')                                                                                                                         // width
-        cy.get('#\\:r30\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
-        cy.get('#\\:r30\\:').type('200')                                                                                                                        // height
-        cy.get('#\\:r34\\:').should('contain', 'H')                                                                                                             // Assertioan of grain input
-        cy.get('#\\:r36\\:').should('contain', 'LG')                                                                                                            // Assertioan of stiles and rails input
-        cy.get('#\\:r37\\:').should('have.value', '1000')                                                                                                       // Assertion of Modele    
-        cy.get('#\\:r3a\\:').should('have.value', 'F')                                                                                                          // Assertion of ext profile        
-        cy.get('#\\:r3e\\:').should('contain', 'S')                                                                                                             // Assertion of Type        
-        cy.get('#\\:r3g\\:').should('contain', '3')                                                                                                             // Assertion  of qty        
-        cy.get('#\\:r3i\\:').should('contain', 'B')                                                                                                             // Assertion of postiton            
+        cy.get('#\\:r2t\\:').type('12')                                                                                                                         // Qty
+        cy.get('#\\:r2v\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+        cy.get('#\\:r2v\\:').type('45')                                                                                                                         // width
+        cy.get('#\\:r31\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+        cy.get('#\\:r31\\:').type('200')                                                                                                                        // height
+        cy.get('#\\:r35\\:').should('contain', 'H')                                                                                                             // Assertioan of grain input
+        cy.get('#\\:r37\\:').should('contain', 'LG')                                                                                                            // Assertioan of stiles and rails input
+        cy.get('#\\:r38\\:').should('have.value', '1000')                                                                                                       // Assertion of Modele    
+        cy.get('#\\:r3b\\:').should('have.value', 'F')                                                                                                          // Assertion of ext profile        
+        cy.get('#\\:r3f\\:').should('contain', 'S')                                                                                                             // Assertion of Type        
+        cy.get('#\\:r3h\\:').should('contain', '3')                                                                                                             // Assertion  of qty        
+        cy.get('#\\:r3j\\:').should('contain', 'B')                                                                                                             // Assertion of postiton            
         cy.get(':nth-child(3) > :nth-child(15) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').should('be.checked')                   // Assertion of Dowels                     
-        cy.get('#\\:r3j\\:').should('have.value', '61 - Antique White Silk')                                                                                    // Assertion of color                
+        cy.get('#\\:r3k\\:').should('have.value', '61 - Antique White Silk')                                                                                    // Assertion of color                
         cy.get('[aria-label="Save"] > .MuiButtonBase-root').click().wait(5000)                                                                                  // Tapping to save btn
         cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                     // Tapping to Print btn
         cy.get('#\\:rp\\: > .MuiButtonBase-root').click()                                                                                                       // Closing print view
