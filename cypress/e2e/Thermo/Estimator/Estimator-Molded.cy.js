@@ -183,10 +183,10 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('#\\:r3k\\:').should('have.value', '61 - Antique White Silk')                                                                                    // Assertion of color                
         cy.get('[aria-label="Save"] > .MuiButtonBase-root').click().wait(5000)                                                                                  // Tapping to save btn
         cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                     // Tapping to Print btn
-        cy.get('#\\:rp\\: > .MuiButtonBase-root').click()                                                                                                       // Closing print view
+        cy.get('#\\:rq\\: > .MuiButtonBase-root').click()                                                                                                       // Closing print view
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
         cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(5000)                                                                                               // Print order    
-        cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view
+        cy.get('#\\:rq\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view
 
     }) 
   
