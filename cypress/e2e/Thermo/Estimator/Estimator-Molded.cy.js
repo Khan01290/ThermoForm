@@ -627,8 +627,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('[data-value="LG"]').click()                                                                                                                     // stiles and rails 
         cy.get('#\\:r5j\\:').type('22015')                                                                                                                      // Modele
         cy.get('#\\:r5m\\:').type('D')                                                                                                                          // ext profile
-        cy.get('#\\:r5v\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
-        cy.get('#\\:r5v\\:').type('999')                                                                                                                         // color      
+        cy.get('#\\:r5r\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
+        cy.get('#\\:r5p\\:').type('999')                                                                                                                        // color      
         cy.get('.MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click({force: true})                                                    // qp  
 
         cy.get('[colspan="15"] > .MuiButtonBase-root').click().wait(500)                                                                                        // Adding second item
