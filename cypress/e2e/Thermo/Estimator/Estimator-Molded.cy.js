@@ -146,7 +146,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('#\\:r1n\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text        
         cy.get('#\\:r1n\\:').type('abcs')                                                                                                                       // invalid input height
         cy.get('#\\:r1n\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
-        cy.get('#\\:r1n\\:').type.clear()                                                                                                                       // Clear input height    
+        cy.get('#\\:r1n\\:').clear()                                                                                                                       // Clear input height    
         cy.get('#\\:r1n\\:').type('100')                                                                                                                        // Valid input height
         cy.get('#\\:r1p\\:').click()                                                                                                                            // thickness
         cy.get('[data-value="1.25"]').click()                                                                                                                   // thickness
