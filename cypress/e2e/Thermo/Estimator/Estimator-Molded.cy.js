@@ -603,8 +603,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
 
         
         cy.get('.css-budqf6').contains('Add color').click({force: true}).wait(2000)                                                                             // Tapping to Add color btn
-        cy.get('#\\:r5r\\:').type('DrawerFronts Section')                                                                                                       // Section Name      
-        cy.get('#\\:r5t\\:').type('Automating DrawerFronts Section')                                                                                            // Section Note
+        cy.get('#\\:r53\\:').type('DrawerFronts Section')                                                                                                       // Section Name      
+        cy.get('#\\:r55\\:').type('Automating DrawerFronts Section')                                                                                            // Section Note
         cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
         cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')      // Tapping to Doors test 
         .click().wait(500) 
