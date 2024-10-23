@@ -569,7 +569,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('#\\:r1n\\:').clear()                                                                                                                            // Clear input height    
         cy.get('#\\:r1n\\:').type('100')                                                                                                                        // Valid input height
         cy.get('#\\:r26\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
-        cy.get('#\\:r26\\:').type('61')                                                                                                                         // color    
+        cy.get('#\\:r24\\:').type('61')                                                                                                                         // color    
         cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                     // Tapping to Print btn
         cy.get('#\\:rq\\: > .MuiButtonBase-root').click()                                                                                                       // Closing print view
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
