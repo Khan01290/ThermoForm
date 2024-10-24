@@ -930,8 +930,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         //                                                      >>>>>  Adding Doors category table data  <<<<<        
 
         cy.get('.css-budqf6').contains('Add color').click({force: true}).wait(2000)                                                                             // Tapping to Add color btn
-        cy.get('#\\:r53\\:').type('Mullions Doors Section')                                                                                                     // Section Name      
-        cy.get('#\\:r55\\:').type('Automating Mullions Doors Section')                                                                                          // Section Note
+        cy.get('#\\:r67\\:').type('Mullions Doors Section')                                                                                                     // Section Name      
+        cy.get('#\\:r69\\:').type('Automating Mullions Doors Section')                                                                                          // Section Note
         cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
         cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')      // Tapping to Mullions Doors test 
         .click().wait(500) 
