@@ -936,34 +936,34 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')      // Tapping to Mullions Doors test 
         .click().wait(500) 
 
-        cy.get('#\\:r58\\:').type('12')                                                                                                                         // Qty
-        cy.get('#\\:r5a\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text for no input
-        cy.get('#\\:r5a\\:').type('abcs')                                                                                                                       // invalid input width
-        cy.get('#\\:r5a\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
-        cy.get('#\\:r5a\\:').clear()                                                                                                                            // Clear input width    
-        cy.get('#\\:r5a\\:').type('45')                                                                                                                         // Valid input width    
-        cy.get('#\\:r5c\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text        
-        cy.get('#\\:r5c\\:').type('abcs')                                                                                                                       // invalid input height
-        cy.get('#\\:r5c\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
-        cy.get('#\\:r5c\\:').clear()                                                                                                                            // Clear input height    
-        cy.get('#\\:r5c\\:').type('100')                                                                                                                        // Valid input height        
-        cy.get('#\\:r5g\\:').click()                                                                                                                            // grain
+        cy.get('#\\:r6c\\:').type('12')                                                                                                                         // Qty
+        cy.get('#\\:r6e\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text for no input
+        cy.get('#\\:r6e\\:').type('abcs')                                                                                                                       // invalid input width
+        cy.get('#\\:r6e\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
+        cy.get('#\\:r6e\\:').clear()                                                                                                                            // Clear input width    
+        cy.get('#\\:r6e\\:').type('45')                                                                                                                         // Valid input width    
+        cy.get('#\\:r6g\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text        
+        cy.get('#\\:r6g\\:').type('abcs')                                                                                                                       // invalid input height
+        cy.get('#\\:r6g\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
+        cy.get('#\\:r6g\\:').clear()                                                                                                                            // Clear input height    
+        cy.get('#\\:r6g\\:').type('100')                                                                                                                        // Valid input height        
+        cy.get('#\\:r6k\\:').click()                                                                                                                            // grain
         cy.get('[data-value="H"]').click()                                                                                                                      // grain
-        cy.get('#\\:r5i\\:').click()                                                                                                                            // stiles and rails
+        cy.get('#\\:r6m\\:').click()                                                                                                                            // stiles and rails
         cy.get('[data-value="VG"]').click()                                                                                                                     // stiles and rails 
-        cy.get('#\\:r5j\\:').type('22024')                                                                                                                      // Modele
-        cy.get('#\\:r5m\\:').type('H')                                                                                                                          // ext profile
-        cy.get('#\\:r81\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
-        cy.get('#\\:r7v\\:').type('6')                                                                                                                          // Openings
-        cy.get('#\\:r83\\:').click()                                                                                                                            // type
+        cy.get('#\\:r6n\\:').type('22024')                                                                                                                      // Modele
+        cy.get('#\\:r6q\\:').type('H')                                                                                                                          // ext profile
+        cy.get('#\\:r6v\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+        cy.get('#\\:r6t\\:').type('6')                                                                                                                          // Openings
+        cy.get('#\\:r71\\:').click()                                                                                                                            // type
         cy.get('[data-value="S"]').click()                                                                                                                      // type
-        cy.get('#\\:r85\\:').click()                                                                                                                            // qty
+        cy.get('#\\:r73\\:').click()                                                                                                                            // qty
         cy.get('[data-value="2"]').click()                                                                                                                      // qty
-        cy.get('#\\:r87\\:').click().wait(500)                                                                                                                  // position
+        cy.get('#\\:r75\\:').click().wait(500)                                                                                                                  // position
         cy.get('[data-value="B"]').click()                                                                                                                      // position  
         cy.get('.MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                                                                 // Dowels
-        cy.get('#\\:r5r\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
-        cy.get('#\\:r5p\\:').type('999')                                                                                                                        // color      
+        cy.get('#\\:r78\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
+        cy.get('#\\:r76\\:').type('999')                                                                                                                        // color      
 
         cy.get('[colspan="19"] > .MuiButtonBase-root').click().wait(500)                                                                                        // Adding second item
         cy.get('#\\:r63\\:').type('14')                                                                                                                         // Qty
