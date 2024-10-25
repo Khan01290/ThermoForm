@@ -1650,25 +1650,25 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('[colspan="19"] > .MuiButtonBase-root').scrollIntoView()                                                                                         // Scrolling the page down and remove the second row
         cy.get('#\\:r5h\\:-button').click().wait(500)                                                                                                           // Tapping to three dots                                       
         cy.get('#\\:r5h\\:-menu > .MuiPaper-root > .MuiList-root > :nth-child(5)').click()                                                                      // Remove the row                                            
-        cy.get('#\\:r5m\\:').clear()                                                                                                                            // Clear input width    
-        cy.get('#\\:r5m\\:').type('145')                                                                                                                        // Valid input width
-        cy.get('#\\:r5o\\:').clear()                                                                                                                            // Clear input Height    
-        cy.get('#\\:r5o\\:').type('2312')                                                                                                                       // Valid input Height
-        cy.get('#\\:r5s\\:').click()                                                                                                                            // Grain
+        cy.get('#\\:r6v\\:').clear()                                                                                                                            // Clear input width    
+        cy.get('#\\:r6v\\:').type('145')                                                                                                                        // Valid input width
+        cy.get('#\\:r71\\:').clear()                                                                                                                            // Clear input Height    
+        cy.get('#\\:r71\\:').type('2312')                                                                                                                       // Valid input Height
+        cy.get('#\\:r75\\:').click()                                                                                                                            // Grain
         cy.get('[data-value="V"]').click()                                                                                                                      // grain
-        cy.get('#\\:r5u\\:').click()                                                                                                                            // stiles
+        cy.get('#\\:r77\\:').click()                                                                                                                            // stiles
         cy.get('[data-value="LG"]').click()                                                                                                                     // stiles
-        cy.get('#\\:r5v\\:').type('2006')                                                                                                                       // Modele
-        cy.get('#\\:r62\\:').type('C')                                                                                                                          // ext profile
-        cy.get('#\\:r65\\:').type('10')                                                                                                                         // Openings
-        cy.get('#\\:r69\\:').click()                                                                                                                            // type
+        cy.get('#\\:r78\\:').type('2006')                                                                                                                       // Modele
+        cy.get('#\\:r7b\\:').type('C')                                                                                                                          // ext profile
+        cy.get('#\\:r7e\\:').type('10')                                                                                                                         // Openings
+        cy.get('#\\:r7i\\:').click()                                                                                                                            // type
         cy.get('[data-value="T"]').click()                                                                                                                      // type
-        cy.get('#\\:r6b\\:').click()                                                                                                                            // qty
+        cy.get('#\\:r7k\\:').click()                                                                                                                            // qty
         cy.get('[data-value="3"]').click()                                                                                                                      // qty
-        cy.get('#\\:r6d\\:').click()                                                                                                                            // position
+        cy.get('#\\:r7m\\:').click()                                                                                                                            // position
         cy.get('[data-value="H"]').click()                                                                                                                      // position  
         cy.get(':nth-child(1) > :nth-child(15) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                                // Dowel                                // Dowels 
-        cy.get('#\\:r6e\\:').type('271')                                                                                                                        // color
+        cy.get('#\\:r7n\\:').type('271')                                                                                                                        // color
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click()                                                                                   // Tapping to Submit btn
         cy.get('.css-1ubxkj1 > :nth-child(1)', { timeout: 5000 }).click().wait(10000)                                                                           // Print order    
         cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view
