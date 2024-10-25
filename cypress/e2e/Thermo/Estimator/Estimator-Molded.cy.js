@@ -1358,21 +1358,21 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('#\\:r2d\\:').type('999')                                                                                                                        // color
 
         cy.get('[colspan="19"] > .MuiButtonBase-root').click().wait(500)                                                                                        // Adding second item
-        cy.get('#\\:r7m\\:').type('14')                                                                                                                         // Qty
-        cy.get('#\\:r7o\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
-        cy.get('#\\:r7o\\:').type('4257')                                                                                                                       // width
-        cy.get('#\\:r7q\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
-        cy.get('#\\:r7q\\:').type('4257 ')                                                                                                                      // height
-        cy.get('#\\:r7u\\:').should('contain', 'H')                                                                                                             // Assertioan of grain input
-        cy.get('#\\:r80\\:').should('contain', 'VG')                                                                                                            // Assertioan of stiles and rails input
-        cy.get('#\\:r81\\:').should('have.value', '22024')                                                                                                      // Assertion of Modele    
-        cy.get('#\\:r84\\:').should('have.value', 'H')                                                                                                          // Assertion of ext profile
-        cy.get('#\\:r87\\:').should('have.value', '6')                                                                                                          // Assertion for Openings
-        cy.get('#\\:r8b\\:').should('contain', 'S')                                                                                                             // Assertion for Type        
-        cy.get('#\\:r8d\\:').should('contain', '2')                                                                                                             // Assertion for qty        
-        cy.get('#\\:r8f\\:').should('contain', 'B')                                                                                                             // Assertion for postiton            
+        cy.get('#\\:r2u\\:').type('14')                                                                                                                         // Qty
+        cy.get('#\\:r30\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+        cy.get('#\\:r30\\:').type('4257')                                                                                                                       // width
+        cy.get('#\\:r32\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+        cy.get('#\\:r32\\:').type('4257 ')                                                                                                                      // height
+        cy.get('#\\:r36\\:').should('contain', 'H')                                                                                                             // Assertioan of grain input
+        cy.get('#\\:r38\\:').should('contain', 'VG')                                                                                                            // Assertioan of stiles and rails input
+        cy.get('#\\:r39\\:').should('have.value', '22024')                                                                                                      // Assertion of Modele    
+        cy.get('#\\:r3c\\:').should('have.value', 'H')                                                                                                          // Assertion of ext profile
+        cy.get('#\\:r3f\\:').should('have.value', '6')                                                                                                          // Assertion for Openings
+        cy.get('#\\:r3j\\:').should('contain', 'S')                                                                                                             // Assertion for Type        
+        cy.get('#\\:r3l\\:').should('contain', '2')                                                                                                             // Assertion for qty        
+        cy.get('#\\:r3n\\:').should('contain', 'B')                                                                                                             // Assertion for postiton            
         cy.get(':nth-child(3) > :nth-child(15) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').should('be.checked')                   // Assertion for Dowels
-        cy.get('#\\:r8g\\:').should('have.value', '999 - MDF')                                                                                                  // Assertion of color                
+        cy.get('#\\:r3o\\:').should('have.value', '999 - MDF')                                                                                                  // Assertion of color                
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
         cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                              // Print order    
         cy.get('#\\:rq\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view
