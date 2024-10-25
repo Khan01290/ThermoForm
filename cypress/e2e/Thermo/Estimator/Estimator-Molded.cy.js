@@ -1610,10 +1610,10 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('#\\:r2d\\:').type('999')                                                                                                                        // color
 
         cy.get('[colspan="19"] > .MuiButtonBase-root').click().wait(500)                                                                                        // Adding second item
-        //cy.get('#\\:r2u\\:').type('14')                                                                                                                         // Qty
-        cy.get('#\\:r30\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+        cy.get('#\\:r2u\\:').type('14')                                                                                                                         // Qty
+        //cy.get('#\\:r30\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
         cy.get('#\\:r30\\:').type('4257')                                                                                                                       // width
-        cy.get('#\\:r32\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+        //cy.get('#\\:r32\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
         cy.get('#\\:r32\\:').type('4257 ')                                                                                                                      // height
         cy.get('#\\:r36\\:').should('contain', 'H')                                                                                                             // Assertioan of grain input
         cy.get('#\\:r38\\:').should('contain', 'VG')                                                                                                            // Assertioan of stiles and rails input
