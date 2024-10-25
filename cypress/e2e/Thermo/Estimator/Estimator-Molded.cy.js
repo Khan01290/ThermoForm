@@ -1374,7 +1374,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get(':nth-child(3) > :nth-child(15) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').should('be.checked')                   // Assertion for Dowels
         cy.get('#\\:r3o\\:').should('have.value', '999 - MDF')                                                                                                  // Assertion of color                
         cy.get('[aria-label="Save"] > .MuiButtonBase-root').click().wait(5000)                                                                                  // Tapping to save btn
-        cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                              // Print order    
+        cy.get('.headerActions > .MuiButton-contained').click().wait(5000)                                                                                      // Print order  
         cy.get('#\\:rq\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view
 
         // Moving to web orders page
