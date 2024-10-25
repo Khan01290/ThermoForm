@@ -1460,7 +1460,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         
         //Molded >> Mullions Doors                
         cy.get('.MuiAccordionSummary-content').click()      
-        //cy.get('[colspan="19"] > .MuiButtonBase-root').scrollIntoView()                                                                                         // Scrolling the page down and remove the second row
+        cy.get('[colspan="19"] > .MuiButtonBase-root').scrollIntoView()                                                                                         // Scrolling the page down
         cy.get('#\\:r1k\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
         cy.get('#\\:r1k\\:').type('ws')                                                                                                                         // InValid input Width
         cy.get('#\\:r1k\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
@@ -1577,8 +1577,9 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
 
         cy.get('#\\:r1e\\:').type('Mullions Doors Section')                                                                                                     // Section Name      
         cy.get('#\\:r1g\\:').type('Automating Mullions Doors Section')                                                                                          // Section Note
-        cy.get('.MuiAccordionSummary-root').click().wait(500)                                                                                                   // Tapping to Accordian to show table values
+        cy.get('.MuiAccordionSummary-root').click().wait(500)                                                                                                   // Opening the Accordian to show table values
         //cy.get('#\\:r1j\\:').type('12')                                                                                                                         // Qty
+        cy.get('[colspan="19"] > .MuiButtonBase-root').scrollIntoView()                                                                                         // Scrolling the page down to view data
         cy.get('#\\:r1l\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text for no input
         cy.get('#\\:r1l\\:').type('abcs')                                                                                                                       // invalid input width
         cy.get('#\\:r1l\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
