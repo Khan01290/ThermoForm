@@ -1324,9 +1324,9 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         
         //                                                      >>>>>  Adding Doors category table data  <<<<<        
 
-        cy.get('.css-budqf6').contains('Add color').click({force: true}).wait(2000)                                                                             // Tapping to Add color btn
-        cy.get('#\\:r67\\:').type('Mullions Doors Section')                                                                                                     // Section Name      
-        cy.get('#\\:r69\\:').type('Automating Mullions Doors Section')                                                                                          // Section Note
+        //cy.get('.css-budqf6').contains('Add color').click({force: true}).wait(2000)                                                                             // Tapping to Add color btn
+        cy.get('#\\:r1e\\:').type('Mullions Doors Section')                                                                                                     // Section Name      
+        cy.get('#\\:r1g\\:').type('Automating Mullions Doors Section')                                                                                          // Section Note
         
         cy.get('#\\:r6c\\:').type('12')                                                                                                                         // Qty
         cy.get('#\\:r6e\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text for no input
