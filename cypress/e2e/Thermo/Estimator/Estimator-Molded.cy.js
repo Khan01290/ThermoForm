@@ -1381,7 +1381,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('.MuiIconButton-colorInherit').click({force: true})                                                                                              // Click to menu icon
         cy.get('[title="Web Orders"]').click().wait(1000)                                                                                                       // Tapping to web Orders
         cy.get(':nth-child(1) > .MuiListItemText-root > .MuiListItemText-primary > .MuiTypography-root > :nth-child(1) > span')
-        .should('contain','Automate Mullions Doors-1').click().wait(500)                                                                                        // Pick the first saved order by name and click it
+        .should('contain','Automate Mullions Doors Category').click().wait(500)                                                                                 // Pick the first saved order by name and click it
         // Order populated in estimaior 
         cy.wait(20000)
         //cy.get('#\\:r1d\\:', { timeout: 20000 }).contains('Molded(Mullions Doors) Section').should('be.visible')
