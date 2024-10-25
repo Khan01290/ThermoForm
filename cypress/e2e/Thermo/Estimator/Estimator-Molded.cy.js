@@ -987,7 +987,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         
     })
 
-    it("Verify Order Edited Successfully Via Web Orders Page Flow", function()  {
+    it.skip("Verify Order Edited Successfully Via Web Orders Page Flow", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -1078,94 +1078,6 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('.MuiAccordionSummary-root').click().wait(500)                                                                                                   // Tapping to Accordian 
         //cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)
         cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true})                                       // Getting side menu back buttton
-        /*
-        // User Creation Steps:
-        cy.viewport(1720, 1080)    
-        cy.visit("https://dev.thermoform.net/") 
-        cy.wait(5000)
-        cy.get('.MuiTypography-root').contains("Identification").should('be.visible').and('exist')                                                              // Asssertion of Identification heading is present 
-        cy.get('.MuiTypography-body2').contains("Forgot Password?").should('be.visible').and('exist')                                                           // Asssertion of Forgot Password? link is present   
-        cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and('not.be.enabled')                                                      // Asssertion of Next btn is disabled        
-        cy.get('input[name="username"]').type("masterfortesting").wait(500)                                                                                     // Input valid username                        
-        cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and('contain','Next').click()                                              // Click to Next button         
-        cy.get('.MuiTypography-h5').contains("Email Authentication").should('be.visible').and('exist').and('contain','Email').click()                           // Asssertion of "Email Authentication" heading is present
-        cy.get('input[name="email"]').should('be.visible').and('exist')                                                                                         // Asssertion of email box is present                       
-        cy.get('[type="submit"]').contains("Send Authentication Link").should('be.visible').and('exist').and('contain','Authentication')                        // Asssertion of Send Authentication Link button is present
-        cy.get('[type="text"]').contains("Password Authentication").should('be.visible').and('exist').and('contain','Password').click()                         // Asssertion of "Password Authentication" link is present                       
-        cy.get('.MuiTypography-h5').contains("Password Authentication").should('be.visible').and('exist').and('contain','Password')                             // Asssertion of Password Authentication heading is present
-        cy.get('.MuiTypography-body2').contains("Forgot Password?").should('be.visible').and('exist')                                                           // Asssertion of Forgot Password? link is present   
-        cy.get('[type="text"]').contains("Email Authentication").should('be.visible').and('exist').and('contain','Email')                                       // Asssertion of Email Authentication Link is present                
-        cy.get('input[name="password"]').type("[HPnotebook1@")                                                                                                  // Input valid password        
-        cy.get('[type="submit"]').contains("Submit").should('be.visible').and('exist').and('contain','Submit').click()                                          // Click to Submit button for portal login  
-        //cy.get('.css-imv4ws > .MuiAvatar-root').click().wait(1000)                                                                                            // Asserting login button present with its avaialble options	 
-        //cy.get('.css-1stpmc > :nth-child(1) > .MuiListItemText-root > .MuiTypography-root').contains("Français (Canada)").should('be.visible')                // Asserting Français (Canada) text is present and fr language is pre selected 
-        //.and('exist').and('contain','Français').click().wait(1000)                                                         
-        //cy.get('.MuiListItemText-primary').contains("English (Canada)").should('be.visible').and('exist').and('contain','English').click().wait(2000)         // Changing portal language to English
-        cy.get('body').click().wait(2000)
-        cy.get('.MuiToolbar-root > .MuiTypography-root', { timeout: 25000 }).contains("Home").should('be.visible').and('exist').and('contain','Home')           // Asserting of Home text is present on home page
-        cy.get('.MuiTypography-h4').contains("Shortcuts").should('be.visible').and('exist').and('contain','Shortcuts')                                          // Asserting of Shortcuts text is present on home page        
-        cy.get('.MuiIconButton-colorInherit').click({force: true})                                                                                              // Click to menu icon
-        cy.get(':nth-child(7) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root').contains("Customer Center").should('be.visible')            // Asserting of Customer Center li is present on side menu
-        .and('exist').and('contain','Customer').click().wait(1000)        
-        cy.get('[title="Estimator"] > .MuiListItemText-root > .MuiTypography-root').contains("Estimator").should('be.visible')                                  // Asserting of Estimator li is present on side menu
-        .and('exist').and('contain','Estimator').click()
-        cy.get('.css-budqf6', { timeout: 25000 }).contains('Add color').should('be.visible')                                                                    // Asserting Add color btn is visible
-        cy.get('.jss23 > .MuiButtonBase-root').click()                                                                                                          // Tapping to menu icon to close sidebar
-        cy.get('[data-tour="order.action.new"]').click()                                                                                                        // Adding fresh order        
-        cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
-        cy.get('.css-budqf6').contains('Add color').click({force: true}).wait(500)                                                                              // Tapping to Add color btn
-        cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
-        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiTypography-h5').contains("Molded").should('be.visible')
-        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Doors").should('be.visible')
-        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Drawer Fronts").should('be.visible')
-        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Mullions Doors").should('be.visible')
-
-        cy.get(':nth-child(3) > .MuiCardContent-root > .MuiTypography-h5').contains("Edged").should('be.visible')
-        cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Doors (Edged)").should('be.visible')
-        cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Mullions Doors (Edged)").should('be.visible')
-
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiTypography-h5').contains("Accessories").should('be.visible')
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Edge Banding").should('be.visible')
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Heat Deflectors and Protectors").should('be.visible')
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Moldings").should('be.visible')
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(4) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Preglued Edge Banding").should('be.visible')
-        cy.get('.MuiList-root > :nth-child(5) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Tambour Roll-ups").should('be.visible')
-
-        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiTypography-h5').contains("5-pieces").should('be.visible')
-        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Doors (5 pieces)").should('be.visible')
-        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Drawer Fronts (5 pieces)").should('be.visible')
-        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Mullions Doors (5 pieces)").should('be.visible')
-
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiTypography-h5').contains("Boards").should('be.visible')
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Boards").should('be.visible')
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Preglued Thermoplastic Sheets").should('be.visible')
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Thermolam").should('be.visible')
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(4) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Thermoplastic Sheets").should('be.visible')
-        //cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root').click().wait(500)   // Tapping to Doors test 
-        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')      // Select Mullions Doors 
-        .click().wait(500)
-        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                         // Tapping to Submit btn
-        cy.get('.MuiAlert-message').contains('Please validate the form before submitting the order').should('be.visible')                                       // Assertion for validation message
-        cy.get('.MuiAccordionSummary-root').click().wait(500)                                                                                                   // Tapping to Accordian 
-        cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true})                                       // Getting side menu back buttton          
-        */
           
         //====================================================================== >>  Getting elements for Local Testing  <<===============================================================================================
 
@@ -1384,7 +1296,6 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         .should('contain','Automate Mullions Doors Category').click().wait(500)                                                                                 // Pick the first saved order by name and click it
         // Order populated in estimaior 
         cy.wait(20000)
-        //cy.get('#\\:r1d\\:', { timeout: 20000 }).contains('Molded(Mullions Doors) Section').should('be.visible')
         cy.get('#\\:rt\\:').clear()                                                                                                                             // Clear order name 
         cy.get('.css-1mrqld1').click().wait(500)                                                                                                                // Tapping to Accordian 
         cy.get('#\\:rt\\:').type('Automate Molded(Mullions Doors) 3')                                                                                           // Update order name      
@@ -1418,15 +1329,14 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('#\\:r2d\\:').type('271')                                                                                                                        // color
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click()                                                                                   // Tapping to Submit btn
         cy.get('.css-1ubxkj1 > :nth-child(1)', { timeout: 5000 }).click().wait(10000)                                                                           // Print order    
-        cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view
-        
+        cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view        
     })
 
-    it.skip("Verify Order Edited Successfully on same screen", function()  {
+    it("Verify Order Edited Successfully on same screen", function()  {
 
-        // User Creation Steps:
-        cy.viewport(1720, 1080)    
+        cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
+        
         cy.wait(5000)
         cy.get('.MuiTypography-root').contains("Identification").should('be.visible').and('exist')                                                              // Asssertion of Identification heading is present 
         cy.get('.MuiTypography-body2').contains("Forgot Password?").should('be.visible').and('exist')                                                           // Asssertion of Forgot Password? link is present   
@@ -1434,7 +1344,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('input[name="username"]').type("masterfortesting").wait(500)                                                                                     // Input valid username                        
         cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and('contain','Next').click()                                              // Click to Next button         
         cy.get('.MuiTypography-h5').contains("Email Authentication").should('be.visible').and('exist').and('contain','Email').click()                           // Asssertion of "Email Authentication" heading is present
-        cy.get('input[name="email"]').should('be.visible').and('exist')                                                                                         // Asssertion of email box is present                       
+        cy.get('input[name="email"]').should('be.visible').and('exist').wait(500)                                                                               // Asssertion of email box is present                       
         cy.get('[type="submit"]').contains("Send Authentication Link").should('be.visible').and('exist').and('contain','Authentication')                        // Asssertion of Send Authentication Link button is present
         cy.get('[type="text"]').contains("Password Authentication").should('be.visible').and('exist').and('contain','Password').click()                         // Asssertion of "Password Authentication" link is present                       
         cy.get('.MuiTypography-h5').contains("Password Authentication").should('be.visible').and('exist').and('contain','Password')                             // Asssertion of Password Authentication heading is present
@@ -1455,11 +1365,13 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('[title="Estimator"] > .MuiListItemText-root > .MuiTypography-root').contains("Estimator").should('be.visible')                                  // Asserting of Estimator li is present on side menu
         .and('exist').and('contain','Estimator').click()
         cy.get('.css-budqf6', { timeout: 25000 }).contains('Add color').should('be.visible')                                                                    // Asserting Add color btn is visible
-        cy.get('.jss23 > .MuiButtonBase-root').click()                                                                                                          // Tapping to menu icon to close sidebar
-        cy.get('[data-tour="order.action.new"]').click()                                                                                                        // Adding fresh order        
-        cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
+        cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true})                                       // Getting side menu back buttton          
+        cy.get('[data-tour="order.action.new"]').click()                                                                                                        // Adding fresh order
+        
+        cy.get('.MuiDialogActions-root > :nth-child(2)').click().wait(500)                                                                                      // Tapping to OK btn
         cy.get('.css-budqf6').contains('Add color').click({force: true}).wait(500)                                                                              // Tapping to Add color btn
         cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
+
         cy.get(':nth-child(1) > .MuiCardContent-root > .MuiTypography-h5').contains("Molded").should('be.visible')
         cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
         .contains("Doors").should('be.visible')
@@ -1503,16 +1415,22 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         .contains("Thermolam").should('be.visible')
         cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(4) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
         .contains("Thermoplastic Sheets").should('be.visible')
-        //cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root').click().wait(500)   // Tapping to Doors test 
+
         cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')      // Select Mullions Doors 
         .click().wait(500)
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                         // Tapping to Submit btn
         cy.get('.MuiAlert-message').contains('Please validate the form before submitting the order').should('be.visible')                                       // Assertion for validation message
         cy.get('.MuiAccordionSummary-root').click().wait(500)                                                                                                   // Tapping to Accordian 
-        cy.get('#\\:rt\\:-helper-text').contains('Required value').should('be.visible')                                                                         // Validation of helper text
-        cy.get('#\\:r11\\:-helper-text').contains('Value is not a valid email address').should('be.visible')                                                    // Validation of helper text
-        cy.get('#\\:r17\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
-        cy.get('#\\:rt\\:').type('Automate Mullions Doors-10')                                                                                                  // Name      
+        //cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)
+        cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true})                                       // Getting side menu back buttton
+
+        //====================================================================== >>  Getting elements for Local Testing  <<===============================================================================================
+
+        /*
+        cy.get('#\\:rt\\:-helper-text').contains('Required value').should('be.visible')                                                                         // Order Name Validation of helper text
+        cy.get('#\\:r11\\:-helper-text').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text
+        cy.get('#\\:r17\\:-helper-text').contains('Required value').should('be.visible')                                                                        // PO Validation of helper text    
+        cy.get('#\\:rt\\:').type('Automate Mullions Doors-1')                                                                                                   // Name      
         cy.get('#\\:r11\\:').type('AutomateMullionsDoors#gmail.com', { force: true })                                                                           // Email     
         cy.get('#\\:r11\\:-helper-text').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text
         cy.get('#\\:r11\\:').clear()                                                                                                                            // Clear the invalid input
@@ -1538,10 +1456,11 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
 
         //cy.get('.MuiAccordionSummary-root').click().wait(500)                                                                                                 // Tapping to Accordian
         cy.get('#\\:r1d\\:').type('Molded(Mullions Doors) Section')                                                                                             // Section Name      
-        cy.get('#\\:r1f\\:').type('Automating Molded Category with Mullions Doors Section')                                                                     // Section Note
+        cy.get('#\\:r1f\\:').type('Automating Mullions Doors Section')                                                                                          // Section Note
         
         //Molded >> Mullions Doors                
         cy.get('.MuiAccordionSummary-content').click()      
+        //cy.get('[colspan="19"] > .MuiButtonBase-root').scrollIntoView()                                                                                         // Scrolling the page down and remove the second row
         cy.get('#\\:r1k\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
         cy.get('#\\:r1k\\:').type('ws')                                                                                                                         // InValid input Width
         cy.get('#\\:r1k\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
@@ -1583,10 +1502,10 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('#\\:r3k\\:').should('contain', '2')                                                                                                             // Assertion for qty        
         cy.get('#\\:r3m\\:').should('contain', 'B')                                                                                                             // Assertion for postiton            
         cy.get(':nth-child(3) > :nth-child(15) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').should('be.checked')                   // Assertion for Dowels                     
-        cy.get('#\\:r3n\\:').should('have.value', '999 - MDF')                                                                                                  // Assertion for color               
-        //cy.get('[aria-label="Save"] > .MuiButtonBase-root').click().wait(500000)                                                                                             // Tapping to save btn
+        cy.get('#\\:r3n\\:').should('have.value', '999 - MDF').wait(100)                                                                                        // Assertion for color               
+        cy.get('[aria-label="Save"] > .MuiButtonBase-root').click().wait(5000)                                                                                  // Tapping to save btn
         cy.get('.headerActions > .MuiButton-contained').click().wait(5000)                                                                                      // Print order  
-        cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view  
+        cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view
         // Updating Main Fields
         cy.get('#\\:rt\\:').clear()                                                                                                                             // Clear order name 
         cy.get('.css-1mrqld1').click().wait(500)                                                                                                                // Tapping to Accordian 
@@ -1597,30 +1516,161 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('#\\:r17\\:').type('MullionsDoors 100', { force: true })                                                                                         // Update Your PO        
         // Updating table data
         cy.get('.css-1mrqld1').click()                                                                                                                          // Tapping to Accordian
-        cy.get('#\\:r6u\\:-button').scrollIntoView().click()                                                                                                      // Scrolling the page down and remove the second row
-        cy.get('#\\:r6u\\:-menu > .MuiPaper-root > .MuiList-root > :nth-child(5)').click().wait(500)                                                              // Remove the row                                       
-        cy.get('#\\:r72\\:').clear()                                                                                                                            // Clear input width    
-        cy.get('#\\:r72\\:').type('145')                                                                                                                        // Valid input width
-        cy.get('#\\:r74\\:').clear()                                                                                                                            // Clear input Height    
-        cy.get('#\\:r74\\:').type('2312')                                                                                                                       // Valid input Height
-        cy.get('#\\:r78\\:').click()                                                                                                                            // Grain
+        cy.get('[colspan="19"] > .MuiButtonBase-root').scrollIntoView()                                                                                         // Scrolling the page down and remove the second row
+        cy.get('#\\:r5h\\:-button').click().wait(500)                                                                                                           // Tapping to three dots                                       
+        cy.get('#\\:r5h\\:-menu > .MuiPaper-root > .MuiList-root > :nth-child(5)').click()                                                                      // Remove the row 
+        cy.get('#\\:r5l\\:').clear()                                                                                                                            // Clear input width    
+        cy.get('#\\:r5l\\:').type('145')                                                                                                                        // Valid input width
+        cy.get('#\\:r5n\\:').clear()                                                                                                                            // Clear input Height    
+        cy.get('#\\:r5n\\:').type('2312')                                                                                                                       // Valid input Height
+        cy.get('#\\:r5r\\:').click()                                                                                                                            // Grain
         cy.get('[data-value="V"]').click()                                                                                                                      // grain
-        cy.get('#\\:r7a\\:').click()                                                                                                                            // stiles
+        cy.get('#\\:r5t\\:').click()                                                                                                                            // stiles
         cy.get('[data-value="LG"]').click()                                                                                                                     // stiles
-        cy.get('#\\:r7b\\:').type('2006')                                                                                                                       // Modele
-        cy.get('#\\:r7e\\:').type('C')                                                                                                                          // ext profile
-        cy.get('#\\:r7h\\:').type('10')                                                                                                                         // Openings
-        cy.get('#\\:r7l\\:').click()                                                                                                                            // type
+        cy.get('#\\:r5u\\:').type('2006')                                                                                                                       // Modele
+        cy.get('#\\:r61\\:').type('C')                                                                                                                          // ext profile
+        cy.get('#\\:r64\\:').type('10')                                                                                                                         // Openings
+        cy.get('#\\:r68\\:').click()                                                                                                                            // type
         cy.get('[data-value="T"]').click()                                                                                                                      // type
-        cy.get('#\\:r7n\\:').click()                                                                                                                            // qty
+        cy.get('#\\:r6a\\:').click()                                                                                                                            // qty
         cy.get('[data-value="3"]').click()                                                                                                                      // qty
-        cy.get('#\\:r7p\\:').click()                                                                                                                            // position
+        cy.get('#\\:r6c\\:').click()                                                                                                                            // position
         cy.get('[data-value="H"]').click()                                                                                                                      // position  
         cy.get(':nth-child(1) > :nth-child(15) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                                // Dowel                                // Dowels 
-        cy.get('#\\:r7q\\:').type('271')                                                                                                                        // color
+        cy.get('#\\:r6d\\:').type('271')                                                                                                                        // color
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click()                                                                                   // Tapping to Submit btn
         cy.get('.css-1ubxkj1 > :nth-child(1)', { timeout: 10000 }).click().wait(5000)                                                                           // Print order    
         cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view        
+        */
+
+        //=====================================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
+        
+        cy.get('#\\:ru\\:-helper-text').should('have.text', 'Required value').should('be.visible')                                                              // Order Name Validation of helper text
+        cy.get('#\\:r12\\:-helper-text').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text
+        cy.get('#\\:r18\\:-helper-text').contains('Required value').should('be.visible')                                                                        // PO Validation of helper text
+
+        cy.get('#\\:ru\\:').type('Automate Mullions Doors Category')                                                                                            // Name
+        cy.get('#\\:r12\\:').type('AutomateMullionsDoors#gmail.com', { force: true })                                                                           // Email
+        cy.get('#\\:r12\\:-helper-text').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text        
+        cy.get('#\\:r12\\:').clear()                                                                                                                            // Clear the invalid input
+        cy.get('#\\:r12\\:').type('AutomateMullionsDoors@gmail.com', { force: true })                                                                           // Email with valid input   
+        cy.get('#\\:r18\\:').type('MullionsDoors 45', { force: true })                                                                                          // Your PO
+        cy.get('#\\:r18\\:').type('Mullions Doors 11', { force: true })                                                                                         // Your PO
+        cy.get('#\\:r1a\\:').type('XYZ 1', { force: true })                                                                                                     // Their PO  
+        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click({force: true}).wait(2000)                                                                 // Tapping to Date icon        
+        cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
+            .each(($el) => {
+                if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
+                cy.wrap($el).click().wait(500)                                                                                                                  // Click the first enabled date                
+                return false                                                                                                                                    // Break the loop after selecting the date
+                }
+            });        
+        cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                            // Note
+            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
+            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
+            .then(input => {                
+            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
+            });    
+        cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                         // Tapping to inch/mm
+        
+        //                                                      >>>>>  Adding Mullions Doors category table data  <<<<<        
+
+        cy.get('#\\:r1e\\:').type('Mullions Doors Section')                                                                                                     // Section Name      
+        cy.get('#\\:r1g\\:').type('Automating Mullions Doors Section')                                                                                          // Section Note
+        cy.get('.MuiAccordionSummary-root').click().wait(500)                                                                                                   // Tapping to Accordian to show table values
+        //cy.get('#\\:r1j\\:').type('12')                                                                                                                         // Qty
+        cy.get('#\\:r1l\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text for no input
+        cy.get('#\\:r1l\\:').type('abcs')                                                                                                                       // invalid input width
+        cy.get('#\\:r1l\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
+        cy.get('#\\:r1l\\:').clear()                                                                                                                            // Clear input width    
+        cy.get('#\\:r1l\\:').type('45')                                                                                                                         // Valid input width    
+        cy.get('#\\:r1n\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text        
+        cy.get('#\\:r1n\\:').type('abcs')                                                                                                                       // invalid input height
+        cy.get('#\\:r1n\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
+        cy.get('#\\:r1n\\:').clear()                                                                                                                            // Clear input height    
+        cy.get('#\\:r1n\\:').type('100')                                                                                                                        // Valid input height        
+        cy.get('#\\:r1r\\:').click()                                                                                                                            // grain
+        cy.get('[data-value="H"]').click()                                                                                                                      // grain
+        cy.get('#\\:r1t\\:').click()                                                                                                                            // stiles and rails
+        cy.get('[data-value="VG"]').click()                                                                                                                     // stiles and rails 
+        cy.get('#\\:r20\\:-helper-text').contains('Invalid value').should('be.visible')                                                                         // Validation of helper text
+        cy.get('#\\:r1u\\:').type('22024')                                                                                                                      // Modele
+        cy.get('#\\:r21\\:').type('H')                                                                                                                          // ext profile
+        cy.get('#\\:r26\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+        cy.get('#\\:r24\\:').type('6')                                                                                                                          // Openings
+        cy.get('#\\:r28\\:').click()                                                                                                                            // type
+        cy.get('[data-value="S"]').click()                                                                                                                      // type
+        cy.get('#\\:r2a\\:').click()                                                                                                                            // qty
+        cy.get('[data-value="2"]').click()                                                                                                                      // qty
+        cy.get('#\\:r2c\\:').click().wait(500)                                                                                                                  // position
+        cy.get('[data-value="B"]').click()                                                                                                                      // position  
+        cy.get('.MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                                                                 // Dowels
+        cy.get('#\\:r2f\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
+        cy.get('#\\:r2d\\:').type('999')                                                                                                                        // color
+
+        cy.get('[colspan="19"] > .MuiButtonBase-root').click().wait(500)                                                                                        // Adding second item
+        //cy.get('#\\:r2u\\:').type('14')                                                                                                                         // Qty
+        cy.get('#\\:r30\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+        cy.get('#\\:r30\\:').type('4257')                                                                                                                       // width
+        cy.get('#\\:r32\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+        cy.get('#\\:r32\\:').type('4257 ')                                                                                                                      // height
+        cy.get('#\\:r36\\:').should('contain', 'H')                                                                                                             // Assertioan of grain input
+        cy.get('#\\:r38\\:').should('contain', 'VG')                                                                                                            // Assertioan of stiles and rails input
+        cy.get('#\\:r39\\:').should('have.value', '22024')                                                                                                      // Assertion of Modele    
+        cy.get('#\\:r3c\\:').should('have.value', 'H')                                                                                                          // Assertion of ext profile
+        cy.get('#\\:r3f\\:').should('have.value', '6')                                                                                                          // Assertion for Openings
+        cy.get('#\\:r3j\\:').should('contain', 'S')                                                                                                             // Assertion for Type        
+        cy.get('#\\:r3l\\:').should('contain', '2')                                                                                                             // Assertion for qty        
+        cy.get('#\\:r3n\\:').should('contain', 'B')                                                                                                             // Assertion for postiton            
+        cy.get(':nth-child(3) > :nth-child(15) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').should('be.checked')                   // Assertion for Dowels
+        cy.get('#\\:r3o\\:').should('have.value', '999 - MDF')                                                                                                  // Assertion of color                
+        cy.get('[aria-label="Save"] > .MuiButtonBase-root').click().wait(5000)                                                                                  // Tapping to save btn
+        cy.get('.headerActions > .MuiButton-contained').click().wait(5000)                                                                                      // Print order  
+        cy.get('#\\:rq\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view
+        /*    
+        // Moving to web orders page
+        cy.get('.MuiIconButton-colorInherit').click({force: true})                                                                                              // Click to menu icon
+        cy.get('[title="Web Orders"]').click().wait(1000)                                                                                                       // Tapping to web Orders
+        cy.get(':nth-child(1) > .MuiListItemText-root > .MuiListItemText-primary > .MuiTypography-root > :nth-child(1) > span')
+        .should('contain','Automate Mullions Doors Category').click().wait(500)                                                                                 // Pick the first saved order by name and click it
+        */
+        // Updating Main Fields
+        //cy.wait(20000)
+        cy.get('#\\:rt\\:').clear()                                                                                                                             // Clear order name 
+        cy.get('.css-1mrqld1').click().wait(500)                                                                                                                // Closing the Accordian 
+        cy.get('#\\:rt\\:').type('Automate Molded(Mullions Doors) 3')                                                                                           // Update order name      
+        cy.get('#\\:r11\\:').clear()                                                                                                                            // Clear order Email 
+        cy.get('#\\:r11\\:').type('AutomateMD2@mail.com', { force: true })                                                                                      // Update Email
+        cy.get('#\\:r17\\:').clear()                                                                                                                            // Clear Your PO 
+        cy.get('#\\:r17\\:').type('MullionsDoors 100', { force: true })                                                                                         // Update Your PO        
+        cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                         // Tapping to inch/mm        
+        // Updating table data
+        cy.get('.css-1mrqld1').click().wait(5000)                                                                                                               // OPening the Accordian
+        cy.get('[colspan="19"] > .MuiButtonBase-root').scrollIntoView()                                                                                         // Scrolling the page down and remove the second row
+        cy.get('#\\:r5h\\:-button').click().wait(500)                                                                                                           // Tapping to three dots                                       
+        cy.get('#\\:r5h\\:-menu > .MuiPaper-root > .MuiList-root > :nth-child(5)').click()                                                                      // Remove the row                                            
+        cy.get('#\\:r1l\\:').clear()                                                                                                                            // Clear input width    
+        cy.get('#\\:r1l\\:').type('145')                                                                                                                        // Valid input width
+        cy.get('#\\:r1n\\:').clear()                                                                                                                            // Clear input Height    
+        cy.get('#\\:r1n\\:').type('2312')                                                                                                                       // Valid input Height
+        cy.get('#\\:r1r\\:').click()                                                                                                                            // Grain
+        cy.get('[data-value="V"]').click()                                                                                                                      // grain
+        cy.get('#\\:r1t\\:').click()                                                                                                                            // stiles
+        cy.get('[data-value="LG"]').click()                                                                                                                     // stiles
+        cy.get('#\\:r1u\\:').type('2006')                                                                                                                       // Modele
+        cy.get('#\\:r21\\:').type('C')                                                                                                                          // ext profile
+        cy.get('#\\:r24\\:').type('10')                                                                                                                         // Openings
+        cy.get('#\\:r28\\:').click()                                                                                                                            // type
+        cy.get('[data-value="T"]').click()                                                                                                                      // type
+        cy.get('#\\:r2a\\:').click()                                                                                                                            // qty
+        cy.get('[data-value="3"]').click()                                                                                                                      // qty
+        cy.get('#\\:r2c\\:').click()                                                                                                                            // position
+        cy.get('[data-value="H"]').click()                                                                                                                      // position  
+        cy.get(':nth-child(1) > :nth-child(15) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                                // Dowel                                // Dowels 
+        cy.get('#\\:r2d\\:').type('271')                                                                                                                        // color
+        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click()                                                                                   // Tapping to Submit btn
+        cy.get('.css-1ubxkj1 > :nth-child(1)', { timeout: 5000 }).click().wait(10000)                                                                           // Print order    
+        cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view
     })
 })
 
