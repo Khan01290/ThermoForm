@@ -995,7 +995,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.wait(5000)
         cy.get('.MuiTypography-root').contains("Identification").should('be.visible').and('exist')                                                              // Asssertion of Identification heading is present 
         cy.get('.MuiTypography-body2').contains("Forgot Password?").should('be.visible').and('exist')                                                           // Asssertion of Forgot Password? link is present   
-        cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and(-'not.be.enabled')                                                     // Asssertion of Next btn is disabled        
+        cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and('not.be.enabled')                                                      // Asssertion of Next btn is disabled        
         cy.get('input[name="username"]').type("masterfortesting").wait(500)                                                                                     // Input valid username                        
         cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and('contain','Next').click()                                              // Click to Next button         
         cy.get('.MuiTypography-h5').contains("Email Authentication").should('be.visible').and('exist').and('contain','Email').click()                           // Asssertion of "Email Authentication" heading is present
@@ -1169,7 +1169,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
           
         //====================================================================== >>  Getting elements for Local Testing  <<===============================================================================================
 
-        /*
+        /* 
         cy.get('#\\:rt\\:-helper-text').contains('Required value').should('be.visible')                                                                         // Order Name Validation of helper text
         cy.get('#\\:r11\\:-helper-text').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text
         cy.get('#\\:r17\\:-helper-text').contains('Required value').should('be.visible')                                                                        // PO Validation of helper text    
@@ -1293,7 +1293,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         */
 
         //=====================================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
-
+        
         cy.get('#\\:ru\\:-helper-text').should('have.text', 'Required value').should('be.visible')                                                              // Order Name Validation of helper text
         cy.get('#\\:r12\\:-helper-text').contains('Value is not a valid email address').should('be.visible')                                                    // Eamil Validation of helper text
         cy.get('#\\:r18\\:-helper-text').contains('Required value').should('be.visible')                                                                        // PO Validation of helper text
@@ -1419,7 +1419,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click()                                                                                   // Tapping to Submit btn
         cy.get('.css-1ubxkj1 > :nth-child(1)', { timeout: 5000 }).click().wait(10000)                                                                           // Print order    
         cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view
-
+        
     })
 
     it.skip("Verify Order Edited Successfully on same screen", function()  {
