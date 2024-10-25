@@ -1342,7 +1342,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('[data-value="H"]').click()                                                                                                                      // grain
         cy.get('#\\:r1t\\:').click()                                                                                                                            // stiles and rails
         cy.get('[data-value="VG"]').click()                                                                                                                     // stiles and rails 
-        cy.get('#\\:r20\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+        cy.get('#\\:r20\\:-helper-text').contains('Invalid value').should('be.visible')                                                                         // Validation of helper text
         cy.get('#\\:r1u\\:').type('22024')                                                                                                                      // Modele
         cy.get('#\\:r21\\:').type('H')                                                                                                                          // ext profile
         cy.get('#\\:r26\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
