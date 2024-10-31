@@ -1245,7 +1245,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         cy.get('[data-value="2"]').click()                                                                                                                      // qty
         cy.get('#\\:r5o\\:').click()                                                                                                                            // postiton
         cy.get('[data-value="B"] > .css-sc6tei').click()                                                                                                        // postiton
-        cy.get(':nth-child(15) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                                                // Dowels 
+        cy.get('.MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                                                                 // Dowels 
         cy.get('#\\:r5r\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
         cy.get('#\\:r5p\\:').type('5310')                                                                                                                       // color        
 
