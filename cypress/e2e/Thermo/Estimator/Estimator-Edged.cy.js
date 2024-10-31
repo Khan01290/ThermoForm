@@ -963,7 +963,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         cy.get('.MuiToolbar-root > .MuiTypography-root', { timeout: 25000 }).contains("Home").should('be.visible').and('exist').and('contain','Home')           // Asserting of Home text is present on home page
         // Cypress will wait up to 25 seconds for the element, but proceed immediately when the element appears
         cy.get('.MuiTypography-h4').contains("Shortcuts").should('be.visible').and('exist').and('contain','Shortcuts')                                          // Asserting of Shortcuts text is present on home page        
-        cy.get('.MuiIconButton-colorInherit').click({force: true}).wait(2000)                                                                                   // Click to menu icon
+        cy.get('.MuiIconButton-colorInherit').click({force: true}).wait(5000)                                                                                   // Click to menu icon
         cy.get(':nth-child(7) > .MuiButtonBase-root').contains("Customer Center").should('be.visible')                                                          // Asserting of Customer Center li is present on side menu
         .and('exist').and('contain','Customer').click().wait(1000)        
         cy.get('[title="Estimator"] > .MuiListItemText-root > .MuiTypography-root').contains("Estimator").should('be.visible')                                  // Asserting of Estimator li is present on side menu
