@@ -966,10 +966,11 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         cy.get('.MuiIconButton-colorInherit').click({force: true}).wait(5000)                                                                                   // Click to menu icon
         //cy.get(':nth-child(7) > .MuiButtonBase-root').contains("Customer Center").should('be.visible')                                                          // Asserting of Customer Center li is present on side menu
         //.and('exist').and('contain','Customer').click().wait(1000)        
-        cy.get(':nth-child(7) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root').contains("Customer Center").should('be.visible')            // Asserting of Customer Center li is present on side menu
+        cy.get('#app > main > div > div > div > div.jss61 > ul:nth-child(5) > div').contains("Customer Center").should('be.visible')                            // Asserting of Customer Center li is present on side menu
         .and('exist').and('contain','Customer').click().wait(1000)
         cy.get('[title="Estimator"] > .MuiListItemText-root > .MuiTypography-root').contains("Estimator").should('be.visible')                                  // Asserting of Estimator li is present on side menu
         .and('exist').and('contain','Estimator').click().wait(1000)
+        
         //cy.get('[title="Estimator"] > .MuiListItemText-root > .MuiTypography-root').contains("Estimator").should('be.visible')                                // Asserting of Estimator li is present on side menu
         //.and('exist').and('contain','Estimator').click().wait(10000)        
         //cy.get('.css-budqf6').contains('Add color').should('be.visible')                                                                                      
