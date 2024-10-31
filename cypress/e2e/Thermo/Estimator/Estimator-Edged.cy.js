@@ -1250,18 +1250,18 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         cy.get('#\\:r5p\\:').type('5310')                                                                                                                       // color        
 
         cy.get('[colspan="16"] > .MuiButtonBase-root').click().wait(500)                                                                                        // Adding second item
-        cy.get('#\\:r79\\:').type('12')                                                                                                                         // Qty
-        cy.get('#\\:r7b\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
-        cy.get('#\\:r7b\\:').type('145')                                                                                                                        // width
-        cy.get('#\\:r7d\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
-        cy.get('#\\:r7d\\:').type('300')                                                                                                                        // height
-        cy.get('#\\:r7h\\:').should('contain', 'H')                                                                                                             // Assertioan of grain input
-        cy.get('#\\:r6i\\:').should('contain', '70')                                                                                                            // Assertion for Edgeband        
-        cy.get('#\\:r7r\\:').should('contain', 'S')                                                                                                             // Assertion of Type        
-        cy.get('#\\:r7t\\:').should('contain', '2')                                                                                                             // Assertion  of qty        
-        cy.get('#\\:r7v\\:').should('contain', 'B')                                                                                                             // Assertion of postiton            
-        cy.get(':nth-child(3) > :nth-child(15) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').should('be.checked')                   // Assertion of Dowels                     
-        cy.get('#\\:r80\\:').should('have.value', '5310 - Dark Blue')                                                                                           // Assertion of color                
+        cy.get('#\\:r69\\:').type('12')                                                                                                                         // Qty
+        cy.get('#\\:r6b\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+        cy.get('#\\:r6b\\:').type('145')                                                                                                                        // width
+        cy.get('#\\:r6d\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+        cy.get('#\\:r6d\\:').type('300')                                                                                                                        // height
+        cy.get('#\\:r6h\\:').should('contain', 'H')                                                                                                             // Assertioan of grain input
+        cy.get('#\\:r6j\\:').should('contain', '70')                                                                                                            // Assertion for Edgeband        
+        cy.get('#\\:r6l\\:').should('contain', 'S')                                                                                                             // Assertion of Type        
+        cy.get('#\\:r6n\\:').should('contain', '2')                                                                                                             // Assertion  of qty        
+        cy.get('#\\:r6p\\:').should('contain', 'B')                                                                                                             // Assertion of postiton            
+        cy.get('.MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').should('be.checked')                                                    // Assertion of Dowels                     
+        cy.get('#\\:r6q\\:').should('have.value', '5310 - Dark Blue')                                                                                           // Assertion of color                
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
         cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                              // Print order    
         cy.get('#\\:rq\\: > .MuiButtonBase-root').click()	                                                                                                    // Closing print view
