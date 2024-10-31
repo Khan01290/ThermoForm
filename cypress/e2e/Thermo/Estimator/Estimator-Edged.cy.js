@@ -1223,31 +1223,31 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
         cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root').click().wait(500)         	                        // Select Doors (Edged) 
 
-        cy.get('#\\:r60\\:').type('10')                                                                                                                         // Qty
-        cy.get('#\\:r62\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text for no input
-        cy.get('#\\:r62\\:').type('abcs')                                                                                                                       // invalid input width
-        cy.get('#\\:r62\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
-        cy.get('#\\:r62\\:').clear()                                                                                                                            // Clear input width    
-        cy.get('#\\:r62\\:').type('45')                                                                                                                         // Valid input width    
-        cy.get('#\\:r64\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text        
-        cy.get('#\\:r64\\:').type('abcs')                                                                                                                       // invalid input height
-        cy.get('#\\:r64\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
-        cy.get('#\\:r64\\:').clear()                                                                                                                            // Clear input height    
-        cy.get('#\\:r64\\:').type('100')                                                                                                                        // Valid input height        
-        cy.get('#\\:r68\\:').click()                                                                                                                            // grain
+        cy.get('#\\:r58\\:').type('10')                                                                                                                         // Qty
+        cy.get('#\\:r5a\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text for no input
+        cy.get('#\\:r5a\\:').type('abcs')                                                                                                                       // invalid input width
+        cy.get('#\\:r5a\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
+        cy.get('#\\:r5a\\:').clear()                                                                                                                            // Clear input width    
+        cy.get('#\\:r5a\\:').type('45')                                                                                                                         // Valid input width    
+        cy.get('#\\:r5c\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text        
+        cy.get('#\\:r5c\\:').type('abcs')                                                                                                                       // invalid input height
+        cy.get('#\\:r5c\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
+        cy.get('#\\:r5c\\:').clear()                                                                                                                            // Clear input height    
+        cy.get('#\\:r5c\\:').type('100')                                                                                                                        // Valid input height        
+        cy.get('#\\:r5g\\:').click()                                                                                                                            // grain
         cy.get('[data-value="H"]').click()                                                                                                                      // grain
-        cy.get('#\\:r5h\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
-        cy.get('#\\:r5h\\:').click()                                                                                                                            // Edgeband
+        cy.get('#\\:r5i\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+        cy.get('#\\:r5i\\:').click()                                                                                                                            // Edgeband
         cy.get('[data-value="70"]').click()                                                                                                                     // Edgeband
-        cy.get('#\\:r6i\\:').click()                                                                                                                            // Type
+        cy.get('#\\:r5k\\:').click()                                                                                                                            // Type
         cy.get('[data-value="S"] > .css-sc6tei').click()                                                                                                        // Type
-        cy.get('#\\:r6k\\:').click()                                                                                                                            // qty
+        cy.get('#\\:r5m\\:').click()                                                                                                                            // qty
         cy.get('[data-value="2"]').click()                                                                                                                      // qty
-        cy.get('#\\:r6m\\:').click()                                                                                                                            // postiton
+        cy.get('#\\:r5o\\:').click()                                                                                                                            // postiton
         cy.get('[data-value="B"] > .css-sc6tei').click()                                                                                                        // postiton
         cy.get(':nth-child(15) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                                                // Dowels 
-        cy.get('#\\:r6p\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
-        cy.get('#\\:r6n\\:').type('5310')                                                                                                                       // color        
+        cy.get('#\\:r5r\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
+        cy.get('#\\:r5p\\:').type('5310')                                                                                                                       // color        
 
         cy.get('[colspan="16"] > .MuiButtonBase-root').click().wait(500)                                                                                        // Adding second item
         cy.get('#\\:r79\\:').type('12')                                                                                                                         // Qty
