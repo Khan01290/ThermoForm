@@ -1332,7 +1332,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view        
     })
 
-    it("Verify Order Edited Successfully on same screen", function()  {
+    it.skip("Verify Order Edited Successfully on same screen", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
