@@ -1611,9 +1611,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
 
         cy.get('[colspan="19"] > .MuiButtonBase-root').click().wait(500)                                                                                        // Adding second item
         cy.get('#\\:r2u\\:').type('14')                                                                                                                         // Qty
-        //cy.get('#\\:r30\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
         cy.get('#\\:r30\\:').type('4257')                                                                                                                       // width
-        //cy.get('#\\:r32\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
         cy.get('#\\:r32\\:').type('4257 ')                                                                                                                      // height
         cy.get('#\\:r36\\:').should('contain', 'H')                                                                                                             // Assertioan of grain input
         cy.get('#\\:r38\\:').should('contain', 'VG')                                                                                                            // Assertioan of stiles and rails input
@@ -1628,15 +1626,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('[aria-label="Save"] > .MuiButtonBase-root').click().wait(5000)                                                                                  // Tapping to save btn
         cy.get('.headerActions > .MuiButton-contained').click().wait(5000)                                                                                      // Print order  
         cy.get('#\\:rq\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view
-        /*    
-        // Moving to web orders page
-        cy.get('.MuiIconButton-colorInherit').click({force: true})                                                                                              // Click to menu icon
-        cy.get('[title="Web Orders"]').click().wait(1000)                                                                                                       // Tapping to web Orders
-        cy.get(':nth-child(1) > .MuiListItemText-root > .MuiListItemText-primary > .MuiTypography-root > :nth-child(1) > span')
-        .should('contain','Automate Mullions Doors Category').click().wait(500)                                                                                 // Pick the first saved order by name and click it
-        */
-        // Updating Main Fields
-        //cy.wait(20000)
+
         cy.get('#\\:ru\\:').clear()                                                                                                                             // Clear order name 
         cy.get('.css-1mrqld1').click().wait(500)                                                                                                                // Closing the Accordian 
         cy.get('#\\:ru\\:').type('Automate Molded(Mullions Doors) 3')                                                                                           // Update order name      
