@@ -1614,7 +1614,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         //                                                                    >>>>> Adding form data <<<<<    
         // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        cy.get('#\\:r18\\:').type('MullionsDoors 45', { force: true }                                                                                           // Your PO
+        cy.get('#\\:r18\\:').type('MullionsDoors 45', { force: true })                                                                                           // Your PO
         cy.get('#\\:r1a\\:').type('XYZ 1', { force: true })                                                                                                     // Their PO     
         cy.get('body').click().wait(2000)   
         cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click().wait(2000)                                                                              // Tapping to Date icon        
