@@ -1638,8 +1638,8 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
 
         
         cy.get('.css-budqf6').contains('Add section').click({force: true}).wait(2000)                                                                           // Tapping to Add section btn
-        cy.get('#\\:r53\\:').type('Mullions Doors')                                                                                                             // Section Name      
-        cy.get('#\\:r55\\:').type('Automating Mullions Doors')                                                                                                  // Section Note
+        cy.get('#\\:r5e\\:').type('Mullions Doors')                                                                                                             // Section Name      
+        cy.get('#\\:r9g\\:').type('Automating Mullions Doors')                                                                                                  // Section Note
         cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
         cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root').click().wait(500)         	                        // Select Doors (Edged) 
 
