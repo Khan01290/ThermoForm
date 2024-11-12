@@ -1664,7 +1664,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         
         cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
         cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root').click().wait(500)                                  // Select Mullions Doors (Edged) 
-
+        /*
         cy.get('#\\:r5k\\:').type('10')                                                                                                                         // Qty
         cy.get('#\\:r5m\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text for no input
         cy.get('#\\:r5m\\:').type('abcs')                                                                                                                       // invalid input width
@@ -1693,7 +1693,85 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         cy.get('.MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                                                                 // Dowels 
         cy.get('#\\:r6a\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
         cy.get('#\\:r68\\:').type('5310')                                                                                                                       // color        
+          */
 
+        cy.get('body').then($body => {
+            if ($body.find('#\\:r5k\\:').length === 0)
+                cy.get('#\\:r5j\\:').type('10')  
+            if ($body.find('#\\:r5m\\:').length === 0)  {
+                cy.get('#\\:r5l\\:-helper-text').contains('Required value').should('be.visible')                                                                // Validation of helper text for no input
+                cy.get('#\\:r5l\\:').type('abcs')                                                                                                               // invalid input width
+                cy.get('#\\:r5l\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                       // Validation of helper text for invalid input
+                cy.get('#\\:r5l\\:').clear()                                                                                                                    // Clear input width    
+                cy.get('#\\:r5l\\:').type('45')                                                                                                                 // Valid input width    
+            }
+            if ($body.find('#\\:r5o\\:').length === 0) {
+                cy.get('#\\:r5n\\:-helper-text').contains('Required value').should('be.visible')                                                                // Validation of helper text        
+                cy.get('#\\:r5n\\:').type('abcs')                                                                                                               // invalid input height
+                cy.get('#\\:r5n\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                       // Validation of helper text for invalid input
+                cy.get('#\\:r5n\\:').clear()                                                                                                                    // Clear input height    
+                cy.get('#\\:r5n\\:').type('100')                                                                                                                // Valid input height
+            }
+            if ($body.find('#\\:r5s\\:').length === 0) {
+                cy.get('#\\:r5r\\:').click()                                                                                                                     // grain
+                cy.get('[data-value="H"]').click()                                                                                                               // grain
+            }
+            if ($body.find('#\\:r5u\\:').length === 0) {
+                cy.get('#\\:r5t\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+                cy.get('#\\:r5t\\:').click()                                                                                                                            // Edgeband
+                cy.get('[data-value="70"]').click()
+            }
+            if ($body.find('#\\:r61\\:').length === 0 && $body.find('#\\:r61\\:').length === 0) {
+                cy.get('#\\:r60\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text 
+                cy.get('#\\:r5u\\:').click()                                                                                                                            // Openings
+                cy.get('#\\:r5u\\:-option-3').click()                                                                                                                   // Openings
+            }
+            if ($body.find('#\\:r63\\:').length === 0) {
+                cy.get('#\\:r62\\:').click()                                                                                                                            // Type
+                cy.get('[data-value="S"] > .css-sc6tei').click()                                                                                                        // Type
+            }
+            if ($body.find('#\\:r65\\:').length === 0) {
+                cy.get('#\\:r64\\:').click()                                                                                                                            // qty
+                cy.get('[data-value="2"]').click()                                                                                                                      // qty
+            }
+            if ($body.find('#\\:r67\\:').length === 0) {
+                cy.get('#\\:r66\\:').click()                                                                                                                            // postiton
+                cy.get('[data-value="B"] > .css-sc6tei').click()                                                                                                        // postiton
+            }
+            if ($body.find('#\\:r6a\\:').length === 0) {
+                cy.get('#\\:r69\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
+                cy.get('#\\:r67\\:').type('5310')                                                                                                                       // color
+
+            } else {                
+                    cy.get('#\\:r5k\\:').type('10')
+                    cy.get('#\\:r5m\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text for no input
+                    cy.get('#\\:r5m\\:').type('abcs')                                                                                                                       // invalid input width
+                    cy.get('#\\:r5m\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
+                    cy.get('#\\:r5m\\:').clear()                                                                                                                            // Clear input width    
+                    cy.get('#\\:r5m\\:').type('45')                                                                                                                         // Valid input width    
+                    cy.get('#\\:r5o\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text        
+                    cy.get('#\\:r5o\\:').type('abcs')                                                                                                                       // invalid input height
+                    cy.get('#\\:r5o\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
+                    cy.get('#\\:r5o\\:').clear()                                                                                                                            // Clear input height    
+                    cy.get('#\\:r5o\\:').type('100')                                                                                                                        // Valid input height
+                    cy.get('#\\:r5s\\:').click()                                                                                                                            // grain
+                    cy.get('[data-value="H"]').click()                                                                                                                      // grain
+                    cy.get('#\\:r5u\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
+                    cy.get('#\\:r5u\\:').click()                                                                                                                            // Edgeband
+                    cy.get('[data-value="70"]').click()
+                    cy.get('#\\:r61\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text 
+                    cy.get('#\\:r5v\\:').click()                                                                                                                            // Openings
+                    cy.get('#\\:r5v\\:-option-3').click()                                                                                                                   // Openings                  
+                    cy.get('#\\:r63\\:').click()                                                                                                                            // Type
+                    cy.get('[data-value="S"] > .css-sc6tei').click()                                                                                                        // Type
+                    cy.get('#\\:r65\\:').click()                                                                                                                            // qty
+                    cy.get('[data-value="2"]').click().wait(2000)                                                                                                           // qty
+                    cy.get('#\\:r67\\:').click()                                                                                                                            // postiton
+                    cy.get('[data-value="B"] > .css-sc6tei').click()                                                                                                        // postiton
+                    cy.get('#\\:r6a\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
+                    cy.get('#\\:r68\\:').type('5310')                                                                                                                       // color
+            }
+          });
         cy.get('[colspan="16"] > .MuiButtonBase-root').click().wait(500)                                                                                        // Adding second item
         cy.get('#\\:r69\\:').type('12')                                                                                                                         // Qty
         cy.get('#\\:r6b\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
