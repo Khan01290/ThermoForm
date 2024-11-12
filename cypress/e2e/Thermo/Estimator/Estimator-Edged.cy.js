@@ -1648,14 +1648,14 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
               cy.get('#\\:r5e\\:').type('Mullions Doors');
               cy.get('#\\:r5g\\:').type('Automating Mullions Doors');
             }} else 
-            if ($body.find('#\\:r6a\\:').length > 0) {
-                if ($body.find('#\\:r6c\\:').length > 0) {
-              cy.get('#\\:r6a\\:').type('Mullions Doors');
-              cy.get('#\\:r6c\\:').type('Automating Mullions Doors');
+            if ($body.find('#\\:r5f\\:').length > 0) {
+                if ($body.find('#\\:r5h\\:').length > 0) {
+              cy.get('#\\:r5f\\:').type('Mullions Doors');
+              cy.get('#\\:r5h\\:').type('Automating Mullions Doors');
             }} else
-            if ($body.find('#\\:r6b\\:').length > 0) {
-                cy.get('#\\:r6b\\:').type('Mullions Doors');
-                cy.get('#\\:r6d\\:').type('Automating Mullions Doors');
+            if ($body.find('#\\:r5g\\:').length > 0) {
+                cy.get('#\\:r5g\\:').type('Mullions Doors');
+                cy.get('#\\:r5i\\:').type('Automating Mullions Doors');
             } else
             {
               cy.log('Element not found');
@@ -1663,9 +1663,9 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
           });
         
         cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
-        cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root').click().wait(500)         	                        // Select Doors (Edged) 
+        cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root').click().wait(500)                                  // Select Mullions Doors (Edged) 
 
-        cy.get('#\\:r58\\:').type('10')                                                                                                                         // Qty
+        cy.get('#\\:r5k\\:').type('10')                                                                                                                         // Qty
         cy.get('#\\:r5a\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text for no input
         cy.get('#\\:r5a\\:').type('abcs')                                                                                                                       // invalid input width
         cy.get('#\\:r5a\\:-helper-text').contains('Not a valid measurement').should('be.visible')                                                               // Validation of helper text for invalid input
