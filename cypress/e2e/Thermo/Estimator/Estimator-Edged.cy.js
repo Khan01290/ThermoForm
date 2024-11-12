@@ -1598,11 +1598,11 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         cy.get('#\\:r1t\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
         cy.get('#\\:r1t\\:').click()                                                                                                                            // Edgeband
         cy.get('[data-value="70"]').click()                                                                                                                     // Edgeband
-        cy.get('#\\:r1v\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text 
-        cy.get('#\\:r1t\\:').click()                                                                                                                            // Openings
-        cy.get('#\\:r1t\\:-option-3').click()                                                                                                                   // Openings
-        cy.get('#\\:r26\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
-        cy.get('#\\:r24\\:').type('5310')                                                                                                                       // color    
+        cy.get('#\\:r20\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text 
+        cy.get('#\\:r1u\\:').click()                                                                                                                            // Openings
+        cy.get('#\\:r1u\\:-option-3').click()                                                                                                                   // Openings
+        cy.get('#\\:r29\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
+        cy.get('#\\:r27\\:').type('5310')                                                                                                                       // color    
         cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                     // Tapping to Print btn
         cy.get('#\\:rq\\: > .MuiButtonBase-root').click()                                                                                                       // Closing print view
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                         // Tapping to Submit btn
@@ -1614,7 +1614,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         //                                                                    >>>>> Adding form data <<<<<    
         // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        cy.get('#\\:r18\\:').type('MullionsDoors 45', { force: true })                                                                                           // Your PO
+        cy.get('#\\:r18\\:').type('MullionsDoors 45', { force: true })                                                                                          // Your PO
         cy.get('#\\:r1a\\:').type('XYZ 1', { force: true })                                                                                                     // Their PO     
         cy.get('body').click().wait(2000)   
         cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click().wait(2000)                                                                              // Tapping to Date icon        
