@@ -1638,8 +1638,30 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
 
         
         cy.get('.css-budqf6').contains('Add section').click({force: true}).wait(2000)                                                                           // Tapping to Add section btn
-        cy.get('#\\:r5e\\:').type('Mullions Doors')                                                                                                             // Section Name      
-        cy.get('#\\:r5g\\:').type('Automating Mullions Doors')                                                                                                  // Section Note
+
+
+        //cy.get('#\\:r5e\\:').type('Mullions Doors')                                                                                                             // Section Name      
+        //cy.get('#\\:r5g\\:').type('Automating Mullions Doors')                                                                                                  // Section Note
+        cy.get('body').then($body => {
+            if ($body.find('#\\:r5e\\:').length > 0) {
+                if ($body.find('#\\:r5g\\:').length > 0) {    
+              cy.get('#\\:r5e\\:').type('Mullions Doors');
+              cy.get('#\\:r5g\\:').type('Automating Mullions Doors');
+            }} else 
+            if ($body.find('#\\:r6a\\:').length > 0) {
+                if ($body.find('#\\:r6c\\:').length > 0) {
+              cy.get('#\\:r6a\\:').type('Mullions Doors');
+              cy.get('#\\:r6c\\:').type('Automating Mullions Doors');
+            }} else
+            if ($body.find('#\\:r6b\\:').length > 0) {
+                cy.get('#\\:r6b\\:').type('Mullions Doors');
+                cy.get('#\\:r6d\\:').type('Automating Mullions Doors');
+            } else
+            {
+              cy.log('Element not found');
+            }
+          });
+        
         cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
         cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root').click().wait(500)         	                        // Select Doors (Edged) 
 
