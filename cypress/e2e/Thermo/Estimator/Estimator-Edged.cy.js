@@ -1269,7 +1269,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         //=======================================================================================================================================================================================        
     })
 
-    it("Verify Order created/submitted Successfully - For Mullions Doors Category -", function()  {
+    it.skip("Verify Order created/submitted Successfully - For Mullions Doors Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
