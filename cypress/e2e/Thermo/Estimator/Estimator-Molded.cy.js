@@ -273,7 +273,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
                 return false                                                                                                                                    // Break the loop after selecting the date
                 }
             });        
-        cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                            // Note
+        cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                             // Note
             const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
             cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
             .then(input => {                
