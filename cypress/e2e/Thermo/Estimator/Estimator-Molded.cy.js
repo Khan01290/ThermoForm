@@ -240,8 +240,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
     });
     })
     })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                         // Tapping to Submit btn
-    cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                              // Print order    
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                                        // Tapping to Submit btn
+    cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                              // Print order    
     cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)
     */
 
@@ -283,7 +283,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         cy.get('td.MuiTableCell-root').eq(4).find('input').type('582', { force: true });                                                                        // Valid input height
         cy.get('td.MuiTableCell-root').eq(15).find('input').type('61', { force: true });                                                                        // color        
         cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                     // Tapping to Print btn
-        cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                          // Closing print view                                    
+        cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                // Closing print view                                    
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                         // Tapping to Submit btn
         
 
@@ -302,7 +302,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
                 return false                                                                                                                                    // Break the loop after selecting the date
                 }
             });        
-            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                            // Note
+            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
             //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
             
             const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
@@ -330,35 +330,35 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
 
                 if (tdValue === '1.') {
                     cy.log('Filling the first row with TD=1');              
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('abcs', { force: true });                                                                       // invalid input width
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                              // Clear input width    
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('45', { force: true });                                                                         // Valid input width
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('abcs', { force: true });                                                                       // invalid input height
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').clear()                                                                                              // Clear input height    
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('58', { force: true });                                                                         // Valid input height
-                    cy.get('td.MuiTableCell-root').eq(5).find('.MuiSelect-select').click({ force: true });                                                                  // thickness
-                    cy.get('[data-value="1.25"]').click()                                                                                                                   // thickness
-                    cy.get('td.MuiTableCell-root').eq(6).find('.MuiSelect-select').click({ force: true });                                                                  // grain                
-                    cy.get('[data-value="H"]').click()                                                                                                                      // grain        
-                    cy.get('td.MuiTableCell-root').eq(7).find('.MuiSelect-select').click({ force: true });                                                                  // stiles and rails                
-                    cy.get('[data-value="LG"]').click()                                                                                                                     // stiles and rails         
-                    cy.get('td.MuiTableCell-root').eq(8).find('input').type('5001', { force: true });                                                                       // Modele        
-                    cy.get('td.MuiTableCell-root').eq(9).find('input').type('F', { force: true });                                                                          // ext profile                
-                    cy.get('td.MuiTableCell-root').eq(11).find('.MuiSelect-select').click({ force: true });                                                                 // Type
-                    cy.get('[data-value="S"] > .css-sc6tei').click()                                                                                                        // Type
-                    cy.get('td.MuiTableCell-root').eq(12).find('.MuiSelect-select').click({ force: true });                                                                 // qty
-                    cy.get('[data-value="3"]').click()                                                                                                                      // qty
-                    cy.get('td.MuiTableCell-root').eq(13).find('.MuiSelect-select').click({ force: true });                                                                 // postiton
-                    cy.get('[data-value="B"] > .css-sc6tei').click()                                                                                                        // postiton
-                    cy.get(':nth-child(15) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click({ force: true })                                                // Dowels 
-                    cy.get('td.MuiTableCell-root').eq(15).find('input').type('999', { force: true });                                                                       // color                    
-                    cy.get('td.MuiTableCell-root').eq(16).find('input').type('555', { force: true });                                                                       // Sb Color
-                    cy.get(':nth-child(11) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click({ force: true })                                                // QP
+                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('abcs', { force: true });                                                           // invalid input width
+                    cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                  // Clear input width    
+                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('45', { force: true });                                                             // Valid input width
+                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('abcs', { force: true });                                                           // invalid input height
+                    cy.get('td.MuiTableCell-root').eq(4).find('input').clear()                                                                                  // Clear input height    
+                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('58', { force: true });                                                             // Valid input height
+                    cy.get('td.MuiTableCell-root').eq(5).find('.MuiSelect-select').click({ force: true });                                                      // thickness
+                    cy.get('[data-value="1.25"]').click()                                                                                                       // thickness
+                    cy.get('td.MuiTableCell-root').eq(6).find('.MuiSelect-select').click({ force: true });                                                      // grain                
+                    cy.get('[data-value="H"]').click()                                                                                                          // grain        
+                    cy.get('td.MuiTableCell-root').eq(7).find('.MuiSelect-select').click({ force: true });                                                      // stiles and rails                
+                    cy.get('[data-value="LG"]').click()                                                                                                         // stiles and rails         
+                    cy.get('td.MuiTableCell-root').eq(8).find('input').type('5001', { force: true });                                                           // Modele        
+                    cy.get('td.MuiTableCell-root').eq(9).find('input').type('F', { force: true });                                                              // ext profile                
+                    cy.get('td.MuiTableCell-root').eq(11).find('.MuiSelect-select').click({ force: true });                                                     // Type
+                    cy.get('[data-value="S"] > .css-sc6tei').click()                                                                                            // Type
+                    cy.get('td.MuiTableCell-root').eq(12).find('.MuiSelect-select').click({ force: true });                                                     // qty
+                    cy.get('[data-value="3"]').click()                                                                                                          // qty
+                    cy.get('td.MuiTableCell-root').eq(13).find('.MuiSelect-select').click({ force: true });                                                     // postiton
+                    cy.get('[data-value="B"] > .css-sc6tei').click()                                                                                            // postiton
+                    cy.get(':nth-child(15) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click({ force: true })                     // Dowels 
+                    cy.get('td.MuiTableCell-root').eq(15).find('input').type('999', { force: true });                                                           // color                    
+                    cy.get('td.MuiTableCell-root').eq(16).find('input').type('555', { force: true });                                                           // Sb Color
+                    cy.get(':nth-child(11) > .MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click({ force: true })                     // QP
                 }
             });
         });
         });
-        cy.get('[colspan="19"] > .MuiButtonBase-root').click().wait(2000)                                                                                        // Adding second item
+        cy.get('[colspan="19"] > .MuiButtonBase-root').click().wait(2000)                                                                                       // Adding second item
         cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).then(($rowsAfter) => {
         const newRow = $rowsAfter[$rowsAfter.length - 2]; // Get the last (newly added) row
         cy.wrap(newRow).within(() => {
@@ -367,29 +367,30 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         tdValue = tdValue.trim();
                 if (tdValue === '2.') {
                     cy.log('Filling the new row with TD=2');                   
-                    cy.get('td.MuiTableCell-root').eq(2).find('input').type('45', { force: true });                                                                         // Qty                                
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('58', { force: true });                                                                         // width
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('58', { force: true });                                                                         // height
-                    cy.get('td.MuiTableCell-root').eq(6).find('div.MuiSelect-select').should('have.text', 'H')                                                              // Assertioan of grain input
-                    cy.get('td.MuiTableCell-root').eq(7).find('div.MuiSelect-select').should('have.text', 'LG')                                                             // Assertioan of stiles and rails input
-                    cy.get('td.MuiTableCell-root').eq(8).find('input.MuiAutocomplete-input').should('have.value', '5001')                                                   // Assertion of Modele    
-                    cy.get('td.MuiTableCell-root').eq(9).find('input.MuiAutocomplete-input').should('have.value', 'F')                                                      // Assertion of ext profile        
-                    cy.get('td.MuiTableCell-root').eq(10).find('input[type="checkbox"]').should('be.checked')                                                               // Assertion of QP           
-                    cy.get('td.MuiTableCell-root').eq(11).find('div.MuiSelect-select').should('have.text', 'S')                                                             // Assertion of Type        
-                    cy.get('td.MuiTableCell-root').eq(12).find('div.MuiSelect-select').should('have.text', '3')                                                             // Assertion  of qty        
-                    cy.get('td.MuiTableCell-root').eq(13).find('div.MuiSelect-select').should('have.text', 'B')                                                             // Assertion of postiton            
-                    cy.get('td.MuiTableCell-root').eq(14).find('input[type="checkbox"]').should('be.checked')                                                               // Assertion of Dowels                     
-                    cy.get('td.MuiTableCell-root').eq(15).find('input.MuiAutocomplete-input').should('have.value', '999 - MDF')                                             // Assertion of color                                             
+                    cy.get('td.MuiTableCell-root').eq(2).find('input').type('45', { force: true });                                                             // Qty                                
+                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('58', { force: true });                                                             // width
+                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('58', { force: true });                                                             // height
+                    cy.get('td.MuiTableCell-root').eq(6).find('div.MuiSelect-select').should('have.text', 'H')                                                  // Assertioan of grain input
+                    cy.get('td.MuiTableCell-root').eq(7).find('div.MuiSelect-select').should('have.text', 'LG')                                                 // Assertioan of stiles and rails input
+                    cy.get('td.MuiTableCell-root').eq(8).find('input.MuiAutocomplete-input').should('have.value', '5001')                                       // Assertion of Modele    
+                    cy.get('td.MuiTableCell-root').eq(9).find('input.MuiAutocomplete-input').should('have.value', 'F')                                          // Assertion of ext profile        
+                    cy.get('td.MuiTableCell-root').eq(10).find('input[type="checkbox"]').should('be.checked')                                                   // Assertion of QP           
+                    cy.get('td.MuiTableCell-root').eq(11).find('div.MuiSelect-select').should('have.text', 'S')                                                 // Assertion of Type        
+                    cy.get('td.MuiTableCell-root').eq(12).find('div.MuiSelect-select').should('have.text', '3')                                                 // Assertion  of qty        
+                    cy.get('td.MuiTableCell-root').eq(13).find('div.MuiSelect-select').should('have.text', 'B')                                                 // Assertion of postiton            
+                    cy.get('td.MuiTableCell-root').eq(14).find('input[type="checkbox"]').should('be.checked')                                                   // Assertion of Dowels                     
+                    cy.get('td.MuiTableCell-root').eq(15).find('input.MuiAutocomplete-input').should('have.value', '999 - MDF')                                 // Assertion of color                                             
                 }        
             });
         });
     });
     })
     })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                         // Tapping to Submit btn
-    cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                              // Print order    
-    cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)
-    }) 
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                            // Tapping to Submit btn
+    cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                  // Print order    
+    //cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                               // Closing print view   
+    cy.contains('button', 'close').click();                                                                                                                                                                                 
+}) 
   
     it.skip("Verify Order created/submitted Successfully - For Drawer Fronts Category -", function()  {
 
