@@ -1611,6 +1611,32 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         //                                                                    >>>>> Adding form data <<<<<    
         // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+        cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
+        cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
+        cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
+        cy.contains('label', 'Your PO').next().find('input').type('MullionsDoors (Edged) Doors 11')                                                             // Your PO
+        cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
+        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click({force: true}).wait(1000)                                                                 // Tapping to Date icon        
+        cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
+            .each(($el) => {
+                if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
+                cy.wrap($el).click().wait(500)                                                                                                                  // Click the first enabled date                
+                return false                                                                                                                                    // Break the loop after selecting the date
+                }
+            });        
+            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
+            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
+            
+            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
+            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
+            .then(input => {                
+            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
+            });    
+        cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                         // Tapping to inch/mm
+
+                //                                                      >>>>> Adding Mullions Doors (Edged) category table data  <<<<<        
+
+
         cy.get('.css-budqf6').contains('Add section').click({force: true}).wait(1000)                                                                           // Tapping to Add color btn
         cy.contains('label', 'Section name').next().find('input').should('be.visible').type('Mullions Doors (Edged)');                                          // Section Name        
         //cy.contains('label', 'Notes').eq(1).parent().find('input').type('Automating Molded Category with Doors Section', { force: true });                    // Section Notes                  
