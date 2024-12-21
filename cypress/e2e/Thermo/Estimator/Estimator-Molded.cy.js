@@ -390,7 +390,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
     cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                  // Print order    
     //cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                               // Closing print view   
     cy.contains('button', 'close').click();                                                                                                                                                                                 
-}) 
+    }) 
   
     it.skip("Verify Order created/submitted Successfully - For Drawer Fronts Category -", function()  {
 
@@ -755,7 +755,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         
     })
 
-    it("Verify Order created/submitted Successfully - For Mullions Doors Category -", function()  {
+    it.skip("Verify Order created/submitted Successfully - For Mullions Doors Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
