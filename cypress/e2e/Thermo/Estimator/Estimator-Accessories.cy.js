@@ -1248,97 +1248,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
 
 describe('Estimator Order Creation/Edition/Submission For Accessories Category Suit', function() {
 
-    it("Verify Order created/submitted Successfully - For Edge Banding Category -", function()  {
-        /*
-        // User Creation Steps:
-        cy.viewport(1720, 1080)    
-        cy.visit("https://dev.thermoform.net/") 
-        cy.wait(5000)
-        cy.get('.MuiTypography-root').contains("Identification").should('be.visible').and('exist')                                                              // Asssertion of Identification heading is present 
-        cy.get('.MuiTypography-body2').contains("Forgot Password?").should('be.visible').and('exist')                                                           // Asssertion of Forgot Password? link is present   
-        cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and('not.be.enabled').wait(500)                                            // Asssertion of Next btn is disabled        
-        cy.get('input[name="username"]').type("masterfortesting")                                                                                               // Input valid username                        
-        cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and('contain','Next').click()                                              // Click to Next button         
-        cy.get('.MuiTypography-h5').contains("Email Authentication").should('be.visible').and('exist').and('contain','Email').click()                           // Asssertion of "Email Authentication" heading is present
-        cy.get('input[name="email"]').should('be.visible').and('exist')                                                                                         // Asssertion of email box is present                       
-        cy.get('[type="submit"]').contains("Send Authentication Link").should('be.visible').and('exist').and('contain','Authentication')                        // Asssertion of Send Authentication Link button is present
-        cy.get('[type="text"]').contains("Password Authentication").should('be.visible').and('exist').and('contain','Password').click()                         // Asssertion of "Password Authentication" link is present                       
-        cy.get('.MuiTypography-h5').contains("Password Authentication").should('be.visible').and('exist').and('contain','Password')                             // Asssertion of Password Authentication heading is present
-        cy.get('.MuiTypography-body2').contains("Forgot Password?").should('be.visible').and('exist')                                                           // Asssertion of Forgot Password? link is present   
-        cy.get('[type="text"]').contains("Email Authentication").should('be.visible').and('exist').and('contain','Email')                                       // Asssertion of Email Authentication Link is present                
-        cy.get('input[name="password"]').type("[HPnotebook1@")                                                                                                  // Input valid password        
-        cy.get('[type="submit"]').contains("Submit").should('be.visible').and('exist').and('contain','Submit').click()                                          // Click to Submit button for portal login  
-        //cy.get('.css-imv4ws > .MuiAvatar-root').click().wait(1000)                                                                                            // Asserting login button present with its avaialble options	 
-        //cy.get('.css-1stpmc > :nth-child(1) > .MuiListItemText-root > .MuiTypography-root').contains("Français (Canada)").should('be.visible')                // Asserting Français (Canada) text is present and fr language is pre selected 
-        //.and('exist').and('contain','Français').click().wait(1000)                                                         
-        //cy.get('.MuiListItemText-primary').contains("English (Canada)").should('be.visible').and('exist').and('contain','English').click().wait(2000)         // Changing portal language to English
-        //cy.get('body').click().wait(2000)
-        cy.get('.MuiToolbar-root > .MuiTypography-root', { timeout: 100000 }).contains("Home").should('be.visible').and('exist').and('contain','Home')          // Asserting of Home text is present on home page
-        cy.get('.MuiTypography-h4').contains("Shortcuts").should('be.visible').and('exist').and('contain','Shortcuts')                                          // Asserting of Shortcuts text is present on home page        
-        cy.get('.MuiIconButton-colorInherit').click({force: true})                                                                                              // Click to menu icon
-        cy.get(':nth-child(7) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root').contains("Customer Center").should('be.visible')            // Asserting of Customer Center li is present on side menu
-        .and('exist').and('contain','Customer').click().wait(1000)        
-        cy.get('[title="Estimator"] > .MuiListItemText-root > .MuiTypography-root').contains("Estimator").should('be.visible')                                  // Asserting of Estimator li is present on side menu
-        .and('exist').and('contain','Estimator').click()
-        cy.get('.css-budqf6', { timeout: 50000 }).contains('Add section').should('be.visible')                                                                  // Asserting Add color btn is visible
-        cy.get('.jss23 > .MuiButtonBase-root').click()                                                                                                          // Tapping to menu icon to close sidebar
-        cy.get('[data-tour="order.action.new"]').click().wait(500)                                                                                              // Adding fresh order        
-        cy.get('.MuiDialogActions-root > :nth-child(2)').click().wait(500)                                                                                      // Tapping to OK btn
-        cy.get('.css-budqf6').contains('Add section').click({force: true}).wait(500)                                                                              // Tapping to Add color btn
-
-        cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn        
-        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiTypography-h5').contains("Molded").should('be.visible')
-        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Doors").should('be.visible')
-        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Drawer Fronts").should('be.visible')
-        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Mullions Doors").should('be.visible')
-
-        cy.get(':nth-child(3) > .MuiCardContent-root > .MuiTypography-h5').contains("Edged").should('be.visible')
-        cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Doors (Edged)").should('be.visible')
-        cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Mullions Doors (Edged)").should('be.visible')
-
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiTypography-h5').contains("Accessories").should('be.visible')
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Edge Banding").should('be.visible')
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Heat Deflectors and Protectors").should('be.visible')
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Moldings").should('be.visible')
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(4) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Preglued Edge Banding").should('be.visible')
-        cy.get('.MuiList-root > :nth-child(5) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Tambour Roll-ups").should('be.visible')
-
-        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiTypography-h5').contains("5-pieces").should('be.visible')
-        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Doors (5 pieces)").should('be.visible')
-        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Drawer Fronts (5 pieces)").should('be.visible')
-        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Mullions Doors (5 pieces)").should('be.visible')
-
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiTypography-h5').contains("Boards").should('be.visible')
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Boards").should('be.visible')
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Preglued Thermoplastic Sheets").should('be.visible')
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Thermolam").should('be.visible')
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(4) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Thermoplastic Sheets").should('be.visible')
-        //cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root').click().wait(500)                                // Select Edge Banding (Accessories)
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root').click().wait(500)
-        
-        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                         // Tapping to Submit btn
-        cy.get('.MuiAccordionSummary-root').click().wait(500)                                                                                                   // Tapping to Accordian 
-        */
-
-        // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+    it.skip("Verify Order created/submitted Successfully - For Edge Banding Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -1661,8 +1571,8 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
 
     })
 
-    it.skip("Verify Order created/submitted Successfully - For Heat Deflectors and Protectors Category -", function()  {
-
+    it("Verify Order created/submitted Successfully - For Heat Deflectors and Protectors Category -", function()  {
+        /*
         // User Creation Steps:
         cy.viewport(1720, 1080)    
         cy.visit("https://dev.thermoform.net/") 
@@ -1743,60 +1653,314 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
         .contains("Thermolam").should('be.visible')
         cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(4) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
         .contains("Thermoplastic Sheets").should('be.visible')
-        //cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root').click().wait(500)                                // Select Heat Deflectors and Protectors (Accessories)
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root').click().wait(500)
+        */
+
+        cy.viewport(1440, 900)
+        cy.visit("https://dev.thermoform.net/") 
         
+        cy.wait(5000)
+        cy.get('.MuiTypography-root').contains("Identification").should('be.visible').and('exist')                                                              // Asssertion of Identification heading is present 
+        cy.get('.MuiTypography-body2').contains("Forgot Password?").should('be.visible').and('exist')                                                           // Asssertion of Forgot Password? link is present   
+        cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and('not.be.enabled')                                                      // Asssertion of Next btn is disabled        
+        cy.get('input[name="username"]').type("masterfortesting")                                                                                               // Input valid username                        
+        cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and('contain','Next').click().wait(1000)                                   // Click to Next button         
+        cy.get('.MuiTypography-h5').contains("Email Authentication").should('be.visible').and('exist').and('contain','Email').click().wait(1000)                // Asssertion of "Email Authentication" heading is present
+        cy.get('input[name="email"]').should('be.visible').and('exist')                                                                                         // Asssertion of email box is present                       
+        cy.get('[type="submit"]').contains("Send Authentication Link").should('be.visible').and('exist').and('contain','Authentication')                        // Asssertion of Send Authentication Link button is present
+        cy.get('[type="text"]').contains("Password Authentication").should('be.visible').and('exist').and('contain','Password').click().wait(1000)              // Asssertion of "Password Authentication" link is present                       
+        cy.get('.MuiTypography-h5').contains("Password Authentication").should('be.visible').and('exist').and('contain','Password')                             // Asssertion of Password Authentication heading is present
+        cy.get('.MuiTypography-body2').contains("Forgot Password?").should('be.visible').and('exist')                                                           // Asssertion of Forgot Password? link is present   
+        cy.get('[type="text"]').contains("Email Authentication").should('be.visible').and('exist').and('contain','Email')                                       // Asssertion of Email Authentication Link is present                
+        cy.get('input[name="password"]').type("[HPnotebook1@")                                                                                                  // Input valid password        
+        cy.get('[type="submit"]').contains("Submit").should('be.visible').and('exist').and('contain','Submit').click().wait(1000)                               // Click to Submit button for portal login  
+        //cy.get('.css-imv4ws > .MuiAvatar-root').click().wait(1000)                                                                                            // Asserting login button present with its avaialble options	 
+        //cy.get('.css-1stpmc > :nth-child(1) > .MuiListItemText-root > .MuiTypography-root').contains("Français (Canada)").should('be.visible')                // Asserting Français (Canada) text is present and fr language is pre selected 
+        //.and('exist').and('contain','Français').click().wait(1000)                                                         
+        //cy.get('.MuiListItemText-primary').contains("English (Canada)").should('be.visible').and('exist').and('contain','English').click().wait(2000)         // Changing portal language to English
+        //cy.get('body').click().wait(2000)
+        cy.get('.MuiToolbar-root > .MuiTypography-root', { timeout: 100000 }).contains("Home").should('be.visible').and('exist').and('contain','Home')          // Asserting of Home text is present on home page
+        // Cypress will wait up to 25 seconds for the element, but proceed immediately when the element appears
+        cy.get('.MuiTypography-h4').contains("Shortcuts").should('be.visible').and('exist').and('contain','Shortcuts')                                          // Asserting of Shortcuts text is present on home page        
+        cy.get('.MuiIconButton-colorInherit').click({force: true}).wait(1000)                                                                                    // Click to menu icon        
+        cy.get(':nth-child(7) > .MuiButtonBase-root').contains("Customer Center").and('exist').and('contain','Customer').click().wait(2000)                     // Asserting of Customer Center li is present on side menu        
+        //cy.get('#app > main > div > div > div > div.jss61 > ul:nth-child(5) > div').contains("Customer Center")                                               // Asserting of Customer Center li is present on side menu
+        //.and('exist').and('contain','Customer').click().wait(1000)
+        cy.get('[title="Estimator"] > .MuiListItemText-root > .MuiTypography-root').contains("Estimator").should('be.visible')                                  // Asserting of Estimator li is present on side menu
+        .and('exist').and('contain','Estimator').click().wait(1000)
+        
+        //cy.get('[title="Estimator"] > .MuiListItemText-root > .MuiTypography-root').contains("Estimator").should('be.visible')                                // Asserting of Estimator li is present on side menu
+        //.and('exist').and('contain','Estimator').click().wait(10000)        
+        //cy.get('.css-budqf6').contains('Add color').should('be.visible')                                                                                      
+        //cy.get('.css-budqf6', { timeout: 25000 }).contains('Add Section').should('be.visible')                                                                // Asserting Add Section btn is visible
+        cy.get('.MuiBox-root > .MuiButtonBase-root' , { timeout: 50000 }).contains('Add section').should('be.visible')                                          // Asserting Add Section btn is visible
+        cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
+        cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
+        cy.get('.css-budqf6').contains('Add section').click({force: true}).wait(500)                                                                            // Tapping to Add color btn
+        cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
+
+        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiTypography-h5').contains("Molded").should('be.visible')
+        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Doors").should('be.visible')
+        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Drawer Fronts").should('be.visible')
+        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Mullions Doors").should('be.visible')
+
+        cy.get(':nth-child(3) > .MuiCardContent-root > .MuiTypography-h5').contains("Edged").should('be.visible')
+        cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Doors (Edged)").should('be.visible')
+        cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Mullions Doors (Edged)").should('be.visible')
+
+        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiTypography-h5').contains("Accessories").should('be.visible')
+        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Edge Banding").should('be.visible')
+        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Heat Deflectors and Protectors").should('be.visible')
+        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Moldings").should('be.visible')
+        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(4) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Preglued Edge Banding").should('be.visible')
+        cy.get('.MuiList-root > :nth-child(5) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Tambour Roll-ups").should('be.visible')
+
+        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiTypography-h5').contains("5-pieces").should('be.visible')
+        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Doors (5 pieces)").should('be.visible')
+        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Drawer Fronts (5 pieces)").should('be.visible')
+        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Mullions Doors (5 pieces)").should('be.visible')
+
+        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiTypography-h5').contains("Boards").should('be.visible')
+        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Boards").should('be.visible')
+        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Preglued Thermoplastic Sheets").should('be.visible')
+        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Thermolam").should('be.visible')
+        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(4) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
+        .contains("Thermoplastic Sheets").should('be.visible')
+        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root').click().wait(500)                                  // Select Heat Deflectors and Protectors (Accessories)        
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                         // Tapping to Submit btn
+        cy.get('.MuiAlert-message').contains('Please validate the form before submitting the order').should('be.visible')                                       // Assertion for validation message
         cy.get('.MuiAccordionSummary-root').click().wait(500)                                                                                                   // Tapping to Accordian 
-        cy.get('#\\:rt\\:-helper-text').contains('Required value').should('be.visible')                                                                         // Validation of helper text
-        cy.get('#\\:r11\\:-helper-text').contains('Value is not a valid email address').should('be.visible')                                                    // Validation of helper text
-        cy.get('#\\:r17\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
-        cy.get('#\\:rt\\:').type('Automate Heat Deflectors and Protectors')                                                                                     // Name      
-        cy.get('#\\:r11\\:').type('AutomateHeat DeflectorsandProtectors@gmail.com', { force: true })                                                            // Email        
-        cy.get('#\\:r17\\:').type('Heat Deflectors and Protectors', { force: true })                                                                            // Your PO
-        cy.get('#\\:r19\\:').type('XYZ 1', { force: true })                                                                                                     // Their PO        
-        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click()                                                                                         // Tapping to Date icon        
+        //cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)
+        cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true})                                       // Getting side menu back buttton          
+
+        //===================================================>>  // Getting elements for Local Testing  <<===============================================================================================
+        
+        //                                                        Submitting Order with Required values
+        //                                                           >>>>> Adding form data <<<<<      
+        /*
+        cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
+        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
+        cy.contains('label', 'Your PO').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                          // PO Validation of helper text 
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');                                                                    
+
+        cy.contains('label', 'Your full name').next().find('input').type('Automate Heat Deflectors and Protectors')                                             // Name
+        cy.contains('label', 'Your email address').next().find('input').type('HeatDeflectorsandProtectors#gmail.com')                                           // Email
+        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
+        cy.contains('label', 'Your email address').next().find('input').clear()                                                                                 // Clear the invalid input        
+        cy.contains('label', 'Your email address').next().find('input').type('HeatDeflectorsandProtectors@gmail.com')                                           // Email with valid input                  
+        cy.contains('label', 'Your PO').next().find('input').type('Heat Deflectors and Protectors')                                                             // Your PO
+
+        //                                                      >>>>> Adding Automate Heat Deflectors and Protectors category table data required fields <<<<<    
+
+        cy.contains('div', '1 Heat Deflectors and Protectors').click()
+        //cy.get('td.MuiTableCell-root').eq(3).find('input').should('exist').should('have.attr', 'aria-invalid', 'true').closest('.MuiFormControl-root')        // Validation of helper text for invalid input
+        //.find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
+        //cy.get('td.MuiTableCell-root').eq(3).find('.MuiSelect-select').click({ force: true });                                                                
+        //cy.get('[data-value="4200"]').click()                                                                                                                   
+        cy.get('td.MuiTableCell-root').eq(3).find('input').type('3940', { force: true });                                                                       // Model
+        cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                     // Tapping to Print btn
+        cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                // Closing print view                                    
+        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                         // Tapping to Submit btn
+
+
+        //                                                        Submitting Order with both Required and optional values
+        //                                                                    >>>>> Adding form data <<<<<                
+       
+        cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
+        cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
+        cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
+        cy.contains('label', 'Your PO').next().find('input').type('Heat Deflectors and Protectors 11')                                                          // Your PO
+        cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
+        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click({force: true}).wait(1000)                                                                 // Tapping to Date icon        
         cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
             .each(($el) => {
                 if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
-                cy.wrap($el).click()                                                                                                                            // Click the first enabled date                
+                cy.wrap($el).click().wait(500)                                                                                                                  // Click the first enabled date                
                 return false                                                                                                                                    // Break the loop after selecting the date
                 }
             });        
-        cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                            // Adding Note
-
+            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
+            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
+            
             const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
             cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
             .then(input => {                
             expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
             });    
+        //cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                        // Tapping to inch/mm
+        
+        
         cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiSwitch-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                          // Tapping to inch
         cy.get(':nth-child(2) > .MuiFormControlLabel-root > .MuiSwitch-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                          // Tapping to mm
 
         //cy.get('.MuiAccordionSummary-root').click()                                                                                                           // Tapping to Accordian
-        cy.get('#\\:r1d\\:').type('Heat Deflectors and Protectors Section')                                                                                     // Section Name      
-        cy.get('#\\:r1f\\:').type('Automating Heat Deflectors and Protectors')                                                                                  // Section Note        
-        
-        //Heat Deflectors and Protectors (Accessories)
-        cy.get('.MuiAccordionSummary-root').click()                                                                                                             // Select Heat Deflectors and Protectors (Accessories)
-        //cy.get('#\\:r1k\\:-helper-text').contains('Invalid value').should('be.visible')                                                                       // Validation of helper text
-        cy.get('#\\:r1i\\:').type('20')                                                                                                                         // Qty
-        cy.get('#\\:r1l\\:-helper-text').contains('Invalid value').should('be.visible')                                                                         // Validation of helper text
-        cy.get('#\\:r1j\\:').type('3940')                                                                                                                       // Modele
-        cy.get('#\\:r1n\\:').type('Testing by Automated Script')                                                                                                // comment   
-        
-        cy.get('[colspan="6"] > .MuiButtonBase-root').click()                                                                                                   // Adding second row                
-        cy.get('#\\:r1r\\:').type('30')                                                                                                                         // Qty
-        cy.get('#\\:r1s\\:').should('have.value', '3940')                                                                                                       // Assertion for Modele    
-        cy.get('#\\:r20\\:').type('Testing by Automated Scripting')                                                                                             // comment   
+        //                                                      >>>>> Adding Heat Deflectors and Protectors category table data  <<<<<        
 
-        cy.get('[aria-label="Save"] > .MuiButtonBase-root').click().wait(5000)                                                                                  // Tapping to save btn
-        cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                     // Tapping to Print btn
-        cy.get('#\\:rp\\: > .MuiButtonBase-root').click()                                                                                                       // Closing print view
-        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
-        cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                              // Print order    
-        cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view
+        cy.get('.css-budqf6').contains('Add section').click({force: true}).wait(1000)                                                                           // Tapping to Add color btn
+        cy.contains('label', 'Section name').next().find('input').should('be.visible').type('Heat Deflectors and Protectors');                                  // Section Name        
+        //cy.contains('label', 'Notes').eq(1).parent().find('input').type('Automating Molded Category with Doors Section', { force: true });                    // Section Notes                  
+        cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
+        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root').click().wait(500)                                  // Select Heat Deflectors and Protectors (Accessories)        
+        cy.wait(2000)                   
+        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).should('have.length.greaterThan', 0).then(($rowsBefore) => {
+        const initialRowCount = $rowsBefore.length;
+        cy.wrap($rowsBefore[0]).within(() => {
+        cy.get('td.MuiTableCell-root').each(($td) => {
+            cy.wrap($td).invoke('text').then((tdValue) => {
+            tdValue = tdValue.trim();
+
+                if (tdValue === '1.') {
+                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('3922', { force: true });                                                           // Mode
+                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('Testing by Automation Script 1', { force: true });                                 // Comments        
+                }
+            });
+        });
+        });
+        cy.get('[colspan="6"] > .MuiButtonBase-root').click().wait(2000)                                                                                        // Adding second item
+        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).then(($rowsAfter) => {
+        const newRow = $rowsAfter[$rowsAfter.length - 1]; // Get the last (newly added) row
+        cy.wrap(newRow).within(() => {
+        cy.get('td.MuiTableCell-root').each(($td) => {
+        cy.wrap($td).invoke('text').then((tdValue) => {
+        tdValue = tdValue.trim();
+                if (tdValue === '2.') {
+                    cy.get('td.MuiTableCell-root').eq(2).find('input').type('10', { force: true });                                                             // Qty
+                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('3922', { force: true });                                                           // Mode
+                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('Testing by Automation Script 1', { force: true });                                 // Comments                                                     
+                }        
+            });
+        });
+    });
     })
+    })
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click()                                                                                       // Tapping to Submit btn
+    //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                // Print order    
+    cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
+    cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view
+    */
+//=====================================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
+
+        cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
+        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
+        cy.contains('label', 'Your PO').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                          // PO Validation of helper text 
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');                                                                    
+
+        cy.contains('label', 'Your full name').next().find('input').type('Automate Heat Deflectors and Protectors')                                             // Name
+        cy.contains('label', 'Your email address').next().find('input').type('HeatDeflectorsandProtectors#gmail.com')                                           // Email
+        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
+        cy.contains('label', 'Your email address').next().find('input').clear()                                                                                 // Clear the invalid input        
+        cy.contains('label', 'Your email address').next().find('input').type('HeatDeflectorsandProtectors@gmail.com')                                           // Email with valid input                  
+        cy.contains('label', 'Your PO').next().find('input').type('Heat Deflectors and Protectors')                                                             // Your PO
+
+        //                                                      >>>>> Adding Automate Heat Deflectors and Protectors category table data required fields <<<<<    
+
+        cy.contains('div', '1 Heat Deflectors and Protectors').click()
+        //cy.get('td.MuiTableCell-root').eq(3).find('input').should('exist').should('have.attr', 'aria-invalid', 'true').closest('.MuiFormControl-root')        // Validation of helper text for invalid input
+        //.find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
+        //cy.get('td.MuiTableCell-root').eq(3).find('.MuiSelect-select').click({ force: true });                                                                
+        //cy.get('[data-value="4200"]').click()                                                                                                                   
+        cy.get('td.MuiTableCell-root').eq(3).find('input').type('3940', { force: true });                                                                       // Model
+        cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                     // Tapping to Print btn
+        cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                // Closing print view                                    
+        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                         // Tapping to Submit btn
+
+
+        //                                                        Submitting Order with both Required and optional values
+        //                                                                    >>>>> Adding form data <<<<<                
+       
+        cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
+        cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
+        cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
+        cy.contains('label', 'Your PO').next().find('input').type('Heat Deflectors and Protectors 11')                                                          // Your PO
+        cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
+        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click({force: true}).wait(1000)                                                                 // Tapping to Date icon        
+        cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
+            .each(($el) => {
+                if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
+                cy.wrap($el).click().wait(500)                                                                                                                  // Click the first enabled date                
+                return false                                                                                                                                    // Break the loop after selecting the date
+                }
+            });        
+            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
+            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
+            
+            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
+            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
+            .then(input => {                
+            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
+            });    
+        //cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                        // Tapping to inch/mm
+        
+        
+        cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiSwitch-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                          // Tapping to inch
+        cy.get(':nth-child(2) > .MuiFormControlLabel-root > .MuiSwitch-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                          // Tapping to mm
+
+        //cy.get('.MuiAccordionSummary-root').click()                                                                                                           // Tapping to Accordian
+        //                                                      >>>>> Adding Heat Deflectors and Protectors category table data  <<<<<        
+
+        cy.get('.css-budqf6').contains('Add section').click({force: true}).wait(1000)                                                                           // Tapping to Add color btn
+        cy.contains('label', 'Section name').next().find('input').should('be.visible').type('Heat Deflectors and Protectors');                                  // Section Name        
+        //cy.contains('label', 'Notes').eq(1).parent().find('input').type('Automating Molded Category with Doors Section', { force: true });                    // Section Notes                  
+        cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
+        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root').click().wait(500)                                  // Select Heat Deflectors and Protectors (Accessories)        
+        cy.wait(2000)                   
+        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).should('have.length.greaterThan', 0).then(($rowsBefore) => {
+        const initialRowCount = $rowsBefore.length;
+        cy.wrap($rowsBefore[0]).within(() => {
+        cy.get('td.MuiTableCell-root').each(($td) => {
+            cy.wrap($td).invoke('text').then((tdValue) => {
+            tdValue = tdValue.trim();
+
+                if (tdValue === '1.') {
+                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('3922', { force: true });                                                           // Mode
+                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('Testing by Automation Script 1', { force: true });                                 // Comments        
+                }
+            });
+        });
+        });
+        cy.get('[colspan="6"] > .MuiButtonBase-root').click().wait(2000)                                                                                        // Adding second item
+        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).then(($rowsAfter) => {
+        const newRow = $rowsAfter[$rowsAfter.length - 1]; // Get the last (newly added) row
+        cy.wrap(newRow).within(() => {
+        cy.get('td.MuiTableCell-root').each(($td) => {
+        cy.wrap($td).invoke('text').then((tdValue) => {
+        tdValue = tdValue.trim();
+                if (tdValue === '2.') {
+                    cy.get('td.MuiTableCell-root').eq(2).find('input').type('10', { force: true });                                                             // Qty
+                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('3922', { force: true });                                                           // Mode
+                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('Testing by Automation Script 1', { force: true });                                 // Comments                                                     
+                }        
+            });
+        });
+    });
+    })
+    })
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click()                                                                                       // Tapping to Submit btn
+    //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                // Print order    
+    cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
+    cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view    
+    })        
 
     it.skip("Verify Order created/submitted Successfully - For Moldings Category -", function()  {
 
