@@ -1248,7 +1248,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
 
 describe('Estimator Order Creation/Edition/Submission For Accessories Category Suit', function() {
 
-    it.skip("Verify Order created/submitted Successfully - For Edge Banding Category -", function()  {
+    it("Verify Order created/submitted Successfully - For Edge Banding Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -1571,7 +1571,7 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
 
     })
 
-    it.skip("Verify Order created/submitted Successfully - For Heat Deflectors and Protectors Category -", function()  {
+    it("Verify Order created/submitted Successfully - For Heat Deflectors and Protectors Category -", function()  {
         
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -1880,7 +1880,7 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
     cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view    
     })        
 
-    it.skip("Verify Order created/submitted Successfully - For Moldings Category -", function()  {
+    it("Verify Order created/submitted Successfully - For Moldings Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -2194,7 +2194,7 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
     
     })
 
-    it.skip("Verify Order created/submitted Successfully - For Preglued Edge Banding Category -", function()  {
+    it("Verify Order created/submitted Successfully - For Preglued Edge Banding Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -2526,147 +2526,6 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
 })
 
     it("Verify Order created/submitted Successfully - For Tambour Roll-ups Category -", function()  {
-        /*
-        // User Creation Steps:
-        cy.viewport(1720, 1080)    
-        cy.visit("https://dev.thermoform.net/") 
-        cy.wait(5000)
-        cy.get('.MuiTypography-root').contains("Identification").should('be.visible').and('exist')                                                              // Asssertion of Identification heading is present 
-        cy.get('.MuiTypography-body2').contains("Forgot Password?").should('be.visible').and('exist')                                                           // Asssertion of Forgot Password? link is present   
-        cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and('not.be.enabled')                                                      // Asssertion of Next btn is disabled        
-        cy.get('input[name="username"]').type("masterfortesting")                                                                                               // Input valid username                        
-        cy.get('[type="submit"]').contains("Next").should('be.visible').and('exist').and('contain', 'Next').click()                                             // Click to Next button         
-        cy.get('.MuiTypography-h5').contains("Email Authentication").should('be.visible').and('exist').and('contain','Email').click()                           // Asssertion of "Email Authentication" heading is present
-        cy.get('input[name="email"]').should('be.visible').and('exist')                                                                                         // Asssertion of email box is present                       
-        cy.get('[type="submit"]').contains("Send Authentication Link").should('be.visible').and('exist').and('contain','Authentication')                        // Asssertion of Send Authentication Link button is present
-        cy.get('[type="text"]').contains("Password Authentication").should('be.visible').and('exist').and('contain','Password').click()                         // Asssertion of "Password Authentication" link is present                       
-        cy.get('.MuiTypography-h5').contains("Password Authentication").should('be.visible').and('exist').and('contain','Password')                             // Asssertion of Password Authentication heading is present
-        cy.get('.MuiTypography-body2').contains("Forgot Password?").should('be.visible').and('exist')                                                           // Asssertion of Forgot Password? link is present   
-        cy.get('[type="text"]').contains("Email Authentication").should('be.visible').and('exist').and('contain','Email')                                       // Asssertion of Email Authentication Link is present                
-        cy.get('input[name="password"]').type("[HPnotebook1@")                                                                                                  // Input valid password        
-        cy.get('[type="submit"]').contains("Submit").should('be.visible').and('exist').and('contain','Submit').click()                                          // Click to Submit button for portal login  
-        //cy.get('.css-imv4ws > .MuiAvatar-root').click().wait(1000)                                                                                            // Asserting login button present with its avaialble options	 
-        //cy.get('.css-1stpmc > :nth-child(1) > .MuiListItemText-root > .MuiTypography-root').contains("Français (Canada)").should('be.visible')                // Asserting Français (Canada) text is present and fr language is pre selected 
-        //.and('exist').and('contain','Français').click().wait(1000)                                                         
-        //cy.get('.MuiListItemText-primary').contains("English (Canada)").should('be.visible').and('exist').and('contain','English').click().wait(2000)         // Changing portal language to English
-        //cy.get('body').click().wait(2000)
-        cy.get('.MuiToolbar-root > .MuiTypography-root', { timeout: 25000 }).contains("Home").should('be.visible').and('exist').and('contain','Home')           // Asserting of Home text is present on home page
-        cy.get('.MuiTypography-h4').contains("Shortcuts").should('be.visible').and('exist').and('contain','Shortcuts')                                          // Asserting of Shortcuts text is present on home page        
-        cy.get('.MuiIconButton-colorInherit').click({force: true})                                                                                              // Click to menu icon
-        cy.get(':nth-child(7) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root').contains("Customer Center").should('be.visible')            // Asserting of Customer Center li is present on side menu
-        .and('exist').and('contain','Customer').click().wait(1000)        
-        cy.get('[title="Estimator"] > .MuiListItemText-root > .MuiTypography-root').contains("Estimator").should('be.visible')                                  // Asserting of Estimator li is present on side menu
-        .and('exist').and('contain','Estimator').click()
-        cy.get('.css-budqf6', { timeout: 25000 }).contains('Add color').should('be.visible')                                                                    // Asserting Add color btn is visible
-        cy.get('.jss23 > .MuiButtonBase-root').click()                                                                                                          // Tapping to menu icon to close sidebar
-        cy.get('[data-tour="order.action.new"]').click().wait(500)                                                                                              // Adding fresh order        
-        cy.get('.MuiDialogActions-root > :nth-child(2)').click().wait(500)                                                                                      // Tapping to OK btn
-        cy.get('.css-budqf6').contains('Add color').click({force: true}).wait(500)                                                                              // Tapping to Add color btn
-
-        cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn        
-        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiTypography-h5').contains("Molded").should('be.visible')
-        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Doors").should('be.visible')
-        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Drawer Fronts").should('be.visible')
-        cy.get(':nth-child(1) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Mullions Doors").should('be.visible')
-
-        cy.get(':nth-child(3) > .MuiCardContent-root > .MuiTypography-h5').contains("Edged").should('be.visible')
-        cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Doors (Edged)").should('be.visible')
-        cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Mullions Doors (Edged)").should('be.visible')
-
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiTypography-h5').contains("Accessories").should('be.visible')
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Edge Banding").should('be.visible')
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Heat Deflectors and Protectors").should('be.visible')
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Moldings").should('be.visible')
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(4) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Preglued Edge Banding").should('be.visible')
-        cy.get('.MuiList-root > :nth-child(5) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Tambour Roll-ups").should('be.visible')
-
-        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiTypography-h5').contains("5-pieces").should('be.visible')
-        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Doors (5 pieces)").should('be.visible')
-        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Drawer Fronts (5 pieces)").should('be.visible')
-        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Mullions Doors (5 pieces)").should('be.visible')
-
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiTypography-h5').contains("Boards").should('be.visible')
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Boards").should('be.visible')
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Preglued Thermoplastic Sheets").should('be.visible')
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Thermolam").should('be.visible')
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(4) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root')
-        .contains("Thermoplastic Sheets").should('be.visible')
-        //cy.get(':nth-child(3) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root').click().wait(500)                                // Select Tambour Roll-ups (Accessories)
-        cy.get(':nth-child(5) > .MuiCardContent-root > .MuiList-root > :nth-child(5) > .MuiButtonBase-root').click().wait(500)
-        
-        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                         // Tapping to Submit btn
-        cy.get('.MuiAccordionSummary-root').click().wait(500)                                                                                                   // Tapping to Accordian 
-        cy.get('#\\:rt\\:-helper-text').contains('Required value').should('be.visible')                                                                         // Validation of helper text
-        cy.get('#\\:r11\\:-helper-text').contains('Value is not a valid email address').should('be.visible')                                                    // Validation of helper text
-        cy.get('#\\:r17\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text    
-        cy.get('#\\:rt\\:').type('Automate Tambour Roll-ups')                                                                                                   // Name      
-        cy.get('#\\:r11\\:').type('AutomateTambourRoll-ups@gmail.com', { force: true })                                                                         // Email        
-        cy.get('#\\:r17\\:').type('Tambour Roll-ups', { force: true })                                                                                          // Your PO
-        cy.get('#\\:r19\\:').type('XYZ 1', { force: true })                                                                                                     // Their PO        
-        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click()                                                                                         // Tapping to Date icon        
-        cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
-            .each(($el) => {
-                if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
-                cy.wrap($el).click()                                                                                                                            // Click the first enabled date                
-                return false                                                                                                                                    // Break the loop after selecting the date
-                }
-            });        
-        cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                            // Adding Note
-
-            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            .then(input => {                
-            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            });    
-        cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiSwitch-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                          // Tapping to inch
-        cy.get(':nth-child(2) > .MuiFormControlLabel-root > .MuiSwitch-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click()                          // Tapping to mm
-
-        //cy.get('.MuiAccordionSummary-root').click()                                                                                                           // Tapping to Accordian
-        cy.get('#\\:r1d\\:').type('Tambour Roll-ups Section')                                                                                                   // Section Name      
-        cy.get('#\\:r1f\\:').type('Automating Tambour Roll-ups')                                                                                                // Section Note        
-        
-        //Tambour Roll-ups (Accessories)
-        cy.get('.MuiAccordionSummary-root').click()                                                                                                             // Select Tambour Roll-ups (Accessories)
-        cy.get('#\\:r1i\\:').type('5')                                                                                                                          // Qty
-        cy.get('#\\:r1k\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
-        cy.get('#\\:r1k\\:').type('20')                                                                                                                         // Width
-        cy.get('#\\:r1m\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
-        cy.get('#\\:r1m\\:').type('45')                                                                                                                         // Height
-        cy.get('#\\:r1p\\:-helper-text').contains('Required value').should('be.visible')                                                                        // Validation of helper text
-        cy.get('#\\:r1n\\:').type('8141')                                                                                                                       // Color
-        cy.get('#\\:r1r\\:').type('Testing by Automated Script')                                                                                                // comment   
-        
-        cy.get('[colspan="8"] > .MuiButtonBase-root').click()                                                                                                   // Adding second row                
-        cy.get('#\\:r1v\\:').type('15')                                                                                                                         // Qty
-        cy.get('#\\:r21\\:').type('305')                                                                                                                        // Width
-        cy.get('#\\:r23\\:').type('310')                                                                                                                        // Height
-        cy.get('#\\:r24\\:').should('have.value', '8141')                                                                                                       // Assertion for Color    
-        cy.get('#\\:r28\\:').type('Testing by Automated Scripting')                                                                                             // comment   
-
-        cy.get('[aria-label="Save"] > .MuiButtonBase-root').click().wait(5000)                                                                                  // Tapping to save btn
-        cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                     // Tapping to Print btn
-        
-        cy.get('#\\:rp\\: > .MuiButtonBase-root').click()                                                                                                       // Closing print view
-        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
-        cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                              // Print order    
-        cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                             // Closing print view
-    */
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
