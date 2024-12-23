@@ -1967,7 +1967,7 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
 
 describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit', function() {
     
-    it.skip("Verify Order created/submitted Successfully - For Doors Category -", function()  {        
+    it("Verify Order created/submitted Successfully - For Doors Category -", function()  {        
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -2361,7 +2361,7 @@ describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit
             
     })
    
-    it.skip("Verify Order created/submitted Successfully - For Drawer Fronts Category -", function()  {
+    it("Verify Order created/submitted Successfully - For Drawer Fronts Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
