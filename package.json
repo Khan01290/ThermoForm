@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test:Edged-Cat-Test": "npx cypress run --spec cypress/e2e/Thermo/Estimator/Estimator-5-Pieces.cy.js --record --headed --browser electron",
+    "test:Edged-Cat-Test": "npx cypress run --spec cypress/e2e/Thermo/Estimator/Estimator-Boards.cy.js --record --headed --browser electron",
     "debug": "npx cypress open"
   },
   "author": "Shahzad Khan",
