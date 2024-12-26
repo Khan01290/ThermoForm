@@ -1,0 +1,104 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-12-26T17:52:57.059Z",
+    "end": "2024-12-26T17:53:57.853Z",
+    "duration": 60794,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "03724b00-33e1-4ede-abf0-a4240861b258",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Thermo\\User-Cases\\CreateUser-OTPAuth.cy.js",
+      "file": "cypress\\e2e\\Thermo\\User-Cases\\CreateUser-OTPAuth.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9b0da8d2-2fb9-44e5-ba4f-618c88fe3a21",
+          "title": "Create User With OTP Auth & Login Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify that User created using OTP Auth and Login Successfully",
+              "fullTitle": "Create User With OTP Auth & Login Tests Verify that User created using OTP Auth and Login Successfully",
+              "timedOut": null,
+              "duration": 58535,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\Thermo\\\\User-Cases\\\\CreateUser-OTPAuth.cy.js\\\\Create User With OTP Auth & Login Tests -- Verify that User created using OTP Auth and Login Successfully (failed).png\"\n    ]\n  ]\n}",
+              "code": "cy.viewport(1920, 1080);\ncy.visit(\"https://dev.thermoform.net/\");\ncy.wait(5000);\ncy.get('.MuiTypography-root').contains(\"Identification\").should('be.visible').and('exist'); // Asssertion of Identification Text  \ncy.get('.MuiTypography-body2').contains(\"Forgot Password?\").should('be.visible').and('exist'); // Asssertion of Forgot Password? Text   \ncy.get('[type=\"submit\"]').contains(\"Next\").should('be.visible').and('exist').and('not.be.enabled').wait(500); // Asssertion of Next btn is disabled              \ncy.get('input[name=\"username\"]').type(\"masterfortesting\").wait(500); // Input valid username                        \ncy.get('[type=\"submit\"]').contains(\"Next\").should('be.visible').and('exist').and('contain', 'Next').click().wait(500); // Click to Next button         \ncy.get('.MuiTypography-h5').contains(\"Email Authentication\").should('be.visible').and('exist').and('contain', 'Email').click().wait(500); // Asssertion of \"Email Authentication\" heading is present\ncy.get('input[name=\"email\"]').should('be.visible').and('exist').wait(500); // Asssertion of email box is present                       \ncy.get('[type=\"submit\"]').contains(\"Send Authentication Link\").should('be.visible').and('exist').and('contain', 'Authentication').wait(500); // Asssertion of Send Authentication Link button is present\ncy.get('[type=\"text\"]').contains(\"Password Authentication\").should('be.visible').and('exist').and('contain', 'Password').click().wait(500); // Asssertion of \"Password Authentication\" link is present and clicked                       \ncy.get('.MuiTypography-h5').contains(\"Password Authentication\").should('be.visible').and('exist').and('contain', 'Password').click().wait(500); // Asssertion of Password Authentication heading is present        \ncy.get('[type=\"text\"]').contains(\"Email Authentication\").should('be.visible').and('exist').and('contain', 'Email').wait(500); // Asssertion of Email Authentication Link is present                \ncy.get('input[name=\"password\"]').type(\"[HPnotebook1@\").wait(500); // Input valid password\ncy.get('[type=\"submit\"]').contains(\"Submit\").should('be.visible').and('exist').and('contain', 'Submit').click().wait(30000); // Click to Submit button          \ncy.get('.css-imv4ws > .MuiAvatar-root').click().wait(1000); // Asserting login button present with its avaialble options\t \ncy.get('.css-1stpmc > :nth-child(1) > .MuiListItemText-root > .MuiTypography-root').contains(\"Français (Canada)\").should('be.visible') // Asserting Français (Canada) text is present and fr language is pre selected \n.and('exist').and('contain', 'Français').click().wait(1000);\ncy.get('.MuiListItemText-primary').contains(\"English (Canada)\").should('be.visible').and('exist').and('contain', 'English').click().wait(1000); // Changing portal language to English\ncy.get('body').click().wait(1000);\ncy.get('.MuiToolbar-root > .MuiTypography-root').contains(\"Home\").should('be.visible').and('exist').and('contain', 'Home').wait(500); // Asserting of Home text is present on home page\ncy.get('.MuiTypography-h4').contains(\"Shortcuts\").should('be.visible').and('exist').and('contain', 'Shortcuts').wait(500); // Asserting of Shortcuts text is present on home page\ncy.get(':nth-child(1) > .css-zidduc > .label > .MuiTypography-root').contains(\"Orders\").should('be.visible').and('exist') // Asserting of Orders text is present on home page\n.and('contain', 'Orders').wait(500);\ncy.get(':nth-child(2) > .css-zidduc > .label > .MuiTypography-root').contains(\"Cartables (Milling)\").should('be.visible').and('exist') // Asserting of Cartables (Milling) text is present on home page\n.and('contain', 'Cartables').click().wait(500);\ncy.get('.MuiIconButton-colorInherit').click({\n  force: true\n}); // Click to menu icon\ncy.get(':nth-child(9) > .MuiButtonBase-root > .MuiListItemText-root > .MuiTypography-root').contains(\"Users & Roles\").should('be.visible') // Asserting of Users & Roles li is present on side menu\n.and('exist').and('contain', 'Roles').click().wait(500);\ncy.get('[title=\"User Management\"] > .MuiListItemText-root > .MuiTypography-root').contains(\"User Management\").should('be.visible') // Asserting of User Management li is present on side menu\n.and('exist').and('contain', 'User').click().wait(5000);\ncy.get('.MuiToolbar-root > .MuiTypography-root').contains(\"User management\").should('be.visible').and('exist').and('contain', 'User'); // Asserting of User Management heading is present as page heading        \ncy.get('.MuiIconButton-edgeStart').click().wait(500); // Asserting +(add user) icon is present on side menu        \ncy.get('.jss96 > .MuiTypography-root').contains(\"New user\").should('be.visible').and('exist').and('contain', 'New'); // Asserting of New user heading is present on adding new user popup\ncy.get('button[disabled]').contains(\"Create\").should('be.visible').and('exist').and('contain', 'Create').should('not.be.enabled'); // Asserting of create button is present and disabled         \ncy.get('#\\\\:rg\\\\:').type('Yo'); // Input Invalid User First Name\ncy.get('#\\\\:rg\\\\:').blur(); // Focus away from User First Name Name input box\ncy.get('#\\\\:rg\\\\:-helper-text').should('have.css', 'color', 'rgb(211, 47, 47)').contains('Minimum required length is 3') // Assert that the color property is red and Check validation message is present\n.should('be.visible').and('exist').and('contain', 'Minimum required length');\ncy.get('#\\\\:rg\\\\:').clear(); // Making clear User First Name\ncy.get('#\\\\:rg\\\\:').type('Automated Test'); // Input valid User First Name\ncy.get('#\\\\:rg\\\\:-helper-text').should('have.css', 'color', 'rgba(0, 0, 0, 0.6)').contains('Minimum required length is 3') // Assert that the color property is GREEN and Check if the text is present\n.should('be.visible').and('exist').and('contain', 'Minimum required length');\ncy.get('button[disabled]').contains(\"Create\").should('be.visible').and('exist').and('contain', 'Create').should('not.be.enabled'); // Asserting of create button is present and disabled\ncy.get('#\\\\:rh\\\\:').type('Yo'); // Input Invalid User Last Name\ncy.get('#\\\\:rh\\\\:').blur(); // Focus away from User Last Name input box\ncy.get('#\\\\:rh\\\\:-helper-text').should('have.css', 'color', 'rgb(211, 47, 47)').contains('Minimum required length is 3') // Assert that the color property is red and Check if the text is present\n.should('be.visible').and('exist').and('contain', 'Minimum required length');\ncy.get('#\\\\:rh\\\\:').clear(); // Making clear User Last Name\ncy.get('#\\\\:rh\\\\:').type('By QA OTP').wait(2000); // Input valid User Last Name\ncy.get('#\\\\:rh\\\\:-helper-text').should('have.css', 'color', 'rgba(0, 0, 0, 0.6)').contains('Minimum required length is 3') // Assert that the color property is GREEN and Check if the text is present\n.should('be.visible').and('exist').and('contain', 'Minimum required length');\ncy.get('button[disabled]').contains(\"Create\").should('be.visible').and('exist').and('contain', 'Create').should('not.be.enabled'); // Asserting of create button is present and disabled\nlet usrnmToStoree;\ncy.get('#\\\\:ri\\\\:').invoke('val').then(val => {\n  usrnmToStoree = val.trim(); // Trim any leading or trailing whitespace\n  cy.log(usrnmToStoree);\n  cy.get('#\\\\:rj\\\\:').type('abc'); // Input Invalid Email\n  cy.get('#\\\\:rj\\\\:').blur(); // Focus away from Email input box\n  cy.get('#\\\\:rj\\\\:-helper-text').should('have.css', 'color', 'rgb(211, 47, 47)').contains('Email is invalid') // Assert that the color property is red and Check if the text is present\n  .should('be.visible').and('exist').and('contain', 'Email is invalid');\n  cy.get('#\\\\:rj\\\\:').clear(); // Making clear Email\n  cy.get('#\\\\:rj\\\\:').type('automtstotp@yopmail.com'); // Input valid Email        \n  cy.get('#\\\\:rk\\\\:').click(); // Selecting Authentication method from dropdown\n  cy.contains('li', 'OTP').click().wait(500); // Selecting OTP Authentication method from dropdown\n  cy.get('.jss103 > .MuiFormControlLabel-root > .MuiTypography-root').contains('User can log in') // Asserting checkbox \"You can log in\" and checked\n  .should('be.visible').and('exist').and('contain', 'log in').click().wait(500);\n  cy.get('[type=\"button\"]').contains(\"Create\").should('be.visible').and('exist').and('contain', 'Create').click().wait(5000); // Asserting of create buttom is present and clicked\n  cy.get('[tabindex=\"0\"][role=\"button\"][aria-expanded=\"false\"][aria-haspopup=\"listbox\"].MuiSelect-select.MuiSelect-outlined.MuiInputBase-input.MuiOutlinedInput-input.css-bsoier').contains('OTP'); // Asserting that OTP is selected on user detail page\n  cy.contains('span.MuiTypography-root', 'User required to change password') // Asserting that \"User required to change password\" is disabled\n  .prev() // Move to the previous sibling which is the checkbox input element\n  .should('not.be.enabled'); // Assert that the checkbox is disabled\n  cy.contains('span.MuiTypography-root', 'User can log in') // Asserting that \"User can log in\" is enabled\n  .prev() // Move to the previous sibling which is the checkbox input element\n  .should('not.be.disabled'); // Assert that the checkbox is enabled\n  //cy.get('#\\\\:r6\\\\:').clear()   // username on detail page\n  //cy.get('#\\\\:r7\\\\:').clear()   // firstname on detail page\n  //cy.get('#\\\\:r8\\\\:').clear()   // lastname on detail page\n  //cy.get('#\\\\:r9\\\\:').clear()   // email on detail page\n  //cy.get('.MuiGrid-grid-md-12 > .MuiInputBase-root > .MuiSelect-select').clear()   // otp is selected on detail page\n  //cy.get('.jss126 > .MuiFormControlLabel-root > .MuiTypography-root').clear()   // chage password option disabled on detail page\n  //cy.get('PrivateSwitchBase-input').clear()   // chage password option disabled on detail page using class        \n  //cy.get(':nth-child(3) > .MuiFormControlLabel-root > .MuiTypography-root').clear()   // user login option is enabled on detail page\n  cy.origin('https://yopmail.com/en/', () => {\n    // Moving to yop email system\n    cy.visit(\"https://yopmail.com/en/\"); // visiting the yop email site\n    cy.get('input[name=\"login\"]').type(\"automtstotp@yopmail.com\").wait(500); // input email in yop email\n    cy.get('#refreshbut > .md > .material-icons-outlined').click().wait(3000); // Click to login button            \n  });\n  //Login Using Email Authentiction\n  //cy.viewport(1920, 1080)    \n  cy.visit(\"http://dev.thermoform.net/\").wait(5000); // visiting the thermo portal\n  cy.get('.css-imv4ws > .MuiAvatar-root').click().wait(1000); // Asserting login button present with its avaialble options\t \n  cy.get(':nth-child(6) > .MuiListItemIcon-root').and('exist').click().wait(1000); // Asserting Sign out text is present and clicked\n  cy.clearAllCookies(); // clearAllCookies                                                                                                                    \n  cy.clearAllLocalStorage(); // clearAllLocalStorage    \n  cy.clearAllSessionStorage(); // clearAllSessionStorage\n  cy.visit(\"http://dev.thermoform.net/\").wait(5000);\n  cy.get('.MuiTypography-h5').contains(\"Identification\").should('be.visible').and('exist').wait(500); // Asssertion of Identification Text        \n  cy.get('input[name=\"username\"]').type(\"abdef##$\").wait(500); // input invalid username                \n  cy.get('[type=\"submit\"]').contains(\"Next\").should('be.visible').and('exist').and('contain', 'Next').click().wait(500); // Click to Next button        \n  cy.get('.MuiFormHelperText-root').contains(\"Invalid Username\").should('be.visible').and('exist').and('contain', 'Username').wait(500); // Asssertion of invalid username error alert\n  cy.get('input[name=\"username\"]').clear().wait(500); // Clear the input username box        \n  cy.get('input[name=\"username\"]').type(usrnmToStoree).wait(500); // Input valid username                        \n});\ncy.get('[type=\"submit\"]').contains(\"Next\").should('be.visible').and('exist').and('contain', 'Next').click().wait(500); // Click to SignUp button        \ncy.get('.MuiTypography-root').contains(\"Email Authentication\").should('be.visible').and('exist').and('contain', 'Email'); // Asssertion of Identification Text\ncy.get('[type=\"submit\"]').contains(\"Send Authentication Link\").should('be.visible').and('exist').and('contain', 'Authentication').click().wait(500); // Click to Next button\ncy.get('.MuiPaper-root > .MuiTypography-root').contains(\"One time password\").should('be.visible').and('exist').and('contain', 'password'); // Asssertion of One time password Text        \ncy.get('input[name=\"pin\"]').type(\"232323\").wait(500); // Input invalid pin                        \ncy.get('[type=\"submit\"]').contains(\"Verify\").should('be.visible').and('exist').and('contain', 'Verify').click().wait(2000); // Click to Verify button        \ncy.origin('https://yopmail.com/en/', () => {\n  // Setting origin for yop email\n  cy.visit(\"https://yopmail.com/en/\"); // visiting the yop email site\n  cy.get('input[name=\"login\"]').type(\"automtstotp@yopmail.com\").wait(500); // Login with this email\n  cy.get('#refreshbut > .md > .material-icons-outlined').click().wait(3000); // Click to login btn\n  cy.get('#ifmail').then($iframe => {\n    const iframeDoc = $iframe.contents();\n    return cy.wrap(iframeDoc.find('strong')).invoke('text');\n  }).then(text => {\n    textFromIframe = text || ''; // Ensure a default value (empty string) if 'text' is undefined\n    cy.log('Text from iframe:', textFromIframe);\n    // Save the textFromIframe value using cy.task()\n    cy.task('saveVariable', {\n      key: 'textFromIframe',\n      value: textFromIframe\n    });\n    // Move to the second origin\n    cy.visit(\"https://dev.thermoform.net/auth/pin/verify?callbackUrl=https%3A%2F%2Fdev.thermoform.net%2F\");\n  });\n});\n// On the second origin\ncy.task('getVariable', 'textFromIframe').then(receivedTextFromIframe => {\n  // Use the receivedTextFromIframe variable as needed in the second origin\n  cy.log('Received Text from iframe:', receivedTextFromIframe); // Recieving PIN from iframe\n  cy.get('input[name=\"pin\"]').type(receivedTextFromIframe).wait(1000); // Input recieved pin\n  cy.get('[type=\"submit\"]').contains(\"Verify\").should('be.visible').and('exist').and('contain', 'Verify').click().wait(8000); // Tapping to verify buton\n  cy.get('.css-imv4ws > .MuiAvatar-root').click().wait(1000); // Asserting login button present with its avaialble options\t \n  cy.get(':nth-child(6) > .MuiListItemIcon-root').and('exist').click().wait(1000); // Asserting Sign out text is present and clicked\n  cy.clearAllCookies(); // clearAllCookies                                                                                                                    \n  cy.clearAllLocalStorage(); // clearAllLocalStorage    \n  cy.clearAllSessionStorage();\n  cy.visit(\"http://dev.thermoform.net/\").wait(5000);\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Français (Canada)' within the element: <span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-yb0lig> but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Français (Canada)' within the element: <span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-yb0lig> but never did.\n    at Context.eval (webpack://cypressauto/./cypress/e2e/Thermo/User-Cases/CreateUser-OTPAuth.cy.js:25:122)",
+                "diff": null
+              },
+              "uuid": "8a68c071-4024-4dc8-a0fd-4ed1b03895f5",
+              "parentUUID": "9b0da8d2-2fb9-44e5-ba4f-618c88fe3a21",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "8a68c071-4024-4dc8-a0fd-4ed1b03895f5"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 58535,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

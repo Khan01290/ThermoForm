@@ -5,6 +5,13 @@ module.exports = defineConfig({
   projectId: "dijb3w",
   pageLoadTimeout: 120000, // Set the page load timeout to 120 seconds (2 minutes)
   reporter: 'cypress-mochawesome-reporter',   // For HTML Reporter
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: 'Automation Reports',
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
+  },
   e2e: {
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);   // For HTML Reporter
