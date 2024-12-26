@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test:Edged-Cat-Test": "npx cypress run --spec cypress/e2e/Thermo/Estimator/Estimator-Boards.cy.js --record --headed --browser electron",
-    "debug": "npx cypress open"
+    "debug": "npx cypress open",
+    "combine:report": "node combine_reports.js",
+    "generate:report": "node generate-report.js"
   },
   "author": "Shahzad Khan",
   "license": "ISC",
