@@ -3393,7 +3393,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
 
                     //                                                        Submitting Order with Required values
                     //                                                           >>>>> Adding form data <<<<<                
-
+                    
                 
         cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
         .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
@@ -3440,7 +3440,9 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         //                                                                    >>>>> Adding form data <<<<<               
 
 
-        cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
+        //cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
+        cy.get('button.MuiButton-root').contains('Create new order').should('be.visible').click(); 
+        
         cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
         cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
         cy.contains('label', 'Your PO').next().find('input').type('Thermolam 11')                                                                               // Your PO
@@ -3509,7 +3511,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
     //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                // Print order    
     //cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
     //cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view
-
+    
 
     })
 
