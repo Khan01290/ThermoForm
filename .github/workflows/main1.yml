@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
@@ -14,12 +14,13 @@ jobs:
         with:
          command: npm run test:Edged-Cat-Test
          record: true
+         env:
+         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Merge test reports
         run: npm run combine:report
         
       - name: Generate HTML reports
         run: npm run generate:report 
-        env:
-         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+         
