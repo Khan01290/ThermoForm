@@ -15,4 +15,8 @@ jobs:
          record: true
         env:
          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Merge Test Reports
+        run: npm run combine:report
+      - name: Generate HTML Report
+        run: npm run generate:report
