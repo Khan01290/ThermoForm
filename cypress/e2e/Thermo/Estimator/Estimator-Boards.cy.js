@@ -3647,7 +3647,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         cy.get('td.MuiTableCell-root').eq(5).find('input').type('555', { force: true }).wait(500)                                                               // back color        
         cy.get('.headerActions > .MuiButton-contained').click()                                                                                                 // Tapping to Print btn
         cy.get('button[aria-label="close"]', { timeout: 50000 }).should('exist').click()                                                                        // Closing print view                                    
-        cy.get('.css-9hpeq4', { timeout: 50000 }).contains('Submit').should('be.enabled').click().wait(10000)                                                   // Tapping to Submit btn
+        cy.get('.css-9hpeq4', { timeout: 50000 }).contains('Submit').should('be.enabled').click().wait(5000)                                                    // Tapping to Submit btn
                 
         //                                                        Submitting Order with both Required and optional values
         //                                                                    >>>>> Adding form data <<<<<               
@@ -3702,9 +3702,9 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         });
         });
     })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(10000)                                                                           // Tapping to Submit btn    
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                            // Tapping to Submit btn    
     cy.get('div.MuiGrid-root').contains('Please validate the form before submitting the order').should('be.visible');                                           // Assert the validation message
-    cy.get('#\\:r3g\\:-button').click().wait(500);                                                                                                              // Three dots click
+    cy.get('button svg path[d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z"]').click({force: true}).wait(500);                                                                                                             // Three dots click
     cy.get('li.MuiMenuItem-root').contains('span.MuiListItemText-primary', 'Remove product').click().wait(500)                                                  // Click remove btn
     cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                         // Tapping to Add a new product btn
     cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(4) > .MuiButtonBase-root').click().wait(500)                                      // Select Thermoplastic Sheets
@@ -3755,7 +3755,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
 
 //                                                                         Submitting Order with Required values
 //                                                                             >>>>> Adding form data <<<<<                
-
+        
         cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
         .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
         cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
@@ -3787,7 +3787,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         cy.get('td.MuiTableCell-root').eq(5).find('input').type('555', { force: true }).wait(500)                                                               // back color        
         cy.get('.headerActions > .MuiButton-contained').click()                                                                                                 // Tapping to Print btn
         cy.get('button[aria-label="close"]', { timeout: 50000 }).should('exist').click()                                                                        // Closing print view                                    
-        cy.get('.css-9hpeq4', { timeout: 50000 }).contains('Submit').should('be.enabled').click().wait(10000)                                                   // Tapping to Submit btn
+        cy.get('.css-9hpeq4', { timeout: 50000 }).contains('Submit').should('be.enabled').click().wait(5000)                                                    // Tapping to Submit btn
                 
         //                                                        Submitting Order with both Required and optional values
         //                                                                    >>>>> Adding form data <<<<<               
@@ -3842,9 +3842,9 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         });
         });
     })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(10000)                                                                           // Tapping to Submit btn    
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                            // Tapping to Submit btn    
     cy.get('div.MuiGrid-root').contains('Please validate the form before submitting the order').should('be.visible');                                           // Assert the validation message
-    cy.get('#\\:r3g\\:-button').click().wait(500);                                                                                                              // Three dots click
+    cy.get('button svg path[d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z"]').click({force: true}).wait(500);                                                                                                             // Three dots click
     cy.get('li.MuiMenuItem-root').contains('span.MuiListItemText-primary', 'Remove product').click().wait(500)                                                  // Click remove btn
     cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                         // Tapping to Add a new product btn
     cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(4) > .MuiButtonBase-root').click().wait(500)                                      // Select Thermoplastic Sheets
@@ -3890,6 +3890,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
     //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                // Print order    
     //cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                               // Performs a click action
     //cy.get('button[aria-label="close"]').should('exist').click()                                                                                              // Closing print view
+    
 })
 })
 
