@@ -3434,8 +3434,8 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         cy.get('td.MuiTableCell-root').eq(4).find('input').type('8151', { force: true }).wait(500)                                                              // color        
         cy.get('.headerActions > .MuiButton-contained').click()                                                                                                 // Tapping to Print btn
         cy.get('button[aria-label="close"]', { timeout: 50000 }).should('exist').click()                                                                        // Closing print view                                    
-        cy.get('.css-9hpeq4', { timeout: 50000 }).contains('Submit').should('be.enabled').click().wait(1000)                                                    // Tapping to Submit btn
-        
+        cy.get('.css-9hpeq4', { timeout: 50000 }).contains('Submit').should('be.enabled').click().wait(10000)                                                   // Tapping to Submit btn
+
         //                                                        Submitting Order with both Required and optional values
         //                                                                    >>>>> Adding form data <<<<<               
 
