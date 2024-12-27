@@ -11,11 +11,11 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-         command: npm run test:all
+         command: npm run test:Molded-Test && npm run test:Boards-Test 
          record: true
         env:
          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
       - name: Uploading artifact
         uses: actions/upload-artifact@v4
         if: always()
