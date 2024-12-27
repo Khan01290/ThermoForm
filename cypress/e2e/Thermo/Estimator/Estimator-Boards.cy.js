@@ -2430,7 +2430,7 @@ describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit
 
 describe('Estimator Order Creation/Edition/Submission For Boards Category Suit', function() {
 
-    it,skip("Verify Order created/submitted Successfully - For Boards Category -", function()  {
+    it("Verify Order created/submitted Successfully - For Boards Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -3892,7 +3892,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
     //cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                               // Performs a click action
     //cy.get('button[aria-label="close"]').should('exist').click()                                                                                              // Closing print view
     
-})
+    })
 })
 
 
