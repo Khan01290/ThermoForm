@@ -11,7 +11,7 @@ module.exports = defineConfig({
     embeddedScreenshots: false,
     inlineAssets: false,
     saveAllAttempts: false,
-    autoOpen: true,
+    autoOpen: false,
     overwrite: false,
     reportFilename: "[status]_[datetime]-[name]-report",
   },
