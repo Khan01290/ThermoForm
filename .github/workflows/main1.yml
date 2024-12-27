@@ -16,4 +16,10 @@ jobs:
         env:
          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+      - name: Uploading artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+           name: cypress-execution-report
+           path: cypress/reports/html
+           retention-days: 30
