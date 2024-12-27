@@ -9,10 +9,7 @@ jobs:
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-         command: npm run test:Molded-Test && npm run test:Boards-Test 
-         record: true
+        run: npm run test:Molded-Test && npm run test:Boards-Test         
         env:
          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
