@@ -8,17 +8,17 @@ jobs:
         uses: actions/checkout@v4
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-         command: npm run test:Edged-Cat-Test
-         record: true
-        env:
-         CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Uploading artifact
+          node-version: 18 # Adjust if needed
+      - name: Install dependencies
+        run: npm install
+      - name: Run Cypress tests and generate reports
+        run: npm run cypress:run:report 
+      - name: Upload Cypress reports
         uses: actions/upload-artifact@v4
         with:
-           name: cypress-execution-report
+           name: cypress-reports
            path: cypress/reports/html
            retention-days: 30
