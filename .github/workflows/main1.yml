@@ -4,28 +4,19 @@ jobs:
   cypress-run: 
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
         with:
-          node-version: 18 # Adjust if needed
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-    
-      - name: Install dependencies
-        run: npm install
-      - name: Run Cypress tests and generate reports
-        run: npm run cypress:run:report 
-      - name: Upload Cypress reports
+         command: npm run test:Edged-Cat-Test
+         record: true
+      - name: Uploading artifact
         uses: actions/upload-artifact@v4
+        if: always()
         with:
-           name: cypress-reports
+           name: cypress-execution-report
            path: cypress/reports/html
            retention-days: 30
