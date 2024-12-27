@@ -11,6 +11,9 @@ module.exports = defineConfig({
     embeddedScreenshots: true,
     inlineAssets: true,
     saveAllAttempts: false,
+    autoOpen: true,
+    overwrite: false,
+    reportFilename: "[status]_[datetime]-[name]-report",
   },
   e2e: {
     setupNodeEvents(on, config) {

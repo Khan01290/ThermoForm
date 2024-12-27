@@ -16,7 +16,10 @@ jobs:
         env:
          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Merge Test Reports
-        run: npm run combine:report
-      - name: Generate HTML Report
-        run: npm run generate:report
+      - name: Uploading artifact
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-execution-report
+          path: cypress/reports/html
+          retention-days: 30
