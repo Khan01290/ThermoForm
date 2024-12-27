@@ -1,6 +1,5 @@
 
 const { expect } = require("chai")
-const { skip } = require("node:test")
 //const cypress = require("cypress")
 
 //let textToStore; 
@@ -2430,7 +2429,7 @@ describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit
 
 describe('Estimator Order Creation/Edition/Submission For Boards Category Suit', function() {
 
-    it.skip("Verify Order created/submitted Successfully - For Boards Category -", function()  {
+    it("Verify Order created/submitted Successfully - For Boards Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -2746,7 +2745,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
     //cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view
     })
 
-    it.skip("Verify Order created/submitted Successfully - For Preglued Thermoplastic Sheets Category -", function()  {
+    it("Verify Order created/submitted Successfully - For Preglued Thermoplastic Sheets Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -3091,7 +3090,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
     
     })
 
-    it.skip("Verify Order created/submitted Successfully - For Thermolam Category -", function()  {
+    it("Verify Order created/submitted Successfully - For Thermolam Category -", function()  {
         /*
         // User Creation Steps:
         cy.viewport(1720, 1080)    
@@ -3516,7 +3515,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
 
     })
 
-    it.skip("Verify Order created/submitted Successfully - For Thermoplastic Sheets Category -", function()  {        
+    it("Verify Order created/submitted Successfully - For Thermoplastic Sheets Category -", function()  {        
         
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
