@@ -3440,8 +3440,8 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         //                                                                    >>>>> Adding form data <<<<<               
 
 
-        //cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
-        cy.get('button.MuiButton-root').contains('Create new order').should('be.visible').click(); 
+        cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
+        //cy.get('button.MuiButton-root').contains('Create new order').should('be.visible').click(); 
         
         cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
         cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
