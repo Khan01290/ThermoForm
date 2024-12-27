@@ -23,6 +23,6 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-           name: cypress-reports-$(echo ${{ matrix.spec }} | sed 's/:/-/g')
+           name: cypress-reports-$(echo "${{ matrix.spec }}" | sed 's/:/-/g')
            path: cypress/reports/html
            retention-days: 30
