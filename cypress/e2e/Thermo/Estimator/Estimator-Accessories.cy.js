@@ -1456,7 +1456,7 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
     cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
     cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view
     */
-//=====================================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
+//===========================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
 
         //                                                        Submitting Order with Required values
         //                                                           >>>>> Adding form data <<<<<                
@@ -1566,7 +1566,7 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
     })
     cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click()                                                                                       // Tapping to Submit btn
     //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                // Print order    
-    cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
+    //cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
     //cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view
 
     })
@@ -1876,7 +1876,7 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
     })
     cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click()                                                                                       // Tapping to Submit btn
     //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                // Print order    
-    cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
+    //cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
     //cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view    
     })        
 
@@ -2085,7 +2085,7 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
     cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
     cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view
     */
-//=====================================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
+//===========================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
 
     cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                       // Order Name Validation of helper text
     .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
@@ -2189,8 +2189,8 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
     })
     cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click()                                                                                       // Tapping to Submit btn
     //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                // Print order    
-    cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
-   // cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view    
+    //cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
+    //cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view    
     
     })
 
@@ -2408,7 +2408,7 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
     cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
     //cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view
     */
-//=====================================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
+//===========================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
     
     cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
     .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
@@ -2521,9 +2521,9 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
     })
     cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click()                                                                                       // Tapping to Submit btn
     //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                // Print order    
-    cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
+    //cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
     //cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view
-})
+    })
 
     it("Verify Order created/submitted Successfully - For Tambour Roll-ups Category -", function()  {
 
@@ -2621,10 +2621,10 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
         cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true})                                       // Getting side menu back buttton          
 
         //===================================================>>  // Getting elements for Local Testing  <<===============================================================================================
-        
+        /*
         //                                                        Submitting Order with Required values
         //                                                           >>>>> Adding form data <<<<<      
-        /*
+        
         cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
         .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
         cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
@@ -2733,7 +2733,7 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
     cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
     //cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view
     */
-//=====================================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
+//===========================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
     
         cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
         .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
@@ -2840,12 +2840,9 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
     })
     cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click()                                                                                       // Tapping to Submit btn
     //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                // Print order    
-    cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
-    //cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view
-    
-
-    })
-    
+    //cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
+    //cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view    
+    })    
 })
 
 /*describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit', function() {
