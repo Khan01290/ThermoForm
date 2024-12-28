@@ -3,9 +3,6 @@ on: push
 jobs:
   cypress-run: 
     runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        spec: ['test:Molded-Test', 'test:Boards-Test'] 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -14,7 +11,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-         command: npm run ${{ matrix.spec }} 
+         command: npm run test:specs
          record: true
         env:
          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -23,6 +20,6 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-           name: cypress-reports-$(echo "${{ matrix.spec }}" | sed 's/:/-/g')
+           name: cypress-reports
            path: cypress/reports/html
            retention-days: 30

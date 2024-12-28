@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test:Molded-Test": "npx cypress run --spec cypress/e2e/Thermo/Estimator/Estimator-Molded.cy.js --record --headed --browser electron",
-    "test:Boards-Test": "npx cypress run --spec cypress/e2e/Thermo/Estimator/Estimator-Boards.cy.js --record --headed --browser electron",
-    "test:all": "npm-run-all -p test:Molded-Test test:Boards-Test",
+    "test:specs": "npx cypress run --spec cypress/e2e/Thermo/Estimator/Estimator-Molded.cy.js,cypress/e2e/Thermo/Estimator/Estimator-Boards.cy.js",
     "debug": "npx cypress open"
   },
   "author": "Shahzad Khan",
