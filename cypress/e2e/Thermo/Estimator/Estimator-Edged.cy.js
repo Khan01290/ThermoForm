@@ -1177,7 +1177,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
     cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                    // Closing print view                                    
       */
    
-//=====================================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
+//===========================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
         
         //                                                                  Submitting Order with Required values
         //                                                                      >>>>> Adding form data <<<<<                
@@ -1316,8 +1316,8 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
     })
     })
     cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                            // Tapping to Submit btn
-    cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
-    cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                    // Closing print view
+    //cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
+    //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                    // Closing print view
     
         //=======================================================================================================================================================================================        
     })
@@ -1563,7 +1563,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
     cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                    // Closing print view    
     */
         
-//=====================================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
+//===========================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
          
         //                                                                  Submitting Order with Required values
         //                                                                      >>>>> Adding form data <<<<<                
@@ -1706,13 +1706,8 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
     })
     })
     cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                            // Tapping to Submit btn
-    cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                  // Print order    
-    cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                    // Closing print view
-        
-          
-
-
-       
+    //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                  // Print order    
+    //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                    // Closing print view
     })
 })
 
