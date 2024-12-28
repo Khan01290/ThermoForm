@@ -392,7 +392,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
     cy.contains('button', 'close').click();                                                                                                                                                                                 
     }) 
   
-    it.skip("Verify Order created/submitted Successfully - For Drawer Fronts Category -", function()  {
+    it("Verify Order created/submitted Successfully - For Drawer Fronts Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -755,7 +755,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         
     })
 
-    it.skip("Verify Order created/submitted Successfully - For Mullions Doors Category -", function()  {
+    it("Verify Order created/submitted Successfully - For Mullions Doors Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
