@@ -337,8 +337,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
 
     cy.contains('label', 'Client').next().find('input').click({force: true})                                                                                // Select Client to remove
     cy.contains('label', 'Client').next().find('input').clear()
-    cy.get(':nth-child(1) > .MuiAutocomplete-root > .MuiFormControl-root > .MuiInputBase-root > .MuiAutocomplete-endAdornment > .MuiAutocomplete-clearIndicator > [data-testid="CloseIcon"]').click({force: true}).wait(2000)  // removing client from dropdown
-    //cy.get('[role="combobox"]').should('be.visible').wait(500)
+    //cy.get(':nth-child(1) > .MuiAutocomplete-root > .MuiFormControl-root > .MuiInputBase-root > .MuiAutocomplete-endAdornment > .MuiAutocomplete-clearIndicator > [data-testid="CloseIcon"]').click({force: true}).wait(2000)  // removing client from dropdown
+    cy.get('[role="combobox"]').should('be.visible').wait(500)
     cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true}).wait(500)
         
     cy.contains('label', 'Shipping client').next().find('input').click({force: true});                                                                      // Select Shipping client
