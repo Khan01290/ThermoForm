@@ -45,4 +45,4 @@ jobs:
         with:
           name: cypress-reports
           path: cypress/reports/html
-          retention-days: 40
+          retention-days: 30
