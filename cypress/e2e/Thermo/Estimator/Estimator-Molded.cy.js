@@ -6,7 +6,7 @@ require('cypress-xpath')
 //let textToStore; 
 describe('Estimator Order Creation/Edition/Submission For Molded Category Suit', function() {
      
-    it.skip("Verify Order Created/Submitted Successfully - For Doors Category -", function()  {
+    it("Verify Order Created/Submitted Successfully - For Doors Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
