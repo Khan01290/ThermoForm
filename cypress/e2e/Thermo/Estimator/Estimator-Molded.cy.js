@@ -856,9 +856,9 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
               })
             })
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
-        cy.contains('label', 'Client').next().find('input').should('be.disabled')                                                                               // Check if Client dropdown is disabled to verify order successfully submitted
-        //cy.contains('button', 'Print Order').click();                                                                                                           // Print order
-        //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                // Closing print view                                    
+        cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')       // Check if Client dropdown is disabled to verify order successfully submitted
+        .and('exist').and('contain','submitted')
+        //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                              // Closing print view                                    
         
     })
 
@@ -1283,9 +1283,9 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
     })
     })
     cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                            // Tapping to Submit btn
-    cy.contains('label', 'Client').next().find('input').should('be.disabled')                                                                                   // Check if Client dropdown is disabled to verify order successfully submitted
-    //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                  // Print order    
-    //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                    // Closing print view                                    
+    cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')           // Check if Client dropdown is disabled to verify order successfully submitted
+    .and('exist').and('contain','submitted')    
+    //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                  // Closing print view                                    
         
     })
 
@@ -1858,9 +1858,9 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         });
         })
         })
-        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
-        cy.get('button[aria-label="New Order"]').scrollIntoView()
-        cy.contains('label', 'Client').next().find('input').should('be.disabled')                                                                               // Check if Client dropdown is disabled to verify order successfully submitted
+        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                         // Tapping to Submit btn
+        cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')       // Check if Client dropdown is disabled to verify order successfully submitted
+        .and('exist').and('contain','submitted')
         
         
     })
@@ -2434,8 +2434,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         })
         })
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
-        cy.contains('label', 'Client').next().find('input').should('be.disabled')                                                                               // Check if Client dropdown is disabled to verify order successfully submitted
-        
+        cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')       // Check if Client dropdown is disabled to verify order successfully submitted
+        .and('exist').and('contain','submitted')        
     })
 })
 
