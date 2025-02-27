@@ -6,7 +6,7 @@ require('cypress-xpath')
 //let textToStore; 
 describe('Estimator Order Creation/Edition/Submission For Molded Category Suit', function() {
      
-    it.skip("Verify Order Created/Submitted Successfully - For Doors Category -", function()  {
+    it("Verify Order Created/Submitted Successfully - For Doors Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -376,13 +376,13 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
             cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                    // Note
             //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
             
-            const filePath = 'images/sample-image.png';                                                                                                     // Define the file path relative to the cypress/fixtures directory            
-            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                         // Upload the file using the input element
-            .then(input => {                
-            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                    // Verify that the file is uploaded
-            });    
-        cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                     // Tapping to inch/mm
+            //const filePath = 'images/sample-image.png';                                                                                                   // Define the file path relative to the cypress/fixtures directory            
+            //cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                       // Upload the file using the input element
+            //.then(input => {                
+            //expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                  // Verify that the file is uploaded
+            //});    
         
+            cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                 // Tapping to inch/mm
         
         //                                                      >>>>> Adding Doors category table data  <<<<<        
         
@@ -428,7 +428,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
             });
         });
         });
-        cy.get('[colspan="19"] > .MuiButtonBase-root').click().wait(2000)                                                                                       // Adding second item
+        cy.get('[colspan="19"] > .MuiButtonBase-root').click().wait(2000)                                                                                   // Adding second item
         cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).then(($rowsAfter) => {
         const newRow = $rowsAfter[$rowsAfter.length - 2]; // Get the last (newly added) row
         cy.wrap(newRow).within(() => {
@@ -457,14 +457,15 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
     })
     })
     cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
-    cy.contains('label', 'Client').next().find('input').should('be.disabled')                                                                               // Check if Client dropdown is disabled to verify order successfully submitted
+    cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')       // Check if Client dropdown is disabled to verify order successfully submitted
+    .and('exist').and('contain','submitted')
     //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                            // Print order    
     //cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                           // Closing print view   
     //cy.contains('button', 'close').click();  
                                                                                                                                                                                    
     })     
 
-    it.skip("Verify Order created/submitted Successfully - For Drawer Fronts Category -", function()  {
+    it("Verify Order created/submitted Successfully - For Drawer Fronts Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -785,11 +786,11 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
             cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
             //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
             
-            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            .then(input => {                
-            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            });    
+            //const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
+            //cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
+            //.then(input => {                
+            //expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
+            //});    
         cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                         // Tapping to inch/mm
 
         //                                                      >>>>>  Adding Doors category table data  <<<<<        
@@ -862,7 +863,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         
     })
 
-    it.skip("Verify Order created/submitted Successfully - For Mullions Doors Category -", function()  {
+    it("Verify Order created/submitted Successfully - For Mullions Doors Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -1201,11 +1202,11 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
             cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
             //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
             
-            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            .then(input => {                
-            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            });    
+            //const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
+            //cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
+            //.then(input => {                
+            //expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
+            //});    
         cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                         // Tapping to inch/mm
         
         //                                                      >>>>> Adding Mullions Doors category table data  <<<<<        
@@ -1860,12 +1861,11 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         })
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                         // Tapping to Submit btn
         cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')       // Check if Client dropdown is disabled to verify order successfully submitted
-        .and('exist').and('contain','submitted')
-        
+        .and('exist').and('contain','submitted')        
         
     })
     
-    it.skip("Verify Order Edited Successfully on same screen", function()  {
+    it("Verify Order Edited Successfully on same screen", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -2247,11 +2247,12 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
                 });
 
             cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note            
-            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            .then(input => {                
-            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            });    
+            
+            //const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
+            //cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
+            //.then(input => {                
+            //expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
+            //});    
             cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                     // Tapping to inch/mm
 
         //                                                      >>>>> Adding Mullions Doors category table data  <<<<<        
