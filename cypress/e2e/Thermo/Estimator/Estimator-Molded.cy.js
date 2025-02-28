@@ -1771,9 +1771,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         //                                                                  Moving to web orders page
 
         cy.get('.MuiIconButton-colorInherit').click({force: true})                                                                                              // Click to menu icon
-        cy.get('[title="Web Orders"]').click().wait(500)                                                                                                     // Tapping to web Orders
+        cy.get('[title="Web Orders"]').click().wait(500)                                                                                                        // Tapping to web Orders
         cy.get(':nth-child(1) > .MuiListItemText-root > .MuiListItemText-primary > .MuiTypography-root > :nth-child(1) > span').click().wait(500)               // Pick the first saved order by name and click it
-        
         cy.contains('button', 'Add a new product', { timeout: 100000 }).should('be.visible')         
 
         cy.get('.css-1mrqld1').click().wait(500)                                                                                                                // Tapping to Accordian 
