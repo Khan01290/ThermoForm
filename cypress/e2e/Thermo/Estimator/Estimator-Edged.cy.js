@@ -429,7 +429,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         //=======================================================================================================================================================================================        
     })
 
-    it.skip("Verify Order created/submitted Successfully - For Mullions Doors(Edged) Category -", function()  {
+    it("Verify Order created/submitted Successfully - For Mullions Doors(Edged) Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -843,7 +843,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
     .and('exist').and('contain','submitted')
     })
 
-    it.skip("Verify Order Edited Successfully Via Web Orders Page Flow", function()  {
+    it("Verify Order Edited Successfully Via Web Orders Page Flow", function()  {
         
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -1379,7 +1379,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         
     })
     
-    it.skip("Verify Order Edited Successfully on same screen", function()  {
+    it("Verify Order Edited Successfully on same screen", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
