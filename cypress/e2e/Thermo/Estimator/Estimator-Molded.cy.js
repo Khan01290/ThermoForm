@@ -374,13 +374,13 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
             });        
 
             cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                    // Note
-            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
+            cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
             
-            //const filePath = 'images/sample-image.png';                                                                                                   // Define the file path relative to the cypress/fixtures directory            
-            //cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                       // Upload the file using the input element
-            //.then(input => {                
-            //expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                  // Verify that the file is uploaded
-            //});    
+            const filePath = 'images/sample-image.png';                                                                                                   // Define the file path relative to the cypress/fixtures directory            
+            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                       // Upload the file using the input element
+            .then(input => {                
+            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                  // Verify that the file is uploaded
+            });    
         
             cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                 // Tapping to inch/mm
         
@@ -786,11 +786,11 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
             cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
             //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
             
-            //const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            //cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            //.then(input => {                
-            //expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            //});    
+            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
+            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
+            .then(input => {                
+            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
+            });    
         cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                         // Tapping to inch/mm
 
         //                                                      >>>>>  Adding Doors category table data  <<<<<        
@@ -1200,13 +1200,13 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
                 });
                         
             cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
-            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
+            cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
             
-            //const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            //cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            //.then(input => {                
-            //expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            //});    
+            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
+            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
+            .then(input => {                
+            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
+            });    
         cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                         // Tapping to inch/mm
         
         //                                                      >>>>> Adding Mullions Doors category table data  <<<<<        
@@ -1673,11 +1673,11 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
 
             //                  Disableing upload file feature due to error throwing 
             
-            //const filePath = 'images/sample-image.png';                                                                                                       // Define the file path relative to the cypress/fixtures directory            
-            //cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            //.then(input => {                
-            //expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            //});    
+            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
+            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
+            .then(input => {                
+            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
+            });    
 
             cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                     // Tapping to inch/mm
 
@@ -2247,11 +2247,11 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
 
             cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note            
             
-            //const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            //cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            //.then(input => {                
-            //expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            //});    
+            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
+            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
+            .then(input => {                
+            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
+            });    
             cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                     // Tapping to inch/mm
 
         //                                                      >>>>> Adding Mullions Doors category table data  <<<<<        
