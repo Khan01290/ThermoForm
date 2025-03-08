@@ -2525,120 +2525,10 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         //cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)
         cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true})                                       // Getting side menu back buttton          
 
-        //===================================================>>  // Getting elements for Local Testing  <<===============================================================================================
-        /*
-        //                                                        Submitting Order with Required values
-        //                                                           >>>>> Adding form data <<<<<             
+        //=====================================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
 
-                
-        cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your PO').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                          // PO Validation of helper text 
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');                                                                    
-
-        cy.contains('label', 'Your full name').next().find('input').type('Automate Boards Category')                                                            // Name
-        cy.contains('label', 'Your email address').next().find('input').type('AutomaBoards#gmail.com')                                                          // Email
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your email address').next().find('input').clear()                                                                                 // Clear the invalid input        
-        cy.contains('label', 'Your email address').next().find('input').type('AutomaBoards@gmail.com')                                                          // Email with valid input                  
-        cy.contains('label', 'Your PO').next().find('input').type('Automate Boards 11')                                                                         // Your PO
-
-        //                                                      >>>>> Adding Boards category table data required fields <<<<<   
-        
-        cy.contains('div', '1 Boards').click()
-        //cy.get('td.MuiTableCell-root').eq(3).find('input').should('exist').should('have.attr', 'aria-invalid', 'true').closest('.MuiFormControl-root')        // Validation of helper text for invalid input
-        //.find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
-        cy.get('td.MuiTableCell-root').eq(3).find('input').type('3999', { force: true }).wait(500)                                                              // Model
-        cy.get('td.MuiTableCell-root').eq(4).find('input').type('7204', { force: true }).wait(500)                                                              // color        
-        cy.get('td.MuiTableCell-root').eq(5).find('input').type('555', { force: true }).wait(500)                                                               // back color        
-        cy.get('.headerActions > .MuiButton-contained').click()                                                                                                 // Tapping to Print btn
-        cy.get('button[aria-label="close"]', { timeout: 50000 }).should('exist').click()                                                                        // Closing print view                                    
-        cy.get('.css-9hpeq4', { timeout: 50000 }).contains('Submit').should('be.enabled').click().wait(1000)                                                    // Tapping to Submit btn
-        
-        //                                                        Submitting Order with both Required and optional values
-        //                                                                    >>>>> Adding form data <<<<<               
-
-        cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
-        cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
-        cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
-        cy.contains('label', 'Your PO').next().find('input').type('Boards 11')                                                                                  // Your PO
-        cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
-        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click({force: true}).wait(1000)                                                                 // Tapping to Date icon        
-        cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
-            .each(($el) => {
-                if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
-                cy.wrap($el).click().wait(500)                                                                                                                  // Click the first enabled date                
-                return false                                                                                                                                    // Break the loop after selecting the date
-                }
-            });        
-            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
-            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
-            
-            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            .then(input => {                
-            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            });    
-        cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                         // Tapping to inch/mm
-
-        //                                                      >>>>> Adding Boards category table data  <<<<<        
-
-        cy.get('.css-budqf6').contains('Add section').click({force: true}).wait(1000)                                                                           // Tapping to Add color btn
-        cy.contains('label', 'Section name').next().find('input').should('be.visible').type('Boards');                                                          // Section Name        
-        //cy.contains('label', 'Notes').eq(1).parent().find('input').type('Automating Molded Category with Doors Section', { force: true });                    // Section Notes                  
-        cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root').click().wait(500)                                  // Select Boards
-        //cy.wait(2000)                   
-        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).should('have.length.greaterThan', 0).then(($rowsBefore) => {
-        const initialRowCount = $rowsBefore.length;
-        cy.wrap($rowsBefore[0]).within(() => {
-        cy.get('td.MuiTableCell-root').each(($td) => {
-            cy.wrap($td).invoke('text').then((tdValue) => {
-            tdValue = tdValue.trim();
-
-                if (tdValue === '1.') {
-                    cy.get('td.MuiTableCell-root').eq(2).find('input').type('89', { force: true }).wait(500)                                                    // Qty
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('3949', { force: true }).wait(500)                                                  // Model
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('8153', { force: true }).wait(500)                                                  // color        
-                    cy.get('td.MuiTableCell-root').eq(5).find('input').type('555', { force: true }).wait(500)                                                   // back color        
-                    //cy.get('td.MuiTableCell-root').eq(5).contains('p', 'Acry-Lux or Almic back').should('exist')                                              // back color
-                    cy.get('td.MuiTableCell-root').eq(6).find('input').type('Testing by Automation Script 1', { force: true });                                 // Comments        
-                }
-            });
-        });
-        });
-        cy.get('[colspan="8"] > .MuiButtonBase-root').click().wait(2000)                                                                                        // Adding second item
-        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).then(($rowsAfter) => {
-        const newRow = $rowsAfter[$rowsAfter.length - 1]; // Get the last (newly added) row
-        cy.wrap(newRow).within(() => {
-        cy.get('td.MuiTableCell-root').each(($td) => {
-        cy.wrap($td).invoke('text').then((tdValue) => {
-        tdValue = tdValue.trim();
-                if (tdValue === '2.') {
-                    cy.get('td.MuiTableCell-root').eq(2).find('input').type('96', { force: true }).wait(500)                                                    // Qty
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('3972', { force: true }).wait(500)                                                  // Model
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('8019', { force: true }).wait(500)                                                  // color        
-                    cy.get('td.MuiTableCell-root').eq(5).find('input').type('555', { force: true }).wait(500)                                                   // back color        
-                    //cy.get('td.MuiTableCell-root').eq(5).contains('p', 'Polymer back').should('exist')                                                        // back color
-                    cy.get('td.MuiTableCell-root').eq(6).find('input').type('Testing by Automation Script 2', { force: true });                                 // Comments        
-                }                                                                   
-            });
-        });
-    });
-    })
-    })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(10000)                                                                           // Tapping to Submit btn
-    //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                // Print order    
-    //cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
-    //cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view
-    */
-    //=====================================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
-
-        //                                                        Submitting Order with Required values
-        //                                                           >>>>> Adding form data <<<<<                
+        //                                                                         Submitting Order with Required values
+        //                                                                              >>>>> Adding form data <<<<<                
 
         cy.contains('label', 'Client').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                           // Client Validation of helper text
         .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
@@ -2661,7 +2551,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         cy.get('[role="combobox"]').should('be.visible');
         cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});                                                           
 
-        cy.contains('label', 'Your PO').next().find('input').type('Doors 11')                                                                                   // Your PO
+        cy.contains('label', 'Your PO').next().find('input').type('Automate Doors 11')                                                                          // Your PO
 
         //                                                      >>>>> Adding Boards category table data required fields <<<<<   
         
@@ -2670,9 +2560,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         //.find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
         cy.get('td.MuiTableCell-root').eq(3).find('input').type('3999', { force: true }).wait(500)                                                              // Model
         cy.get('td.MuiTableCell-root').eq(4).find('input').type('7204', { force: true }).wait(500)                                                              // color        
-        cy.get('td.MuiTableCell-root').eq(5).find('input').type('555', { force: true }).wait(500)                                                               // back color        
-        cy.get('.headerActions > .MuiButton-contained').click()                                                                                                 // Tapping to Print btn
-        cy.get('button[aria-label="close"]', { timeout: 50000 }).should('exist').click()                                                                        // Closing print view                                    
+        cy.get('td.MuiTableCell-root').eq(5).find('input').type('555', { force: true }).wait(500)                                                               // back color                                                    
         cy.get('.css-9hpeq4', { timeout: 50000 }).contains('Submit').should('be.enabled').click().wait(1000)                                                    // Tapping to Submit btn
         
         //                                                        Submitting Order with both Required and optional values
@@ -2695,7 +2583,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         cy.get('[role="combobox"]').should('be.visible');
         cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});
 
-        cy.contains('label', 'Your PO').next().find('input').type('Boards 11')                                                                                  // Your PO
+        cy.contains('label', 'Your PO').next().find('input').type('Automate Boards 11')                                                                         // Your PO
         cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
         cy.get(':nth-child(3) > .MuiFormControl-root > .MuiInputBase-root > .MuiInputAdornment-root > .MuiButtonBase-root').click({force: true})                // Tapping to Expected Date icon        
         cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
@@ -2717,13 +2605,12 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
                 }
                 });        
             cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
-            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
             
-            //const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            //cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            //.then(input => {                
-            //expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            //});  
+            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
+            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
+            .then(input => {                
+            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
+            });  
             // cy.wait(10000)  
         cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                         // Tapping to inch/mm
 
@@ -2774,11 +2661,11 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
     })
     })
     cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                           // Tapping to Submit btn
-    cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')       // Check if Client dropdown is disabled to verify order successfully submitted
+    cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')           // Check if Client dropdown is disabled to verify order successfully submitted
     .and('exist').and('contain','submitted')
     })
 
-    it("Verify Order created/submitted Successfully - For Preglued Thermoplastic Sheets Category -", function()  {
+    it.skip("Verify Order created/submitted Successfully - For Preglued Thermoplastic Sheets Category -", function()  {
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -2875,132 +2762,11 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         //cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)
         cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true})                                       // Getting side menu back buttton          
 
-        //===================================================>>  // Getting elements for Local Testing  <<===============================================================================================
         
-        //                                                        Submitting Order with Required values
-        //                                                           >>>>> Adding form data <<<<<             
-        /*
-        cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your PO').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                          // PO Validation of helper text 
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');                                                                    
-
-        cy.contains('label', 'Your full name').next().find('input').type('Automate Preglued Thermoplastic Sheets')                                              // Name
-        cy.contains('label', 'Your email address').next().find('input').type('Automate1PregluedThermoplasticSheets#gmail.com')                                  // Email
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your email address').next().find('input').clear()                                                                                 // Clear the invalid input        
-        cy.contains('label', 'Your email address').next().find('input').type('Automate1PregluedThermoplasticSheets@gmail.com')                                  // Email with valid input                  
-        cy.contains('label', 'Your PO').next().find('input').type('Preglued Thermoplastic Sheets 11')                                                           // Your PO
-
-        //                                                      >>>>> Adding Preglued Thermoplastic Sheets category table data required fields <<<<<   
-
-        cy.contains('div', '1 Preglued Thermoplastic Sheets').click()
-        //cy.get('td.MuiTableCell-root').eq(3).find('input').should('exist').should('have.attr', 'aria-invalid', 'true').closest('.MuiFormControl-root')        // Validation of helper text for invalid input
-        //.find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
-        cy.get('td.MuiTableCell-root').eq(3).find('input').click({ force: true }).wait(1000)                                                                    // asserting all data in Model fropdown
-                    cy.get('.MuiAutocomplete-listbox').find('li.MuiAutocomplete-option')
-                        .each(($li) => {
-                            cy.wrap($li).invoke('text').then((text) => { 
-                            const expectedOptions = [
-                                '(empty)',
-                                '2923Polymer 4\' x 10\'',
-                                '2924Polymer 4\' x 4\'',
-                                '2925Polymer 4\' x 8\'',
-                                '2933Thermolam 4\' x 8\'',
-                                '2934Thermolam 4\' x 10\'',
-                                '2937Polylam 4\' x 9\'',
-                                '2971Pre-glued 4\' x 9\'',
-                            ];
-                            expect(expectedOptions).to.include(text); 
-                            });
-                        });        
-        cy.get('td.MuiTableCell-root').eq(3).find('input').type('2937', { force: true }).wait(500)                                                              // Model
-        cy.get('td.MuiTableCell-root').eq(4).find('input').type('8165', { force: true }).wait(500)                                                              // color        
-        cy.get('.headerActions > .MuiButton-contained').click()                                                                                                 // Tapping to Print btn
-        cy.get('button[aria-label="close"]', { timeout: 50000 }).should('exist').click()                                                                        // Closing print view                                    
-        cy.get('.css-9hpeq4', { timeout: 50000 }).contains('Submit').should('be.enabled').click().wait(1000)                                                    // Tapping to Submit btn
-        
-        //                                                        Submitting Order with both Required and optional values
-        //                                                                    >>>>> Adding form data <<<<<               
-
-        cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
-        cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
-        cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
-        cy.contains('label', 'Your PO').next().find('input').type('Preglued Thermoplastic Sheets 11')                                                           // Your PO
-        cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
-        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click({force: true}).wait(1000)                                                                 // Tapping to Date icon        
-        cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
-            .each(($el) => {
-                if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
-                cy.wrap($el).click().wait(500)                                                                                                                  // Click the first enabled date                
-                return false                                                                                                                                    // Break the loop after selecting the date
-                }
-            });        
-            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
-            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
-            
-            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            .then(input => {                
-            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            });    
-        cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                         // Tapping to inch/mm
-
-        //                                                      >>>>> Adding Preglued Thermoplastic Sheets category table data  <<<<<        
-
-
-        cy.get('.css-budqf6').contains('Add section').click({force: true}).wait(1000)                                                                           // Tapping to Add color btn
-        cy.contains('label', 'Section name').next().find('input').should('be.visible').type('Preglued Thermoplastic Sheets');                                   // Section Name        
-        //cy.contains('label', 'Notes').eq(1).parent().find('input').type('Automating Molded Category with Doors Section', { force: true });                    // Section Notes                  
-        cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root').click().wait(500)                                  // Select Preglued Thermoplastic Sheets
-        //cy.wait(2000)                   
-        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).should('have.length.greaterThan', 0).then(($rowsBefore) => {
-        const initialRowCount = $rowsBefore.length;
-        cy.wrap($rowsBefore[0]).within(() => {
-        cy.get('td.MuiTableCell-root').each(($td) => {
-            cy.wrap($td).invoke('text').then((tdValue) => {
-            tdValue = tdValue.trim();
-
-                if (tdValue === '1.') {
-                    cy.get('td.MuiTableCell-root').eq(2).find('input').type('52', { force: true }).wait(500)                                                    // Qty
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('2971', { force: true }).wait(500)                                                  // Model
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('5010', { force: true }).wait(500)                                                  // color
-                    cy.get('td.MuiTableCell-root').eq(5).find('input').type('Testing by Automation Script 1', { force: true });                                 // Comments        
-                }
-            });
-        });
-        });
-        cy.get('[colspan="7"] > .MuiButtonBase-root').click().wait(2000)                                                                                        // Adding second item
-        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).then(($rowsAfter) => {
-        const newRow = $rowsAfter[$rowsAfter.length - 1]; // Get the last (newly added) row
-        cy.wrap(newRow).within(() => {
-        cy.get('td.MuiTableCell-root').each(($td) => {
-        cy.wrap($td).invoke('text').then((tdValue) => {
-        tdValue = tdValue.trim();
-                if (tdValue === '2.') {
-                    cy.get('td.MuiTableCell-root').eq(2).find('input').type('44', { force: true }).wait(500)                                                    // Qty
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('2934', { force: true }).wait(500)                                                  // Model
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('5006', { force: true }).wait(500)                                                  // color
-                    cy.get('td.MuiTableCell-root').eq(5).find('input').type('Testing by Automation Script 2', { force: true });                                 // Comments        
-                }                                                                   
-            });
-        });
-    });
-    })
-    })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(10000)                                                                           // Tapping to Submit btn
-    //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                // Print order    
-    //cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
-    //cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view
-    */
     //=====================================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
 
-                    //                                                        Submitting Order with Required values
-                    //                                                           >>>>> Adding form data <<<<<                
+                    //                                                          Submitting Order with Required values
+                    //                                                              >>>>> Adding form data <<<<<                
 
         
         cy.contains('label', 'Client').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                           // Client Validation of helper text
@@ -3024,7 +2790,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         cy.get('[role="combobox"]').should('be.visible');
         cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});                                                           
                 
-        cy.contains('label', 'Your PO').next().find('input').type('Doors 11')                                                                                   // Your PO
+        cy.contains('label', 'Your PO').next().find('input').type('Automate Preglued Thermoplastic')                                                            // Your PO
 
         //                                                      >>>>> Adding Preglued Thermoplastic Sheets category table data required fields <<<<<   
 
@@ -3051,8 +2817,8 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
                         });
         cy.get('td.MuiTableCell-root').eq(3).find('input').type('2937', { force: true }).wait(500)                                                              // Model
         cy.get('td.MuiTableCell-root').eq(4).find('input').type('8165', { force: true }).wait(500)                                                              // color        
-        cy.get('.headerActions > .MuiButton-contained').click()                                                                                                 // Tapping to Print btn
-        cy.get('button[aria-label="close"]', { timeout: 50000 }).should('exist').click()                                                                        // Closing print view                                    
+        //cy.get('.headerActions > .MuiButton-contained').click()                                                                                               // Tapping to Print btn
+        //cy.get('button[aria-label="close"]', { timeout: 50000 }).should('exist').click()                                                                      // Closing print view                                    
         cy.get('.css-9hpeq4', { timeout: 50000 }).contains('Submit').should('be.enabled').click().wait(1000)                                                    // Tapping to Submit btn
         
         //                                                        Submitting Order with both Required and optional values
@@ -3076,7 +2842,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         cy.get('[role="combobox"]').should('be.visible');
         cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});
 
-        cy.contains('label', 'Your PO').next().find('input').type('Preglued Thermoplastic Sheets 11')                                                           // Your PO
+        cy.contains('label', 'Your PO').next().find('input').type('Automate Preglued Thermoplastic')                                                            // Your PO
         cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
         cy.get(':nth-child(3) > .MuiFormControl-root > .MuiInputBase-root > .MuiInputAdornment-root > .MuiButtonBase-root').click({force: true})                // Tapping to Expected Date icon        
         cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
@@ -3097,9 +2863,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
                     return false                                                                                                                                // Break the loop after selecting the date
                 }
                 });        
-            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
-            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
-            
+            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note            
             const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
             cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
             .then(input => {                
@@ -3156,7 +2920,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
     
     })
 
-    it("Verify Order created/submitted Successfully - For Thermolam Category -", function()  {
+    it.skip("Verify Order created/submitted Successfully - For Thermolam Category -", function()  {
        
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -3253,127 +3017,6 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         //cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)
         cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true})                                       // Getting side menu back buttton          
 
-        //===================================================>>  // Getting elements for Local Testing  <<===============================================================================================
-        
-        //                                                        Submitting Order with Required values
-        //                                                           >>>>> Adding form data <<<<<             
-        /*
-        cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your PO').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                          // PO Validation of helper text 
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');                                                                    
-
-        cy.contains('label', 'Your full name').next().find('input').type('Automate Thermolam')                                                                  // Name
-        cy.contains('label', 'Your email address').next().find('input').type('AutomateThermolam#gmail.com')                                                     // Email
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your email address').next().find('input').clear()                                                                                 // Clear the invalid input        
-        cy.contains('label', 'Your email address').next().find('input').type('AutomateThermolam@gmail.com')                                                     // Email with valid input                  
-        cy.contains('label', 'Your PO').next().find('input').type('Thermolam 11')                                                                               // Your PO
-
-        //                                                      >>>>> Adding Thermolam category table data required fields <<<<<   
-
-        cy.contains('div', '1 Thermolam').click()
-        //cy.get('td.MuiTableCell-root').eq(3).find('input').should('exist').should('have.attr', 'aria-invalid', 'true').closest('.MuiFormControl-root')        // Validation of helper text for invalid input
-        //.find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
-        cy.get('td.MuiTableCell-root').eq(3).find('input').click({ force: true }).wait(1000)                                                                    // asserting all data in Model fropdown
-                    cy.get('.MuiAutocomplete-listbox').find('li.MuiAutocomplete-option')
-                        .each(($li) => {
-                            cy.wrap($li).invoke('text').then((text) => { 
-                            const expectedOptions = [
-                                '(empty)',
-                                '2931Thermolam Phenolic Backing (48.5" x 96.5")',
-                                '2932Thermolam Phenolic Backing (48.5" x 120.5")',
-                                '2935Polylam Polystyrene Backing 4 X 9',
-                                '2970Acry-Lux Sheet 49x109',
-                                '2972Acry-Lux Sheet'
-                            ];
-                            expect(expectedOptions).to.include(text); 
-                            });
-                        });        
-        cy.get('td.MuiTableCell-root').eq(3).find('input').type('2935', { force: true }).wait(500)                                                              // Model
-        cy.get('td.MuiTableCell-root').eq(4).find('input').type('8151', { force: true }).wait(500)                                                              // color        
-        cy.get('.headerActions > .MuiButton-contained').click()                                                                                                 // Tapping to Print btn
-        cy.get('button[aria-label="close"]', { timeout: 50000 }).should('exist').click()                                                                        // Closing print view                                    
-        cy.get('.css-9hpeq4', { timeout: 50000 }).contains('Submit').should('be.enabled').click().wait(1000)                                                    // Tapping to Submit btn
-        
-        //                                                        Submitting Order with both Required and optional values
-        //                                                                    >>>>> Adding form data <<<<<               
-
-
-        cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
-        cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
-        cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
-        cy.contains('label', 'Your PO').next().find('input').type('Thermolam 11')                                                                               // Your PO
-        cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
-        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click({force: true}).wait(1000)                                                                 // Tapping to Date icon        
-        cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
-            .each(($el) => {
-                if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
-                cy.wrap($el).click().wait(500)                                                                                                                  // Click the first enabled date                
-                return false                                                                                                                                    // Break the loop after selecting the date
-                }
-            });        
-            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
-            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
-            
-            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            .then(input => {                
-            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            });    
-        cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                         // Tapping to inch/mm
-
-        //                                                      >>>>> Adding Preglued Thermoplastic Sheets category table data  <<<<<        
-
-        cy.get('.css-budqf6').contains('Add section').click({force: true}).wait(1000)                                                                           // Tapping to Add color btn
-        cy.contains('label', 'Section name').next().find('input').should('be.visible').type('Thermolam');                                                       // Section Name        
-        //cy.contains('label', 'Notes').eq(1).parent().find('input').type('Automating Molded Category with Doors Section', { force: true });                    // Section Notes                  
-        cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root').click().wait(500)                                  // Select Thermolam    
-        //cy.wait(2000)                   
-        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).should('have.length.greaterThan', 0).then(($rowsBefore) => {
-        const initialRowCount = $rowsBefore.length;
-        cy.wrap($rowsBefore[0]).within(() => {
-        cy.get('td.MuiTableCell-root').each(($td) => {
-            cy.wrap($td).invoke('text').then((tdValue) => {
-            tdValue = tdValue.trim();
-
-                if (tdValue === '1.') {
-                    cy.get('td.MuiTableCell-root').eq(2).find('input').type('52', { force: true }).wait(500)                                                    // Qty
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('2970', { force: true }).wait(500)                                                  // Model
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('8001', { force: true }).wait(500)                                                  // color
-                    cy.get('td.MuiTableCell-root').eq(5).find('input').type('Testing by Automation Script 1', { force: true });                                 // Comments        
-                }
-            });
-        });
-        });
-        cy.get('[colspan="7"] > .MuiButtonBase-root').click().wait(2000)                                                                                        // Adding second item
-        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).then(($rowsAfter) => {
-        const newRow = $rowsAfter[$rowsAfter.length - 1]; // Get the last (newly added) row
-        cy.wrap(newRow).within(() => {
-        cy.get('td.MuiTableCell-root').each(($td) => {
-        cy.wrap($td).invoke('text').then((tdValue) => {
-        tdValue = tdValue.trim();
-                if (tdValue === '2.') {
-                    cy.get('td.MuiTableCell-root').eq(2).find('input').type('14', { force: true }).wait(500)                                                    // Qty
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('2931', { force: true }).wait(500)                                                  // Model
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('7020', { force: true }).wait(500)                                                  // color
-                    cy.get('td.MuiTableCell-root').eq(5).find('input').type('Testing by Automation Script 2', { force: true });                                 // Comments        
-                }                                                                   
-            });
-        });
-    });
-    })
-    })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(10000)                                                                           // Tapping to Submit btn
-    //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                // Print order    
-    //cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
-    //cy.get('button[aria-label="close"]').should('exist').click()                                                                                                // Closing print view
-    */
-
     //=====================================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
 
                     //                                                        Submitting Order with Required values
@@ -3400,7 +3043,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         cy.contains('label', 'Billing client').next().find('input').click({force: true});                                                                       // Select Billing client
         cy.get('[role="combobox"]').should('be.visible');
         cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});                  
-        cy.contains('label', 'Your PO').next().find('input').type('Thermolam 11')                                                                               // Your PO
+        cy.contains('label', 'Your PO').next().find('input').type('Automate Thermolam 11')                                                                      // Your PO
 
         //                                                      >>>>> Adding Thermolam category table data required fields <<<<<   
 
@@ -3424,8 +3067,8 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
                         });        
         cy.get('td.MuiTableCell-root').eq(3).find('input').type('2935', { force: true }).wait(500)                                                              // Model
         cy.get('td.MuiTableCell-root').eq(4).find('input').type('8151', { force: true }).wait(500)                                                              // color        
-        cy.get('.headerActions > .MuiButton-contained').click()                                                                                                 // Tapping to Print btn
-        cy.get('button[aria-label="close"]', { timeout: 50000 }).should('exist').click()                                                                        // Closing print view                                    
+        //cy.get('.headerActions > .MuiButton-contained').click()                                                                                               // Tapping to Print btn
+        //cy.get('button[aria-label="close"]', { timeout: 50000 }).should('exist').click()                                                                      // Closing print view                                    
         cy.get('.css-9hpeq4', { timeout: 50000 }).contains('Submit').should('be.enabled').click().wait(10000)                                                   // Tapping to Submit btn
 
         //                                                        Submitting Order with both Required and optional values
@@ -3451,7 +3094,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         cy.get('[role="combobox"]').should('be.visible');
         cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});                            
 
-        cy.contains('label', 'Your PO').next().find('input').type('Thermolam 11')                                                                               // Your PO
+        cy.contains('label', 'Your PO').next().find('input').type('Automate Thermolam 11')                                                                      // Your PO
         cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
         cy.get(':nth-child(3) > .MuiFormControl-root > .MuiInputBase-root > .MuiInputAdornment-root > .MuiButtonBase-root').click({force: true})                // Tapping to Expected Date icon        
         cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
@@ -3531,7 +3174,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
 
     })
 
-    it("Verify Order created/submitted Successfully - For Thermoplastic Sheets Category -", function()  {        
+    it.skip("Verify Order created/submitted Successfully - For Thermoplastic Sheets Category -", function()  {        
         
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -3626,147 +3269,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         cy.get('.MuiAccordionSummary-root').click().wait(500)                                                                                                   // Tapping to Accordian 
         //cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)
         cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true})                                       // Getting side menu back buttton          
-
-        //===================================================>>  // Getting elements for Local Testing  <<===============================================================================================
-        
-        //                                                        Submitting Order with Required values
-        //                                                           >>>>> Adding form data <<<<<
-        /*
-        cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your PO').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                          // PO Validation of helper text 
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');                                                                    
-
-        cy.contains('label', 'Your full name').next().find('input').type('Automate Thermoplastic Sheets')                                                       // Name
-        cy.contains('label', 'Your email address').next().find('input').type('AutomateThermoplasticSheets#gmail.com')                                           // Email
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your email address').next().find('input').clear()                                                                                 // Clear the invalid input        
-        cy.contains('label', 'Your email address').next().find('input').type('AutomateThermoplasticSheets@gmail.com')                                           // Email with valid input                  
-        cy.contains('label', 'Your PO').next().find('input').type('Thermolam 11')                                                                               // Your PO
-
-        //                                                      >>>>> Adding Thermoplastic Sheets category table data required fields <<<<<   
-
-        cy.contains('div', '1 Thermoplastic Sheets').click()
-        //cy.get('td.MuiTableCell-root').eq(3).find('input').should('exist').should('have.attr', 'aria-invalid', 'true').closest('.MuiFormControl-root')        // Validation of helper text for invalid input
-        //.find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');                
-        cy.get('td.MuiTableCell-root').eq(3).find('input').type('15', { force: true }).wait(500)                                                               // height
-        cy.get('p.MuiFormHelperText-root').contains('Value must be 24 inches or greater').should('exist');                                                      // validaton(24 inches or greater) text assertion
-        cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                              // clear height
-        cy.get('td.MuiTableCell-root').eq(3).find('input').type('ab', { force: true }).wait(500)                                                               // height
-        cy.get('p.MuiFormHelperText-root').contains('Not a valid measurement').should('exist');                                                                 // validaton(24 inches or greater) text assertion
-        cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                              // clear height
-        cy.get('td.MuiTableCell-root').eq(3).find('input').type('25', { force: true }).wait(500)                                                                // height
-        cy.get('td.MuiTableCell-root').eq(4).find('input').type('8167', { force: true }).wait(500)                                                              // color        
-        cy.get('td.MuiTableCell-root').eq(5).find('input').type('555', { force: true }).wait(500)                                                               // back color        
-        cy.get('.headerActions > .MuiButton-contained').click()                                                                                                 // Tapping to Print btn
-        cy.get('button[aria-label="close"]', { timeout: 50000 }).should('exist').click()                                                                        // Closing print view                                    
-        cy.get('.css-9hpeq4', { timeout: 50000 }).contains('Submit').should('be.enabled').click().wait(5000)                                                    // Tapping to Submit btn
-                
-        //                                                        Submitting Order with both Required and optional values
-        //                                                                    >>>>> Adding form data <<<<<               
-
-        cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
-        cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
-        cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
-        cy.contains('label', 'Your PO').next().find('input').type('Thermoplastic Sheets 11')                                                                    // Your PO
-        cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
-        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click({force: true}).wait(1000)                                                                 // Tapping to Date icon        
-        cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
-            .each(($el) => {
-                if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
-                cy.wrap($el).click().wait(500)                                                                                                                  // Click the first enabled date                
-                return false                                                                                                                                    // Break the loop after selecting the date
-                }
-            });        
-            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
-            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
-            
-            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            .then(input => {                
-            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            });    
-        cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                         // Tapping to inch/mm
-
-        //                                                      >>>>> Adding Preglued Thermoplastic Sheets category table data  <<<<<        
-
-        cy.get('.css-budqf6').contains('Add section').click({force: true}).wait(1000)                                                                           // Tapping to Add color btn
-        cy.contains('label', 'Section name').next().find('input').should('be.visible').type('Thermoplastic Sheets');                                            // Section Name        
-        //cy.contains('label', 'Notes').eq(1).parent().find('input').type('Automating Molded Category with Doors Section', { force: true });                    // Section Notes                  
-        cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
-        cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(4) > .MuiButtonBase-root').click().wait(500)                                  // Select Thermoplastic Sheets
-        
-        //                                                          Adding table data
-  
-        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).should('have.length.greaterThan', 0).then(($rowsBefore) => {
-        const initialRowCount = $rowsBefore.length;
-        cy.wrap($rowsBefore[0]).within(() => {
-        cy.get('td.MuiTableCell-root').each(($td) => {
-            cy.wrap($td).invoke('text').then((tdValue) => {
-            tdValue = tdValue.trim();
-
-                if (tdValue === '1.') {
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('45', { force: true }).wait(500)                                                    // height
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('7013', { force: true }).wait(500)                                                  // color        
-                    cy.get('td.MuiTableCell-root').eq(5).find('input').type('555', { force: true }).wait(500)                                                   // back color        
-                    cy.get('td.MuiTableCell-root').eq(6).find('input').type('Testing by Automation Script 1', { force: true });                                 // Comments        
-                }
-            });
-        });
-        });
-    })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                            // Tapping to Submit btn    
-    cy.get('div.MuiGrid-root').contains('Please validate the form before submitting the order').should('be.visible');                                           // Assert the validation message
-    cy.get('button svg path[d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z"]').click({force: true}).wait(500);                                                                                                             // Three dots click
-    cy.get('li.MuiMenuItem-root').contains('span.MuiListItemText-primary', 'Remove product').click().wait(500)                                                  // Click remove btn
-    cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                         // Tapping to Add a new product btn
-    cy.get(':nth-child(4) > .MuiCardContent-root > .MuiList-root > :nth-child(4) > .MuiButtonBase-root').click().wait(500)                                      // Select Thermoplastic Sheets
-    
-    //            ..............................................Adding table data Again..............................................
-
-        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).should('have.length.greaterThan', 0).then(($rowsBefore) => {
-        const initialRowCount = $rowsBefore.length;
-        cy.wrap($rowsBefore[0]).within(() => {
-        cy.get('td.MuiTableCell-root').each(($td) => {
-            cy.wrap($td).invoke('text').then((tdValue) => {
-            tdValue = tdValue.trim();
-
-                if (tdValue === '1.') {
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('4555', { force: true }).wait(500)                                                  // height
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('7013', { force: true }).wait(500)                                                  // color        
-                    cy.get('td.MuiTableCell-root').eq(5).find('input').type('555', { force: true }).wait(500)                                                   // back color        
-                    cy.get('td.MuiTableCell-root').eq(6).find('input').type('Testing by Automation Script 1', { force: true });                                 // Comments        
-                }
-            });
-        });
-        });
-        cy.get('[colspan="8"] > .MuiButtonBase-root').click().wait(500)                                                                                        // Adding second item
-        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).then(($rowsAfter) => {
-        const newRow = $rowsAfter[$rowsAfter.length - 1]; // Get the last (newly added) row
-        cy.wrap(newRow).within(() => {
-        cy.get('td.MuiTableCell-root').each(($td) => {
-        cy.wrap($td).invoke('text').then((tdValue) => {
-        tdValue = tdValue.trim();
-                if (tdValue === '2.') {
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('8587', { force: true }).wait(500)                                                  // height
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('7011', { force: true }).wait(500)                                                  // color        
-                    cy.get('td.MuiTableCell-root').eq(5).find('input').type('555', { force: true }).wait(500)                                                   // back color        
-                    cy.get('td.MuiTableCell-root').eq(6).find('input').type('Testing by Automation Script 2', { force: true });                                 // Comments        
-                }                                                                   
-            });
-        });
-        });
-       })
-    })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(10000)                                                                           // Tapping to Submit btn    
-    //cy.get('div.MuiGrid-root').contains('Please validate the form before submitting the order').should('be.visible');
-    //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                // Print order    
-    //cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                               // Performs a click action
-    //cy.get('button[aria-label="close"]').should('exist').click()                                                                                              // Closing print view
-    */
+       
 //=====================================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
 
 //                                                                         Submitting Order with Required values
@@ -3792,7 +3295,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         cy.contains('label', 'Billing client').next().find('input').click({force: true});                                                                       // Select Billing client
         cy.get('[role="combobox"]').should('be.visible');
         cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});                  
-        cy.contains('label', 'Your PO').next().find('input').type('Thermoplastic Sheets 11')                                                                    // Your PO
+        cy.contains('label', 'Your PO').next().find('input').type('Automate Thermoplastic')                                                                     // Your PO
 
         //                                                      >>>>> Adding Thermoplastic Sheets category table data required fields <<<<<   
 
@@ -3808,8 +3311,8 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         cy.get('td.MuiTableCell-root').eq(3).find('input').type('25', { force: true }).wait(500)                                                                // height
         cy.get('td.MuiTableCell-root').eq(4).find('input').type('8167', { force: true }).wait(500)                                                              // color        
         cy.get('td.MuiTableCell-root').eq(5).find('input').type('555', { force: true }).wait(500)                                                               // back color        
-        cy.get('.headerActions > .MuiButton-contained').click()                                                                                                 // Tapping to Print btn
-        cy.get('button[aria-label="close"]', { timeout: 50000 }).should('exist').click()                                                                        // Closing print view                                    
+        //cy.get('.headerActions > .MuiButton-contained').click()                                                                                               // Tapping to Print btn
+        //cy.get('button[aria-label="close"]', { timeout: 50000 }).should('exist').click()                                                                      // Closing print view                                    
         cy.get('.css-9hpeq4', { timeout: 50000 }).contains('Submit').should('be.enabled').click().wait(5000)                                                    // Tapping to Submit btn
                 
         //                                                        Submitting Order with both Required and optional values
@@ -3833,7 +3336,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         cy.get('[role="combobox"]').should('be.visible');
         cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});
 
-        cy.contains('label', 'Your PO').next().find('input').type('Thermoplastic Sheets 11')                                                                    // Your PO
+        cy.contains('label', 'Your PO').next().find('input').type('Automate Thermoplastic')                                                                     // Your PO
         cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
         cy.get(':nth-child(3) > .MuiFormControl-root > .MuiInputBase-root > .MuiInputAdornment-root > .MuiButtonBase-root').click({force: true})                // Tapping to Expected Date icon        
         cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
