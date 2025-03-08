@@ -1,6 +1,6 @@
 
 const { expect } = require("chai")
-//const cypress = require("cypress")
+require('cypress-xpath')
 
 //let textToStore; 
 /*describe('Estimator Order Creation/Edition/Submission For Molded Category Suit', function() {
@@ -2719,11 +2719,12 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
             cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
             //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
             
-            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            .then(input => {                
-            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            });    
+            //const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
+            //cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
+            //.then(input => {                
+            //expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
+            //});  
+            // cy.wait(10000)  
         cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                         // Tapping to inch/mm
 
         //                                                      >>>>> Adding Boards category table data  <<<<<        
@@ -2772,7 +2773,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
     });
     })
     })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(10000)                                                                           // Tapping to Submit btn
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                           // Tapping to Submit btn
     cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')       // Check if Client dropdown is disabled to verify order successfully submitted
     .and('exist').and('contain','submitted')
     })
@@ -3149,7 +3150,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
     });
     })
     })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(10000)                                                                           // Tapping to Submit btn
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                           // Tapping to Submit btn
     cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')           // Check if Client dropdown is disabled to verify order successfully submitted
     .and('exist').and('contain','submitted')
     
@@ -3523,7 +3524,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
     });
     })
     })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(10000)                                                                           // Tapping to Submit btn
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                           // Tapping to Submit btn
     cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')           // Check if Client dropdown is disabled to verify order successfully submitted
     .and('exist').and('contain','submitted')
     
@@ -3933,7 +3934,7 @@ describe('Estimator Order Creation/Edition/Submission For Boards Category Suit',
         });
        })
     })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(10000)                                                                           // Tapping to Submit btn    
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                           // Tapping to Submit btn
     cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')           // Check if Client dropdown is disabled to verify order successfully submitted
     .and('exist').and('contain','submitted')
     

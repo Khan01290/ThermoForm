@@ -9,7 +9,6 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
 
     it("Verify Order created/submitted Successfully - For Doors(Edged) Category -", function()  {
 
-
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
         
@@ -422,7 +421,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
     });
     })
     })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                            // Tapping to Submit btn
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                           // Tapping to Submit btn
     cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')           // Check if Client dropdown is disabled to verify order successfully submitted
     .and('exist').and('contain','submitted')
     
@@ -950,8 +949,9 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         });
         })
         })
-        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                            // Tapping to Submit btn        
-        
+        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                       // Tapping to Submit btn        
+        cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')       // Check if Client dropdown is disabled to verify order successfully submitted
+        .and('exist').and('contain','submitted')
     })
 
     it("Verify Order Edited Successfully on same screen  - For Doors(Edged) Category -", function()  {
@@ -1550,9 +1550,9 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
             });
             })
             })
-        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
-        cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')     // Check if Client dropdown is disabled to verify order successfully submitted
-        .and('exist').and('contain','submitted')
+            cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                       // Tapping to Submit btn        
+            cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')       // Check if Client dropdown is disabled to verify order successfully submitted
+            .and('exist').and('contain','submitted')
         
     })
 
@@ -1965,7 +1965,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
     });
     })
     })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                            // Tapping to Submit btn
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                           // Tapping to Submit btn
     cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')           // Check if Client dropdown is disabled to verify order successfully submitted
     .and('exist').and('contain','submitted')
     })
@@ -2496,7 +2496,10 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         });
         })
         })
-        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                            // Tapping to Submit btn        
+        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                           // Tapping to Submit btn
+        cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')           // Check if Client dropdown is disabled to verify order successfully submitted
+        .and('exist').and('contain','submitted')
+        
         
     })
     
@@ -3008,7 +3011,7 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         })
     })
 
-    cy.get('[aria-label="Save"] > .MuiButtonBase-root').click().wait(10000)                                                                                 // Tapping to save order btn
+    cy.get('[aria-label="Save"] > .MuiButtonBase-root').click().wait(10000)                                                                                     // Tapping to save order btn
 
         //                                                                  Moving to web orders page
         /*
@@ -3103,8 +3106,8 @@ describe('Estimator Order Creation/Edition/Submission For Edged Category Suit', 
         });
         })
         })
-        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
-        cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')     // Check if Client dropdown is disabled to verify order successfully submitted
+        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                       // Tapping to Submit btn
+        cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')       // Check if Client dropdown is disabled to verify order successfully submitted
         .and('exist').and('contain','submitted')
         
     })

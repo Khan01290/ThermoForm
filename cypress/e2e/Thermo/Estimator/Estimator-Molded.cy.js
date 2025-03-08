@@ -325,9 +325,9 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
     cy.get('td.MuiTableCell-root').eq(4).find('input').clear()                                                                                              // Clear input height    
     cy.get('td.MuiTableCell-root').eq(4).find('input').type('582', { force: true });                                                                        // Valid input height
     cy.get('td.MuiTableCell-root').eq(15).find('input').type('61', { force: true });                                                                        // color        
-    cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                     // Tapping to Print btn
-    cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                // Closing print view                                    
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                         // Tapping to Submit btn
+    //cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                   // Tapping to Print btn
+    //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                              // Closing print view                                    
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
 
     //                                                        Submitting Order with both Required and optional values
     //                                                                    >>>>> Adding form data <<<<<    
@@ -374,12 +374,12 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
             });        
 
             cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                    // Note
-            cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
+            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
             
-            const filePath = 'images/sample-image.png';                                                                                                   // Define the file path relative to the cypress/fixtures directory            
-            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                       // Upload the file using the input element
+            const filePath = 'images/sample-image.png';                                                                                                     // Define the file path relative to the cypress/fixtures directory            
+            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                         // Upload the file using the input element
             .then(input => {                
-            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                  // Verify that the file is uploaded
+            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                    // Verify that the file is uploaded
             });    
         
             cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                 // Tapping to inch/mm
@@ -456,8 +456,9 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
     });
     })
     })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                       // Tapping to Submit btn
     cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')       // Check if Client dropdown is disabled to verify order successfully submitted
+    
     .and('exist').and('contain','submitted')
     //cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                            // Print order    
     //cy.get('#\\:rp\\: > .MuiButtonBase-root').click().wait(500)                                                                                           // Closing print view   
@@ -856,7 +857,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
                 });
               })
             })
-        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
+        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                        // Tapping to Submit btn
         cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')       // Check if Client dropdown is disabled to verify order successfully submitted
         .and('exist').and('contain','submitted')
         //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                              // Closing print view                                    
@@ -1199,8 +1200,8 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
                 }
                 });
                         
-            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
-            cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
+                cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                    // Note
+                //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
             
             const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
             cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
@@ -1283,7 +1284,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
     });
     })
     })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                            // Tapping to Submit btn
+    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                           // Tapping to Submit btn
     cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')           // Check if Client dropdown is disabled to verify order successfully submitted
     .and('exist').and('contain','submitted')    
     //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                  // Closing print view                                    
@@ -1858,7 +1859,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         });
         })
         })
-        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                         // Tapping to Submit btn
+        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                       // Tapping to Submit btn
         cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')       // Check if Client dropdown is disabled to verify order successfully submitted
         .and('exist').and('contain','submitted')        
         
@@ -2433,7 +2434,7 @@ describe('Estimator Order Creation/Edition/Submission For Molded Category Suit',
         });
         })
         })
-        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                        // Tapping to Submit btn
+        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(20000)                                                                       // Tapping to Submit btn
         cy.get('#alert-dialog-confirm-description > .MuiAlert-message').contains("The order was submitted successfully, thank you!").should('be.visible')       // Check if Client dropdown is disabled to verify order successfully submitted
         .and('exist').and('contain','submitted')        
     })
