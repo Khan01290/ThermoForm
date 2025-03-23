@@ -1,6 +1,6 @@
 
 const { expect } = require("chai")
-//const cypress = require("cypress")
+require('cypress-xpath')
 
 //let textToStore; 
 /*describe('Estimator Order Creation/Edition/Submission For Molded Category Suit', function() {
@@ -1967,7 +1967,7 @@ describe('Estimator Order Creation/Edition/Submission For Accessories Category S
 
 describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit', function() {
     
-    it("Verify Order created/submitted Successfully - For Doors Category -", function()  {        
+    it("Verify Order created/submitted Successfully - For Doors Category(5-Pieces) -", function()  {        
 
         cy.viewport(1440, 900)
         cy.visit("https://dev.thermoform.net/") 
@@ -2064,178 +2064,39 @@ describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit
         //cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)
         cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true})                                       // Getting side menu back buttton          
         
-        //===================================================>>  // Getting elements for Local Testing  <<===============================================================================================
-        /*
-        //                                                        Submitting Order with Required values
-        //                                                           >>>>> Adding form data <<<<<                
-
-        cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your PO').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                          // PO Validation of helper text 
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');                                                                    
-
-        cy.contains('label', 'Your full name').next().find('input').type('Automate Doors (5-Pieces) Category')                                                  // Name
-        cy.contains('label', 'Your email address').next().find('input').type('AutomateDoors5Pieces#gmail.com')                                                  // Email
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your email address').next().find('input').clear()                                                                                 // Clear the invalid input        
-        cy.contains('label', 'Your email address').next().find('input').type('AutomateDoors5Pieces@gmail.com')                                                  // Email with valid input                  
-        cy.contains('label', 'Your PO').next().find('input').type('Doors(5-Pieces) 11')                                                                         // Your PO
-
-          //                                                      >>>>> Adding Doors (5-Pieces) category table data  <<<<<  
-          
-          cy.contains('div', '1 Doors (5 pieces)').click()
-          cy.get('td.MuiTableCell-root').eq(3).find('input').should('exist').should('have.attr', 'aria-invalid', 'true').closest('.MuiFormControl-root')        // Validation of helper text for invalid input
-          .find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
-          cy.get('td.MuiTableCell-root').eq(3).find('input').type('abcs', { force: true });                                                                     // invalid input width
-          cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                            // Clear input width    
-          cy.get('td.MuiTableCell-root').eq(3).find('input').type('45', { force: true });                                                                       // Valid input width
-  
-          //cy.get('td.MuiTableCell-root').eq(4).find('input').should('exist').clear().should('have.attr', 'aria-invalid', 'true')                              // Validation of helper text for invalid input
-          //.parent().find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
-          cy.get('td.MuiTableCell-root').eq(4).find('input').type('abcs', { force: true });                                                                     // invalid input height
-          cy.get('td.MuiTableCell-root').eq(4).find('input').clear()                                                                                            // Clear input height    
-          cy.get('td.MuiTableCell-root').eq(4).find('input').type('582', { force: true });                                                                      // Valid input height
-          cy.get('td.MuiTableCell-root').eq(7).find('input').type('7550', { force: true });                                                                     // Model    
-          cy.get('td.MuiTableCell-root').eq(12).find('input').type('212', { force: true });                                                                     // color                    
-          cy.get('td.MuiTableCell-root').eq(13).find('input').type('999', { force: true });                                                                     // sb color        
-          cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                   // Tapping to Print btn
-          cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                              // Closing print view                                    
-          cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                       // Tapping to Submit btn 
-
-        //                                                        Submitting Order with both Required and optional values
-        //                                                                    >>>>> Adding form data <<<<<                
-  
-
-        cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
-        cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
-        cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
-        cy.contains('label', 'Your PO').next().find('input').type('DoorsEdged Doors 11')                                                                        // Your PO
-        cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
-        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click({force: true}).wait(1000)                                                                 // Tapping to Date icon        
-        cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
-            .each(($el) => {
-                if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
-                cy.wrap($el).click().wait(500)                                                                                                                  // Click the first enabled date                
-                return false                                                                                                                                    // Break the loop after selecting the date
-                }
-            });        
-            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
-            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
-            
-            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            .then(input => {                
-            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            });    
-            cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                     // Tapping to inch/mm
-
-                    //                                                      >>>>> Adding Doors (5-Pieces) Category category table data  <<<<<        
-
-
-                    cy.get('.css-budqf6').contains('Add section').click({force: true}).wait(1000)                                                                           // Tapping to Add color btn
-                    cy.contains('label', 'Section name').next().find('input').should('be.visible').type('Doors (Edged) Section');                                           // Section Name        
-                    //cy.contains('label', 'Notes').eq(1).parent().find('input').type('Automating Molded Category with Doors Section', { force: true });                    // Section Notes                  
-                    cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
-                    cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(1) > .MuiButtonBase-root').click().wait(500)                                  // Select Doors (5-Pieces)
-                    //.click().wait(500)                   
-                    cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).should('have.length.greaterThan', 0).then(($rowsBefore) => {
-                    const initialRowCount = $rowsBefore.length;
-                    cy.wrap($rowsBefore[0]).within(() => {
-                    cy.get('td.MuiTableCell-root').each(($td) => {
-                        cy.wrap($td).invoke('text').then((tdValue) => {
-                        tdValue = tdValue.trim();
-            
-                            if (tdValue === '1.') {                            
-                                cy.get('td.MuiTableCell-root').eq(3).find('input').type('abcs', { force: true });                                                           // invalid input width
-                                cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                  // Clear input width    
-                                cy.get('td.MuiTableCell-root').eq(3).find('input').type('45', { force: true });                                                             // Valid input width
-                                cy.get('td.MuiTableCell-root').eq(4).find('input').type('abcs', { force: true });                                                           // invalid input height
-                                cy.get('td.MuiTableCell-root').eq(4).find('input').clear()                                                                                  // Clear input height    
-                                cy.get('td.MuiTableCell-root').eq(4).find('input').type('58', { force: true });                                                             // Valid input height
-                                cy.get('td.MuiTableCell-root').eq(5).find('.MuiSelect-select').click({ force: true });                                                      // thickness
-                                cy.get('[data-value="0.75"]').click()                                                                                                       // thickness
-                                cy.get('td.MuiTableCell-root').eq(6).find('.MuiSelect-select').click({ force: true });                                                      // grain                
-                                cy.get('[data-value="H"]').click()                                                                                                          // grain        
-                                cy.get('td.MuiTableCell-root').eq(7).find('input').type('3280', { force: true });                                                           // Model             
-                                cy.get('td.MuiTableCell-root').eq(8).find('.MuiSelect-select').click({ force: true });                                                      // Type
-                                cy.get('[data-value="S"] > .css-sc6tei').click()                                                                                            // Type
-                                cy.get('td.MuiTableCell-root').eq(9).find('.MuiSelect-select').click({ force: true });                                                      // qty
-                                cy.get('[data-value="3"]').click()                                                                                                          // qty
-                                cy.get('td.MuiTableCell-root').eq(10).find('.MuiSelect-select').click({ force: true });                                                     // postiton
-                                cy.get('[data-value="D"] > .css-sc6tei').click()                                                                                            // postiton
-                                cy.get('.MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click({ force: true })                                      // Dowels 
-                                cy.get('td.MuiTableCell-root').eq(12).find('input').type('222', { force: true });                                                           // color                    
-                                cy.get('td.MuiTableCell-root').eq(13).find('input').type('555', { force: true });                                                           // Sb Color
-                            }
-                        });
-                    });
-                    });
-                    cy.get('[colspan="16"] > .MuiButtonBase-root').click().wait(2000)                                                                                       // Adding second item
-                    cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).then(($rowsAfter) => {
-                    const newRow = $rowsAfter[$rowsAfter.length - 2]; // Get the last (newly added) row
-                    cy.wrap(newRow).within(() => {
-                    cy.get('td.MuiTableCell-root').each(($td) => {
-                    cy.wrap($td).invoke('text').then((tdValue) => {
-                    tdValue = tdValue.trim();
-                            if (tdValue === '2.') {
-                                cy.get('td.MuiTableCell-root').eq(3).find('input').type('abcs', { force: true });                                                           // invalid input width
-                                cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                  // Clear input width    
-                                cy.get('td.MuiTableCell-root').eq(3).find('input').type('96', { force: true });                                                             // Valid input width
-                                cy.get('td.MuiTableCell-root').eq(4).find('input').type('abcs', { force: true });                                                           // invalid input height
-                                cy.get('td.MuiTableCell-root').eq(4).find('input').clear()                                                                                  // Clear input height    
-                                cy.get('td.MuiTableCell-root').eq(4).find('input').type('14', { force: true });                                                             // Valid input height
-                                cy.get('td.MuiTableCell-root').eq(5).find('.MuiSelect-select').click({ force: true });                                                      // thickness
-                                cy.get('[data-value="0.75"]').click()                                                                                                       // thickness
-                                cy.get('td.MuiTableCell-root').eq(6).find('.MuiSelect-select').click({ force: true });                                                      // grain                
-                                cy.get('[data-value="V"]').click()                                                                                                          // grain        
-                                cy.get('td.MuiTableCell-root').eq(7).find('input').type('6711', { force: true });                                                           // Model             
-                                cy.get('td.MuiTableCell-root').eq(8).find('.MuiSelect-select').click({ force: true });                                                      // Type
-                                cy.get('[data-value="S"] > .css-sc6tei').click()                                                                                            // Type
-                                cy.get('td.MuiTableCell-root').eq(9).find('.MuiSelect-select').click({ force: true });                                                      // qty
-                                cy.get('[data-value="2"]').click()                                                                                                          // qty
-                                cy.get('td.MuiTableCell-root').eq(10).find('.MuiSelect-select').click({ force: true });                                                     // postiton
-                                cy.get('[data-value="H"] > .css-sc6tei').click()                                                                                            // postiton
-                                cy.get('.MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click({ force: true })                                      // Dowels 
-                                cy.get('td.MuiTableCell-root').eq(12).find('input').type('499', { force: true });                                                           // color                    
-                                cy.get('td.MuiTableCell-root').eq(13).find('input').type('499', { force: true });                                                           // Sb Color                                             
-                            }        
-                        });
-                    });
-                });
-                })
-                })
-                cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                            // Tapping to Submit btn
-                cy.get('.css-1ubxkj1 > :nth-child(1)').click().wait(10000)                                                                                                  // Print order    
-                //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                  // Closing print view                                    
-                */
         //===================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
 
       //                                                        Submitting Order with Required values
       //                                                           >>>>> Adding form data <<<<<                
       
-      cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
-      .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
-      cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-      .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-      cy.contains('label', 'Your PO').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                          // PO Validation of helper text 
-      .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');                                                                    
+        cy.contains('label', 'Client').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                           // Client Validation of helper text
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
+        cy.contains('label', 'Shipping client').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                  // Shipping client of helper text
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
+        cy.contains('label', 'Billing client').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Billing client of helper text
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
+        cy.contains('label', 'Your PO').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                          // PO Validation of helper text 
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');                                                                    
+        cy.get('button[aria-label="New Order"]').scrollIntoView();                                                                           
+        cy.contains('label', 'Client').next().find('input').click({force: true}).wait(500)                                                                      // Select Client
+        cy.get('[role="combobox"]').should('be.visible')
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true}).wait(500)
 
-      cy.contains('label', 'Your full name').next().find('input').type('Automate Doors (5-Pieces) Category')                                                  // Name
-      cy.contains('label', 'Your email address').next().find('input').type('AutomateDoors5Pieces#gmail.com')                                                  // Email
-      cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-      .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-      cy.contains('label', 'Your email address').next().find('input').clear()                                                                                 // Clear the invalid input        
-      cy.contains('label', 'Your email address').next().find('input').type('AutomateDoors5Pieces@gmail.com')                                                  // Email with valid input                  
-      cy.contains('label', 'Your PO').next().find('input').type('Doors(5-Pieces) 11')                                                                         // Your PO
+        cy.contains('label', 'Shipping client').next().find('input').click({force: true});                                                                      // Select Shipping client
+        cy.get('[role="combobox"]').should('be.visible');
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});                                                          
+
+        cy.contains('label', 'Billing client').next().find('input').click({force: true});                                                                       // Select Billing client
+        cy.get('[role="combobox"]').should('be.visible');
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});                  
+        cy.contains('label', 'Your PO').next().find('input').type('Doors(5-Pieces) 11')                                                                         // Your PO
 
       //                                                      >>>>> Adding Doors (5-Pieces) category table data  <<<<<  
       
       cy.contains('div', '1 Doors (5 pieces)').click()
-      cy.get('td.MuiTableCell-root').eq(3).find('input').should('exist').should('have.attr', 'aria-invalid', 'true').closest('.MuiFormControl-root')        // Validation of helper text for invalid input
-      .find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
+
+      //cy.get('td.MuiTableCell-root').eq(3).find('input').should('exist').should('have.attr', 'aria-invalid', 'true').closest('.MuiFormControl-root')        // Validation of helper text for invalid input
+      //.find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
       cy.get('td.MuiTableCell-root').eq(3).find('input').type('abcs', { force: true });                                                                     // invalid input width
       cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                            // Clear input width    
       cy.get('td.MuiTableCell-root').eq(3).find('input').type('45', { force: true });                                                                       // Valid input width
@@ -2248,8 +2109,8 @@ describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit
       cy.get('td.MuiTableCell-root').eq(7).find('input').type('7550', { force: true });                                                                     // Model    
       cy.get('td.MuiTableCell-root').eq(12).find('input').type('212', { force: true });                                                                     // color                    
       cy.get('td.MuiTableCell-root').eq(13).find('input').type('999', { force: true });                                                                     // sb color        
-      cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                   // Tapping to Print btn
-      cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                              // Closing print view                                    
+      //cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                   // Tapping to Print btn
+      //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                              // Closing print view                                    
       cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                       // Tapping to Submit btn 
 
       //                                                        Submitting Order with both Required and optional values
@@ -2259,18 +2120,42 @@ describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit
       cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
       cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
       cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
-      cy.contains('label', 'Your PO').next().find('input').type('DoorsEdged Doors 11')                                                                        // Your PO
+
+      cy.contains('label', 'Client').next().find('input').click({force: true})                                                                                // Select Client to remove
+      cy.contains('label', 'Client').next().find('input').clear()
+      cy.get('[role="combobox"]').should('be.visible').wait(500)
+      cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true}).wait(500)
+          
+      cy.contains('label', 'Shipping client').next().find('input').click({force: true});                                                                      // Select Shipping client
+      cy.get('[role="combobox"]').should('be.visible');
+      cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});                                                          
+           
+      cy.contains('label', 'Billing client').next().find('input').click({force: true});                                                                       // Select Billing client
+      cy.get('[role="combobox"]').should('be.visible');
+      cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});  
+
+      cy.contains('label', 'Your PO').next().find('input').type('5-Pieces Doors 11')                                                                          // Your PO
       cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
-      cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click({force: true}).wait(1000)                                                                 // Tapping to Date icon        
+      cy.get(':nth-child(3) > .MuiFormControl-root > .MuiInputBase-root > .MuiInputAdornment-root > .MuiButtonBase-root').click({force: true})                // Tapping to Expected Date icon        
       cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
           .each(($el) => {
               if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
-              cy.wrap($el).click().wait(500)                                                                                                                  // Click the first enabled date                
-              return false                                                                                                                                    // Break the loop after selecting the date
+                  cy.wrap($el).click().wait(500)                                                                                                              // Click the first enabled date                
+                  return false                                                                                                                                // Break the loop after selecting the date
+                  }
+              });  
+              
+      cy.contains('label', 'Their name').next().find('input').type('Zagg', { force: true })                                                                   // Their Name
+      //cy.contains('label', 'Promised date').next().find('input').click({force: true}).wait(10000)                                                       
+      cy.get(':nth-child(5) > .MuiFormControl-root > .MuiInputBase-root > .MuiInputAdornment-root > .MuiButtonBase-root').click({force: true})                // Tapping to promissed Date icon        
+      cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
+      .each(($cl) => {
+          if (!$cl.prop('disabled')) {                                                                                                                        // Check if the date is enabled                
+              cy.wrap($cl).click().wait(500)                                                                                                                  // Click the first enabled date                
+                  return false                                                                                                                                // Break the loop after selecting the date
               }
-          });        
+              });        
           cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
-          //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
           
           const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
           cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
@@ -2457,169 +2342,40 @@ describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit
         //cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)
         cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true})                                       // Getting side menu back buttton          
 
-        //===================================================>>  // Getting elements for Local Testing  <<===============================================================================================
-        /*
-        //                                                        Submitting Order with Required values
-        //                                                           >>>>> Adding form data <<<<<                
-
-                
-        cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your PO').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                          // PO Validation of helper text 
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');                                                                    
-
-        cy.contains('label', 'Your full name').next().find('input').type('Automate Drawer Fronts (5-Pieces) Category')                                          // Name
-        cy.contains('label', 'Your email address').next().find('input').type('AutomateDrawerFronts5Pieces#gmail.com')                                           // Email
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your email address').next().find('input').clear()                                                                                 // Clear the invalid input        
-        cy.contains('label', 'Your email address').next().find('input').type('AutomateDrawerFronts5Pieces@gmail.com')                                           // Email with valid input                  
-        cy.contains('label', 'Your PO').next().find('input').type('Doors(5-Pieces) 11')                                                                         // Your PO
-
-        //                                                      >>>>> Adding Drawer Fronts (5-Pieces) category table data  <<<<< 
-        
-        cy.contains('div', '1 Drawer Fronts (5 pieces)').click()
-        cy.get('td.MuiTableCell-root').eq(3).find('input').should('exist').should('have.attr', 'aria-invalid', 'true').closest('.MuiFormControl-root')        // Validation of helper text for invalid input
-        .find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
-        cy.get('td.MuiTableCell-root').eq(3).find('input').type('abcs', { force: true });                                                                     // invalid input width
-        cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                            // Clear input width    
-        cy.get('td.MuiTableCell-root').eq(3).find('input').type('45', { force: true });                                                                       // Valid input width
-
-        //cy.get('td.MuiTableCell-root').eq(4).find('input').should('exist').clear().should('have.attr', 'aria-invalid', 'true')                              // Validation of helper text for invalid input
-        //.parent().find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
-        cy.get('td.MuiTableCell-root').eq(4).find('input').type('abcs', { force: true });                                                                     // invalid input height
-        cy.get('td.MuiTableCell-root').eq(4).find('input').clear()                                                                                            // Clear input height    
-        cy.get('td.MuiTableCell-root').eq(4).find('input').type('582', { force: true });                                                                      // Valid input height
-        cy.get('td.MuiTableCell-root').eq(7).find('input').type('6711', { force: true });                                                                     // Model    
-        cy.get('td.MuiTableCell-root').eq(8).find('input').type('5207', { force: true });                                                                     // color                    
-        cy.get('td.MuiTableCell-root').eq(9).find('input').type('555', { force: true });                                                                      // sb color        
-        cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                   // Tapping to Print btn
-        cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                              // Closing print view                                    
-        cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                       // Tapping to Submit btn
-
-        //                                                        Submitting Order with both Required and optional values
-        //                                                                    >>>>> Adding form data <<<<<                
-
-
-        cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
-        cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
-        cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
-        cy.contains('label', 'Your PO').next().find('input').type('Drawer Fronts 11')                                                                           // Your PO
-        cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
-        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click({force: true}).wait(1000)                                                                 // Tapping to Date icon        
-        cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
-            .each(($el) => {
-                if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
-                cy.wrap($el).click().wait(500)                                                                                                                  // Click the first enabled date                
-                return false                                                                                                                                    // Break the loop after selecting the date
-                }
-            });        
-            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
-            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
-            
-            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            .then(input => {                
-            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            });    
-            cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                     // Tapping to inch/mm
-   
-        //                                                      >>>>> Adding Drawer Fronts (5-Pieces) Category category table data  <<<<<        
-    
-
-        cy.get('.css-budqf6').contains('Add section').click({force: true}).wait(1000)                                                                           // Tapping to Add color btn
-        cy.contains('label', 'Section name').next().find('input').should('be.visible').type('Drawer Fronts (5-Pieces)');                                        // Section Name        
-        //cy.contains('label', 'Notes').eq(1).parent().find('input').type('Automating Molded Category with Doors Section', { force: true });                    // Section Notes                  
-        cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
-        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(2) > .MuiButtonBase-root').click().wait(500)                                  // Select Drawer Fronts (5-Pieces)
-        //.click().wait(500)                   
-        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).should('have.length.greaterThan', 0).then(($rowsBefore) => {
-        const initialRowCount = $rowsBefore.length;
-        cy.wrap($rowsBefore[0]).within(() => {
-        cy.get('td.MuiTableCell-root').each(($td) => {
-            cy.wrap($td).invoke('text').then((tdValue) => {
-            tdValue = tdValue.trim();
-
-                if (tdValue === '1.') {                            
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('abcs', { force: true });                                                           // invalid input width
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                  // Clear input width    
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('41', { force: true });                                                             // Valid input width
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('abcs', { force: true });                                                           // invalid input height
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').clear()                                                                                  // Clear input height    
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('58', { force: true });                                                             // Valid input height
-                    cy.get('td.MuiTableCell-root').eq(5).find('.MuiSelect-select').click({ force: true });                                                      // thickness
-                    cy.get('[data-value="0.75"]').click()                                                                                                       // thickness
-                    cy.get('td.MuiTableCell-root').eq(6).find('.MuiSelect-select').click({ force: true });                                                      // grain                
-                    cy.get('[data-value="H"]').click()                                                                                                          // grain        
-                    cy.get('td.MuiTableCell-root').eq(7).find('input').type('5411', { force: true });                                                           // Model             
-                    cy.get('td.MuiTableCell-root').eq(8).find('input').type('270', { force: true });                                                            // color                    
-                    cy.get('td.MuiTableCell-root').eq(9).find('input').type('999', { force: true });                                                            // Sb Color
-                    cy.get('td.MuiTableCell-root').eq(10).find('input').type('Testing Scrit 1', { force: true });                                               // Comments
-
-                }
-            });
-        });
-        });
-        cy.get('[colspan="12"] > .MuiButtonBase-root').click().wait(2000)                                                                                       // Adding second item
-        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).then(($rowsAfter) => {
-        const newRow = $rowsAfter[$rowsAfter.length - 1]; // Get the last (newly added) row
-        cy.wrap(newRow).within(() => {
-        cy.get('td.MuiTableCell-root').each(($td) => {
-        cy.wrap($td).invoke('text').then((tdValue) => {
-        tdValue = tdValue.trim();
-                if (tdValue === '2.') {
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('abcs', { force: true });                                                           // invalid input width
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                  // Clear input width    
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('54', { force: true });                                                             // Valid input width
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('abcs', { force: true });                                                           // invalid input height
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').clear()                                                                                  // Clear input height    
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('78', { force: true });                                                             // Valid input height
-                    cy.get('td.MuiTableCell-root').eq(5).find('.MuiSelect-select').click({ force: true });                                                      // thickness
-                    cy.get('[data-value="0.75"]').click()                                                                                                       // thickness
-                    cy.get('td.MuiTableCell-root').eq(6).find('.MuiSelect-select').click({ force: true });                                                      // grain                
-                    cy.get('[data-value="V"]').click()                                                                                                          // grain        
-                    cy.get('td.MuiTableCell-root').eq(7).find('input').type('4810', { force: true });                                                           // Model             
-                    cy.get('td.MuiTableCell-root').eq(8).find('input').type('5206', { force: true });                                                           // color                    
-                    cy.get('td.MuiTableCell-root').eq(9).find('input').type('5206', { force: true });                                                           // Sb Color
-                    cy.get('td.MuiTableCell-root').eq(10).find('input').type('Testing Scrit 2', { force: true });                                               // Comments                                             
-                }        
-            });
-        });
-    });
-    })
-    })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click()                                                                                       // Tapping to Submit btn
-    cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
-    //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                  // Closing print view
-    */
     //=======================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
 
     //                                                        Submitting Order with Required values
         //                                                           >>>>> Adding form data <<<<<                
 
                 
-        cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
+        cy.contains('label', 'Client').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                           // Client Validation of helper text
         .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
+        cy.contains('label', 'Shipping client').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                  // Shipping client of helper text
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
+        cy.contains('label', 'Billing client').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Billing client of helper text
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
         cy.contains('label', 'Your PO').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                          // PO Validation of helper text 
         .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');                                                                    
+        cy.get('button[aria-label="New Order"]').scrollIntoView();                                                                           
+        cy.contains('label', 'Client').next().find('input').click({force: true}).wait(500)                                                                      // Select Client
+        cy.get('[role="combobox"]').should('be.visible')
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true}).wait(500)
 
-        cy.contains('label', 'Your full name').next().find('input').type('Automate Drawer Fronts (5-Pieces) Category')                                          // Name
-        cy.contains('label', 'Your email address').next().find('input').type('AutomateDrawerFronts5Pieces#gmail.com')                                           // Email
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your email address').next().find('input').clear()                                                                                 // Clear the invalid input        
-        cy.contains('label', 'Your email address').next().find('input').type('AutomateDrawerFronts5Pieces@gmail.com')                                           // Email with valid input                  
-        cy.contains('label', 'Your PO').next().find('input').type('Doors(5-Pieces) 11')                                                                         // Your PO
+        cy.contains('label', 'Shipping client').next().find('input').click({force: true});                                                                      // Select Shipping client
+        cy.get('[role="combobox"]').should('be.visible');
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});                                                          
+
+        cy.contains('label', 'Billing client').next().find('input').click({force: true});                                                                       // Select Billing client
+        cy.get('[role="combobox"]').should('be.visible');
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});                  
+        cy.contains('label', 'Your PO').next().find('input').type('Drawer Fronts(5-Pieces) 11')                                                                 // Your PO
 
         //                                                      >>>>> Adding Drawer Fronts (5-Pieces) category table data  <<<<< 
         
         cy.contains('div', '1 Drawer Fronts (5 pieces)').click()
-        cy.get('td.MuiTableCell-root').eq(3).find('input').should('exist').should('have.attr', 'aria-invalid', 'true').closest('.MuiFormControl-root')        // Validation of helper text for invalid input
-        .find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
+        //cy.get('td.MuiTableCell-root').eq(3).find('input').should('exist').should('have.attr', 'aria-invalid', 'true').closest('.MuiFormControl-root')        // Validation of helper text for invalid input
+        //.find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
+        
         cy.get('td.MuiTableCell-root').eq(3).find('input').type('abcs', { force: true });                                                                     // invalid input width
         cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                            // Clear input width    
         cy.get('td.MuiTableCell-root').eq(3).find('input').type('45', { force: true });                                                                       // Valid input width
@@ -2632,8 +2388,8 @@ describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit
         cy.get('td.MuiTableCell-root').eq(7).find('input').type('6711', { force: true });                                                                     // Model    
         cy.get('td.MuiTableCell-root').eq(8).find('input').type('5207', { force: true });                                                                     // color                    
         cy.get('td.MuiTableCell-root').eq(9).find('input').type('555', { force: true });                                                                      // sb color        
-        cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                   // Tapping to Print btn
-        cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                              // Closing print view                                    
+        //cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                 // Tapping to Print btn
+        //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                            // Closing print view                                    
         cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                       // Tapping to Submit btn
 
         //                                                        Submitting Order with both Required and optional values
@@ -2643,18 +2399,42 @@ describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit
         cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
         cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
         cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
+
+        cy.contains('label', 'Client').next().find('input').click({force: true})                                                                                // Select Client to remove
+        cy.contains('label', 'Client').next().find('input').clear()
+        cy.get('[role="combobox"]').should('be.visible').wait(500)
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true}).wait(500)
+            
+        cy.contains('label', 'Shipping client').next().find('input').click({force: true});                                                                      // Select Shipping client
+        cy.get('[role="combobox"]').should('be.visible');
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});                                                          
+             
+        cy.contains('label', 'Billing client').next().find('input').click({force: true});                                                                       // Select Billing client
+        cy.get('[role="combobox"]').should('be.visible');
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});
+
         cy.contains('label', 'Your PO').next().find('input').type('Drawer Fronts 11')                                                                           // Your PO
         cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
-        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click({force: true}).wait(1000)                                                                 // Tapping to Date icon        
+        cy.get(':nth-child(3) > .MuiFormControl-root > .MuiInputBase-root > .MuiInputAdornment-root > .MuiButtonBase-root').click({force: true})                // Tapping to Expected Date icon        
         cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
             .each(($el) => {
                 if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
-                cy.wrap($el).click().wait(500)                                                                                                                  // Click the first enabled date                
-                return false                                                                                                                                    // Break the loop after selecting the date
+                    cy.wrap($el).click().wait(500)                                                                                                              // Click the first enabled date                
+                    return false                                                                                                                                // Break the loop after selecting the date
+                    }
+                });  
+                
+        cy.contains('label', 'Their name').next().find('input').type('Zagg', { force: true })                                                                   // Their Name
+        //cy.contains('label', 'Promised date').next().find('input').click({force: true}).wait(10000)                                                       
+        cy.get(':nth-child(5) > .MuiFormControl-root > .MuiInputBase-root > .MuiInputAdornment-root > .MuiButtonBase-root').click({force: true})                // Tapping to promissed Date icon        
+        cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
+        .each(($cl) => {
+            if (!$cl.prop('disabled')) {                                                                                                                        // Check if the date is enabled                
+                cy.wrap($cl).click().wait(500)                                                                                                                  // Click the first enabled date                
+                    return false                                                                                                                                // Break the loop after selecting the date
                 }
-            });        
+                });        
             cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
-            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
             
             const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
             cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
@@ -2829,175 +2609,32 @@ describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit
         cy.get('.MuiAccordionSummary-root').click().wait(500)                                                                                                   // Tapping to Accordian 
         //cy.get('.jss23 > .MuiButtonBase-root').click().wait(500)
         cy.get('button svg path[d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"]').click({force: true})                                       // Getting side menu back buttton          
-        
-        //===================================================>>  // Getting elements for Local Testing  <<===============================================================================================
-        /*
-        //                                                        Submitting Order with Required values
-        //                                                           >>>>> Adding form data <<<<<                
-
-        cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your PO').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                          // PO Validation of helper text 
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');                                                                    
-
-        cy.contains('label', 'Your full name').next().find('input').type('Automate Mullions Doors (5-Pieces) Category')                                         // Name
-        cy.contains('label', 'Your email address').next().find('input').type('AutomaMullionsteDoors5Pieces#gmail.com')                                          // Email
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your email address').next().find('input').clear()                                                                                 // Clear the invalid input        
-        cy.contains('label', 'Your email address').next().find('input').type('AutomaMullionsteDoors5Pieces@gmail.com')                                          // Email with valid input                  
-        cy.contains('label', 'Your PO').next().find('input').type('Mullions Doors(5-Pieces) 11')                                                                // Your PO
-
-          //                                                      >>>>> Adding Mullions Doors (5-Pieces) category table data  <<<<< 
-        
-          cy.contains('div', '1 Mullions Doors (5 pieces)').click()
-          cy.get('td.MuiTableCell-root').eq(3).find('input').should('exist').should('have.attr', 'aria-invalid', 'true').closest('.MuiFormControl-root')        // Validation of helper text for invalid input
-          .find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
-          cy.get('td.MuiTableCell-root').eq(3).find('input').type('abcs', { force: true });                                                                     // invalid input width
-          cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                            // Clear input width    
-          cy.get('td.MuiTableCell-root').eq(3).find('input').type('45', { force: true });                                                                       // Valid input width
-  
-          //cy.get('td.MuiTableCell-root').eq(4).find('input').should('exist').clear().should('have.attr', 'aria-invalid', 'true')                              // Validation of helper text for invalid input
-          //.parent().find('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
-          cy.get('td.MuiTableCell-root').eq(4).find('input').type('abcs', { force: true });                                                                     // invalid input height
-          cy.get('td.MuiTableCell-root').eq(4).find('input').clear()                                                                                            // Clear input height    
-          cy.get('td.MuiTableCell-root').eq(4).find('input').type('582', { force: true });                                                                      // Valid input height
-          cy.get('td.MuiTableCell-root').eq(7).find('input').type('3520', { force: true });                                                                     // Model    
-          cy.get('td.MuiTableCell-root').eq(13).find('input').type('258', { force: true });                                                                     // color                    
-          cy.get('td.MuiTableCell-root').eq(14).find('input').type('555', { force: true });                                                                     // sb color        
-          cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                   // Tapping to Print btn
-          cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                              // Closing print view                                    
-          cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                       // Tapping to Submit btn 
-
-        //                                                        Submitting Order with both Required and optional values
-        //                                                                    >>>>> Adding form data <<<<<                
-  
-
-        cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
-        cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
-        cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
-        cy.contains('label', 'Your PO').next().find('input').type('MullionsDoors 11')                                                                           // Your PO
-        cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
-        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click({force: true}).wait(1000)                                                                 // Tapping to Date icon        
-        cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
-            .each(($el) => {
-                if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
-                cy.wrap($el).click().wait(500)                                                                                                                  // Click the first enabled date                
-                return false                                                                                                                                    // Break the loop after selecting the date
-                }
-            });        
-            cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
-            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
-            
-            const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
-            cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
-            .then(input => {                
-            expect(input[0].files[0].name).to.equal('sample-image.png');                                                                                        // Verify that the file is uploaded
-            });    
-            cy.get(':nth-child(1) > .MuiFormControlLabel-root > .MuiTypography-root > .css-zfsz4h').click()                                                     // Tapping to inch/mm
-        
-        //                                                      >>>>> Adding MullionsDoors (5-Pieces) Category category table data  <<<<<        
-    
-        cy.get('.css-budqf6').contains('Add section').click({force: true}).wait(1000)                                                                           // Tapping to Add color btn
-        cy.contains('label', 'Section name').next().find('input').should('be.visible').type('Doors (Edged) Section');                                           // Section Name        
-        //cy.contains('label', 'Notes').eq(1).parent().find('input').type('Automating Molded Category with Doors Section', { force: true });                    // Section Notes                  
-        cy.get('.MuiBox-root > .MuiGrid-container > .MuiGrid-root > .MuiButtonBase-root').click().wait(500)                                                     // Tapping to Add a new product btn
-        cy.get(':nth-child(2) > .MuiCardContent-root > .MuiList-root > :nth-child(3) > .MuiButtonBase-root').click().wait(500)                                  // Select Mullions Doors (5-Pieces)
-        //.click().wait(500)                   
-        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).should('have.length.greaterThan', 0).then(($rowsBefore) => {
-        const initialRowCount = $rowsBefore.length;
-        cy.wrap($rowsBefore[0]).within(() => {
-        cy.get('td.MuiTableCell-root').each(($td) => {
-            cy.wrap($td).invoke('text').then((tdValue) => {
-            tdValue = tdValue.trim();
-
-                if (tdValue === '1.') {                            
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('abcs', { force: true });                                                           // invalid input width
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                  // Clear input width    
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('45', { force: true });                                                             // Valid input width
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('abcs', { force: true });                                                           // invalid input height
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').clear()                                                                                  // Clear input height    
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('58', { force: true });                                                             // Valid input height
-                    cy.get('td.MuiTableCell-root').eq(5).find('.MuiSelect-select').click({ force: true });                                                      // thickness
-                    cy.get('[data-value="0.75"]').click()                                                                                                       // thickness
-                    cy.get('td.MuiTableCell-root').eq(6).find('.MuiSelect-select').click({ force: true });                                                      // grain                
-                    cy.get('[data-value="H"]').click()                                                                                                          // grain        
-                    cy.get('td.MuiTableCell-root').eq(7).find('input').type('3280', { force: true });                                                           // Model    
-                    cy.get('td.MuiTableCell-root').eq(8).find('input').type('1', { force: true });                                                              // Openings             
-                    cy.get('td.MuiTableCell-root').eq(9).find('.MuiSelect-select').click({ force: true });                                                      // Type
-                    cy.get('[data-value="S"] > .css-sc6tei').click()                                                                                            // Type
-                    cy.get('td.MuiTableCell-root').eq(10).find('.MuiSelect-select').click({ force: true });                                                     // qty
-                    cy.get('[data-value="3"]').click()                                                                                                          // qty
-                    cy.get('td.MuiTableCell-root').eq(11).find('.MuiSelect-select').click({ force: true });                                                     // postiton
-                    cy.get('[data-value="D"] > .css-sc6tei').click()                                                                                            // postiton
-                    cy.get('.MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click({ force: true })                                      // Dowels 
-                    cy.get('td.MuiTableCell-root').eq(13).find('input').type('71', { force: true });                                                            // color                    
-                    cy.get('td.MuiTableCell-root').eq(14).find('input').type('999', { force: true });                                                           // Sb Color
-                    cy.get('td.MuiTableCell-root').eq(15).find('input').type('Testing Script 1', { force: true });                                              // Comments
-                }
-            });
-        });
-        });
-        cy.get('[colspan="17"] > .MuiButtonBase-root').click().wait(2000)                                                                                       // Adding second item
-        cy.get('table tbody tr.MuiTableRow-root', { timeout: 10000 }).then(($rowsAfter) => {
-        const newRow = $rowsAfter[$rowsAfter.length - 2]; // Get the last (newly added) row
-        cy.wrap(newRow).within(() => {
-        cy.get('td.MuiTableCell-root').each(($td) => {
-        cy.wrap($td).invoke('text').then((tdValue) => {
-        tdValue = tdValue.trim();
-                if (tdValue === '2.') {
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('abcs', { force: true });                                                           // invalid input width
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').clear()                                                                                  // Clear input width    
-                    cy.get('td.MuiTableCell-root').eq(3).find('input').type('45', { force: true });                                                             // Valid input width
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('abcs', { force: true });                                                           // invalid input height
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').clear()                                                                                  // Clear input height    
-                    cy.get('td.MuiTableCell-root').eq(4).find('input').type('58', { force: true });                                                             // Valid input height
-                    cy.get('td.MuiTableCell-root').eq(5).find('.MuiSelect-select').click({ force: true });                                                      // thickness
-                    cy.get('[data-value="0.75"]').click()                                                                                                       // thickness
-                    cy.get('td.MuiTableCell-root').eq(6).find('.MuiSelect-select').click({ force: true });                                                      // grain                
-                    cy.get('[data-value="H"]').click()                                                                                                          // grain        
-                    cy.get('td.MuiTableCell-root').eq(7).find('input').type('3280', { force: true });                                                           // Model    
-                    cy.get('td.MuiTableCell-root').eq(8).find('input').type('1', { force: true });                                                              // Openings             
-                    cy.get('td.MuiTableCell-root').eq(9).find('.MuiSelect-select').click({ force: true });                                                      // Type
-                    cy.get('[data-value="S"] > .css-sc6tei').click()                                                                                            // Type
-                    cy.get('td.MuiTableCell-root').eq(10).find('.MuiSelect-select').click({ force: true });                                                     // qty
-                    cy.get('[data-value="3"]').click()                                                                                                          // qty
-                    cy.get('td.MuiTableCell-root').eq(11).find('.MuiSelect-select').click({ force: true });                                                     // postiton
-                    cy.get('[data-value="D"] > .css-sc6tei').click()                                                                                            // postiton
-                    cy.get('.MuiFormControl-root > .MuiButtonBase-root > .PrivateSwitchBase-input').click({ force: true })                                      // Dowels 
-                    cy.get('td.MuiTableCell-root').eq(13).find('input').type('71', { force: true });                                                            // color                    
-                    cy.get('td.MuiTableCell-root').eq(14).find('input').type('999', { force: true });                                                           // Sb Color
-                    cy.get('td.MuiTableCell-root').eq(15).find('input').type('Testing Script 1', { force: true });                                              // Comments                                             
-                }        
-            });
-        });
-    });
-    })
-    })
-    cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(5000)                                                                            // Tapping to Submit btn
-    cy.contains('button', 'Print Order', { timeout: 30000 }).click().wait(1000)                                                                                 // Performs a click action
-    //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                                  // Closing print view
-    */    
+                  
     //=======================================================>>  Getting elements for Git CI/CD Pipeline  <<===============================================================================================
 
                     //                                                        Submitting Order with Required values
                     //                                                           >>>>> Adding form data <<<<<                
 
-        cy.contains('label', 'Your full name').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Order Name Validation of helper text
+        cy.contains('label', 'Client').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                           // Client Validation of helper text
         .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');    
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
+        cy.contains('label', 'Shipping client').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                  // Shipping client of helper text
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
+        cy.contains('label', 'Billing client').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                   // Billing client of helper text
+        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');
         cy.contains('label', 'Your PO').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()                          // PO Validation of helper text 
         .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Required value');                                                                    
-
-        cy.contains('label', 'Your full name').next().find('input').type('Automate Mullions Doors (5-Pieces) Category')                                         // Name
-        cy.contains('label', 'Your email address').next().find('input').type('AutomaMullionsteDoors5Pieces#gmail.com')                                          // Email
-        cy.contains('label', 'Your email address').next().find('input').should('have.attr', 'aria-invalid', 'true').should('be.visible').parent()               // Eamil Validation of helper text
-        .siblings('p.MuiFormHelperText-root.Mui-error').should('have.text', 'Value is not a valid email address');
-        cy.contains('label', 'Your email address').next().find('input').clear()                                                                                 // Clear the invalid input        
-        cy.contains('label', 'Your email address').next().find('input').type('AutomaMullionsteDoors5Pieces@gmail.com')                                          // Email with valid input                  
+        cy.get('button[aria-label="New Order"]').scrollIntoView();                                                                           
+        cy.contains('label', 'Client').next().find('input').click({force: true}).wait(500)                                                                      // Select Client
+        cy.get('[role="combobox"]').should('be.visible')
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true}).wait(500)
+            
+        cy.contains('label', 'Shipping client').next().find('input').click({force: true});                                                                      // Select Shipping client
+        cy.get('[role="combobox"]').should('be.visible');
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});                                                          
+            
+        cy.contains('label', 'Billing client').next().find('input').click({force: true});                                                                       // Select Billing client
+        cy.get('[role="combobox"]').should('be.visible');
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});                  
         cy.contains('label', 'Your PO').next().find('input').type('Mullions Doors(5-Pieces) 11')                                                                // Your PO
 
           //                                                      >>>>> Adding Mullions Doors (5-Pieces) category table data  <<<<< 
@@ -3017,8 +2654,8 @@ describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit
           cy.get('td.MuiTableCell-root').eq(7).find('input').type('3520', { force: true });                                                                     // Model    
           cy.get('td.MuiTableCell-root').eq(13).find('input').type('258', { force: true });                                                                     // color                    
           cy.get('td.MuiTableCell-root').eq(14).find('input').type('555', { force: true });                                                                     // sb color        
-          cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                   // Tapping to Print btn
-          cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                              // Closing print view                                    
+          //cy.get('.headerActions > .MuiButton-contained').click().wait(10000)                                                                                   // Tapping to Print btn
+          //cy.get('button[aria-label="close"]').should('exist').click().wait(10000)                                                                              // Closing print view                                    
           cy.get('.css-9hpeq4').contains('Submit').should('be.enabled').click().wait(500)                                                                       // Tapping to Submit btn 
 
         //                                                        Submitting Order with both Required and optional values
@@ -3028,18 +2665,42 @@ describe('Estimator Order Creation/Edition/Submission For 5-Pieces Category Suit
         cy.get('.css-1ubxkj1 > :nth-child(2)').click().wait(1000)                                                                                               // Tap to create new order btn
         cy.get('[data-tour="order.action.new"]').click().wait(1000)                                                                                             // Adding fresh order
         cy.get('.MuiDialogActions-root > :nth-child(2)').click()                                                                                                // Tapping to OK btn
+
+        cy.contains('label', 'Client').next().find('input').click({force: true})                                                                                // Select Client to remove
+        cy.contains('label', 'Client').next().find('input').clear()
+        cy.get('[role="combobox"]').should('be.visible').wait(500)
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true}).wait(500)
+            
+        cy.contains('label', 'Shipping client').next().find('input').click({force: true});                                                                      // Select Shipping client
+        cy.get('[role="combobox"]').should('be.visible');
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});                                                          
+             
+        cy.contains('label', 'Billing client').next().find('input').click({force: true});                                                                       // Select Billing client
+        cy.get('[role="combobox"]').should('be.visible');
+        cy.contains('[role="option"]', 'P.E. MAURICE (1995) INC. - 4504380371').click({force: true});
+
         cy.contains('label', 'Your PO').next().find('input').type('MullionsDoors 11')                                                                           // Your PO
         cy.contains('label', 'Their PO').next().find('input').type('XYZ 1', { force: true })                                                                    // Their PO
-        cy.get('.MuiInputAdornment-root > .MuiButtonBase-root').click({force: true}).wait(1000)                                                                 // Tapping to Date icon        
+        cy.get(':nth-child(3) > .MuiFormControl-root > .MuiInputBase-root > .MuiInputAdornment-root > .MuiButtonBase-root').click({force: true})                // Tapping to Expected Date icon        
         cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
             .each(($el) => {
                 if (!$el.prop('disabled')) {                                                                                                                    // Check if the date is enabled                
-                cy.wrap($el).click().wait(500)                                                                                                                  // Click the first enabled date                
-                return false                                                                                                                                    // Break the loop after selecting the date
+                    cy.wrap($el).click().wait(500)                                                                                                              // Click the first enabled date                
+                    return false                                                                                                                                // Break the loop after selecting the date
+                    }
+                });  
+                
+        cy.contains('label', 'Their name').next().find('input').type('Zagg', { force: true })                                                                   // Their Name
+        //cy.contains('label', 'Promised date').next().find('input').click({force: true}).wait(10000)                                                       
+        cy.get(':nth-child(5) > .MuiFormControl-root > .MuiInputBase-root > .MuiInputAdornment-root > .MuiButtonBase-root').click({force: true})                // Tapping to promissed Date icon        
+        cy.get('.MuiCalendarPicker-root').find('button[role="gridcell"]')                                                                                       // Locate date buttons inside the calendar
+        .each(($cl) => {
+            if (!$cl.prop('disabled')) {                                                                                                                        // Check if the date is enabled                
+                cy.wrap($cl).click().wait(500)                                                                                                                  // Click the first enabled date                
+                    return false                                                                                                                                // Break the loop after selecting the date
                 }
-            });        
+                });        
             cy.get('.css-x7mp9n').first().type('ABC 1', { force: true })                                                                                        // Note
-            //cy.contains('label', 'Notes').first().parent().find('input').type('Your notes here 1');
             
             const filePath = 'images/sample-image.png';                                                                                                         // Define the file path relative to the cypress/fixtures directory            
             cy.get('input[type="file"]#estimator-image-input').attachFile(filePath)                                                                             // Upload the file using the input element
