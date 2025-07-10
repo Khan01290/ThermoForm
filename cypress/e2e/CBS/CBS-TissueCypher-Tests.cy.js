@@ -267,7 +267,7 @@ describe('TissueCypher Online Order Submission Suite', function() {
 
     it("Verify that TissueCypher Online Order has been Created and Submitted Successfully", function()  {
 
-        cy.viewport(1920, 1080)
+        cy.viewport(1920, 1081)
         cy.visit("https://demo.clabsportal.com/")
         
         // Login Button Click
