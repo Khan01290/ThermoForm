@@ -4,7 +4,7 @@ describe('DecisionDx-CMSeq Online Order Submission Suite', function() {
 
     it("Verify that DecisionDx-CMSeq Online Order Created and Submitted Successfully", function()  {
 
-        cy.viewport(1920, 1080)
+        cy.viewport(1920, 1081)
         cy.visit("https://demo.clabsportal.com/") 
         
         // Login Button Click
