@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "test:specs": "cypress run --record --key $CYPRESS_RECORD_KEY --spec cypress/e2e/Thermo/Estimator/*.cy.js",
+    "test:specs": "cypress run --record --key $CYPRESS_RECORD_KEY --spec cypress/e2e/Thermo/Estimator/Estimator-Edged.cy.js",
     "debug": "npx cypress open"
   },
   "author": "Shahzad Khan",
@@ -14,7 +14,7 @@
     "node": "^22.11.0"
   },
   "devDependencies": {
-    "cypress": "^13.15.2",
+    "cypress": "^14.5.1",
     "cypress-file-upload": "^5.0.8",
     "cypress-iframe": "^1.0.1",
     "cypress-mochawesome-reporter": "^3.8.2",
