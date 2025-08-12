@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test:specs": "cypress run --record --key $CYPRESS_RECORD_KEY --spec cypress/e2e/Thermo/Estimator/Estimator-Edged.cy.js",
+    "test:specs": "cypress run --record --key $CYPRESS_RECORD_KEY --spec cypress/e2e/Thermo/Estimator/CBS-TissueCypher-Tests.cy.js",
     "debug": "npx cypress open"
   },
   "author": "Shahzad Khan",
