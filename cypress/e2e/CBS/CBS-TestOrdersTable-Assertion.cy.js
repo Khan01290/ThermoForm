@@ -83,7 +83,7 @@ describe('Test Orders Table Fields Assertions Suite', function() {
                
         // Input username
         cy.origin('https://dev-2737508.okta.com', () => {        
-            cy.wait(500)
+            cy.wait(1000)
             cy.get('input[name="username"]').type("silijac368@paldept.com")                                                                                 // Get username by attribute name and type in it
             cy.get('input[name="username"]').should('have.value','silijac368@paldept.com')                                                                  // Check username if the username is correctly input            
             cy.get('input[name="password"]').type("Cv8cf3iHa")                                                                                              // Get password by attribute name and type in it
