@@ -29,7 +29,7 @@ describe('Test Orders Table Fields Assertions Suite', function() {
         //.and('exist').and('contain','new pdf').wait(500)                               
         cy.get('[type="button"]').contains("new online order").should('have.text','new online order').should('be.visible')                                  // Assertion for "New Online Order" Button is present 
         .and('exist').and('contain','new online').wait(500) 
-        //cy.get('.text-requiredRed').contains("pending approval orders").should('have.text','pending approval orders').should('be.visible')                  // Assertion for "60 pending approval orders" Text is present 
+        //cy.get('.text-requiredRed').contains("pending approval orders").should('have.text','pending approval orders').should('be.visible')                // Assertion for "60 pending approval orders" Text is present 
         //.and('exist').and('contain','pending approval').wait(500)       
         cy.get('[type="button"]').contains("view orders").should('have.text','view orders').should('be.visible')                                            // Assertion for "view orders" Button is present  
         .and('exist').and('contain','view orders').wait(500)  

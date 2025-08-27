@@ -271,38 +271,173 @@ describe('TissueCypher Online Order Submission Suite', function() {
         cy.visit("https://demo.clabsportal.com/")
         
         // Login Button Click
-        ////cy.get(".text-lg").contains("Existing Customer")                                                                                                // Assertion for text "Existing Customer" is present
+        ////cy.get(".text-lg").contains("Existing Customer")                                                                                                                                    // Assertion for text "Existing Customer" is present
         cy.wait(500)
-        //cy.get(".w-full").contains("login").should('be.visible').and('exist').and('contain','login').click()                                              // Click to Login button and check if the btn text is "login"       
-        cy.get('[type="button"]').contains("login").should('be.visible').and('exist').and('contain','login').click().wait(500)	                            // Click to Login button usimg btn type    >> Best Practise
+        //cy.get(".w-full").contains("login").should('be.visible').and('exist').and('contain','login').click()                                                                                  // Click to Login button and check if the btn text is "login"       
+        cy.get('[type="button"]').contains("login").should('be.visible').and('exist').and('contain','login').click().wait(500)	                                                                // Click to Login button usimg btn type    >> Best Practise
                
         // Input username
-        cy.origin('https://dev-2737508.okta.com', () => {        
+        cy.origin('https://democlient.clabsportal.com', () => {        
             cy.wait(500)
-            cy.get('input[name="username"]').type("silijac368@paldept.com")                                                                                 // Get username by attribute name and type in it
-            cy.get('input[name="username"]').should('have.value','silijac368@paldept.com')                                                                  // Check username if the username is correctly input            
-            cy.get('input[name="password"]').type("Cv8cf3iHa")                                                                                              // Get password by attribute name and type in it
-            cy.get('input[name="password"]').should('have.value','Cv8cf3iHa')                                                                               // Check password if the password is correctly input
-            //cy.get("input#okta-signin-submit").should('be.visible').and('exist').and('contain','Sign In').click()                                         // Get submit btn and check if the btn text is "Sign In" 
-            cy.get('[type="submit"]').contains("Sign In").should('be.visible').and('exist').and('contain','Sign In').click()                                // Get submit btn by btn type and cick on it   >> Best Practise                    
-            
+            cy.get('input[name="username"]').type("dodobo3146@appxapi.com")                                                                                                                     // Get username by attribute name and type in it
+            cy.get('input[name="username"]').should('have.value','dodobo3146@appxapi.com')                                                                                                      // Check username if the username is correctly input            
+            cy.get('input[name="password"]').type("bhwY8En6a")                                                                                                                                  // Get password by attribute name and type in it
+            cy.get('input[name="password"]').should('have.value','bhwY8En6a')                                                                                                                   // Check password if the password is correctly input
+            //cy.get("input#okta-signin-submit").should('be.visible').and('exist').and('contain','Sign In').click()                                                                             // Get submit btn and check if the btn text is "Sign In" 
+            cy.get('[type="submit"]').contains("Sign In").should('be.visible').and('exist').and('contain','Sign In').click()                                                                    // Get submit btn by btn type and cick on it   >> Best Practise                                
         })
-        //cy.wait(40000)
-        cy.get('[href="/test-orders"] > .flex', { timeout: 80000 }).contains("test orders").should('be.visible').and('exist').and('contain','orders').click().wait(2000)        // Check the URL containing test-orders link           
-        cy.get('.flex > .capitalize').contains("Test orders").should('have.text','Test orders').should('be.visible').and('exist')                           // Assertion for "Test orders" Page heading is present
-        .and('contain','Test orders').wait(500)                       
-        cy.get('#root > div.h-screen.flex.flex-col.overflow-hidden > header > div:nth-child(2) > div > div:nth-child(2) > div > button')                    // Click to Cilinician dropdown to select Cilinician           
-        .should('be.visible').and('exist').click().wait(500)
-        cy.get(':nth-child(2) > .flex > .text-sm > .break-normal').contains("SZK PHY QA").should('be.visible').should('have.text','SZK PHY QA')             // Select a Cilinician from dropdown 
-        .and('exist').click().wait(500)     
-        cy.get('[type="button"]').contains("new online order").should('have.text','new online order').should('be.visible')                                  // Assertion for "New Online Order" Button is present and clicked
-        .and('exist').and('contain','new online').click().wait(1000)                        
-        cy.get('#discard').contains("discard").should('have.text','discard').should('be.visible').and('exist').and('contain','discard').click().wait(500)   // Assertion for "Discard" Button is present and clicked
-        cy.get('.p-5 > .mt-4').contains("Are you sure you want to exit? all the changes will be discarded")                                                 // Assertion for "Discard popup Text" is present.
-        .should('have.text','Are you sure you want to exit? all the changes will be discarded').should('be.visible').and('exist')
-        .and('contain','exit').click().wait(500)           
-        cy.get('#cancel').contains("cancel").should('have.text','cancel').should('be.visible').and('exist').and('contain','cancel').click().wait(500)       // Assertion for "cancel" Button on Discard popup is present and clicked                
-        cy.get('[type="button"]').contains("save and exit").should('have.text','save and exit').should('be.visible').and('exist')                           // Assertion for "save_and_exit" Button is present.
+
+                                                                // Dashboard Assertions //
+                                                                                                                                                                                                // side navigation Items Assertion
+        cy.get('.grid-cols-1 > .border-r > .md\\:flex > .sideBarItemActive', { timeout: 80000 }).contains("Dashboard").should('be.visible').and('exist').and('contain','Dashboard')             // Dashboard 
+        cy.get('.grid-cols-1 > .border-r > .md\\:flex > [href="/access/test-orders"]', { timeout: 1000 }).contains("Test Orders").should('be.visible').and('exist').and('contain','Orders')     // Tst Orders
+        cy.get('.grid-cols-1 > .border-r > .md\\:flex > [href="/access/approvals"]', { timeout: 1000 }).contains("Approvals").should('be.visible').and('exist').and('contain','Approvals')      // Approvals
+        cy.get('.grid-cols-1 > .border-r > .md\\:flex > #step3', { timeout: 1000 }).contains("Patients").should('be.visible').and('exist').and('contain','Patients')                            // Patients
+        cy.get('.grid-cols-1 > .border-r > .md\\:flex > [href="/access/shipments"]', { timeout: 1000 }).contains("Shipments").should('be.visible').and('exist').and('contain','Shipments')      // Shipments
+        cy.get('.grid-cols-1 > .border-r > .md\\:flex > [href="/access/documents"]', { timeout: 1000 }).contains("Documents").should('be.visible').and('exist').and('contain','Documents')      // Documents
+        cy.get('.grid-cols-1 > .border-r > .md\\:lg\\:flex-col > .sideBarItem', { timeout: 1000 }).contains("Settings").should('be.visible').and('exist').and('contain','Settings')             // Settings
+        cy.get('input[placeholder="Search by Patient Name"]', { timeout: 1000 }).should('be.visible').and('exist')                                                                              // Search by Patient Name
+        cy.get('.hidden > :nth-child(1) > .relative > button.w-full > .px-3', { timeout: 1000 }).should('be.visible').and('exist')                                                              // All ORG Dropdown 
+        cy.get('.hidden > [data-tooltip-content="Please select an Physician"] > .relative > .cursor-not-allowed > .px-3', { timeout: 1000 }).should('be.visible').and('exist')                  // All Phy Dropdown 
+        cy.get('[data-tooltip-content="Notifications"] > .relative', { timeout: 1000 }).should('be.visible').and('exist')                                                                       // Notification icon
+        cy.get('[data-tooltip-content="Help"]', { timeout: 1000 }).should('be.visible').and('exist')                                                                                            // Help icon                                
+        cy.get('.ml-2 > div.flex', { timeout: 1000 }).should('be.visible').and('exist')                                                                                                         // Profile icon                                
+        cy.get('.xs\\:pl-3 > :nth-child(1)', { timeout: 1000 }).contains("Dashboard").should('be.visible').and('exist').and('contain','Dashboard')                                              // Page Heading Dashboard            
+        cy.get('#step1 > :nth-child(1)', { timeout: 1000 }).contains("New Online Order").should('be.visible').and('exist').and('contain','New Online')                                          // First Button New Online Order
+        cy.get('#step1 > :nth-child(2)', { timeout: 1000 }).contains("Attach a Document").should('be.visible').and('exist').and('contain','Attach')                                             // 2nd Button Attach a Document
+        cy.get('#step1 > :nth-child(3)', { timeout: 1000 }).contains("Schedule a Pickup").should('be.visible').and('exist').and('contain','Schedule')                                           // 3rd Button Schedule a Pickup
+        cy.get('#step1 > :nth-child(4)', { timeout: 1000 }).contains("View a Patient Result").should('be.visible').and('exist').and('contain','Patient Result')                                 // 4th Button View a Patient Result
+        cy.get(':nth-child(1) > :nth-child(1) > .text-royalBlue', { timeout: 1000 }).contains("Unsubmitted Orders").should('be.visible').and('exist').and('contain','Unsubmitted')              // First Box Unsubmitted Orders
+        cy.get('.flex-wrap > :nth-child(2) > :nth-child(1) > .text-royalBlue', { timeout: 1000 }).contains("Pending Approval").should('be.visible').and('exist').and('contain','Approval')      // 2nd Box Pending Approval
+        cy.get(':nth-child(3) > :nth-child(1) > .text-royalBlue', { timeout: 1000 }).contains("Pending Results").should('be.visible').and('exist').and('contain','Results')                     // 3rd Box Pending Results
+        cy.get('.py-9 > :nth-child(1) > :nth-child(2)', { timeout: 1000 }).contains("Completed Orders").should('be.visible').and('exist').and('contain','Completed')                            // 4th Box Completed Orders
+
+                                                                    // Test Orders Page Elements Assertions //          
+        
+        cy.get('.grid-cols-1 > .border-r > .md\\:flex > [href="/access/test-orders"]', { timeout: 2000 }).contains("Test Orders")                                                               // Test Orders Tab click
+        .should('be.visible').and('exist').and('contain','Orders').click()
+        cy.get('.hidden > :nth-child(1) > .relative > button.w-full > .px-3', { timeout: 1000 }).should('be.visible').and('exist').click()                                                      // ORG dropdown Assertion
+        cy.get('.cursor-pointer > :nth-child(2) > .items-center > .flex', { timeout: 1000 }).click()                                                                                            // Select ORG from dropdown
+        cy.get('.hidden > :nth-child(2) > .relative > button.w-full > .px-3', { timeout: 1000 }).click()                                                                                        // Phy dropdown Assertion
+        cy.get(':nth-child(2) > .items-center > .flex > .font-normal', { timeout: 1000 }).click()                                                                                               // Select Phy from dropdown
+        cy.get('.xs\\:pl-3 > :nth-child(1) > .font-semibold').contains("Test Orders").should('be.visible').and('exist').and('contain','Test Orders')                                            // Test Orders Heading Assertion
+        cy.get('.md\\:w-\\[503px\\] > .my-3 > .relative > .font-sans').should('be.visible').and('exist')                                                                                        // Search by Patient Name
+        cy.get('.md\\:mr-4.md\\:w-\\[300px\\] > .my-2 > .bg-white').should('be.visible').and('exist')                                                                                           // Test Type filter assertion
+        cy.get('.md\\:flex.w-full > :nth-child(3) > .my-2 > .bg-white').should('be.visible').and('exist')                                                                                       // Status filter assertion
+        cy.get('.globalFilterDateInput > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').should('be.visible').and('exist')                                           // Calender assertion
+        cy.get('.flex-wrap > .xs\\:flex-col > :nth-child(1)').should('be.visible').and('exist')                                                                                                 // ORG filter assertion
+        cy.get('.flex-wrap > .xs\\:flex-col > :nth-child(2)').should('be.visible').and('exist')                                                                                                 // Phy filter assertion
+        cy.get('.transparentBtn > .font-medium').should('be.visible').and('exist')                                                                                                              // Clear filter btn assertion    
+        cy.get('.primaryBtn').contains("New Online Order").should('be.visible').and('exist').and('contain','Online Order')     
+
+
+                                                                    // Hide/Unhide Items Assertions //
+        /*
+        cy.get('.mr-6 > .flex > .text-royalBlue').contains("Hide/Unhide Columns").should('have.text','Hide/Unhide Columns').should('be.visible')                                                // Assertion for "Hide/Unhide Columns" Filter is present  
+        .and('exist').and('contain','Hide/Unhide').click().wait(1000)                          
+        cy.get('[type="button"]').contains("Patient First Name").should('have.text','Patient First Name').should('be.visible')                                                                  // Assertion for "Patient First Name" CheckBox is present and UnChecked 
+        .and('exist').and('contain','First Name').click().wait(1000)
+        cy.get('.mr-6 > .flex > .text-royalBlue').contains("Hide/Unhide Columns").should('have.text','Hide/Unhide Columns').should('be.visible')                                                // Click to "Hide/Unhide Columns" Filter again to select next checkbox
+        .and('exist').and('contain','Hide/Unhide').click().wait(1000)  
+        cy.get('[type="button"]').contains("Patient Last Name").should('have.text','Patient Last Name').should('be.visible')                                                                    // Assertion for "Patient Last Name" Filter is present and UnChecked   
+        .and('exist').and('contain','Last Name').click().wait(1000)
+        cy.get('.mr-6 > .flex > .text-royalBlue').contains("Hide/Unhide Columns").should('have.text','Hide/Unhide Columns').should('be.visible')                                                // Click to "Hide/Unhide Columns" Filter again to select next checkbox
+        .and('exist').and('contain','Hide/Unhide').click().wait(1000)
+        cy.get('[type="button"]').contains("Patient DOB").should('have.text','Patient DOB').should('be.visible')                                                                                // Assertion for "Patient DOB" Filter is present and UnChecked     
+        .and('exist').and('contain','DOB').click().wait(1000)
+        cy.get('.mr-6 > .flex > .text-royalBlue').contains("Hide/Unhide Columns").should('have.text','Hide/Unhide Columns').should('be.visible')                                                // Click to "Hide/Unhide Columns" Filter again to select next checkbox
+        .and('exist').and('contain','Hide/Unhide').click().wait(1000)                          
+        cy.get('[type="button"]').contains("Patient First Name").should('have.text','Patient First Name').should('be.visible')                                                                  // Assertion for "Patient First Name" CheckBox is present and Checked 
+        .and('exist').and('contain','First Name').click().wait(1000)
+        cy.get('.mr-6 > .flex > .text-royalBlue').contains("Hide/Unhide Columns").should('have.text','Hide/Unhide Columns').should('be.visible')                                                // Click to "Hide/Unhide Columns" Filter again to select next checkbox
+        .and('exist').and('contain','Hide/Unhide').click().wait(1000)  
+        cy.get('[type="button"]').contains("Patient Last Name").should('have.text','Patient Last Name').should('be.visible')                                                                    // Assertion for "Patient Last Name" Filter is present and Checked   
+        .and('exist').and('contain','Last Name').click().wait(1000)
+        cy.get('.mr-6 > .flex > .text-royalBlue').contains("Hide/Unhide Columns").should('have.text','Hide/Unhide Columns').should('be.visible')                                                // Click to "Hide/Unhide Columns" Filter again to select next checkbox
+        .and('exist').and('contain','Hide/Unhide').click().wait(1000)
+        cy.get('[type="button"]').contains("Patient DOB").should('have.text','Patient DOB').should('be.visible')                                                                                // Assertion for "Patient DOB" Filter is present and Checked     
+        .and('exist').and('contain','DOB').click().wait(1000)
+        */
+
+                                                                    // Test Orders Table Col Assertions //
+        
+        cy.get('.bg-sideNavGray > tr > :nth-child(1)', { timeout: 500 }).contains("Patient First Name").should('have.text','Patient First Name').and('exist').and('contain','First Name')       // Assertion for "Patient First Name" col + sorting Ascend is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(2)', { timeout: 500 }).contains("Patient Last Name").should('have.text','Patient Last Name').and('exist').and('contain','Last Name')          // Assertion for "Patient Last Name" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(3)', { timeout: 500 }).contains("Patient DOB").should('have.text','Patient DOB').and('exist').and('contain','DOB')                            // Assertion for "Patient DOB" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(4)', { timeout: 500 }).contains("Order Type").should('have.text','Order Type').and('exist').and('contain','Order')                            // Assertion for "Order Type" col is present                                                                                
+        cy.get('.bg-sideNavGray > tr > :nth-child(5)', { timeout: 500 }).contains("Castle ID").should('have.text','Castle ID').and('exist').and('contain','Castle')                             // Assertion for "Castle ID" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(6)', { timeout: 500 }).contains("Specimen ID").should('have.text','Specimen ID').and('exist').and('contain','Specimen')                       // Assertion for "Specimen ID" col is present  
+        cy.get('.bg-sideNavGray > tr > :nth-child(7)', { timeout: 500 }).contains("Clinician").should('have.text','Clinician').and('exist').and('contain','Clinician')                          // Assertion for "Clinician" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(8)', { timeout: 500 }).contains("Placed By").should('have.text','Placed By').and('exist').and('contain','Placed')                             // Assertion for "Placed By" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(9)', { timeout: 500 }).contains("Ordered Date").should('have.text','Ordered Date').and('exist').and('contain','Ordered')                      // Assertion for "Ordered Date" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(10)', { timeout: 500 }).contains("Report Date").should('have.text','Report Date').and('exist').and('contain','Report')                        // Assertion for "Report Date" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(11)', { timeout: 500 }).contains("Castle Result").should('have.text','Castle Result').and('exist').and('contain','Result')                    // Assertion for "Castle Result" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(12)', { timeout: 500 }).contains("Test Type").should('have.text','Test Type').and('exist').and('contain','Test')                              // Assertion for "Test Type" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(13)', { timeout: 500 }).contains("Organization").should('have.text','Organization').and('exist').and('contain','Organization')                // Assertion for "ORG" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(14)', { timeout: 500 }).contains("Creation Date").should('have.text','Creation Date').and('exist').and('contain','Creation')                  // Assertion for "Creation Date" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > .lg\\:right-0', { timeout: 500 }).contains("Status").should('have.text','Status').and('exist').and('contain','Status')                                   // Assertion for "Status" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > .hidden', { timeout: 500 }).contains("Actions").should('have.text','Actions').and('exist').and('contain','Actions')                                      // Assertion for "Actions" col is present                                                                        
+                 
+
+                                                              // Filering //
+        
+        cy.get('.md\\:w-\\[503px\\] > .my-3 > .relative > .font-sans').type('Jack').wait(2000)                                                                                                   // input name in patient name filter
+
+        cy.get('p[class*="text-royalBlue"]')
+            .invoke('text')
+            .then((text) => {
+        const match = text.match(/(\d+)-(\d+)\s+of\s+(\d+)/)
+        if (match) {
+                const start = parseInt(match[1], 10)
+                const end = parseInt(match[2], 10)
+                const total = parseInt(match[3], 10)
+                const expectedVisibleRows = end - start + 1
+
+            cy.log(`Pagination shows ${start}-${end} of ${total}`)
+            cy.log(`Expected visible rows: ${expectedVisibleRows}`)
+
+            // ✅ Only count real data rows
+            cy.get('tbody tr.hover\\:bg-sideNavGray.cursor-pointer')
+            .should('have.length', expectedVisibleRows)
+        }
+    })
+
+
+
+
+
+
+        /*
+        cy.get('.md\\:mr-4.md\\:w-\\[300px\\] > .my-2 > .bg-white').click()                                                                                                                     // tap to test type filter
+        cy.get('.rounded-md > :nth-child(2) > .w-full > .font-normal').click().wait(1000)                                                                                                       // select tissue cypher test
+        cy.get('.md\\:flex.w-full > :nth-child(3) > .my-2 > .bg-white').click()                                                                                                                 // tap to staus type filter
+        cy.get('.absolute > :nth-child(4) > .w-full').click()                                                                                                                                   // Select pending approvals
+        cy.get('.xs\\:justify-start').scrollIntoView()                                                                                                                                          // Select the pagination to scroll into view                                                            
+        cy.get('.\\!text-xs').should('have.text','1-1  of  1').and('exist')                                                                                                                     // Assert the 1 record is filtered
+        cy.get('.transparentBtn > .font-medium').should('be.visible').and('exist').click().wait(1000)                                                                                           // Clear all filters   
+        cy.get(':nth-child(3) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').type('08-22-2025').wait(500)                                                         // Filter by DOB
+        cy.get('.\\!text-xs').should('have.text','1-4  of  4').and('exist')                                                                                                                     // Assert the 4 records found
+        cy.get(':nth-child(3) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').clear()                                                                              // Clear DOB filter   
+        cy.get(':nth-child(5) > .my-3 > .relative > .font-sans').type('t22262-3').wait(500)                                                                                                     // Filter by Castle ID
+        cy.get('.\\!text-xs').should('have.text','1-1  of  1').and('exist')                                                                                                                     // Assert 1 record is found
+        cy.get(':nth-child(5) > .my-3 > .relative > .font-sans').clear()                                                                                                                        // Clear Castle ID filter   
+        cy.get(':nth-child(6) > .my-3 > .relative > .font-sans').type('test').wait(500)                                                                                                         // Filter by Specimen ID
+        cy.get('.\\!text-xs').should('have.text','1-0  of  0').and('exist')                                                                                                                     // Assert 0 record found
+        cy.get(':nth-child(6) > .my-3 > .relative > .font-sans')..clear()                                                                                                                       // Clear Specimen ID filter
+        cy.get(':nth-child(9) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').type('05-19-2025')                                                                   // Filter by Ordered Date
+        */
+
+
+
+        
+
+
+
+                                                                    // Test Orders Creation Flow //          
+        /*
+        cy.get('.primaryBtn').contains("New Online Order", { timeout: 1000 }).should('be.visible').and('exist').and('contain','Online Order').click()                                           // New Online Order btn assertion    
+
+        cy.get('[type="button"]').contains("save and exit").should('have.text','save and exit').should('be.visible').and('exist')                                                               // Assertion for "save_and_exit" Button is present.
         .and('contain','save and exit').click().wait(500)
         cy.get('.Toastify__toast-body > div:nth-child(2)').contains("Please select test type in order to save")                                             // Assertion for validation alert for "save_and_exit" Button on Discard popup is present
         .should('have.text','Please select test type in order to save').should('be.visible').and('exist').and('contain','save').click().wait(500)               
@@ -517,7 +652,7 @@ describe('TissueCypher Online Order Submission Suite', function() {
         cy.get('p[data-for="Send for Approval"]').parent('[type="button"]').should('be.enabled').wait(500)                                                  // Assertion for "Send for Approval" Button is present and enabled        
         cy.get('#isPhysicianSignPermission').should('be.visible').and('exist').click().wait(500)                                                            // "isPhysicianSignPermission" Button is present and clicked                
         cy.get('button.bg-primary:nth-child(4)').contains("Submit").should('have.text','Submit').should('be.visible').and('exist')                          // Assertion for Send for Approval changed with "Submit" Button is present and clicked
-        .and('contain','Submit').click().wait(10000)     
+        .and('contain','Submit').click().wait(10000)     */
     
     })
 })
