@@ -61,3 +61,49 @@ Cypress.Commands.add('getGlobalElement', (key) => {
   return globalStore[key];
 });
 
+Cypress.Commands.add('assertPaginationMatchesRows', () => {
+  cy.get('p[class*="text-royalBlue"]')
+    .invoke('text')
+    .then((text) => {
+      cy.log(`Raw pagination text: "${text}"`)
+
+      // Find the "start-end of total" pattern anywhere in the string
+      const match = text.match(/(\d+)-(\d+)\s+of\s+(\d+)/)
+
+      if (!match) {
+        throw new Error(`Pagination text did not match expected format: ${text}`)
+      }
+
+      const start = parseInt(match[1], 10)
+      const end = parseInt(match[2], 10)
+      const total = parseInt(match[3], 10)
+
+      // Number of rows expected on this page
+      const expectedVisibleRows = end - start + 1
+
+      cy.log(`Pagination shows ${start}-${end} of ${total}`)
+      cy.log(`Expected visible rows: ${expectedVisibleRows}`)
+
+      // Verify table rows match visible count
+      cy.get('tbody tr.hover\\:bg-sideNavGray.cursor-pointer', { timeout: 10000 })
+        .should('have.length', expectedVisibleRows)
+    })
+})
+        /*
+        cy.get('p[class*="text-royalBlue"]')
+            .invoke('text')
+            .then((text) => {
+        const match = text.match(/(\d+)-(\d+)\s+of\s+(\d+)/)
+            if (match) {
+                    const start = parseInt(match[1], 10)
+                    const end = parseInt(match[2], 10)
+                    const total = parseInt(match[3], 10)
+                    const expectedVisibleRows = end - start + 1
+                cy.log(`Pagination shows ${start}-${end} of ${total}`)
+                cy.log(`Expected visible rows: ${expectedVisibleRows}`)
+
+                // ✅ Only count real data rows
+                cy.get('tbody tr.hover\\:bg-sideNavGray.cursor-pointer')
+                .should('have.length', expectedVisibleRows)
+            }
+        })*/

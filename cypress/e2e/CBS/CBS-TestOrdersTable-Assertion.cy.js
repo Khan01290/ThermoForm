@@ -1,6 +1,6 @@
 
-describe('Test Orders Table Fields Assertions Suite', function() {
-
+describe('Dashboard and Test Orders Table Assertions Suite', function() {
+    /*
     it.skip("Verify that all Header buttons are Present", function()  {
 
         cy.viewport(1920, 1080)
@@ -250,5 +250,148 @@ describe('Test Orders Table Fields Assertions Suite', function() {
         .click().wait(2000)                                                                                                                                 // Assertion for "UnGroup" is present and checked                                                                         
         cy.get('.drop-shadow-md > :nth-child(10)').click().wait(5000)
         cy.get('.icon-and-input-field-wrapper > .flex > .w-5').click().wait(5000)
+    })
+    */
+
+    it("Verify All Dashboard and Test Order Table Assertions", function()  {
+
+        cy.viewport(1920, 1081)
+        cy.visit("https://demo.clabsportal.com/")
+        
+        // Login Button Click
+        ////cy.get(".text-lg").contains("Existing Customer")                                                                                                                                    // Assertion for text "Existing Customer" is present
+        cy.wait(500)
+        //cy.get(".w-full").contains("login").should('be.visible').and('exist').and('contain','login').click()                                                                                  // Click to Login button and check if the btn text is "login"       
+        cy.get('[type="button"]').contains("login").should('be.visible').and('exist').and('contain','login').click().wait(500)	                                                                // Click to Login button usimg btn type    >> Best Practise
+               
+        // Input username
+        cy.origin('https://democlient.clabsportal.com', () => {        
+            cy.wait(500)
+            cy.get('input[name="username"]').type("dodobo3146@appxapi.com")                                                                                                                     // Get username by attribute name and type in it
+            cy.get('input[name="username"]').should('have.value','dodobo3146@appxapi.com')                                                                                                      // Check username if the username is correctly input            
+            cy.get('input[name="password"]').type("bhwY8En6a")                                                                                                                                  // Get password by attribute name and type in it
+            cy.get('input[name="password"]').should('have.value','bhwY8En6a')                                                                                                                   // Check password if the password is correctly input
+            //cy.get("input#okta-signin-submit").should('be.visible').and('exist').and('contain','Sign In').click()                                                                             // Get submit btn and check if the btn text is "Sign In" 
+            cy.get('[type="submit"]').contains("Sign In").should('be.visible').and('exist').and('contain','Sign In').click()                                                                    // Get submit btn by btn type and cick on it   >> Best Practise                                
+        })
+
+                                                                // Dashboard Assertions //
+                                                                                                                                                                                                // side navigation Items Assertion
+        cy.get('.grid-cols-1 > .border-r > .md\\:flex > .sideBarItemActive', { timeout: 80000 }).contains("Dashboard").should('be.visible').and('exist').and('contain','Dashboard')             // Dashboard 
+        cy.get('.grid-cols-1 > .border-r > .md\\:flex > [href="/access/test-orders"]', { timeout: 1000 }).contains("Test Orders").should('be.visible').and('exist').and('contain','Orders')     // Test Orders
+        cy.get('.grid-cols-1 > .border-r > .md\\:flex > [href="/access/approvals"]', { timeout: 1000 }).contains("Approvals").should('be.visible').and('exist').and('contain','Approvals')      // Approvals
+        cy.get('.grid-cols-1 > .border-r > .md\\:flex > #step3', { timeout: 1000 }).contains("Patients").should('be.visible').and('exist').and('contain','Patients')                            // Patients
+        cy.get('.grid-cols-1 > .border-r > .md\\:flex > [href="/access/shipments"]', { timeout: 1000 }).contains("Shipments").should('be.visible').and('exist').and('contain','Shipments')      // Shipments
+        cy.get('.grid-cols-1 > .border-r > .md\\:flex > [href="/access/documents"]', { timeout: 1000 }).contains("Documents").should('be.visible').and('exist').and('contain','Documents')      // Documents
+        cy.get('.grid-cols-1 > .border-r > .md\\:lg\\:flex-col > .sideBarItem', { timeout: 1000 }).contains("Settings").should('be.visible').and('exist').and('contain','Settings')             // Settings
+        cy.get('input[placeholder="Search by Patient Name"]', { timeout: 1000 }).should('be.visible').and('exist')                                                                              // Search by Patient Name
+        cy.get('.justify-end > .lg\\:gap-2 > :nth-child(1) > .relative > .px-2', { timeout: 1000 }).should('be.visible').and('exist')                                                           // All ORG Dropdown 
+        cy.get('.justify-end > .lg\\:gap-2 > [data-tooltip-content="Please select an Physician"] > .relative > .px-2', { timeout: 1000 }).should('be.visible').and('exist')                     // All Phy Dropdown 
+        cy.get('[data-tooltip-content="Notifications"] > .relative', { timeout: 1000 }).should('be.visible').and('exist')                                                                       // Notification icon
+        cy.get('[data-tooltip-content="Help"]', { timeout: 1000 }).should('be.visible').and('exist')                                                                                            // Help icon                                
+        cy.get('.ml-2 > div.flex', { timeout: 1000 }).should('be.visible').and('exist')                                                                                                         // Profile icon                                
+        cy.get('.xs\\:px-3 > :nth-child(1) > .font-semibold', { timeout: 1000 }).contains("Dashboard").should('be.visible').and('exist').and('contain','Dashboard')                             // Page Heading Dashboard            
+        //cy.get('.xs\\:pl-3 > :nth-child(1)', { timeout: 1000 }).contains("Dashboard").should('be.visible').and('exist').and('contain','Dashboard')                                            // Page Heading Dashboard            
+        cy.get('#step1 > :nth-child(1)', { timeout: 1000 }).contains("New Online Order").should('be.visible').and('exist').and('contain','New Online')                                          // First Button New Online Order
+        cy.get('#step1 > :nth-child(2)', { timeout: 1000 }).contains("Attach a Document").should('be.visible').and('exist').and('contain','Attach')                                             // 2nd Button Attach a Document
+        cy.get('#step1 > :nth-child(3)', { timeout: 1000 }).contains("Schedule a Pickup").should('be.visible').and('exist').and('contain','Schedule')                                           // 3rd Button Schedule a Pickup
+        cy.get('#step1 > :nth-child(4)', { timeout: 1000 }).contains("View a Patient Result").should('be.visible').and('exist').and('contain','Patient Result')                                 // 4th Button View a Patient Result
+        cy.get(':nth-child(1) > :nth-child(1) > .text-royalBlue', { timeout: 1000 }).contains("Unsubmitted Orders").should('be.visible').and('exist').and('contain','Unsubmitted')              // First Box Unsubmitted Orders
+        cy.get('.flex-wrap > :nth-child(2) > :nth-child(1) > .text-royalBlue', { timeout: 1000 }).contains("Pending Approval").should('be.visible').and('exist').and('contain','Approval')      // 2nd Box Pending Approval
+        cy.get(':nth-child(3) > :nth-child(1) > .text-royalBlue', { timeout: 1000 }).contains("Pending Results").should('be.visible').and('exist').and('contain','Results')                     // 3rd Box Pending Results
+        cy.get('.py-9 > :nth-child(1) > :nth-child(2)', { timeout: 1000 }).contains("Completed Orders").should('be.visible').and('exist').and('contain','Completed')                            // 4th Box Completed Orders
+
+                                                                    // Test Orders Page Elements Assertions //          
+        
+        cy.get('.grid-cols-1 > .border-r > .md\\:flex > [href="/access/test-orders"]', { timeout: 2000 }).contains("Test Orders")                                                               // Test Orders Tab click
+        .should('be.visible').and('exist').and('contain','Orders').click()        
+        
+        cy.get('.justify-end > .lg\\:gap-2 > :nth-child(1) > .relative > .px-2', { timeout: 1000 }).should('be.visible').and('exist').click()                                                   // All ORG Dropdown 
+        cy.get('.cursor-pointer > :nth-child(2) > .items-center > .flex', { timeout: 1000 }).click()                                                                                            // Select ORG from dropdown        
+        cy.get('.justify-end > .lg\\:gap-2 > :nth-child(2) > .relative > .px-2', { timeout: 1000 }).click()                                                                                     // Phy dropdown Assertion        
+        cy.get('.relative > .cursor-pointer > :nth-child(2) > .items-center', { timeout: 1000 }).click()                                                                                        // Select Phy from dropdown
+        cy.get('.xs\\:px-3 > :nth-child(1) > .font-semibold', { timeout: 1000 }).contains("Test Orders").should('be.visible').and('exist').and('contain','Test Orders')                         // Test Orders Heading Assertion
+        cy.get('.md\\:w-\\[503px\\] > .my-3 > .relative > .font-sans', { timeout: 1000 }).should('be.visible').and('exist')                                                                     // Search by Patient Name
+        cy.get('.md\\:mr-4.md\\:w-\\[300px\\] > .my-2 > .bg-white').should('be.visible').and('exist').wait(2000)                                                                                // Test Type filter assertion
+        
+        //cy.get('.md\\:flex.w-full > :nth-child(3) > .my-2 > .bg-white', { timeout: 2000 }).should('be.visible').and('exist')                                                                  // Status filter assertion        
+        cy.get('.globalFilterDateInput > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full', { timeout: 1000 }).should('be.visible').and('exist')                        // Calender assertion
+        //cy.get('.flex-wrap > .xs\\:flex-col > :nth-child(1)').should('be.visible', { timeout: 1000 }).and('exist')                                                                            // ORG filter assertion
+        cy.get('.-mt-2 > .xs\\:flex-col > :nth-child(1)').should('be.visible', { timeout: 1000 }).and('exist')                                                                                  // ORG filter assertion
+        //cy.get('.flex-wrap > .xs\\:flex-col > :nth-child(2)').should('be.visible', { timeout: 1000 }).and('exist')                                                                            // Phy filter assertion
+        cy.get('.-mt-2 > .xs\\:flex-col > :nth-child(2)').should('be.visible', { timeout: 1000 }).and('exist')                                                                                  // Phy filter assertion
+        cy.get('.transparentBtn > .font-medium').should('be.visible', { timeout: 1000 }).and('exist')                                                                                           // Clear filter btn assertion    
+        cy.get('.primaryBtn').contains("New Online Order").should('be.visible').and('exist', { timeout: 1000 }).and('contain','Online Order')                                                   // New Online Order Btn Assertion
+
+                                                                    // Test Orders Table Col Assertions //
+        
+        cy.get('.bg-sideNavGray > tr > :nth-child(1)', { timeout: 500 }).contains("Patient First Name").should('have.text','Patient First Name').and('exist').and('contain','First Name')       // Assertion for "Patient First Name" col + sorting Ascend is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(2)', { timeout: 500 }).contains("Patient Last Name").should('have.text','Patient Last Name').and('exist').and('contain','Last Name')          // Assertion for "Patient Last Name" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(3)', { timeout: 500 }).contains("Patient DOB").should('have.text','Patient DOB').and('exist').and('contain','DOB')                            // Assertion for "Patient DOB" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(4)', { timeout: 500 }).contains("Order Type").should('have.text','Order Type').and('exist').and('contain','Order')                            // Assertion for "Order Type" col is present                                                                                
+        cy.get('.bg-sideNavGray > tr > :nth-child(5)', { timeout: 500 }).contains("Castle ID").should('have.text','Castle ID').and('exist').and('contain','Castle')                             // Assertion for "Castle ID" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(6)', { timeout: 500 }).contains("Specimen ID").should('have.text','Specimen ID').and('exist').and('contain','Specimen')                       // Assertion for "Specimen ID" col is present  
+        cy.get('.bg-sideNavGray > tr > :nth-child(7)', { timeout: 500 }).contains("Clinician").should('have.text','Clinician').and('exist').and('contain','Clinician')                          // Assertion for "Clinician" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(8)', { timeout: 500 }).contains("Placed By").should('have.text','Placed By').and('exist').and('contain','Placed')                             // Assertion for "Placed By" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(9)', { timeout: 500 }).contains("Ordered Date").should('have.text','Ordered Date').and('exist').and('contain','Ordered')                      // Assertion for "Ordered Date" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(10)', { timeout: 500 }).contains("Report Date").should('have.text','Report Date').and('exist').and('contain','Report')                        // Assertion for "Report Date" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(11)', { timeout: 500 }).contains("Castle Result").should('have.text','Castle Result').and('exist').and('contain','Result')                    // Assertion for "Castle Result" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(12)', { timeout: 500 }).contains("Test Type").should('have.text','Test Type').and('exist').and('contain','Test')                              // Assertion for "Test Type" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(13)', { timeout: 500 }).contains("Organization").should('have.text','Organization').and('exist').and('contain','Organization')                // Assertion for "ORG" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > :nth-child(14)', { timeout: 500 }).contains("Creation Date").should('have.text','Creation Date').and('exist').and('contain','Creation')                  // Assertion for "Creation Date" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > .lg\\:right-0', { timeout: 500 }).contains("Status").should('have.text','Status').and('exist').and('contain','Status')                                   // Assertion for "Status" col is present                                                                        
+        cy.get('.bg-sideNavGray > tr > .hidden', { timeout: 500 }).contains("Actions").should('have.text','Actions').and('exist').and('contain','Actions')                                      // Assertion for "Actions" col is present                                                                        
+                 
+
+                                                              // Filering //
+            
+        // Patient name Filter
+        cy.get('.md\\:w-\\[503px\\] > .my-3 > .relative > .font-sans').type('Jack').wait(3000)                                                                                              // input name in patient name filter
+        cy.assertPaginationMatchesRows()   
+
+        // Test type Filter            
+        cy.get('.md\\:-mt-0 > .my-2 > .bg-white').click().wait(500)                                                                                                                         // tap to test type filter
+        cy.get('.my-2 > .rounded-md > :nth-child(2)').click().wait(3000)                                                                                                                    // selecting tissue cypher test
+        cy.assertPaginationMatchesRows()
+        cy.get('.md\\:w-\\[503px\\] > .my-3 > .relative > .font-sans').clear().wait(3000)                                                                                                   // Clear patient name from patient name filter
+        cy.get('.md\\:-mt-0 > .my-2 > .bg-white').click().wait(500)                                                                                                                         // tap to test type filter
+        cy.get('.my-2 > .rounded-md > :nth-child(1)').click().wait(3000)                                                                                                                    // Unselecting tissue cypher test
+
+        // Status type Filter 
+        cy.get('.md\\:flex-row.w-full > :nth-child(3) > .mr-2 > .bg-white').click().wait(500)                                                                                               // tap to status type filter
+        cy.get('.absolute > :nth-child(4) > .w-full').scrollIntoView().click().wait(3000)                                                                                                   // Select pending approvals Option                                   
+        cy.assertPaginationMatchesRows()
+        cy.get('.md\\:flex-row.w-full > :nth-child(3) > .mr-2 > .bg-white').click().wait(500)                                                                                               // tap to staus type filter
+        cy.get('.absolute > :nth-child(4) > .w-full').scrollIntoView().click().wait(3000)                                                                                                   // select pending approvals Option                                   
+
+        // Global Filter Date Filter
+        // cy.get('.globalFilterDateInput > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').type('05-16-2025').wait(3000)
+        // cy.assertPaginationMatchesRows()
+        // cy.get('.globalFilterDateInput > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').clear().wait(3000)
+            
+        // Patient DOB Filter
+        cy.get(':nth-child(3) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').type('08-22-2025').wait(500)                                                     // Filter by DOB
+        cy.assertPaginationMatchesRows()
+        cy.get(':nth-child(3) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').clear()                                                                          // Filter by DOB
+
+        // Order Type Filter     
+        cy.get(':nth-child(4) > .my-2 > .bg-white').click()                                                                                                                                 // Tap to Online order filter
+        cy.get('.rounded-md > :nth-child(3)').click().wait(3000)                                                                                                                            // Select Paper TRF
+        cy.assertPaginationMatchesRows()
+        cy.get(':nth-child(4) > .my-2 > .bg-white').click()                                                                                                                                 // Tap to Online order filter
+        cy.get('.my-2 > .rounded-md > :nth-child(1)').click().wait(3000)                                                                                                                    // Unselect online order
+
+        // Order Date Filter
+        cy.get(':nth-child(9) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').scrollIntoView().type('07-28-2025').wait(3000)
+        cy.assertPaginationMatchesRows()
+        cy.get(':nth-child(9) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').scrollIntoView().clear()
+
+        // Creation Date Filter
+        cy.get(':nth-child(14) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').scrollIntoView().type('07-29-2025').wait(3000)
+        cy.assertPaginationMatchesRows()
+        cy.get(':nth-child(14) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').scrollIntoView().clear()
+            
+        cy.get('.rounded-full > .max-w-\\[316px\\] > .h-full').click().wait(500)
+        cy.get('.py-2 > .font-normal', { timeout: 5000 }).click()
     })
 })
