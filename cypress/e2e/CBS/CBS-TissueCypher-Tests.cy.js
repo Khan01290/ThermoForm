@@ -422,8 +422,6 @@ describe('TissueCypher Online Order Submission Suite', function() {
          cy.get('.rounded-full > .max-w-\\[316px\\] > .h-full').click().wait(500)
          cy.get('.py-2 > .font-normal', { timeout: 5000 }).click().wait(5000)      
 
-
-
         /* Getting the random section
         let statusText = "";
 
@@ -470,9 +468,7 @@ describe('TissueCypher Online Order Submission Suite', function() {
 
 
 
-    })
-    
-    
+    })    
 })
           
 
