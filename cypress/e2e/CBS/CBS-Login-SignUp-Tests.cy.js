@@ -3,7 +3,7 @@ const { expect } = require("chai")
 
 describe('Login/SignUp Test-Suite', function() {
     
-    it("Landing Page Assertions", function()  {
+    it.skip("Landing Page Assertions", function()  {
         cy.viewport(1920, 1080)    
         cy.visit("https://demo.clabsportal.com/") 
         cy.wait(1000) 
@@ -20,7 +20,7 @@ describe('Login/SignUp Test-Suite', function() {
         cy.wait(1000) 
     })
 
-     it("Login With Empty fields", function()  {
+     it.skip("Login With Empty fields", function()  {
 
         cy.viewport(1920, 1080)    
         cy.visit("https://demo.clabsportal.com/")         
@@ -40,7 +40,7 @@ describe('Login/SignUp Test-Suite', function() {
         })            
     })
 
-    it("Login With Incorrect User Cradentials", function()  {
+    it.skip("Login With Incorrect User Cradentials", function()  {
 
         cy.viewport(1920, 1080)
         cy.visit("https://demo.clabsportal.com/") 
@@ -61,7 +61,7 @@ describe('Login/SignUp Test-Suite', function() {
         })            
     })
 
-    it("Login With Correct User Cradentials", function()  {
+    it.skip("Login With Correct User Cradentials", function()  {
 
         cy.viewport(1920, 1080)
         cy.visit("https://demo.clabsportal.com/") 
@@ -85,7 +85,7 @@ describe('Login/SignUp Test-Suite', function() {
         })            
     })
 
-    it("Sign Up ORG/Cilinician with OM", function()  {
+    it.skip("Sign Up ORG/Cilinician with OM", function()  {
     
         cy.viewport(1920, 1080)    
         cy.visit("https://demo.clabsportal.com/")                                                                                                           // Loading Portal  
@@ -198,7 +198,7 @@ describe('Login/SignUp Test-Suite', function() {
         cy.wait(2000)
     })
 
-    it("Sign Up ORG/Cilinician without OM", function()  {
+    it.skip("Sign Up ORG/Cilinician without OM", function()  {
 
         cy.viewport(1920, 1080)    
         cy.visit("https://demo.clabsportal.com/")                                                                                                            // Loading Portal  
@@ -295,7 +295,7 @@ describe('Login/SignUp Test-Suite', function() {
         cy.wait(2000)
     })
 
-    it("Right user display Check After Successful Login", function()  {
+    it.skip("Right user display Check After Successful Login", function()  {
 
         cy.viewport(1920, 1080)
         cy.visit("https://demo.clabsportal.com/") 

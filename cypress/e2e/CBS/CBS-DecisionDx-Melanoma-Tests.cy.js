@@ -52,7 +52,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
         cy.get('path[data-name="Path 5122"]').should('have.attr', 'fill', '#18B5B7')                                                                                    // Asserting side bar Select text icon color is filled  
         
         // ----------------- Billing Info Section
-        cy.get('[href="#Billing Information"] > .w-full > .font-normal', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()        // Asserting side bar billing information and clicked 
+        cy.get('a[href="#Billing Information"] p', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()        // Asserting side bar billing information and clicked 
         cy.get('#billingInfo\\.icdCodeId', { timeout: 1000 }).click()                                                                                                     // Asserting icd 10 code is present and clicked
         
         // select a random option from dropdown under billing info
@@ -114,7 +114,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
         //});
         
         // Clinical Information Setion
-        cy.get('[href="#Clinical Information"] > .w-full > .font-normal').should('have.text','Clinical Information').should('be.visible').and('exist').click().wait(500)    // Selecting Clinical Info from side menu
+        cy.get('a[href="#Clinical Information"] p').should('have.text','Clinical Information').should('be.visible').and('exist').click().wait(500)    // Selecting Clinical Info from side menu
         
         // Select a random option from three under sentinel lymph node biopsy
         cy.get('input[name="isSentinelLymphNodeBiopsy"]').then($radios => {
@@ -139,7 +139,27 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
             .check({ force: true })
             .should('be.checked')
 
-        cy.log('Randomly selected: ' + $radios[randomIndex].value)
+        //cy.log('Randomly selected: ' + $radios[randomIndex].value)
+        const selectedValue = $radios[randomIndex].value
+        cy.log('Randomly selected: ' + selectedValue)
+
+        if (selectedValue === "Yes") {
+            // 🔹 Step 1: Click the dropdown toggle to open it
+            cy.get('#lymphNodeStatus').click({ force: true })
+
+            // 🔹 Step 2: Now grab all visible options (searching in body in case it's portaled)
+            cy.get('body')
+            .find('ul span button p') // target <p> inside each option
+            .should('be.visible')
+            .then($options => {
+                const randomDropdownIndex = Cypress._.random(0, $options.length - 1)
+
+                cy.wrap($options[randomDropdownIndex])
+                .click({ force: true })
+
+                cy.log("Random dropdown selected: " + $options[randomDropdownIndex].innerText.trim())
+            })
+        }
         })
 
         // Select a random option from three under clinically palpable nodes
@@ -195,7 +215,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
         })
 
         // Laboratory Setion
-        cy.get('[href="#Laboratory Information"] > .w-full > .font-normal').should('have.text','Laboratory Information').should('be.visible').and('exist').click().wait(500)    // Selecting Laboratory Info from side menu
+        cy.get('a[href="#Laboratory Information"] p').should('have.text','Laboratory Information').should('be.visible').and('exist').click().wait(500)    // Selecting Laboratory Info from side menu
         cy.get('input[name="laboratoryInfo.typeOfSpecimen"]').then($options1 => {                                                                                     // Seleting type of Specimen randomly.
         const randomIndex1 = Math.floor(Math.random() * $options1.length) // pick 0, 1, or 2
         const chosen1 = $options1[randomIndex1]
@@ -209,7 +229,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
         cy.get('.my-3.false > .flex-col > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').type('05-16-2025')                                   // date input
 
         // Shipment Information
-        cy.get('[href="#Shipment Information"] > .w-full > .font-semibold').should('have.text','Shipment Information').should('be.visible').and('exist').click().wait(500)
+        cy.get('a[href="#Shipment Information"] p').should('have.text','Shipment Information').should('be.visible').and('exist').click().wait(500)
         cy.get('.mb-4 > .mt-3 > .checkmark').click().wait(500)                                                                                                            // Click shipping check box                             
         // Get all radio buttons by name
             cy.get('input[name="shipMethod"]').then($radios => {
@@ -244,7 +264,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
             })
 
         // Supporting doc section
-        cy.get('[href="#Supporting Documents"] > .w-full > .font-semibold').click().wait(500)
+        cy.get('a[href="#Supporting Documents"] p').click().wait(500)
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .font-normal').should('have.text','Pathology Report').should('be.visible').and('exist')
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\]').should('be.visible').and('exist')
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\] > span > .secondaryBtn', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
@@ -327,7 +347,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
         cy.get('path[data-name="Path 5122"]').should('have.attr', 'fill', '#18B5B7')                                                                                    // Asserting side bar Select text icon color is filled  
         
         // ----------------- Billing Info Section
-        cy.get('[href="#Billing Information"] > .w-full > .font-normal', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()        // Asserting side bar billing information and clicked 
+        cy.get('a[href="#Billing Information"] p', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()        // Asserting side bar billing information and clicked 
         cy.get('#billingInfo\\.icdCodeId', { timeout: 1000 }).click()                                                                                                     // Asserting icd 10 code is present and clicked
         
         // select a random option from dropdown under billing info
@@ -389,7 +409,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
         //});
         
         // Clinical Information Setion
-        cy.get('[href="#Clinical Information"] > .w-full > .font-normal').should('have.text','Clinical Information').should('be.visible').and('exist').click().wait(500)    // Selecting Clinical Info from side menu
+        cy.get('a[href="#Clinical Information"] p').should('have.text','Clinical Information').should('be.visible').and('exist').click().wait(500)    // Selecting Clinical Info from side menu
         
         // Select a random option from three under sentinel lymph node biopsy
         cy.get('input[name="isSentinelLymphNodeBiopsy"]').then($radios => {
@@ -414,7 +434,27 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
             .check({ force: true })
             .should('be.checked')
 
-        cy.log('Randomly selected: ' + $radios[randomIndex].value)
+        //cy.log('Randomly selected: ' + $radios[randomIndex].value)
+        const selectedValue = $radios[randomIndex].value
+        cy.log('Randomly selected: ' + selectedValue)
+
+        if (selectedValue === "Yes") {
+            // 🔹 Step 1: Click the dropdown toggle to open it
+            cy.get('#lymphNodeStatus').click({ force: true })
+
+            // 🔹 Step 2: Now grab all visible options (searching in body in case it's portaled)
+            cy.get('body')
+            .find('ul span button p') // target <p> inside each option
+            .should('be.visible')
+            .then($options => {
+                const randomDropdownIndex = Cypress._.random(0, $options.length - 1)
+
+                cy.wrap($options[randomDropdownIndex])
+                .click({ force: true })
+
+                cy.log("Random dropdown selected: " + $options[randomDropdownIndex].innerText.trim())
+            })
+        }
         })
 
         // Select a random option from three under clinically palpable nodes
@@ -470,7 +510,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
         })
 
         // Laboratory Setion
-        cy.get('[href="#Laboratory Information"] > .w-full > .font-normal').should('have.text','Laboratory Information').should('be.visible').and('exist').click().wait(500)    // Selecting Laboratory Info from side menu
+        cy.get('a[href="#Laboratory Information"] p').should('have.text','Laboratory Information').should('be.visible').and('exist').click().wait(500)    // Selecting Laboratory Info from side menu
         cy.get('input[name="laboratoryInfo.typeOfSpecimen"]').then($options1 => {                                                                                     // Seleting type of Specimen randomly.
         const randomIndex1 = Math.floor(Math.random() * $options1.length) // pick 0, 1, or 2
         const chosen1 = $options1[randomIndex1]
@@ -484,7 +524,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
         cy.get('.my-3.false > .flex-col > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').type('05-16-2025').wait(500)                         // date input
 
         // Shipment Information
-        cy.get('[href="#Shipment Information"] > .w-full > .font-semibold').should('have.text','Shipment Information').should('be.visible').and('exist').click().wait(500)
+        cy.get('a[href="#Shipment Information"] p').should('have.text','Shipment Information').should('be.visible').and('exist').click().wait(500)
         cy.get('.mb-4 > .mt-3 > .checkmark').click().wait(500)                                                                                                            // Click shipping check box                             
         // Get all radio buttons by name
             cy.get('input[name="shipMethod"]').then($radios => {
@@ -520,7 +560,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
             })
 
         // Supporting doc section
-        cy.get('[href="#Supporting Documents"] > .w-full > .font-semibold').click().wait(500)
+        cy.get('a[href="#Supporting Documents"] p').click().wait(500)
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .font-normal').should('have.text','Pathology Report').should('be.visible').and('exist')
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\]').should('be.visible').and('exist')
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\] > span > .secondaryBtn', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
@@ -536,7 +576,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
         //cy.get('.flex-row > :nth-child(1) > span > .secondaryBtn').contains("Review").should('have.text','Review').should('be.visible').and('exist').click().wait(500)                             // Assertion for "review" Button is present
         
          cy.get(':nth-child(2) > span > .secondaryBtn').should('contain.text', 'Save and Exit').and('be.enabled').click().wait(50000)                                  // Assertion for "save_and_exit" Button is present and disabled   
-         //cy.get(':nth-child(1) > .lg\\:right-0 > .py-1').should('have.text', 'Pending Submission').should('be.visible').and('exist').wait(2000)                                        // Chwck the order status is pending submission  
+         cy.get(':nth-child(1) > .lg\\:right-0 > .py-1').should('have.text', 'Pending Submission').should('be.visible').and('exist').wait(2000)                                        // Chwck the order status is pending submission  
 
         
                                                                               // Order Creation and Save and Exit with In Progress status Flow //          
@@ -572,7 +612,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
         cy.get('path[data-name="Path 5122"]').should('have.attr', 'fill', '#18B5B7')                                                                                    // Asserting side bar Select text icon color is filled  
         
         // ----------------- Billing Info Section
-        /*cy.get('[href="#Billing Information"] > .w-full > .font-normal', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()        // Asserting side bar billing information and clicked 
+        /*cy.get('a[href="#Billing Information"] p', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()        // Asserting side bar billing information and clicked 
         cy.get('#billingInfo\\.icdCodeId', { timeout: 1000 }).click()                                                                                                     // Asserting icd 10 code is present and clicked
         
         // select a random option from dropdown under billing info
@@ -634,7 +674,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
         //});
 
         // Clinical Information Setion
-        cy.get('[href="#Clinical Information"] > .w-full > .font-normal').should('have.text','Clinical Information').should('be.visible').and('exist').click().wait(500)    // Selecting Clinical Info from side menu
+        cy.get('a[href="#Clinical Information"] p').should('have.text','Clinical Information').should('be.visible').and('exist').click().wait(500)    // Selecting Clinical Info from side menu
         
         // Select a random option from three under sentinel lymph node biopsy
         cy.get('input[name="isSentinelLymphNodeBiopsy"]').then($radios => {
@@ -659,7 +699,27 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
             .check({ force: true })
             .should('be.checked')
 
-        cy.log('Randomly selected: ' + $radios[randomIndex].value)
+        //cy.log('Randomly selected: ' + $radios[randomIndex].value)
+        const selectedValue = $radios[randomIndex].value
+        cy.log('Randomly selected: ' + selectedValue)
+
+        if (selectedValue === "Yes") {
+            // 🔹 Step 1: Click the dropdown toggle to open it
+            cy.get('#lymphNodeStatus').click({ force: true })
+
+            // 🔹 Step 2: Now grab all visible options (searching in body in case it's portaled)
+            cy.get('body')
+            .find('ul span button p') // target <p> inside each option
+            .should('be.visible')
+            .then($options => {
+                const randomDropdownIndex = Cypress._.random(0, $options.length - 1)
+
+                cy.wrap($options[randomDropdownIndex])
+                .click({ force: true })
+
+                cy.log("Random dropdown selected: " + $options[randomDropdownIndex].innerText.trim())
+            })
+        }
         })
 
         // Select a random option from three under clinically palpable nodes
@@ -716,7 +776,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
 
         //---------------------- Laboratory Setion
         /*
-        cy.get('[href="#Laboratory Information"] > .w-full > .font-normal').should('have.text','Laboratory Information').should('be.visible').and('exist').click().wait(500)    // Selecting Laboratory Info from side menu
+        cy.get('a[href="#Laboratory Information"] p').should('have.text','Laboratory Information').should('be.visible').and('exist').click().wait(500)    // Selecting Laboratory Info from side menu
         cy.get('input[name="laboratoryInfo.typeOfSpecimen"]').then($options1 => {                                                                                     // Seleting type of Specimen randomly.
         const randomIndex1 = Math.floor(Math.random() * $options1.length) // pick 0, 1, or 2
         const chosen1 = $options1[randomIndex1]
@@ -732,7 +792,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
         
         //---------------------- Shipment Information
 
-        cy.get('[href="#Shipment Information"] > .w-full > .font-normal').should('have.text','Shipment Information').should('be.visible').and('exist').click().wait(500)
+        cy.get('a[href="#Shipment Information"] p').should('have.text','Shipment Information').should('be.visible').and('exist').click().wait(500)
         cy.get('.mb-4 > .mt-3 > .checkmark').click().wait(500)                                                                                                            // Click shipping check box                             
         // Get all radio buttons by name
             cy.get('input[name="shipMethod"]').then($radios => {
@@ -766,7 +826,7 @@ describe('DecisionDx-Melanoma Online Order Submission Suite', function() {
             cy.log('Randomly selected option: ' + $radios[randomIndex].value)
             })
         // Supporting doc section
-        cy.get('[href="#Supporting Documents"] > .w-full > .font-normal').click().wait(500)
+        cy.get('a[href="#Supporting Documents"] p').click().wait(500)
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .font-normal').should('have.text','Pathology Report').should('be.visible').and('exist')
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\]').should('be.visible').and('exist')
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\] > span > .secondaryBtn', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})

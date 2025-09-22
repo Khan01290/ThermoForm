@@ -52,7 +52,7 @@ describe('DecisionDx-SCC Online Order Submission Suite', function() {
         cy.get('path[data-name="Path 5122"]').should('have.attr', 'fill', '#18B5B7')                                                                                    // Asserting side bar Select text icon color is filled  
         
         // Billing Info Section
-        cy.get('[href="#Billing Information"] > .w-full > .font-normal', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()        // Asserting side bar billing information and clicked 
+        cy.get('a[href="#Billing Information"] p', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()        // Asserting side bar billing information and clicked 
         cy.get('#billingInfo\\.icdCodeId', { timeout: 1000 }).click()                                                                                                     // Asserting icd 10 code is present and clicked
         cy.get(':nth-child(5) > .transparentBtn > .font-normal').should('have.text','C44.1291 Squamous cell carcinoma of skin of left upper eyelid, including canthus')
         .should('be.visible').and('exist').click()                                                                                                                        // Selecting third option from icd 10 code dropown
@@ -71,7 +71,7 @@ describe('DecisionDx-SCC Online Order Submission Suite', function() {
             })
             
         // Additional Info section
-        //cy.get('[href="#Additional Information"] > .w-full > .font-normal').should('have.text','Additional Information').should('be.visible').and('exist').click().wait(1000)                                                                        // Selecting Additional Info from side menu
+        //cy.get('a[href="#Additional Information"] p').should('have.text','Additional Information').should('be.visible').and('exist').click().wait(1000)                                                                        // Selecting Additional Info from side menu
         //cy.get('input[name="isAdditionalClinician"]').then($checkbox => {
         //if ($checkbox.is(':disabled')) {
         //    cy.log('Checkbox is disabled, skipping...');
@@ -90,7 +90,7 @@ describe('DecisionDx-SCC Online Order Submission Suite', function() {
         //    }
         //});
             // Clinical Information Setion
-            cy.get('[href="#Clinical Information"] > .w-full > .font-normal').should('have.text','Clinical Information').should('be.visible').and('exist').click().wait(1000)    // Selecting Clinical Info from side menu
+            cy.get('a[href="#Clinical Information"] p').should('have.text','Clinical Information').should('be.visible').and('exist').click().wait(1000)    // Selecting Clinical Info from side menu
             // Get all checkboxes
             cy.get('input[name="historyPhysicalExam"]').then($checkboxes => {
             expect($checkboxes.length).to.be.greaterThan(0)   // assert checkboxes exist
@@ -140,7 +140,7 @@ describe('DecisionDx-SCC Online Order Submission Suite', function() {
             })
 
             // Laboratory Setion
-            cy.get('[href="#Laboratory Information"] > .w-full > .font-normal').should('have.text','Laboratory Information').should('be.visible').and('exist').click().wait(1000)    // Selecting Laboratory Info from side menu
+            cy.get('a[href="#Laboratory Information"] p').should('have.text','Laboratory Information').should('be.visible').and('exist').click().wait(1000)    // Selecting Laboratory Info from side menu
             cy.get('input[name="laboratoryInfo.typeOfSpecimen"]').then($options1 => {                                                                                     // Seleting type of Specimen randomly.
             const randomIndex1 = Math.floor(Math.random() * $options1.length) // pick 0, 1, or 2
             const chosen1 = $options1[randomIndex1]
@@ -155,7 +155,7 @@ describe('DecisionDx-SCC Online Order Submission Suite', function() {
         cy.get('.my-3.false > .flex-col > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').type('05-16-2025')                                   // date input
 
         // Supporting doc section
-        cy.get('[href="#Supporting Documents"] > .w-full > .font-semibold').click().wait(500)
+        cy.get('a[href="#Supporting Documents"] p').click().wait(500)
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .font-normal').should('have.text','Pathology Report').should('be.visible').and('exist')
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\]').should('be.visible').and('exist')
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\] > span > .secondaryBtn', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
@@ -236,7 +236,7 @@ describe('DecisionDx-SCC Online Order Submission Suite', function() {
         cy.get('path[data-name="Path 5122"]').should('have.attr', 'fill', '#18B5B7')                                                                                    // Asserting side bar Select text icon color is filled  
         
         // Billing Info Section
-        cy.get('[href="#Billing Information"] > .w-full > .font-normal', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()        // Asserting side bar billing information and clicked 
+        cy.get('a[href="#Billing Information"] p', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()        // Asserting side bar billing information and clicked 
         cy.get('#billingInfo\\.icdCodeId', { timeout: 1000 }).click()                                                                                                     // Asserting icd 10 code is present and clicked
         cy.get(':nth-child(5) > .transparentBtn > .font-normal').should('have.text','C44.1291 Squamous cell carcinoma of skin of left upper eyelid, including canthus')
         .should('be.visible').and('exist').click()                                                                                                                        // Selecting third option from icd 10 code dropown
@@ -274,7 +274,7 @@ describe('DecisionDx-SCC Online Order Submission Suite', function() {
          //   }
         //});
             // Clinical Information Setion
-            cy.get('[href="#Clinical Information"] > .w-full > .font-normal').should('have.text','Clinical Information').should('be.visible').and('exist').click().wait(1000)    // Selecting Clinical Info from side menu
+            cy.get('a[href="#Clinical Information"] p').should('have.text','Clinical Information').should('be.visible').and('exist').click().wait(1000)    // Selecting Clinical Info from side menu
             // Get all checkboxes
             cy.get('input[name="historyPhysicalExam"]').then($checkboxes => {
             expect($checkboxes.length).to.be.greaterThan(0)   // assert checkboxes exist
@@ -324,7 +324,7 @@ describe('DecisionDx-SCC Online Order Submission Suite', function() {
             })
 
             // Laboratory Setion
-            cy.get('[href="#Laboratory Information"] > .w-full > .font-normal').should('have.text','Laboratory Information').should('be.visible').and('exist').click().wait(1000)    // Selecting Laboratory Info from side menu
+            cy.get('a[href="#Laboratory Information"] p').should('have.text','Laboratory Information').should('be.visible').and('exist').click().wait(1000)    // Selecting Laboratory Info from side menu
             cy.get('input[name="laboratoryInfo.typeOfSpecimen"]').then($options1 => {                                                                                     // Seleting type of Specimen randomly.
             const randomIndex1 = Math.floor(Math.random() * $options1.length) // pick 0, 1, or 2
             const chosen1 = $options1[randomIndex1]
@@ -339,7 +339,7 @@ describe('DecisionDx-SCC Online Order Submission Suite', function() {
         cy.get('.my-3.false > .flex-col > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').type('05-16-2025')                                   // date input
 
         // Supporting doc section
-        cy.get('[href="#Supporting Documents"] > .w-full > .font-semibold').click().wait(500)
+        cy.get('a[href="#Supporting Documents"] p').click().wait(500)
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .font-normal').should('have.text','Pathology Report').should('be.visible').and('exist')
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\]').should('be.visible').and('exist')
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\] > span > .secondaryBtn', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
@@ -390,7 +390,7 @@ describe('DecisionDx-SCC Online Order Submission Suite', function() {
         cy.get('path[data-name="Path 5122"]').should('have.attr', 'fill', '#18B5B7')                                                                                    // Asserting side bar Select text icon color is filled  
         
         // Billing Info Section
-        cy.get('[href="#Billing Information"] > .w-full > .font-normal', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()        // Asserting side bar billing information and clicked 
+        cy.get('a[href="#Billing Information"] p', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()        // Asserting side bar billing information and clicked 
         cy.get('#billingInfo\\.icdCodeId', { timeout: 1000 }).click()                                                                                                     // Asserting icd 10 code is present and clicked
         cy.get(':nth-child(5) > .transparentBtn > .font-normal').should('have.text','C44.1291 Squamous cell carcinoma of skin of left upper eyelid, including canthus')
         .should('be.visible').and('exist').click()                                                                                                                        // Selecting third option from icd 10 code dropown
@@ -429,7 +429,7 @@ describe('DecisionDx-SCC Online Order Submission Suite', function() {
         //});
 
         // Clinical Information Setion
-            cy.get('[href="#Clinical Information"] > .w-full > .font-normal').should('have.text','Clinical Information').should('be.visible').and('exist').click({force: true}).wait(1000)    // Selecting Clinical Info from side menu
+            cy.get('a[href="#Clinical Information"] p').should('have.text','Clinical Information').should('be.visible').and('exist').click({force: true}).wait(1000)    // Selecting Clinical Info from side menu
             // Get all checkboxes
             cy.get('input[name="historyPhysicalExam"]').then($checkboxes => {
             expect($checkboxes.length).to.be.greaterThan(0)   // assert checkboxes exist
@@ -480,7 +480,7 @@ describe('DecisionDx-SCC Online Order Submission Suite', function() {
 
 
         // Laboratory Setion 
-        //cy.get('[href="#Laboratory Information"] > .w-full > .font-normal').should('have.text','Laboratory Information').should('be.visible').and('exist').click().wait(1000)    // Selecting Laboratory Info from side menu
+        //cy.get('a[href="#Laboratory Information"] p').should('have.text','Laboratory Information').should('be.visible').and('exist').click().wait(1000)    // Selecting Laboratory Info from side menu
         //cy.get('input[name="laboratoryInfo.typeOfSpecimen"]').then($options1 => {                                                                                     // Seleting type of Specimen randomly.
         //const randomIndex1 = Math.floor(Math.random() * $options1.length) // pick 0, 1, or 2
         //const chosen1 = $options1[randomIndex1]
@@ -490,7 +490,7 @@ describe('DecisionDx-SCC Online Order Submission Suite', function() {
         //cy.get('.my-3.false > .flex-col > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').type('05-16-2025')                                   // date input
 
         // Supporting doc section
-        cy.get('[href="#Supporting Documents"] > .w-full > .font-normal').click().wait(500)
+        cy.get('a[href="#Supporting Documents"] p').click().wait(500)
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .font-normal').should('have.text','Pathology Report').should('be.visible').and('exist')
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\]').should('be.visible').and('exist')
         cy.get(':nth-child(2) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\] > span > .secondaryBtn', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
