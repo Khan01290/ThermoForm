@@ -1,0 +1,112 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-09-23T10:53:34.803Z",
+    "end": "2025-09-23T10:54:50.182Z",
+    "duration": 75379,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0b81101a-1a3e-43a7-9be6-fb1fa0d8608e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\CBS\\CBS-TestOrdersTable-Assertion.cy.js",
+      "file": "cypress\\e2e\\CBS\\CBS-TestOrdersTable-Assertion.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "15a5cde5-2d96-426e-b0ba-4ca0e76a7460",
+          "title": "Dashboard and Test Orders Table Assertions Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify All Dashboard and Test Order Table Assertions",
+              "fullTitle": "Dashboard and Test Orders Table Assertions Suite Verify All Dashboard and Test Order Table Assertions",
+              "timedOut": null,
+              "duration": 71858,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.viewport(1920, 1081);\ncy.visit(\"https://demo.clabsportal.com/\");\n// Login Button Click\n////cy.get(\".text-lg\").contains(\"Existing Customer\")                                                                                                                                    // Assertion for text \"Existing Customer\" is present\ncy.wait(500);\n//cy.get(\".w-full\").contains(\"login\").should('be.visible').and('exist').and('contain','login').click()                                                                                  // Click to Login button and check if the btn text is \"login\"       \ncy.get('[type=\"button\"]').contains(\"login\").should('be.visible').and('exist').and('contain', 'login').click().wait(500); // Click to Login button usimg btn type    >> Best Practise\n// Input username\ncy.origin('https://democlient.clabsportal.com', () => {\n  cy.wait(500);\n  cy.get('input[name=\"username\"]').type(\"dodobo3146@appxapi.com\"); // Get username by attribute name and type in it\n  cy.get('input[name=\"username\"]').should('have.value', 'dodobo3146@appxapi.com'); // Check username if the username is correctly input            \n  cy.get('input[name=\"password\"]').type(\"bhwY8En6a\"); // Get password by attribute name and type in it\n  cy.get('input[name=\"password\"]').should('have.value', 'bhwY8En6a'); // Check password if the password is correctly input\n  //cy.get(\"input#okta-signin-submit\").should('be.visible').and('exist').and('contain','Sign In').click()                                                                             // Get submit btn and check if the btn text is \"Sign In\" \n  cy.get('[type=\"submit\"]').contains(\"Sign In\").should('be.visible').and('exist').and('contain', 'Sign In').click(); // Get submit btn by btn type and cick on it   >> Best Practise                                \n});\n// Dashboard Assertions //\n// side navigation Items Assertion\ncy.get('.grid-cols-1 > .border-r > .md\\\\:flex > .sideBarItemActive', {\n  timeout: 80000\n}).contains(\"Dashboard\").should('be.visible').and('exist').and('contain', 'Dashboard'); // Dashboard \ncy.get('.grid-cols-1 > .border-r > .md\\\\:flex > [href=\"/access/test-orders\"]', {\n  timeout: 1000\n}).contains(\"Test Orders\").should('be.visible').and('exist').and('contain', 'Orders'); // Test Orders\ncy.get('.grid-cols-1 > .border-r > .md\\\\:flex > [href=\"/access/approvals\"]', {\n  timeout: 1000\n}).contains(\"Approvals\").should('be.visible').and('exist').and('contain', 'Approvals'); // Approvals\ncy.get('.grid-cols-1 > .border-r > .md\\\\:flex > #step3', {\n  timeout: 1000\n}).contains(\"Patients\").should('be.visible').and('exist').and('contain', 'Patients'); // Patients\ncy.get('.grid-cols-1 > .border-r > .md\\\\:flex > [href=\"/access/shipments\"]', {\n  timeout: 1000\n}).contains(\"Shipments\").should('be.visible').and('exist').and('contain', 'Shipments'); // Shipments\ncy.get('.grid-cols-1 > .border-r > .md\\\\:flex > [href=\"/access/documents\"]', {\n  timeout: 1000\n}).contains(\"Documents\").should('be.visible').and('exist').and('contain', 'Documents'); // Documents\ncy.get('.grid-cols-1 > .border-r > .md\\\\:lg\\\\:flex-col > .sideBarItem', {\n  timeout: 1000\n}).contains(\"Settings\").should('be.visible').and('exist').and('contain', 'Settings'); // Settings\ncy.get('input[placeholder=\"Search by Patient Name\"]', {\n  timeout: 1000\n}).should('be.visible').and('exist'); // Search by Patient Name\ncy.get('.justify-end > .lg\\\\:gap-2 > :nth-child(1) > .relative > .px-2', {\n  timeout: 1000\n}).should('be.visible').and('exist'); // All ORG Dropdown \ncy.get('.justify-end > .lg\\\\:gap-2 > [data-tooltip-content=\"Please select an Physician\"] > .relative > .px-2', {\n  timeout: 1000\n}).should('be.visible').and('exist'); // All Phy Dropdown \ncy.get('[data-tooltip-content=\"Notifications\"] > .relative', {\n  timeout: 1000\n}).should('be.visible').and('exist'); // Notification icon\ncy.get('[data-tooltip-content=\"Help\"]', {\n  timeout: 1000\n}).should('be.visible').and('exist'); // Help icon                                \ncy.get('.ml-2 > div.flex', {\n  timeout: 1000\n}).should('be.visible').and('exist'); // Profile icon                                \ncy.get('.xs\\\\:px-3 > :nth-child(1) > .font-semibold', {\n  timeout: 1000\n}).contains(\"Dashboard\").should('be.visible').and('exist').and('contain', 'Dashboard'); // Page Heading Dashboard            \n//cy.get('.xs\\\\:pl-3 > :nth-child(1)', { timeout: 1000 }).contains(\"Dashboard\").should('be.visible').and('exist').and('contain','Dashboard')                                            // Page Heading Dashboard            \ncy.get('#step1 > :nth-child(1)', {\n  timeout: 1000\n}).contains(\"New Online Order\").should('be.visible').and('exist').and('contain', 'New Online'); // First Button New Online Order\ncy.get('#step1 > :nth-child(2)', {\n  timeout: 1000\n}).contains(\"Attach a Document\").should('be.visible').and('exist').and('contain', 'Attach'); // 2nd Button Attach a Document\ncy.get('#step1 > :nth-child(3)', {\n  timeout: 1000\n}).contains(\"Schedule a Pickup\").should('be.visible').and('exist').and('contain', 'Schedule'); // 3rd Button Schedule a Pickup\ncy.get('#step1 > :nth-child(4)', {\n  timeout: 1000\n}).contains(\"View a Patient Result\").should('be.visible').and('exist').and('contain', 'Patient Result'); // 4th Button View a Patient Result\ncy.get(':nth-child(1) > :nth-child(1) > .text-royalBlue', {\n  timeout: 1000\n}).contains(\"Unsubmitted Orders\").should('be.visible').and('exist').and('contain', 'Unsubmitted'); // First Box Unsubmitted Orders\ncy.get('.flex-wrap > :nth-child(2) > :nth-child(1) > .text-royalBlue', {\n  timeout: 1000\n}).contains(\"Pending Approval\").should('be.visible').and('exist').and('contain', 'Approval'); // 2nd Box Pending Approval\ncy.get(':nth-child(3) > :nth-child(1) > .text-royalBlue', {\n  timeout: 1000\n}).contains(\"Pending Results\").should('be.visible').and('exist').and('contain', 'Results'); // 3rd Box Pending Results\ncy.get('.py-9 > :nth-child(1) > :nth-child(2)', {\n  timeout: 1000\n}).contains(\"Completed Orders\").should('be.visible').and('exist').and('contain', 'Completed'); // 4th Box Completed Orders\n// Test Orders Page Elements Assertions //          \ncy.get('.grid-cols-1 > .border-r > .md\\\\:flex > [href=\"/access/test-orders\"]', {\n  timeout: 2000\n}).contains(\"Test Orders\") // Test Orders Tab click\n.should('be.visible').and('exist').and('contain', 'Orders').click();\ncy.get('.justify-end > .lg\\\\:gap-2 > :nth-child(1) > .relative > .px-2', {\n  timeout: 1000\n}).should('be.visible').and('exist').click(); // All ORG Dropdown \ncy.get('.cursor-pointer > :nth-child(2) > .items-center > .flex', {\n  timeout: 1000\n}).click(); // Select ORG from dropdown        \ncy.get('.justify-end > .lg\\\\:gap-2 > :nth-child(2) > .relative > .px-2', {\n  timeout: 1000\n}).click(); // Phy dropdown Assertion        \ncy.get('.relative > .cursor-pointer > :nth-child(2) > .items-center', {\n  timeout: 1000\n}).click(); // Select Phy from dropdown\ncy.get('.xs\\\\:px-3 > :nth-child(1) > .font-semibold', {\n  timeout: 1000\n}).contains(\"Test Orders\").should('be.visible').and('exist').and('contain', 'Test Orders'); // Test Orders Heading Assertion\ncy.get('.md\\\\:w-\\\\[503px\\\\] > .my-3 > .relative > .font-sans', {\n  timeout: 1000\n}).should('be.visible').and('exist'); // Search by Patient Name\ncy.get('.md\\\\:mr-4.md\\\\:w-\\\\[300px\\\\] > .my-2 > .bg-white').should('be.visible').and('exist').wait(2000); // Test Type filter assertion\n//cy.get('.md\\\\:flex.w-full > :nth-child(3) > .my-2 > .bg-white', { timeout: 2000 }).should('be.visible').and('exist')                                                                  // Status filter assertion        \ncy.get('.globalFilterDateInput > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full', {\n  timeout: 1000\n}).should('be.visible').and('exist'); // Calender assertion\n//cy.get('.flex-wrap > .xs\\\\:flex-col > :nth-child(1)').should('be.visible', { timeout: 1000 }).and('exist')                                                                            // ORG filter assertion\ncy.get('.-mt-2 > .xs\\\\:flex-col > :nth-child(1)').should('be.visible', {\n  timeout: 1000\n}).and('exist'); // ORG filter assertion\n//cy.get('.flex-wrap > .xs\\\\:flex-col > :nth-child(2)').should('be.visible', { timeout: 1000 }).and('exist')                                                                            // Phy filter assertion\ncy.get('.-mt-2 > .xs\\\\:flex-col > :nth-child(2)').should('be.visible', {\n  timeout: 1000\n}).and('exist'); // Phy filter assertion\ncy.get('.transparentBtn > .font-medium').should('be.visible', {\n  timeout: 1000\n}).and('exist'); // Clear filter btn assertion    \ncy.get('.primaryBtn').contains(\"New Online Order\").should('be.visible').and('exist', {\n  timeout: 1000\n}).and('contain', 'Online Order'); // New Online Order Btn Assertion\n// Test Orders Table Col Assertions //\ncy.get('.bg-sideNavGray > tr > :nth-child(1)', {\n  timeout: 500\n}).contains(\"Patient First Name\").should('have.text', 'Patient First Name').and('exist').and('contain', 'First Name'); // Assertion for \"Patient First Name\" col + sorting Ascend is present                                                                        \ncy.get('.bg-sideNavGray > tr > :nth-child(2)', {\n  timeout: 500\n}).contains(\"Patient Last Name\").should('have.text', 'Patient Last Name').and('exist').and('contain', 'Last Name'); // Assertion for \"Patient Last Name\" col is present                                                                        \ncy.get('.bg-sideNavGray > tr > :nth-child(3)', {\n  timeout: 500\n}).contains(\"Patient DOB\").should('have.text', 'Patient DOB').and('exist').and('contain', 'DOB'); // Assertion for \"Patient DOB\" col is present                                                                        \ncy.get('.bg-sideNavGray > tr > :nth-child(4)', {\n  timeout: 500\n}).contains(\"Order Type\").should('have.text', 'Order Type').and('exist').and('contain', 'Order'); // Assertion for \"Order Type\" col is present                                                                                \ncy.get('.bg-sideNavGray > tr > :nth-child(5)', {\n  timeout: 500\n}).contains(\"Castle ID\").should('have.text', 'Castle ID').and('exist').and('contain', 'Castle'); // Assertion for \"Castle ID\" col is present                                                                        \ncy.get('.bg-sideNavGray > tr > :nth-child(6)', {\n  timeout: 500\n}).contains(\"Specimen ID\").should('have.text', 'Specimen ID').and('exist').and('contain', 'Specimen'); // Assertion for \"Specimen ID\" col is present  \ncy.get('.bg-sideNavGray > tr > :nth-child(7)', {\n  timeout: 500\n}).contains(\"Clinician\").should('have.text', 'Clinician').and('exist').and('contain', 'Clinician'); // Assertion for \"Clinician\" col is present                                                                        \ncy.get('.bg-sideNavGray > tr > :nth-child(8)', {\n  timeout: 500\n}).contains(\"Placed By\").should('have.text', 'Placed By').and('exist').and('contain', 'Placed'); // Assertion for \"Placed By\" col is present                                                                        \ncy.get('.bg-sideNavGray > tr > :nth-child(9)', {\n  timeout: 500\n}).contains(\"Ordered Date\").should('have.text', 'Ordered Date').and('exist').and('contain', 'Ordered'); // Assertion for \"Ordered Date\" col is present                                                                        \ncy.get('.bg-sideNavGray > tr > :nth-child(10)', {\n  timeout: 500\n}).contains(\"Report Date\").should('have.text', 'Report Date').and('exist').and('contain', 'Report'); // Assertion for \"Report Date\" col is present                                                                        \ncy.get('.bg-sideNavGray > tr > :nth-child(11)', {\n  timeout: 500\n}).contains(\"Castle Result\").should('have.text', 'Castle Result').and('exist').and('contain', 'Result'); // Assertion for \"Castle Result\" col is present                                                                        \ncy.get('.bg-sideNavGray > tr > :nth-child(12)', {\n  timeout: 500\n}).contains(\"Test Type\").should('have.text', 'Test Type').and('exist').and('contain', 'Test'); // Assertion for \"Test Type\" col is present                                                                        \ncy.get('.bg-sideNavGray > tr > :nth-child(13)', {\n  timeout: 500\n}).contains(\"Organization\").should('have.text', 'Organization').and('exist').and('contain', 'Organization'); // Assertion for \"ORG\" col is present                                                                        \ncy.get('.bg-sideNavGray > tr > :nth-child(14)', {\n  timeout: 500\n}).contains(\"Creation Date\").should('have.text', 'Creation Date').and('exist').and('contain', 'Creation'); // Assertion for \"Creation Date\" col is present                                                                        \ncy.get('.bg-sideNavGray > tr > .lg\\\\:right-0', {\n  timeout: 500\n}).contains(\"Status\").should('have.text', 'Status').and('exist').and('contain', 'Status'); // Assertion for \"Status\" col is present                                                                        \ncy.get('.bg-sideNavGray > tr > .hidden', {\n  timeout: 500\n}).contains(\"Actions\").should('have.text', 'Actions').and('exist').and('contain', 'Actions'); // Assertion for \"Actions\" col is present                                                                        \n// Filering //\n// Patient name Filter\ncy.get('.md\\\\:w-\\\\[503px\\\\] > .my-3 > .relative > .font-sans').type('Jack').wait(3000); // input name in patient name filter\ncy.assertPaginationMatchesRows();\n// Test type Filter            \ncy.get('.md\\\\:-mt-0 > .my-2 > .bg-white').click().wait(500); // tap to test type filter\ncy.get('.my-2 > .rounded-md > :nth-child(2)').click().wait(3000); // selecting tissue cypher test\ncy.assertPaginationMatchesRows();\ncy.get('.md\\\\:w-\\\\[503px\\\\] > .my-3 > .relative > .font-sans').clear().wait(3000); // Clear patient name from patient name filter\ncy.get('.md\\\\:-mt-0 > .my-2 > .bg-white').click().wait(500); // tap to test type filter\ncy.get('.my-2 > .rounded-md > :nth-child(1)').click().wait(3000); // Unselecting tissue cypher test\n// Status type Filter \ncy.get('.md\\\\:flex-row.w-full > :nth-child(3) > .mr-2 > .bg-white').click().wait(500); // tap to status type filter\ncy.get('.absolute > :nth-child(4) > .w-full').scrollIntoView().click().wait(3000); // Select pending approvals Option                                   \ncy.assertPaginationMatchesRows();\ncy.get('.md\\\\:flex-row.w-full > :nth-child(3) > .mr-2 > .bg-white').click().wait(500); // tap to staus type filter\ncy.get('.absolute > :nth-child(4) > .w-full').scrollIntoView().click().wait(3000); // select pending approvals Option                                   \n// Global Filter Date Filter\n// cy.get('.globalFilterDateInput > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').type('05-16-2025').wait(3000)\n// cy.assertPaginationMatchesRows()\n// cy.get('.globalFilterDateInput > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').clear().wait(3000)\n// Patient DOB Filter\ncy.get(':nth-child(3) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').type('08-22-2025').wait(500); // Filter by DOB\ncy.assertPaginationMatchesRows();\ncy.get(':nth-child(3) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').clear(); // Filter by DOB\n// Order Type Filter     \ncy.get(':nth-child(4) > .my-2 > .bg-white').click(); // Tap to Online order filter\ncy.get('.rounded-md > :nth-child(3)').click().wait(3000); // Select Paper TRF\ncy.assertPaginationMatchesRows();\ncy.get(':nth-child(4) > .my-2 > .bg-white').click(); // Tap to Online order filter\ncy.get('.my-2 > .rounded-md > :nth-child(1)').click().wait(3000); // Unselect online order\n// Order Date Filter\ncy.get(':nth-child(9) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').scrollIntoView().type('07-28-2025').wait(3000);\ncy.assertPaginationMatchesRows();\ncy.get(':nth-child(9) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').scrollIntoView().clear();\n// Creation Date Filter\ncy.get(':nth-child(14) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').scrollIntoView().type('07-29-2025').wait(3000);\ncy.assertPaginationMatchesRows();\ncy.get(':nth-child(14) > .react-datepicker-wrapper > .react-datepicker__input-container > .w-full').scrollIntoView().clear();\ncy.get('.rounded-full > .max-w-\\\\[316px\\\\] > .h-full').click().wait(500);\ncy.get('.py-2 > .font-normal', {\n  timeout: 5000\n}).click();",
+              "err": {},
+              "uuid": "e9c805e1-1708-41b2-b577-97346600459d",
+              "parentUUID": "15a5cde5-2d96-426e-b0ba-4ca0e76a7460",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e9c805e1-1708-41b2-b577-97346600459d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 71858,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "[status]_[datetime]-[name]-report",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "charts": false,
+        "reportPageTitle": "Automation Reports",
+        "embeddedScreenshots": false,
+        "inlineAssets": false,
+        "saveAllAttempts": false,
+        "autoOpen": false,
+        "overwrite": false,
+        "reportFilename": "[status]_[datetime]-[name]-report",
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
