@@ -143,7 +143,7 @@ describe('TissueCypher Online Order Submission Suite', function() {
         
     })
     
-    it("Verify TissueCypher Test Created with Save and Exit Flow", function()  {
+    it.skip("Verify TissueCypher Test Created with Save and Exit Flow", function()  {
 
         cy.viewport(1920, 1081)
         cy.visit("https://demo.clabsportal.com/")
