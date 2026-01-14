@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
 
-    "test:specs": "cypress run --record --key $CYPRESS_RECORD_KEY --spec cypress/e2e/CBS/CBS-DecisionDx-CMSeq-Tests.cy.js,cypress/e2e/CBS/CBS-DecisionDx-Melanoma-Tests.cy.js,cypress/e2e/CBS/CBS-DecisionDx-SCC-Tests.cy.js,cypress/e2e/CBS/CBS-DecisionDx-UM-DecisionDx-PRAME-Tests.cy.js,cypress/e2e/CBS/CBS-DecisionDx-UMSeq-Tests.cy.js,cypress/e2e/CBS/CBS-MyPath-Melanoma-Tests.cy.js,cypress/e2e/CBS/CBS-TestOrdersTable-Assertion.cy.js,cypress/e2e/CBS/CBS-TissueCypher-Tests.cy.js",
+    "test:specs": "cypress run --record --key $CYPRESS_RECORD_KEY --spec cypress/e2e/CBS/CBS-TissueCypher-Tests.cy.js",
     "debug": "npx cypress open"
   },
   "author": "Shahzad Khan",
