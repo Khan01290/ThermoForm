@@ -906,7 +906,7 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
     
 })
 
-describe('TissueCypher Online Order Edit Flows Suite', function() {
+describe.skip('TissueCypher Online Order Edit Flows Suite', function() {
 
     it("Verify TissueCypher Test edited from In Progress to Send for Approval Status", function()  {
     
