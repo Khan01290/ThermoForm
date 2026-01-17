@@ -14,7 +14,7 @@ describe(
       cy.viewport(1920, 1081)
       cy.visit(portalUrl)
       cy.wait(500)
-      cy.contains('button', 'login').click()
+      cy.get('[type="button"]').contains("login").should('be.visible').and('exist').and('contain','login').click().wait(500)	                                          // Click to Login button usimg btn type    >> Best Practise
 
       cy.origin(
         authOrigin,
