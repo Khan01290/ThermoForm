@@ -1,7 +1,7 @@
 import 'cypress-file-upload'
 
 describe(
-  'TissueCypher – Order Creation (Converted from VS Code)',
+  'TissueCypher – Order Creation (Converted from VSS Code)',
   { tags: ['tissuecypher', 'order-creation', 'regression'] },
   function () {
 
