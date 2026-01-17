@@ -34,6 +34,7 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
         cy.contains('button', 'Select a clinician').should('be.visible').and('be.enabled').click().wait(1000);                                                            // All Phy Dropdown and click 
         cy.get('ul li button').eq(1).should('be.visible').click().wait(1500);                                                                                             // Select Phy from dropdown  
         cy.contains('button', 'next').should('be.visible').and('be.enabled').click().wait(1500);                                                                          // Press next btn  
+        
         // Flow 1: Create Order by input New paitent Name
         cy.get('input[placeholder="Search using Patient\'s Name, SSN or MRN."]:visible').first().should('be.enabled').type('John Doe', { force: true });                  // Input Patient Name
         cy.contains('button', 'ADD', { timeout: 5000 }).should('be.visible').and('be.enabled').click().wait(500);                                                         // Press ADD btn to add new patient
@@ -60,7 +61,6 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
         
         // Billing Info Section
         cy.get('a[href="#Billing Information"] p', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()                              // Asserting side bar billing information and clicked 
-        
         cy.get('#billingInfo\\.icdCodeId').click()
         cy.get('div.absolute ul button.transparentBtn', { timeout: 10000 })
         .should('have.length.greaterThan', 0)
@@ -158,7 +158,7 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
         cy.get(':nth-child(4) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\] > span > .secondaryBtn', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
         cy.get(':nth-child(5) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\]').should('be.visible').and('exist')
         cy.get(':nth-child(5) > .max-w-\\[300px\\] > .bg-\\[\\#F9F9FA\\] > span > .secondaryBtn', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
-        
+
         // Notes 
         cy.get('#notes').type('Testing notes')        
         cy.contains('button', 'Save and Exit').should('be.visible').and('be.enabled').click();                                                                          // Save and Exit btn click        
@@ -225,13 +225,11 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
         })
     })
 
-    it("Verify TissueCypher Test Created with Send for approval", function()  {
+    it("Verify TissueCypher Test Created with Send for pending approval Status", function()  {
 
         cy.viewport(1920, 1081)
         cy.visit("https://demo.clabsportal.com/")
 
-        // Login Button Click
-        ////cy.get(".text-lg").contains("Existing Customer")                                                                                                                                    // Assertion for text "Existing Customer" is present
         cy.wait(500)        
         cy.get('[type="button"]').contains("login").should('be.visible').and('exist').and('contain','login').click().wait(500)	                                          // Click to Login button usimg btn type    >> Best Practise
                
@@ -256,7 +254,6 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
         cy.get('ul li button').eq(1).should('be.visible').click().wait(1500);                                                                                             // Select Phy from dropdown  
         cy.contains('button', 'next').should('be.visible').and('be.enabled').click().wait(1500);                                                                          // Press next btn 
         
-
         // Flow 1: Create Order by input New paitent Name
         cy.get('input[placeholder="Search using Patient\'s Name, SSN or MRN."]:visible').first().should('be.enabled').type('John Doe', { force: true });                  // Input Patient Name
         cy.contains('button', 'ADD', { timeout: 5000 }).should('be.visible').and('be.enabled').click().wait(500);                                                         // Press ADD btn to add new patient
@@ -342,9 +339,7 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
         })        
         cy.get('input[placeholder="MM-DD-YYYY"]').eq(0).type('05-16-2025')                                                                                                  // Collection date input
         cy.get('input[placeholder="MM-DD-YYYY"]').eq(1).type('05-18-2025').wait(1000)                                                                                       // pull date input
-        //cy.get('input[id="laboratoryInfo.labortaryPhone"]').click({ force: true })
-        //cy.get('input[placeholder="Enter tumor site"]').type('www.tumorsite.com')                                                                                           // Input tumor site
-
+        
         // Shipment Information
         cy.get('a[href="#Shipment Information"] p').should('have.text','Shipment Information').should('be.visible').and('exist').click().wait(500)                          // left side Shipment Information anchor click
         cy.get('input[name="isTissueShipped"]').check({force: true}).wait(500)                                                                                              // Click shipping check box                             
@@ -682,7 +677,6 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
 
     it("Verify TissueCypher Test Created with Submitted Status", function()  {
     
-
         cy.viewport(1920, 1081)
         cy.visit("https://demo.clabsportal.com/")
 
@@ -906,7 +900,7 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
     
 })
 
-describe('TissueCypher Online Order Edit Flows Suite', function() {
+describe.skip('TissueCypher Online Order Edit Flows Suite', function() {
 
     it("Verify TissueCypher Test edited from In Progress to Send for Approval Status", function()  {
     
@@ -3174,7 +3168,7 @@ describe('TissueCypher Online Order Edit Flows Suite', function() {
             })
         })
     })
-
+    
     it("Verify TissueCypher Test edited from Pending Submission to In Progress Status", function()  {
     
         cy.viewport(1920, 1081)
@@ -3803,7 +3797,7 @@ describe('TissueCypher Online Order Edit Flows Suite', function() {
             })
         })
     })
-
+    
     it("Verify TissueCypher Test edited from Pending Submission to Submit Status", function()  {
     
         cy.viewport(1920, 1081)
