@@ -34,7 +34,7 @@ describe(
       cy.contains('p', 'Dashboard', { timeout: 90000 }).should('be.visible')
     })
 
-    it.only('AC-7.1: First order is In Progress', () => {
+    it('AC-7.1: First order is In Progress', () => {
       cy.createTissueCypherOrder({ orderState: 'In Progress' })
     })
 
