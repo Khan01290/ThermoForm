@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
 
-    "test:specs": "cypress run --record --key $CYPRESS_RECORD_KEY --spec cypress/e2e/CBS/CBS-TissueCypher-Tests.cy.js",
+    "test:specs": "cypress run --record --key $CYPRESS_RECORD_KEY --spec cypress/e2e/CBS/CBS-TissueCypher-OrderCreation-Tests.cy.js",
     "debug": "npx cypress open"
   },
   "author": "Shahzad Khan",
