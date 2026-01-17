@@ -27,7 +27,7 @@ describe(
         ({ username, password }) => {
           cy.get('input[name="username"]').type(username)
           cy.get('input[name="password"]').type(password)
-          cy.contains('button', 'Sign In').click()
+          cy.get('[type="submit"]').contains("Sign In").should('be.visible').and('exist').and('contain','Sign In').click()                                              // Get submit btn by btn type and cick on it   >> Best Practise                                
         }
       )
 
