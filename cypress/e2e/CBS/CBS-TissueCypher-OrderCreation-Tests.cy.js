@@ -184,8 +184,7 @@ Cypress.Commands.add(
 
         cy.get('#laboratoryInfo\\.labortaryName').type('a').wait(1000)                                                                                                    // typing text in Name of facility
         //cy.get(':nth-child(4) > .transparentBtn > .font-normal').click().wait(500)                                                                                      // Select 4th option
-        cy.get('div[style*="position: absolute"]:visible')
-        .find('button')
+        cy.get('input[name="laboratoryInfo.labortaryName"]')
         .then($options2 => {
             const randomIndex2 = Math.floor(Math.random() * $options2.length)
             const chosen2 = $options2[randomIndex2]
@@ -194,6 +193,7 @@ Cypress.Commands.add(
             cy.log('Selected option: ' + chosen2.value)
             
         })        
+        cy.wait(1000)
         cy.get('input[placeholder="MM-DD-YYYY"]').eq(0).type('05-16-2025')                                                                                                  // Collection date input
         cy.get('input[placeholder="MM-DD-YYYY"]').eq(1).type('05-18-2025').wait(1000)                                                                                       // pull date input
   })

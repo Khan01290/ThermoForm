@@ -428,15 +428,14 @@ Cypress.Commands.add('fillLaboratoryInfo', () => {
   })
 
   cy.get('#laboratoryInfo\\.labortaryName').type('a').wait(1000)
-  cy.get('div[style*="position: absolute"]:visible')
-    .find('button')
+  cy.get('input[name="laboratoryInfo.labortaryName"]')
     .then(($options2) => {
       const randomIndex2 = Math.floor(Math.random() * $options2.length)
       const chosen2 = $options2[randomIndex2]
       cy.wrap(chosen2).click({ force: true })
       cy.log('Selected option: ' + chosen2.value)
     })
-
+  cy.wait(1000)  
   cy.get('input[placeholder="MM-DD-YYYY"]').eq(0).type('05-16-2025')
   cy.get('input[placeholder="MM-DD-YYYY"]').eq(1).type('05-18-2025').wait(1000)
 })

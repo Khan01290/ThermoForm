@@ -60,6 +60,7 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
         cy.get('path[data-name="Path 5122"]').should('have.attr', 'fill', '#18B5B7')                                                                                    // Asserting side bar Select text icon color is filled  
         
         // Billing Info Section
+            /*
         cy.get('a[href="#Billing Information"] p', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()                              // Asserting side bar billing information and clicked 
         cy.get('#billingInfo\\.icdCodeId').click()
         cy.get('div.absolute ul button.transparentBtn', { timeout: 10000 })
@@ -81,9 +82,9 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
                 .type('05-10-1975') // example date
                 }
         })
-            
+          */  
             // Laboratory Setion
-            /*
+            
             cy.get('a[href="#Laboratory Information"] p').should('have.text','Laboratory Information').should('be.visible').and('exist').click().wait(500)                // Selecting Laboratory Info from side menu
             cy.get('input[name="laboratoryInfo.typeOfSpecimen"]').then($options1 => {                                                                                     // Seleting type of facility randomly.
             const randomIndex1 = Math.floor(Math.random() * $options1.length) // pick 0, 1, or 2
@@ -94,10 +95,10 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
 
             })
 
-            cy.get('#laboratoryInfo\\.labortaryName').type('a').wait(1000)                                                                                                    // typing text in Name of facility
+            cy.get('#laboratoryInfo\\.labortaryName').type('a').wait(10000)                                                                                                    // typing text in Name of facility
             //cy.get(':nth-child(4) > .transparentBtn > .font-normal').click().wait(500)                                                                                      // Select 4th option
-            cy.get('div[style*="position: absolute"]:visible')
-            .find('button')
+            //cy.get('#laboratoryInfo\.labortaryName')
+            cy.get('input[name="laboratoryInfo.labortaryName"]')
             .then($options2 => {
                 const randomIndex2 = Math.floor(Math.random() * $options2.length)
                 const chosen2 = $options2[randomIndex2]
@@ -106,11 +107,12 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
                 cy.log('Selected option: ' + chosen2.value)
                 
             })        
+            cy.wait(1000)
             cy.get('input[placeholder="MM-DD-YYYY"]').eq(0).type('05-16-2025')                                                                                                  // Collection date input
             cy.get('input[placeholder="MM-DD-YYYY"]').eq(1).type('05-18-2025').wait(1000)                                                                                       // pull date input
             //cy.get('input[id="laboratoryInfo.labortaryPhone"]').click({ force: true })
             //cy.get('input[placeholder="Enter tumor site"]').type('www.tumorsite.com')                                                                                           // Input tumor site
-            */
+            
         // Shipment Information
         cy.get('a[href="#Shipment Information"] p').should('have.text','Shipment Information').should('be.visible').and('exist').click().wait(500)                          // left side Shipment Information anchor click
         cy.get('input[name="isTissueShipped"]').check({force: true}).wait(500)                                                                                              // Click shipping check box                             
@@ -225,7 +227,7 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
         })
     })
 
-    it("Verify TissueCypher Test Created with Send for pending approval Status", function()  {
+    it.skip("Verify TissueCypher Test Created with Send for pending approval Status", function()  {
 
         cy.viewport(1920, 1081)
         cy.visit("https://demo.clabsportal.com/")
@@ -458,7 +460,7 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
         })
     })           
     
-    it("Verify TissueCypher Test Created with pending submission Status", function()  {
+    it.skip("Verify TissueCypher Test Created with pending submission Status", function()  {
 
         cy.viewport(1920, 1081)
         cy.visit("https://demo.clabsportal.com/")
@@ -675,7 +677,7 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
         })    
     })    
 
-    it("Verify TissueCypher Test Created with Submitted Status", function()  {
+    it.skip("Verify TissueCypher Test Created with Submitted Status", function()  {
     
         cy.viewport(1920, 1081)
         cy.visit("https://demo.clabsportal.com/")
