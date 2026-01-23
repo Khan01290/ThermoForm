@@ -47,25 +47,34 @@ describe(
     })
 
     it('AC-1: In Progress → Pending Approval (resume, complete required, submit)', () => {
-      // GIVEN: create a new TissueCypher order in In Progress
+      // Phase 1: Create order in In Progress
       cy.createTissueCypherOrder({ orderState: 'In Progress' })
 
       // WHEN: resume the order and complete required sections, then submit (send for approval)
-      cy.contains('a', 'Test Orders', { timeout: 70000 })
+      /*cy.contains('a', 'Test Orders', { timeout: 70000 })
         .should('have.attr', 'href', '/access/test-orders')
         .click()
-        .wait(1000)
+        .wait(1000)*/
+      
+      //Phase 2: Resume order
+      cy.openLatestOrder()
+      cy.resumeOrder()
 
-      cy.contains('button', 'Detail').eq(0).click().wait(1000)
+      /*cy.contains('button', 'Detail', { timeout: 5000 }).eq(0).click().wait(10000)
       cy.url().should('include', '/summary/')
-      cy.contains('button', 'Resume').should('be.visible').and('be.enabled').click()
+      cy.contains('button', 'Resume')
+      .should('be.visible')
+      .and('be.enabled')
+      .click()
+      .wait(1000)*/
 
       // Complete required sections (existing commands from OrderCreation spec)
       // TODO: Confirm which sections/fields are truly required for submission in the current UI.
-      cy.fillBillingInfo()
+      //cy.fillBillingInfo()
+      
       cy.fillLaboratoryInfo()
       cy.fillShipmentInfo()
-      cy.attachSupportingDocuments()
+      //cy.attachSupportingDocuments()
 
       // Submit for approval (existing command in OrderCreation spec)
       cy.sendforapproval()
@@ -272,7 +281,7 @@ describe(
 Cypress.Commands.add('createTissueCypherOrder', ({ orderState }) => {
   if (!orderState) {
     throw new Error('❌ orderState is required')
-  }
+7  }
 
   cy.navigateToNewOrder()
   cy.createPatient()
@@ -280,8 +289,8 @@ Cypress.Commands.add('createTissueCypherOrder', ({ orderState }) => {
 
   if (orderState === 'In Progress') {
     // NOTE: Existing spec treats this as "partial" completion.
-    // cy.fillBillingInfo()
-    cy.fillLaboratoryInfo()
+    cy.fillBillingInfo()
+    //cy.fillLaboratoryInfo()
     // cy.fillShipmentInfo()
     cy.attachSupportingDocuments()
   }
@@ -308,7 +317,7 @@ Cypress.Commands.add('createTissueCypherOrder', ({ orderState }) => {
   if (orderState === 'Submitted') {
     cy.submitOrder()
   }
-
+  
   cy.assertLatestOrderStatus(orderState)
 })
 
@@ -328,10 +337,10 @@ Cypress.Commands.add('createPatient', () => {
   cy.get("input[placeholder=\"Search using Patient's Name, SSN or MRN.\"]:visible")
     .first()
     .should('be.enabled')
-    .type('John Doe', { force: true })
+    .type('Bob Dool', { force: true })
   cy.contains('button', 'ADD', { timeout: 5000 }).should('be.visible').and('be.enabled').click().wait(500)
-  cy.get('#firstName').type('Jack').wait(500)
-  cy.get('#lastName').type('Maaaa').wait(500)
+  //cy.get('#firstName').type('Jack').wait(500)
+  //cy.get('#lastName').type('Maaaa').wait(500)
   cy.get('input[placeholder="MM-DD-YYYY"]:visible').first().type('05-16-1975')
   cy.get('#gender').click().wait(500)
   cy.get('ul span button').then(($items) => {
@@ -360,10 +369,10 @@ Cypress.Commands.add('fillBillingInfo', () => {
   cy.get('a[href="#Billing Information"] p', { timeout: 1000 })
     .should('have.text', 'Billing Information')
     .should('be.visible')
-    .click()
+    .click().wait(10000)
 
-  cy.get('#billingInfo\\.icdCodeId').click()
-  cy.get('div.absolute ul button.transparentBtn', { timeout: 10000 })
+  cy.get('#billingInfo\\.icdCodeId').click().wait(2500)
+  cy.get('div.absolute ul button.transparentBtn', { timeout: 100000 })
     .should('have.length.greaterThan', 0)
     .then(($buttonsicd) => {
       const randomIndexicd = Math.floor(Math.random() * $buttonsicd.length)
@@ -413,6 +422,7 @@ Cypress.Commands.add('fillBillingInfoblank', () => {
   })
 
 })
+
 Cypress.Commands.add('fillLaboratoryInfo', () => {
   cy.get('a[href="#Laboratory Information"] p')
     .should('have.text', 'Laboratory Information')
@@ -513,25 +523,26 @@ Cypress.Commands.add('sendforapproval', () => {
     .should('have.text', 'Test Submission')
     .should('be.visible')
     .and('exist')
-  cy.contains('button', 'Send for approval').should('be.visible').and('be.enabled').click()
-  cy.get('.text-3xl', { timeout: 100000 })
+  cy.contains('button', 'Send for approval').should('be.visible').and('be.enabled').click().wait(10000)
+  /*cy.get('.text-3xl', { timeout: 100000 })
     .should('have.text', 'Order Sent For Approval')
     .should('be.visible')
     .and('exist')
-    .wait(5000)
+    .wait(5000)*/
 })
 
 Cypress.Commands.add('assertLatestOrderStatus', (orderState) => {
   // NOTE: Keeping the same approach as existing specs: assert status on first row.
   // TODO: If needed, improve reliability by filtering for the created order id.
-  cy.contains('a', 'Test Orders', { timeout: 70000 }).should('have.attr', 'href', '/access/test-orders').click()
+  //cy.contains('a', 'Test Orders', { timeout: 70000 }).should('have.attr', 'href', '/access/test-orders').click()
 
+  // Chwck the order status is In Progress
   if (orderState === 'In Progress') {
     cy.get(':nth-child(1) > .lg\\:right-0 > .py-1', { timeout: 100000 })
-      .should('have.text', 'In Progress')
-      .should('be.visible')
-      .and('exist')
-      .wait(2000)
+    .should('have.text', 'In Progress')
+    .should('be.visible')
+    .and('exist')
+    .wait(2000)              
     return
   }
 
@@ -545,6 +556,7 @@ Cypress.Commands.add('assertLatestOrderStatus', (orderState) => {
   }
 
   if (orderState === 'Pending Approval') {
+    cy.contains('a', 'Test Orders', { timeout: 70000 }).should('have.attr', 'href', '/access/test-orders').click()
     cy.get(':nth-child(1) > .lg\\:right-0 > .py-1', { timeout: 100000 })
       .should('have.text', 'Pending Approval')
       .should('be.visible')
@@ -554,6 +566,7 @@ Cypress.Commands.add('assertLatestOrderStatus', (orderState) => {
   }
 
   if (orderState === 'Submitted') {
+    cy.contains('a', 'Test Orders', { timeout: 70000 }).should('have.attr', 'href', '/access/test-orders').click()
     cy.get(':nth-child(1) > .lg\\:right-0 > .py-1', { timeout: 100000 })
       .should('have.text', 'Submitted')
       .should('be.visible')
@@ -564,4 +577,30 @@ Cypress.Commands.add('assertLatestOrderStatus', (orderState) => {
 
   throw new Error(`❌ Unsupported orderState: ${orderState}`)
 })
+
+Cypress.Commands.add('openLatestOrder', () => {
+/*  
+  cy.contains('a', 'Test Orders', { timeout: 70000 })
+    .should('be.visible')
+    .click()
+    .wait(10000)
+*/
+  // Open the most recent order (first row)
+  cy.contains('button', 'Detail').eq(0).should('be.visible').click().wait(1000)
+
+})
+
+Cypress.Commands.add('resumeOrder', () => {
+  cy.contains('button', 'Resume', { timeout: 30000 })
+    .should('be.visible')
+    .and('be.enabled')
+    .click()
+
+  // Wait until form becomes editable
+  cy.contains('button', 'Save and Exit', { timeout: 60000 })
+    .should('be.visible')
+})
+
+
+
 

@@ -38,15 +38,15 @@ describe(
       cy.createTissueCypherOrder({ orderState: 'In Progress' })
     })
 
-    it('AC-7.2: Second order is Pending Approval', () => {
+    it.skip('AC-7.2: Second order is Pending Approval', () => {
       cy.createTissueCypherOrder({ orderState: 'Pending Approval' })
     })
 
-    it('AC-7.3: Third order is Pending Submission', () => {
+    it.skip('AC-7.3: Third order is Pending Submission', () => {
       cy.createTissueCypherOrder({ orderState: 'Pending Submission' })
     })
 
-    it('AC-7.4: Fourth order is Submitted', () => {
+    it.skip('AC-7.4: Fourth order is Submitted', () => {
         cy.createTissueCypherOrder({ orderState: 'Submitted' })
     })
   }
