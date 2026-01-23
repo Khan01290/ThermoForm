@@ -476,9 +476,6 @@ Cypress.Commands.add('submitOrder', () => {
     .should('have.text', 'Test Submission')
     .should('be.visible')
     .and('exist')
-  //cy.get('.md\\:max-w-\\[300px\\] > :nth-child(1) > .bg-\\[\\#F9F9FA\\] > span > .secondaryBtn > .font-semibold', {
-  //  timeout: 5000
-  //}).attachFile('QA-Handbook.pdf', { subjectType: 'drag-n-drop' })
   
   cy.contains('p', 'Choose File', { timeout: 5000 }).should('be.visible').attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
   
