@@ -480,7 +480,7 @@ Cypress.Commands.add('submitOrder', () => {
   //  timeout: 5000
   //}).attachFile('QA-Handbook.pdf', { subjectType: 'drag-n-drop' })
   
-  cy.contains('p', 'Choose File', { timeout: 5000 }).should('be.visible').and('be.enabled').attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
+  cy.contains('p', 'Choose File', { timeout: 5000 }).should('be.visible').attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
   
   //cy.get('input[name="supportingDocuments.pathologyReport"]', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
   //cy.get('.w-full > :nth-child(1) > .primaryBtn', { timeout: 100000 }).should('be.visible').and('be.enabled').click()
