@@ -83,26 +83,35 @@ describe(
       cy.assertLatestOrderStatus('Pending Approval')
     })
 
-    it.skip('AC-2: In Progress → Pending Submission (resume, complete required, Save & Exit)', () => {
+    it('AC-2: In Progress → Pending Submission (resume, complete required, Save & Exit)', () => {
       // GIVEN: create a new TissueCypher order in In Progress
       cy.createTissueCypherOrder({ orderState: 'In Progress' })
 
       // WHEN: resume the order and complete required sections, then submit (send for approval)
-      cy.contains('a', 'Test Orders', { timeout: 70000 })
+      /*cy.contains('a', 'Test Orders', { timeout: 70000 })
         .should('have.attr', 'href', '/access/test-orders')
         .click()
-        .wait(1000)
+        .wait(1000)*/
+      
+      //Phase 2: Resume order
+      cy.openLatestOrder()
+      cy.resumeOrder()
 
-      cy.contains('button', 'Detail').eq(0).click().wait(1000)
+      /*cy.contains('button', 'Detail', { timeout: 5000 }).eq(0).click().wait(10000)
       cy.url().should('include', '/summary/')
-      cy.contains('button', 'Resume').should('be.visible').and('be.enabled').click()
+      cy.contains('button', 'Resume')
+      .should('be.visible')
+      .and('be.enabled')
+      .click()
+      .wait(1000)*/
 
       // Complete required sections (existing commands from OrderCreation spec)
       // TODO: Confirm which sections/fields are truly required for submission in the current UI.
-      cy.fillBillingInfo()
+      //cy.fillBillingInfo()
+      
       cy.fillLaboratoryInfo()
       cy.fillShipmentInfo()
-      cy.attachSupportingDocuments()
+      //cy.attachSupportingDocuments()
 
       // Submit for approval (existing command in OrderCreation spec)
       cy.saveAndExitOrder()
@@ -524,11 +533,6 @@ Cypress.Commands.add('sendforapproval', () => {
     .should('be.visible')
     .and('exist')
   cy.contains('button', 'Send for approval').should('be.visible').and('be.enabled').click().wait(10000)
-  /*cy.get('.text-3xl', { timeout: 100000 })
-    .should('have.text', 'Order Sent For Approval')
-    .should('be.visible')
-    .and('exist')
-    .wait(5000)*/
 })
 
 Cypress.Commands.add('assertLatestOrderStatus', (orderState) => {
@@ -579,15 +583,8 @@ Cypress.Commands.add('assertLatestOrderStatus', (orderState) => {
 })
 
 Cypress.Commands.add('openLatestOrder', () => {
-/*  
-  cy.contains('a', 'Test Orders', { timeout: 70000 })
-    .should('be.visible')
-    .click()
-    .wait(10000)
-*/
   // Open the most recent order (first row)
   cy.contains('button', 'Detail').eq(0).should('be.visible').click().wait(1000)
-
 })
 
 Cypress.Commands.add('resumeOrder', () => {
