@@ -118,7 +118,7 @@ Cypress.Commands.add(
     cy.contains('button', 'Select a clinician').should('be.visible').and('be.enabled').click().wait(1000);                                                            // All Phy Dropdown and click 
     cy.get('ul li button').eq(1).should('be.visible').click().wait(1500);                                                                                             // Select Phy from dropdown  
     cy.contains('button', 'next').should('be.visible').and('be.enabled').click().wait(1500);                                                                          // Press next btn 
-  })
+   })
   
   Cypress.Commands.add('createPatient', () => {
     
@@ -242,11 +242,11 @@ Cypress.Commands.add(
         cy.get('input[name="supportingDocuments.insuranceCard"]', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
         
         cy.get('#notes').type('Testing notes')
-})
+  })
   
   Cypress.Commands.add('saveAndExitOrder', () => {
     cy.contains('button', 'Save and Exit').should('be.visible').and('be.enabled').click();                                                                          // Save and Exit btn click        
-})
+  })
   
   Cypress.Commands.add('submitOrder', () => {
     cy.get('.primaryBtn').click().wait(5000)                                                                                                                          // Press Submit btn                                                                                                                                       

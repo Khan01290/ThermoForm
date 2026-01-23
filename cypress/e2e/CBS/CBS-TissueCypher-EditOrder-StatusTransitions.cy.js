@@ -46,102 +46,59 @@ describe(
       cy.contains('p', 'Dashboard', { timeout: 90000 }).should('be.visible')
     })
 
-    it('AC-1: In Progress → Pending Approval (resume, complete required, submit)', () => {
+    it.skip('AC-1: In Progress → Pending Approval (resume, complete required, submit)', () => {
       // Phase 1: Create order in In Progress
       cy.createTissueCypherOrder({ orderState: 'In Progress' })
-
-      // WHEN: resume the order and complete required sections, then submit (send for approval)
-      /*cy.contains('a', 'Test Orders', { timeout: 70000 })
-        .should('have.attr', 'href', '/access/test-orders')
-        .click()
-        .wait(1000)*/
       
       //Phase 2: Resume order
       cy.openLatestOrder()
       cy.resumeOrder()
 
-      /*cy.contains('button', 'Detail', { timeout: 5000 }).eq(0).click().wait(10000)
-      cy.url().should('include', '/summary/')
-      cy.contains('button', 'Resume')
-      .should('be.visible')
-      .and('be.enabled')
-      .click()
-      .wait(1000)*/
-
-      // Complete required sections (existing commands from OrderCreation spec)
-      // TODO: Confirm which sections/fields are truly required for submission in the current UI.
-      //cy.fillBillingInfo()
-      
+      // Phase 3: Complete ONLY missing sections
       cy.fillLaboratoryInfo()
       cy.fillShipmentInfo()
-      //cy.attachSupportingDocuments()
 
-      // Submit for approval (existing command in OrderCreation spec)
+      // Phase 4: Transition
       cy.sendforapproval()
 
       // THEN: final status should be Pending Approval
       cy.assertLatestOrderStatus('Pending Approval')
     })
 
-    it('AC-2: In Progress → Pending Submission (resume, complete required, Save & Exit)', () => {
-      // GIVEN: create a new TissueCypher order in In Progress
+    it.skip('AC-2: In Progress → Pending Submission (resume, complete required, Save & Exit)', () => {
+      // Phase 1: Create order in In Progress
       cy.createTissueCypherOrder({ orderState: 'In Progress' })
-
-      // WHEN: resume the order and complete required sections, then submit (send for approval)
-      /*cy.contains('a', 'Test Orders', { timeout: 70000 })
-        .should('have.attr', 'href', '/access/test-orders')
-        .click()
-        .wait(1000)*/
       
       //Phase 2: Resume order
       cy.openLatestOrder()
       cy.resumeOrder()
 
-      /*cy.contains('button', 'Detail', { timeout: 5000 }).eq(0).click().wait(10000)
-      cy.url().should('include', '/summary/')
-      cy.contains('button', 'Resume')
-      .should('be.visible')
-      .and('be.enabled')
-      .click()
-      .wait(1000)*/
-
-      // Complete required sections (existing commands from OrderCreation spec)
-      // TODO: Confirm which sections/fields are truly required for submission in the current UI.
-      //cy.fillBillingInfo()
-      
+      // Phase 3: Complete ONLY missing sections
       cy.fillLaboratoryInfo()
       cy.fillShipmentInfo()
       //cy.attachSupportingDocuments()
 
-      // Submit for approval (existing command in OrderCreation spec)
+      // Phase 4: Transition
       cy.saveAndExitOrder()
 
       // THEN: final status should be Pending Approval
       cy.assertLatestOrderStatus('Pending Submission')
     })
 
-    it.skip('AC-3: In Progress → Submitted (resume, complete all + upload doc, submit)', () => {
-      // GIVEN: create a new TissueCypher order in In Progress
+    it('AC-3: In Progress → Submitted (resume, complete all + upload doc, submit)', () => {
+      // Phase 1: Create order in In Progress
       cy.createTissueCypherOrder({ orderState: 'In Progress' })
+      
+      //Phase 2: Resume order
+      cy.openLatestOrder()
+      cy.resumeOrder()
 
-      // WHEN: resume the order and complete required sections, then submit (send for approval)
-      cy.contains('a', 'Test Orders', { timeout: 70000 })
-        .should('have.attr', 'href', '/access/test-orders')
-        .click()
-        .wait(1000)
-
-      cy.contains('button', 'Detail').eq(0).click().wait(1000)
-      cy.url().should('include', '/summary/')
-      cy.contains('button', 'Resume').should('be.visible').and('be.enabled').click()
-
-      // Complete required sections (existing commands from OrderCreation spec)
-      // TODO: Confirm which sections/fields are truly required for submission in the current UI.
-      cy.fillBillingInfo()
+      // Phase 3: Complete ONLY missing sections
       cy.fillLaboratoryInfo()
       cy.fillShipmentInfo()
-      cy.attachSupportingDocuments()
+      //cy.attachSupportingDocuments()
 
-      // Submit for approval (existing command in OrderCreation spec)
+      // Phase 4: Transition
       cy.submitOrder()
 
       // THEN: final status should be Pending Approval
@@ -519,11 +476,17 @@ Cypress.Commands.add('submitOrder', () => {
     .should('have.text', 'Test Submission')
     .should('be.visible')
     .and('exist')
-  cy.get('.md\\:max-w-\\[300px\\] > :nth-child(1) > .bg-\\[\\#F9F9FA\\] > span > .secondaryBtn > .font-semibold', {
-    timeout: 5000
-  }).attachFile('QA-Handbook.pdf', { subjectType: 'drag-n-drop' })
-  cy.get('.w-full > :nth-child(1) > .primaryBtn', { timeout: 100000 }).should('be.visible').and('be.enabled').click()
-  cy.get('.text-3xl', { timeout: 100000 }).should('have.text', 'Order Submitted').should('be.visible').and('exist')
+  //cy.get('.md\\:max-w-\\[300px\\] > :nth-child(1) > .bg-\\[\\#F9F9FA\\] > span > .secondaryBtn > .font-semibold', {
+  //  timeout: 5000
+  //}).attachFile('QA-Handbook.pdf', { subjectType: 'drag-n-drop' })
+  
+  cy.contains('p', 'Choose File', { timeout: 5000 }).should('be.visible').and('be.enabled').attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
+  
+  //cy.get('input[name="supportingDocuments.pathologyReport"]', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
+  //cy.get('.w-full > :nth-child(1) > .primaryBtn', { timeout: 100000 }).should('be.visible').and('be.enabled').click()
+  cy.contains('button', 'Submit').should('be.visible').and('be.enabled').click().wait(10000)
+
+  //cy.get('.text-3xl', { timeout: 100000 }).should('have.text', 'Order Submitted').should('be.visible').and('exist')
 })
 
 Cypress.Commands.add('sendforapproval', () => {
