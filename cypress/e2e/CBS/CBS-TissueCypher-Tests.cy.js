@@ -221,7 +221,7 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
         })
     })
 
-    it.skip("Verify TissueCypher Test Created with Send for pending approval Status", function()  {
+    it("Verify TissueCypher Test Created with Send for pending approval Status", function()  {
 
         cy.viewport(1920, 1081)
         cy.visit("https://demo.clabsportal.com/")
@@ -448,7 +448,7 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
         })
     })           
     
-    it.skip("Verify TissueCypher Test Created with pending submission Status", function()  {
+    it("Verify TissueCypher Test Created with pending submission Status", function()  {
 
         cy.viewport(1920, 1081)
         cy.visit("https://demo.clabsportal.com/")
@@ -659,7 +659,7 @@ describe('TissueCypher Online Order Creation and Submission Suite', function() {
         })    
     })    
 
-    it.skip("Verify TissueCypher Test Created with Submitted Status", function()  {
+    it("Verify TissueCypher Test Created with Submitted Status", function()  {
     
         cy.viewport(1920, 1081)
         cy.visit("https://demo.clabsportal.com/")
