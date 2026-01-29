@@ -51,7 +51,7 @@ describe(
       cy.createTissueCypherOrder({ orderState: 'In Progress' })
       
       //Phase 2: Resume order
-      cy.openLatestOrder()
+      //cy.openLatestOrder()
       cy.resumeOrder()
 
       // Phase 3: Complete ONLY missing sections
@@ -70,7 +70,7 @@ describe(
       cy.createTissueCypherOrder({ orderState: 'In Progress' })
       
       //Phase 2: Resume order
-      cy.openLatestOrder()
+      //cy.openLatestOrder()
       cy.resumeOrder()
 
       // Phase 3: Complete ONLY missing sections
@@ -90,7 +90,7 @@ describe(
       cy.createTissueCypherOrder({ orderState: 'In Progress' })
       
       //Phase 2: Resume order
-      cy.openLatestOrder()
+      //cy.openLatestOrder()
       cy.resumeOrder()
 
       // Phase 3: Complete ONLY missing sections
@@ -110,7 +110,7 @@ describe(
       cy.createTissueCypherOrder({ orderState: 'Pending Approval' })
 
       //Phase 2: Resume order
-      cy.openLatestOrder()
+      //cy.openLatestOrder()
       cy.resumeOrder()
 
       // Phase 4: Transition
@@ -131,7 +131,7 @@ describe(
       cy.createTissueCypherOrder({ orderState: 'Pending Approval' })
 
       //Phase 2: Resume order
-      cy.openLatestOrder()
+      //cy.openLatestOrder()
       cy.resumeOrder()
 
       // Phase 4: Transition
@@ -152,7 +152,7 @@ describe(
       cy.createTissueCypherOrder({ orderState: 'Pending Approval' })
 
       //Phase 2: Resume order
-      cy.openLatestOrder()
+      //cy.openLatestOrder()
       cy.resumeOrder()
 
       // Phase 4: Transition
@@ -173,7 +173,7 @@ describe(
       cy.createTissueCypherOrder({ orderState: 'Pending Submission' })
 
       //Phase 2: Resume order
-      cy.openLatestOrder()
+      //cy.openLatestOrder()
       cy.resumeOrder()
 
       // Phase 4: Transition
@@ -194,7 +194,7 @@ describe(
       cy.createTissueCypherOrder({ orderState: 'Pending Submission' })
 
       //Phase 2: Resume order
-      cy.openLatestOrder()
+      //cy.openLatestOrder()
       cy.resumeOrder()
 
       // Phase 4: Transition
@@ -215,7 +215,7 @@ describe(
       cy.createTissueCypherOrder({ orderState: 'Pending Submission' })
 
       //Phase 2: Resume order
-      cy.openLatestOrder()
+      //cy.openLatestOrder()
       cy.resumeOrder()
 
       // Phase 4: Transition
@@ -475,7 +475,7 @@ Cypress.Commands.add('submitOrder', () => {
     .and('exist')
   
   cy.get('.md\\:max-w-\\[300px\\] > :nth-child(1) > .bg-sideNavGray > span > .secondaryBtn > .font-semibold', { timeout: 100000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})               // Attach file for order submission
-  cy.get('.justify-end > .flex > span > .primaryBtn', { timeout: 100000 }).should('be.visible').and('be.enabled').click().wait(10000)
+  cy.get('.justify-end > .flex > span > .primaryBtn', { timeout: 100000 }).should('be.visible').and('be.enabled').click().wait(30000)
 })
 
 Cypress.Commands.add('sendforapproval', () => {
@@ -493,40 +493,268 @@ Cypress.Commands.add('assertLatestOrderStatus', (orderState) => {
 
   // Chwck the order status is In Progress
   if (orderState === 'In Progress') {
-    cy.get(':nth-child(1) > .lg\\:right-0 > .py-1', { timeout: 100000 })
-    .should('have.text', 'In Progress')
-    .should('be.visible')
-    .and('exist')
-    .wait(2000)              
+      cy.get(':nth-child(1) > .lg\\:right-0 > .py-1', { timeout: 100000 })
+        .should('have.text', 'In Progress')
+        .should('be.visible')
+        .and('exist')
+        .wait(2000)    
+      cy.contains('button', 'Detail').eq(0).click().wait(1000)
+      cy.url().should('include', '/summary/')
+      cy.url().then((url) => {
+        const orderId = url.split('/').pop()
+        expect(orderId).to.match(/^\d+$/)
+        cy.log(`🆔 Order ID: ${orderId}`)
+
+        // 🔹 Wait until Okta token exists
+        cy.window().should((win) => {
+            const raw = win.localStorage.getItem('okta-token-storage')
+            expect(raw, 'Okta token storage').to.not.be.null
+        })
+        cy.window().then((win) => {
+            const raw = win.localStorage.getItem('okta-token-storage')
+            const oktaData = JSON.parse(raw)
+
+            const accessToken = oktaData?.accessToken?.accessToken
+
+            expect(accessToken, 'Access token').to.not.be.undefined
+            cy.log('✅ Access token extracted')
+
+            // 🔹 Poll backend for eRequestId
+            const pollErequest = (retries = 8) => {
+            if (retries === 0) {
+                throw new Error(`❌ eRequestId not generated for order ${orderId}`)
+            }
+
+            cy.request({
+                method: 'GET',
+                url: `https://demoapi.clabsportal.com/v1/orders/new-flow/${orderId}`,
+                headers: {
+                Authorization: `Bearer ${accessToken}`,
+                },
+                failOnStatusCode: false,
+            }).then((res) => {
+
+            // 🔍 DEBUG: log full backend response
+            cy.log(JSON.stringify(res.body, null, 2))
+            expect(res.status).to.eq(200)    
+            
+            const eRequestId = res.body?.data?.eRequestId
+
+            if (eRequestId) {
+            // ✅ SUCCESS
+            cy.log(`✅ eRequestId generated: ${eRequestId}`)
+            expect(eRequestId).to.not.be.empty
+            } else {
+            // ⏳ NOT READY → WAIT & RETRY
+            cy.log(`⏳ eRequestId not ready. Retries left: ${retries - 1}`)
+            cy.wait(5000)
+            pollErequest(retries - 1)
+            }
+            })
+            }
+                pollErequest()
+            })
+      })
     return
   }
 
   if (orderState === 'Pending Submission') {
-    cy.get(':nth-child(1) > .lg\\:right-0 > .py-1', { timeout: 100000 })
-      .should('have.text', 'Pending Submission')
-      .should('be.visible')
-      .and('exist')
-      .wait(2000)
+      cy.get(':nth-child(1) > .lg\\:right-0 > .py-1', { timeout: 100000 })
+        .should('have.text', 'Pending Submission')
+        .should('be.visible')
+        .and('exist')
+        .wait(2000)
+      cy.contains('button', 'Detail').eq(0).click().wait(1000)
+      cy.url().should('include', '/summary/')
+      cy.url().then((url) => {
+        const orderId = url.split('/').pop()
+        expect(orderId).to.match(/^\d+$/)
+        cy.log(`🆔 Order ID: ${orderId}`)
+
+        // 🔹 Wait until Okta token exists
+        cy.window().should((win) => {
+            const raw = win.localStorage.getItem('okta-token-storage')
+            expect(raw, 'Okta token storage').to.not.be.null
+        })
+        cy.window().then((win) => {
+            const raw = win.localStorage.getItem('okta-token-storage')
+            const oktaData = JSON.parse(raw)
+
+            const accessToken = oktaData?.accessToken?.accessToken
+
+            expect(accessToken, 'Access token').to.not.be.undefined
+            cy.log('✅ Access token extracted')
+
+            // 🔹 Poll backend for eRequestId
+            const pollErequest = (retries = 8) => {
+            if (retries === 0) {
+                throw new Error(`❌ eRequestId not generated for order ${orderId}`)
+            }
+
+            cy.request({
+                method: 'GET',
+                url: `https://demoapi.clabsportal.com/v1/orders/new-flow/${orderId}`,
+                headers: {
+                Authorization: `Bearer ${accessToken}`,
+                },
+                failOnStatusCode: false,
+            }).then((res) => {
+
+            // 🔍 DEBUG: log full backend response
+            cy.log(JSON.stringify(res.body, null, 2))
+            expect(res.status).to.eq(200)    
+            
+            const eRequestId = res.body?.data?.eRequestId
+
+            if (eRequestId) {
+            // ✅ SUCCESS
+            cy.log(`✅ eRequestId generated: ${eRequestId}`)
+            expect(eRequestId).to.not.be.empty
+            } else {
+            // ⏳ NOT READY → WAIT & RETRY
+            cy.log(`⏳ eRequestId not ready. Retries left: ${retries - 1}`)
+            cy.wait(5000)
+            pollErequest(retries - 1)
+            }
+            })
+            }
+                pollErequest()
+            })
+      })
     return
   }
 
   if (orderState === 'Pending Approval') {
-    cy.contains('a', 'Test Orders', { timeout: 700000 }).should('have.attr', 'href', '/access/test-orders').click()
-    cy.get(':nth-child(1) > .lg\\:right-0 > .py-1', { timeout: 100000 })
-      .should('have.text', 'Pending Approval')
-      .should('be.visible')
-      .and('exist')
-      .wait(2000)
+      cy.contains('a', 'Test Orders', { timeout: 700000 }).should('have.attr', 'href', '/access/test-orders').click()
+      cy.get(':nth-child(1) > .lg\\:right-0 > .py-1', { timeout: 100000 })
+        .should('have.text', 'Pending Approval')
+        .should('be.visible')
+        .and('exist')
+        .wait(2000)
+      cy.contains('button', 'Detail').eq(0).click().wait(1000)
+      cy.url().should('include', '/summary/')
+      cy.url().then((url) => {
+        const orderId = url.split('/').pop()
+        expect(orderId).to.match(/^\d+$/)
+        cy.log(`🆔 Order ID: ${orderId}`)
+
+        // 🔹 Wait until Okta token exists
+        cy.window().should((win) => {
+            const raw = win.localStorage.getItem('okta-token-storage')
+            expect(raw, 'Okta token storage').to.not.be.null
+        })
+        cy.window().then((win) => {
+            const raw = win.localStorage.getItem('okta-token-storage')
+            const oktaData = JSON.parse(raw)
+
+            const accessToken = oktaData?.accessToken?.accessToken
+
+            expect(accessToken, 'Access token').to.not.be.undefined
+            cy.log('✅ Access token extracted')
+
+            // 🔹 Poll backend for eRequestId
+            const pollErequest = (retries = 8) => {
+            if (retries === 0) {
+                throw new Error(`❌ eRequestId not generated for order ${orderId}`)
+            }
+
+            cy.request({
+                method: 'GET',
+                url: `https://demoapi.clabsportal.com/v1/orders/new-flow/${orderId}`,
+                headers: {
+                Authorization: `Bearer ${accessToken}`,
+                },
+                failOnStatusCode: false,
+            }).then((res) => {
+
+            // 🔍 DEBUG: log full backend response
+            cy.log(JSON.stringify(res.body, null, 2))
+            expect(res.status).to.eq(200)    
+            
+            const eRequestId = res.body?.data?.eRequestId
+
+            if (eRequestId) {
+            // ✅ SUCCESS
+            cy.log(`✅ eRequestId generated: ${eRequestId}`)
+            expect(eRequestId).to.not.be.empty
+            } else {
+            // ⏳ NOT READY → WAIT & RETRY
+            cy.log(`⏳ eRequestId not ready. Retries left: ${retries - 1}`)
+            cy.wait(5000)
+            pollErequest(retries - 1)
+            }
+            })
+            }
+                pollErequest()
+            })
+      })
     return
   }
 
   if (orderState === 'Submitted') {
-    cy.contains('a', 'Test Orders', { timeout: 70000 }).should('have.attr', 'href', '/access/test-orders').click()
-    cy.get(':nth-child(1) > .lg\\:right-0 > .py-1', { timeout: 100000 })
-      .should('have.text', 'Submitted')
-      .should('be.visible')
-      .and('exist')
-      .wait(2000)
+      cy.contains('a', 'Test Orders', { timeout: 70000 }).should('have.attr', 'href', '/access/test-orders').click()
+      cy.get(':nth-child(1) > .lg\\:right-0 > .py-1', { timeout: 100000 })
+        .should('have.text', 'Submitted')
+        .should('be.visible')
+        .and('exist')
+        .wait(2000)
+      cy.contains('button', 'Detail').eq(0).click().wait(1000)
+      cy.url().should('include', '/summary/')
+      cy.url().then((url) => {
+        const orderId = url.split('/').pop()
+        expect(orderId).to.match(/^\d+$/)
+        cy.log(`🆔 Order ID: ${orderId}`)
+
+        // 🔹 Wait until Okta token exists
+        cy.window().should((win) => {
+            const raw = win.localStorage.getItem('okta-token-storage')
+            expect(raw, 'Okta token storage').to.not.be.null
+        })
+        cy.window().then((win) => {
+            const raw = win.localStorage.getItem('okta-token-storage')
+            const oktaData = JSON.parse(raw)
+
+            const accessToken = oktaData?.accessToken?.accessToken
+
+            expect(accessToken, 'Access token').to.not.be.undefined
+            cy.log('✅ Access token extracted')
+
+            // 🔹 Poll backend for eRequestId
+            const pollErequest = (retries = 8) => {
+            if (retries === 0) {
+                throw new Error(`❌ eRequestId not generated for order ${orderId}`)
+            }
+
+            cy.request({
+                method: 'GET',
+                url: `https://demoapi.clabsportal.com/v1/orders/new-flow/${orderId}`,
+                headers: {
+                Authorization: `Bearer ${accessToken}`,
+                },
+                failOnStatusCode: false,
+            }).then((res) => {
+
+            // 🔍 DEBUG: log full backend response
+            cy.log(JSON.stringify(res.body, null, 2))
+            expect(res.status).to.eq(200)    
+            
+            const eRequestId = res.body?.data?.eRequestId
+
+            if (eRequestId) {
+            // ✅ SUCCESS
+            cy.log(`✅ eRequestId generated: ${eRequestId}`)
+            expect(eRequestId).to.not.be.empty
+            } else {
+            // ⏳ NOT READY → WAIT & RETRY
+            cy.log(`⏳ eRequestId not ready. Retries left: ${retries - 1}`)
+            cy.wait(5000)
+            pollErequest(retries - 1)
+            }
+            })
+            }
+                pollErequest()
+            })
+      })
     return
   }
 
