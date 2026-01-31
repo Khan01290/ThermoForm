@@ -1,8 +1,8 @@
 import 'cypress-file-upload'
 
 describe(
-  'TissueCypher – Order Creation (Converted from VSS Code)',
-  { tags: ['tissuecypher', 'order-creation', 'regression'] },
+  'DecisionDx-SCC – Order Creation',
+  { tags: ['DecisionDxSCC', 'order-creation', 'regression'] },
   function () {
 
     beforeEach(() => {
@@ -35,25 +35,25 @@ describe(
     })
 
     it('AC-7.1: First order is In Progress', () => {
-      cy.createTissueCypherOrder({ orderState: 'In Progress' })
+      cy.createDecisionDxSCCOrder({ orderState: 'In Progress' })
     })
 
     it('AC-7.2: Second order is Pending Approval', () => {
-      cy.createTissueCypherOrder({ orderState: 'Pending Approval' })
+      cy.createDecisionDxSCCOrder({ orderState: 'Pending Approval' })
     })
 
     it('AC-7.3: Third order is Pending Submission', () => {
-      cy.createTissueCypherOrder({ orderState: 'Pending Submission' })
+      cy.createDecisionDxSCCOrder({ orderState: 'Pending Submission' })
     })
 
     it('AC-7.4: Fourth order is Submittedd', () => {
-        cy.createTissueCypherOrder({ orderState: 'Submitted' })
+        cy.createDecisionDxSCCOrder({ orderState: 'Submitted' })
     })
   }
 )
 
 Cypress.Commands.add(
-    'createTissueCypherOrder',
+    'createDecisionDxSCCOrder',
     ({ orderState }) => {
   
       if (!orderState) {
@@ -62,7 +62,7 @@ Cypress.Commands.add(
   
       cy.navigateToNewOrder()
       cy.createPatient()
-      cy.selectTissueCypherTest()
+      cy.selectDecisionDxSCCTest()
   
       if (orderState === 'In Progress') {
         //cy.fillBillingInfo()  
@@ -73,6 +73,7 @@ Cypress.Commands.add(
 
       if (orderState !== 'In Progress') {
         cy.fillBillingInfo()  
+        cy.fillclinicalInfo()  
         cy.fillLaboratoryInfo()  
         cy.fillShipmentInfo()  
         cy.attachSupportingDocuments()
@@ -139,16 +140,16 @@ Cypress.Commands.add(
     cy.contains('button', 'Proceed to order').should('be.visible').and('be.enabled').click().wait(500);                                                               // Tap to Proceed to order btn
   })
   
-  Cypress.Commands.add('selectTissueCypherTest', () => {
+  Cypress.Commands.add('selectDecisionDxSCCTest', () => {
     cy.contains('button', 'Review').should('be.visible').and('exist').wait(500)                                                                                       // Assertion for "review" Button is present
     cy.contains('button', 'Save and Exit').should('be.visible').and('exist').and('be.disabled').wait(500)                                                             // Assertion for "save_and_exit" Button is present and disabled
     cy.contains('p', 'Select Test').should('be.visible').and('exist'); 
    // Side bar icons color assertions
    cy.get('path[data-name="Path 5122"]').each(($el) => {                                                                                                             // Asserting each sidebar circle icon color in not filled.
     cy.wrap($el).should('have.attr', 'fill', 'none')})
-    cy.contains('p', 'TissueCypher').scrollIntoView().should('be.visible').and('exist').click().wait(500)                                                             // Tapping to Tissue Cypher Test        
+    cy.contains('p', 'DecisionDx-SCC').scrollIntoView().should('be.visible').and('exist').click().wait(500)                                                             // Tapping to Tissue Cypher Test        
     cy.get('path[data-name="Path 5122"]').should('have.attr', 'fill', '#18B5B7')                                                                                    // Asserting side bar Select text icon color is filled   
-  })
+   })
   
   Cypress.Commands.add('fillBillingInfo', () => {
     cy.get('a[href="#Billing Information"] p', { timeout: 1000 }).should('have.text','Billing Information').should('be.visible').click()                              // Asserting side bar billing information and clicked 
@@ -172,8 +173,63 @@ Cypress.Commands.add(
                 .type('05-10-1975') // example date
                 }
         })
-  })
   
+  
+    })
+
+  Cypress.Commands.add('fillclinicalInfo', () => {
+     
+    cy.get('a[href="#Clinical Information"] p').should('have.text','Clinical Information').should('be.visible').and('exist').click().wait(1000)    // Selecting Clinical Info from side menu
+     // Get all checkboxes
+     cy.get('input[name="historyPhysicalExam"]').then($checkboxes => {
+     expect($checkboxes.length).to.be.greaterThan(0)   // assert checkboxes exist
+
+     // Randomly decide: single random OR all
+     const pickAll = Cypress._.random(0, 1) === 1  // 50/50 chance
+
+     if (pickAll) {
+         // Select ALL checkboxes
+         cy.wrap($checkboxes).each(($el) => {
+         cy.wrap($el).check({ force: true }).should('be.checked')
+         })
+         cy.log('✅ All checkboxes selected')
+     } else {
+         // Select ONE random checkbox
+         const randomIndex = Cypress._.random(0, $checkboxes.length - 1)
+         cy.wrap($checkboxes[randomIndex])
+         .check({ force: true })
+         .should('be.checked')
+
+         cy.log('✅ Random checkbox selected: ' + $checkboxes[randomIndex].value)
+     }
+     })
+
+     // Get all checkboxes under Surgical and Pathology Findings
+     cy.get('input[name="pathologySurgicalFindings"]').then($checkboxes => {
+     expect($checkboxes.length).to.be.greaterThan(0)   // assert checkboxes exist
+
+     // Randomly decide: single random OR all
+     const pickAll = Cypress._.random(0, 1) === 1  // 50/50 chance
+
+     if (pickAll) {
+         // ✅ Select ALL checkboxes
+         cy.wrap($checkboxes).each(($el) => {
+         cy.wrap($el).check({ force: true }).should('be.checked')
+         })
+         cy.log('✅ All Surgical & Pathology checkboxes selected')
+     } else {
+         // ✅ Select ONE random checkbox
+         const randomIndex = Cypress._.random(0, $checkboxes.length - 1)
+         cy.wrap($checkboxes[randomIndex])
+         .check({ force: true })
+         .should('be.checked')
+
+         cy.log('✅ Random checkbox selected: ' + $checkboxes[randomIndex].value)
+     }
+     })
+  
+    })
+
   Cypress.Commands.add('fillLaboratoryInfo', () => {
     cy.get('a[href="#Laboratory Information"] p').should('have.text','Laboratory Information').should('be.visible').and('exist').click().wait(500)                // Selecting Laboratory Info from side menu
         cy.get('input[name="laboratoryInfo.typeOfSpecimen"]').then($options1 => {                                                                                     // Seleting type of facility randomly.
@@ -198,7 +254,8 @@ Cypress.Commands.add(
         cy.wait(1000)
         cy.get('input[placeholder="MM-DD-YYYY"]').eq(0).type('05-16-2025')                                                                                                  // Collection date input
         cy.get('input[placeholder="MM-DD-YYYY"]').eq(1).type('05-18-2025').wait(1000)                                                                                       // pull date input
-  })
+  
+    })
   
   Cypress.Commands.add('fillShipmentInfo', () => {
     cy.get('a[href="#Shipment Information"] p').should('have.text','Shipment Information').should('be.visible').and('exist').click().wait(500)                          // left side Shipment Information anchor click
@@ -238,7 +295,6 @@ Cypress.Commands.add(
   
   Cypress.Commands.add('attachSupportingDocuments', () => {
         cy.get('a[href="#Supporting Documents"] p').scrollIntoView().click().wait(500)
-        cy.get('input[name="supportingDocuments.endoscopyReport"]', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
         cy.get('input[name="supportingDocuments.pathologyReport"]', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
         cy.get('input[name="supportingDocuments.demographicsSheet"]', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
         cy.get('input[name="supportingDocuments.insuranceCard"]', { timeout: 5000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})
