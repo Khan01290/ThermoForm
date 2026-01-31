@@ -258,7 +258,8 @@ Cypress.Commands.add(
     .and('exist')
   
     cy.get('.md\\:max-w-\\[300px\\] > :nth-child(1) > .bg-sideNavGray > span > .secondaryBtn > .font-semibold', { timeout: 100000 }).attachFile("QA-Handbook.pdf", {subjectType:'drag-n-drop'})               // Attach file for order submission
-    //cy.get('.text-3xl', { timeout: 100000 }).should('have.text','Order Submitted').should('be.visible').and('exist')                                                  // Order Submitted page heading assertion        
+    cy.get('.justify-end > .flex > span > .primaryBtn', { timeout: 100000 }).should('be.visible').and('be.enabled').click().wait(30000)
+
   })
   
   Cypress.Commands.add('sendforapproval', () => {
