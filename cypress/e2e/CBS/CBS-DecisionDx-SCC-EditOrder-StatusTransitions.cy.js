@@ -55,6 +55,7 @@ describe(
       cy.resumeOrder()
 
       // Phase 3: Complete ONLY missing sections
+      cy.fillclinicalInfo()  
       cy.fillLaboratoryInfo()
       cy.fillShipmentInfo()
 
@@ -74,6 +75,7 @@ describe(
       cy.resumeOrder()
 
       // Phase 3: Complete ONLY missing sections
+      cy.fillclinicalInfo() 
       cy.fillLaboratoryInfo()
       cy.fillShipmentInfo()
       //cy.attachSupportingDocuments()
@@ -94,6 +96,7 @@ describe(
       cy.resumeOrder()
 
       // Phase 3: Complete ONLY missing sections
+      cy.fillclinicalInfo() 
       cy.fillLaboratoryInfo()
       cy.fillShipmentInfo()
       //cy.attachSupportingDocuments()
