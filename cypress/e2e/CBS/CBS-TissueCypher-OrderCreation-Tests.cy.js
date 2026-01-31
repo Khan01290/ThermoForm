@@ -462,11 +462,13 @@ Cypress.Commands.add(
     
     } else if (orderState === 'Submitted') {
         cy.contains('a', 'Test Orders', { timeout: 70000 }).should('have.attr', 'href', '/access/test-orders').click();                                                   // Test Orders Tab click          
-        cy.get(':nth-child(1) > .lg\\:right-0 > .py-1').should('have.text', 'Submitted').should('be.visible').and('exist').wait(2000)                                     // Chwck the order status is Submitted  
+        cy.get(':nth-child(1) > .lg\\:right-0 > .py-1', { timeout: 100000 })
+        .should('have.text', 'Submitted')
+        .should('be.visible')
+        .and('exist')
+        .wait(2000)
 
-        cy.wait(5000)
         cy.contains('button', 'Detail').eq(0).click().wait(1000)
-
         cy.url().should('include', '/summary/')
         cy.url().then((url) => {
         const orderId = url.split('/').pop()
