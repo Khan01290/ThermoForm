@@ -46,7 +46,7 @@ describe(
       cy.createTissueCypherOrder({ orderState: 'Pending Submission' })
     })
 
-    it('AC-7.4: Fourth order is Submitted', () => {
+    it('AC-7.4: Fourth order is Submittedd', () => {
         cy.createTissueCypherOrder({ orderState: 'Submitted' })
     })
   }
@@ -101,6 +101,8 @@ Cypress.Commands.add(
     
     }
   )
+
+
 
 /* ======================================================
    SUPPORTING COMMANDS
